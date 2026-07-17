@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FortHeC° — Contact et démonstration</title>
+  <meta name="description" content="Demandez une démonstration FortHeC° sur vos propres données. Hugo Chambefort, Ingénieur Maîtrise des Energies, Polytech Nantes.">
+  <link rel="icon" type="image/png" href="img/n2-app-icon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .contact-page-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .contact-left h2 {
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .contact-left p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .contact-block {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .contact-block-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--ink);
+    }
+    .contact-block-item .icon {
+      width: 36px; height: 36px;
+      background: rgba(124,92,252,0.08);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .contact-block-item a {
+      color: var(--violet);
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    .contact-block-item a:hover { opacity: 0.75; }
+    .profile-card {
+      background: var(--paper-mid);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+    .profile-avatar {
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, var(--violet), #5B3FD4);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .profile-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .profile-title {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+    /* Formulaire de contact */
+    .contact-form {
+      background: var(--white);
+      border: 1px solid var(--paper-mid);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-form::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--violet), var(--teal));
+    }
+    .contact-form h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .contact-form p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1.75rem;
+    }
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.02em;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--paper-mid);
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      color: var(--ink);
+      background: var(--paper);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--violet);
+      box-shadow: 0 0 0 3px rgba(124,92,252,0.1);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .form-submit {
+      width: 100%;
+      background: var(--violet);
+      color: var(--white);
+      border: none;
+      padding: 0.875rem 2rem;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .form-submit:hover {
+      background: var(--violet-lt);
+      transform: translateY(-1px);
+    }
+    .form-note {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 0.75rem;
+    }
+    /* Produits */
+    .produit-pills {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .produit-pill {
+      border: 1px solid var(--paper-mid);
+      border-radius: 6px;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.15s;
+      background: var(--white);
+    }
+    .produit-pill.active,
+    .produit-pill:hover {
+      border-color: var(--violet);
+      color: var(--violet);
+      background: rgba(124,92,252,0.05);
+    }
+    @media (max-width: 768px) {
+      .contact-page-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">
+    <img src="img/n2-lockup.png" alt="FortHeC°" height="32" style="display:block">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="energy.html">Energy</a></li>
+    <li><a href="inventory.html">Inventory</a></li>
+    <li><a href="suite.html">Suite</a></li>
+    <li><a href="contact.html" class="nav-cta active">Demander une démo</a></li>
+  </ul>
+</nav>
+
+<section style="padding-top: 120px;">
+  <p class="section-eyebrow reveal">Contact</p>
+  <h1 class="section-title reveal" style="max-width:none">Planifions une démonstration</h1>
+  <p class="section-sub reveal">Sur vos propres données, pour un gain de temps concret et mesurable dès la première session.</p>
+
+  <div class="contact-page-grid" style="margin-top: 3rem;">
+
+    <!-- Colonne gauche -->
+    <div class="contact-left reveal">
+      <div class="profile-card">
+        <div class="profile-avatar">HC</div>
+        <div>
+          <div class="profile-name">Hugo Chambefort</div>
+          <div class="profile-title">Ingénieur Maîtrise des Energies, Polytech Nantes</div>
+        </div>
+      </div>
+
+      <div class="contact-block" style="margin-top: 2rem;">
+        <div class="contact-block-item">
+          <div class="icon">✉</div>
+          <div><a href="mailto:contact@forthec.fr">contact@forthec.fr</a></div>
+        </div>
+        <div class="contact-block-item">
+          <div class="icon">✉</div>
+          <div><a href="mailto:hugo.chambefort@forthec.fr">hugo.chambefort@forthec.fr</a></div>
+        </div>
+        <div class="contact-block-item">
+          <div class="icon">📞</div>
+          <div><a href="tel:0778325955">07 78 32 59 55</a></div>
+        </div>
+        <div class="contact-block-item">
+          <div class="icon">🌐</div>
+          <div>forthec.fr</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 1rem;">
+        <p class="section-eyebrow" style="margin-bottom: 1rem;">Ce que couvre la démo</p>
+        <ul class="feature-list" style="gap: 0.75rem;">
+          <li>Import de vos propres fichiers Excel/CSV Enedis/GrDF</li>
+          <li>Calcul IPE et régressions ISO 50006 en direct</li>
+          <li>Génération du rapport Word NF EN 16247</li>
+          <li>Présentation Inventory sur site réel si souhaité</li>
+          <li>Questions techniques sur l'intégration dans votre workflow</li>
+        </ul>
+      </div>
+
+      <div class="stack-grid" style="margin-top: 2.5rem; grid-template-columns: 1fr 1fr;">
+        <div class="stack-item">
+          <span class="stack-icon">🇫🇷</span>
+          <div>
+            <strong>Données EU</strong>
+            <span>100% hébergé France / Ireland</span>
+          </div>
+        </div>
+        <div class="stack-item">
+          <span class="stack-icon">🔒</span>
+          <div>
+            <strong>RGPD</strong>
+            <span>Vos fichiers ne quittent jamais le serveur</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Colonne droite : formulaire -->
+    <div class="contact-form reveal">
+      <h3>Demande de démonstration</h3>
+      <p>Réponse sous 24h ouvrées. Indiquez le produit qui vous intéresse et quelques mots sur votre contexte.</p>
+
+      <div class="produit-pills">
+        <span class="produit-pill active">FortHeC° Energy</span>
+        <span class="produit-pill">FortHeC° Inventory</span>
+        <span class="produit-pill">Mode Suite</span>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Prénom</label>
+          <input type="text" placeholder="Jean">
+        </div>
+        <div class="form-group">
+          <label>Nom</label>
+          <input type="text" placeholder="Dupont">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Email professionnel</label>
+        <input type="email" placeholder="jean.dupont@cabinet.fr">
+      </div>
+
+      <div class="form-group">
+        <label>Cabinet / Entreprise</label>
+        <input type="text" placeholder="Cabinet Energie Conseil">
+      </div>
+
+      <div class="form-group">
+        <label>Secteur d'activité principal</label>
+        <select>
+          <option value="">Sélectionner...</option>
+          <option>Bureau d'études énergie (OPQIBI 1717/1905)</option>
+          <option>Industrie manufacturière</option>
+          <option>Logistique / Transport</option>
+          <option>Tertiaire</option>
+          <option>Autre</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Votre contexte (optionnel)</label>
+        <textarea placeholder="Nombre d'audits par an, types de sites, outils utilisés actuellement..."></textarea>
+      </div>
+
+      <button class="form-submit" onclick="handleSubmit(event)">
+        Envoyer la demande →
+      </button>
+      <p class="form-note">Vos données sont transmises uniquement à Hugo Chambefort via contact@forthec.fr. Aucun tiers.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Roadmap -->
+<section class="alt">
+  <p class="section-eyebrow reveal">Roadmap</p>
+  <h2 class="section-title reveal">La suite FortHeC°</h2>
+  <p class="section-sub reveal">Chaque module est utilisable de façon indépendante ou intégré dans la suite complète.</p>
+
+  <div class="product-grid">
+    <div class="product-card reveal">
+      <span class="card-tag" style="background:rgba(0,229,160,0.1);color:var(--teal)">Disponible</span>
+      <h3>FortHeC° Energy</h3>
+      <p>Application web. Audit réglementaire complet NF EN 16247, rapport Word automatisé, régressions ISO 50006, 29 secteurs.</p>
+      <a href="energy.html" class="card-link">Découvrir →</a>
+    </div>
+    <div class="product-card reveal">
+      <span class="card-tag" style="background:rgba(0,229,160,0.1);color:var(--teal)">Disponible</span>
+      <h3>FortHeC° Inventory</h3>
+      <p>Application mobile iOS/Android. Inventaire terrain par photo et IA, cartographie bâtimentaire, enveloppe thermique, registre F-Gaz.</p>
+      <a href="inventory.html" class="card-link">Découvrir →</a>
+    </div>
+    <div class="product-card reveal">
+      <span class="card-tag">A venir</span>
+      <h3>FortHeC° Monitor</h3>
+      <p>Suivi continu des consommations et des scénarios du plan d'actions. Le lien final entre l'audit et la performance dans le temps.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img src="img/n2-app-icon.png" alt="FortHeC°" height="28" style="display:block">
+  <div class="footer-meta">© 2026 FortHeC° — Données hébergées en EU — contact@forthec.fr</div>
+  <div class="footer-links">
+    <a href="index.html">Accueil</a>
+    <a href="energy.html">Energy</a>
+    <a href="inventory.html">Inventory</a>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+// Pills interactives
+document.querySelectorAll('.produit-pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    document.querySelectorAll('.produit-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+  });
+});
+
+// Soumission formulaire
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target;
+  btn.textContent = 'Demande envoyée ✓';
+  btn.style.background = 'var(--teal)';
+  btn.style.color = 'var(--ink)';
+  btn.disabled = true;
+  // TODO : brancher sur Scaleway SMTP ou Supabase Edge Function
+}
+</script>
+</body>
+</html>

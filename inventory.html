@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FortHeC° Inventory — Application mobile d'inventaire terrain</title>
+  <meta name="description" content="FortHeC° Inventory : inventaire terrain complet depuis votre smartphone. Photo, OCR, saisie vocale, cartographie des zones et registre F-Gaz.">
+  <link rel="icon" type="image/png" href="img/n2-app-icon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html">
+    <img src="img/n2-lockup.png" alt="FortHeC°" height="32" style="display:block">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="energy.html">Energy</a></li>
+    <li><a href="inventory.html" class="active">Inventory</a></li>
+    <li><a href="suite.html">Suite</a></li>
+    <li><a href="contact.html" class="nav-cta">Demander une démo</a></li>
+  </ul>
+</nav>
+
+<!-- ── Hero Inventory ────────────────────── -->
+<section class="hero">
+  <p class="hero-eyebrow">FortHeC° Inventory — Application mobile iOS / Android</p>
+  <h1>L'inventaire terrain<br><em>en une journée</em></h1>
+  <p class="hero-sub">
+    Capturez l'intégralité du contexte technique d'un site industriel depuis votre smartphone. Equipements, bâtiments, enveloppe thermique, fluides frigorigènes. Les données s'injectent directement dans FortHeC° Energy.
+  </p>
+  <div class="hero-actions">
+    <a href="contact.html" class="btn-primary">Demander une démonstration →</a>
+    <a href="energy.html" class="btn-ghost">Voir Energy</a>
+  </div>
+  <div class="hero-badges">
+    <span class="badge">NF EN 16247</span>
+    <span class="badge">RT2012 / RE2020</span>
+    <span class="badge">EU 517/2014</span>
+    <span class="badge">100% EU RGPD</span>
+  </div>
+</section>
+
+<!-- ── Fonctionnalités ───────────────────── -->
+<section>
+  <p class="section-eyebrow reveal">Fonctionnalités</p>
+  <h2 class="section-title reveal">Workflow terrain en 6 étapes</h2>
+  <p class="section-sub reveal">De la création du site à l'export PDF, tout le workflow terrain est guidé depuis l'application mobile.</p>
+
+  <div class="product-grid">
+    <div class="product-card reveal">
+      <span class="card-tag">Etape 01</span>
+      <h3>Création du site terrain</h3>
+      <ul class="feature-list">
+        <li>29 secteurs couverts, industrie et tertiaire</li>
+        <li>Saisie du contexte : surface, effectif, CA, production</li>
+        <li>Adaptation automatique selon le type de site</li>
+        <li>Rechargement automatique depuis dossier JSON</li>
+      </ul>
+    </div>
+    <div class="product-card reveal">
+      <span class="card-tag">Etape 02</span>
+      <h3>Inventaire équipements</h3>
+      <ul class="feature-list">
+        <li>Photo de plaque signalétique, OCR Google Vision, extraction Mistral IA</li>
+        <li>Champs auto-remplis : marque, modèle, puissance, année, classe IE</li>
+        <li>Saisie vocale Google Speech + Mistral pour complétion rapide</li>
+        <li>Bandeau orange si données incomplètes détectées</li>
+      </ul>
+    </div>
+    <div class="product-card reveal">
+      <span class="card-tag">Etape 03</span>
+      <h3>Cartographie des zones</h3>
+      <ul class="feature-list">
+        <li>Plan interactif avec pan/zoom et zones redimensionnables</li>
+        <li>Extraction automatique depuis photo de plan d'évacuation</li>
+        <li>Snap magnétique, filtres par étage/niveau</li>
+        <li>Attribution des équipements aux zones par sélecteur</li>
+      </ul>
+    </div>
+    <div class="product-card reveal">
+      <span class="card-tag">Etape 04</span>
+      <h3>Enveloppe thermique</h3>
+      <ul class="feature-list">
+        <li>Saisie des parois par zone : murs, toiture, plancher, vitrages</li>
+        <li>Composition multi-couches avec matériaux et épaisseurs</li>
+        <li>Calcul U-value automatique par paroi</li>
+        <li>Seuils RT2012 avec code couleur vert/jaune/rouge</li>
+      </ul>
+    </div>
+    <div class="product-card reveal">
+      <span class="card-tag">Etape 05</span>
+      <h3>Registre F-Gaz</h3>
+      <ul class="feature-list">
+        <li>Identification des équipements contenant des fluides frigorigènes</li>
+        <li>Table GWP intégrée (R-410A, R-32, R-134a, R-407C...)</li>
+        <li>Calcul automatique tonnes eq. CO2 par équipement</li>
+        <li>Alertes de dépassement seuils EU 517/2014</li>
+      </ul>
+    </div>
+    <div class="product-card reveal">
+      <span class="card-tag">Etape 06</span>
+      <h3>Export et synchronisation</h3>
+      <ul class="feature-list">
+        <li>Rapport PDF terrain : équipements, zones, enveloppe, F-Gaz</li>
+        <li>Export CSV pour intégration dans outils tiers</li>
+        <li>Synchronisation directe avec FortHeC° Energy en mode suite</li>
+        <li>Mode hors-ligne avec file de synchronisation automatique</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Section vidéo Inventory -->
+<section class="alt">
+  <p class="section-eyebrow reveal">En action</p>
+  <h2 class="section-title reveal">FortHeC° Inventory en quelques secondes</h2>
+  <p class="section-sub reveal">L'inventaire terrain depuis le smartphone, de la photo de plaque à la synchronisation Energy.</p>
+
+  <div class="reveal" style="max-width:600px;margin-top:2rem">
+    <p style="font-size:0.8rem;font-weight:600;color:var(--violet);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem">
+      Démo Inventory
+    </p>
+    <!-- PLACEHOLDER en attendant la vidéo Inventory -->
+    <div style="width:100%;aspect-ratio:16/9;border-radius:12px;background:var(--ink-soft);border:2px dashed rgba(124,92,252,0.3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.75rem">
+      <span style="font-size:2rem">🎬</span>
+      <span style="font-size:0.8rem;color:var(--muted);text-align:center;padding:0 1rem">
+        Vidéo Inventory à venir<br>Photo plaque, OCR, cartographie des zones
+      </span>
+    </div>
+    <p style="font-size:0.8rem;color:var(--muted);margin-top:0.5rem">
+      Scan de plaque signalétique, saisie vocale et cartographie des zones depuis l'application mobile.
+    </p>
+  </div>
+</section>
+
+<!-- ── Gains terrain ──────────────────────── -->
+<section class="dark">
+  <p class="section-eyebrow reveal">Gain de temps</p>
+  <h2 class="section-title reveal" style="color:var(--white)">1 800 EUR libérés par site</h2>
+  <p class="section-sub reveal">Référence : inventaire terrain industriel type sur 3-4 jours à 600 EUR/jour.</p>
+
+  <div class="gains-grid">
+    <div class="gain-card reveal">
+      <div class="gain-number" data-target="75" data-suffix="%">0%</div>
+      <div class="gain-label">Inventaire équipements<br>2-3 jours → 3-4 heures</div>
+    </div>
+    <div class="gain-card reveal">
+      <div class="gain-number" data-target="80" data-suffix="%">0%</div>
+      <div class="gain-label">Enveloppe thermique<br>1 journée → 1-2 heures</div>
+    </div>
+    <div class="gain-card reveal">
+      <div class="gain-number" data-target="90" data-suffix="%">0%</div>
+      <div class="gain-label">Enveloppe + F-Gaz<br>4-6 heures → 30 minutes</div>
+    </div>
+    <div class="gain-card reveal">
+      <div class="gain-number" data-target="75" data-suffix="%">0%</div>
+      <div class="gain-label">Inventaire site complet<br>3-4 jours → 1 journée</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Conformité ─────────────────────────── -->
+<section class="alt">
+  <p class="section-eyebrow reveal">Conformité</p>
+  <h2 class="section-title reveal">Conçu pour le terrain réglementaire</h2>
+  <p class="section-sub reveal">Chaque module de collecte respecte les exigences normatives applicables aux audits NF EN 16247.</p>
+
+  <div class="conformite-grid">
+    <div class="conformite-item reveal"><span>NF EN 16247-1/3</span><span class="ok">OK</span></div>
+    <div class="conformite-item reveal"><span>RT2012 / RE2020</span><span class="ok">OK</span></div>
+    <div class="conformite-item reveal"><span>EU 517/2014 F-Gaz</span><span class="ok">OK</span></div>
+    <div class="conformite-item reveal"><span>RGPD EU 2016/679</span><span class="ok">OK</span></div>
+  </div>
+
+  <div class="stack-grid" style="margin-top:3rem">
+    <div class="stack-item reveal">
+      <span class="stack-icon">📱</span>
+      <div>
+        <strong>Données terrain sur l'appareil</strong>
+        <span>Photos et données ne quittent jamais votre appareil sauf pour synchronisation Supabase EU.</span>
+      </div>
+    </div>
+    <div class="stack-item reveal">
+      <span class="stack-icon">🇫🇷</span>
+      <div>
+        <strong>IA souveraine</strong>
+        <span>OCR Google Vision et Mistral Large 2 Paris EU. Seuls des extraits structurés transitent vers l'IA.</span>
+      </div>
+    </div>
+    <div class="stack-item reveal">
+      <span class="stack-icon">🔌</span>
+      <div>
+        <strong>Mode hors-ligne</strong>
+        <span>Saisie complète sans connexion. Synchronisation automatique au retour du réseau.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ────────────────────────────────── -->
+<section>
+  <div class="contact-wrapper">
+    <div class="contact-info reveal">
+      <h3>Testez sur un site réel</h3>
+      <p>Une démonstration terrain pour mesurer le gain de temps concret sur votre prochain inventaire.</p>
+      <div class="contact-links">
+        <a href="mailto:contact@forthec.fr">✉ contact@forthec.fr</a>
+        <a href="tel:0778325955">📞 07 78 32 59 55</a>
+      </div>
+    </div>
+    <div class="contact-cta-box reveal">
+      <h4>Demander une démonstration Inventory</h4>
+      <p>Hugo Chambefort, Ingénieur Maîtrise des Energies, Polytech Nantes.</p>
+      <a href="contact.html" class="btn-white">Planifier une session →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img src="img/n2-app-icon.png" alt="FortHeC°" height="28" style="display:block">
+  <div class="footer-meta">© 2026 FortHeC° — Données hébergées en EU — contact@forthec.fr</div>
+  <div class="footer-links">
+    <a href="index.html">Accueil</a>
+    <a href="energy.html">Energy</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
