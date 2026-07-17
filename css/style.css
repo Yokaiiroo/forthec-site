@@ -350,6 +350,15 @@ section.dark .section-sub { color: #8B8FA8; }
   font-weight: 700;
   font-variant-numeric: tabular-nums;
 }
+.gains-banner {
+  margin-top: 1.5rem;
+  background: var(--ink-mid);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.75rem;
+  font-size: 0.95rem;
+  color: var(--white);
+}
+.gains-banner strong { color: var(--teal); font-weight: 700; }
 
 /* ── Souveraineté ────────────────────────── */
 .stack-grid {
