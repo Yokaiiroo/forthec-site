@@ -66,13 +66,15 @@
     }
     .profile-avatar {
       width: 56px; height: 56px;
-      background: linear-gradient(135deg, var(--violet), #5B3FD4);
       border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--white);
       flex-shrink: 0;
+      overflow: hidden;
+    }
+    .profile-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
     .profile-name {
       font-size: 0.95rem;
@@ -278,7 +280,7 @@
     <!-- Colonne gauche -->
     <div class="contact-left reveal">
       <div class="profile-card">
-        <div class="profile-avatar">HC</div>
+        <div class="profile-avatar"><img src="img/hugo-chambefort-avatar.jpg" alt="Hugo Chambefort"></div>
         <div>
           <div class="profile-name">Hugo Chambefort</div>
           <div class="profile-title">Ingénieur Maîtrise des Energies, Polytech Nantes</div>
@@ -385,7 +387,7 @@
           <textarea id="form-contexte" placeholder="Nombre d'audits par an, types de sites, outils utilisés actuellement..."></textarea>
         </div>
 
-        <div class="h-captcha" data-sitekey="01be9b94-b7bc-4eba-96e8-ab547a8aa92c"></div>
+        <div class="h-captcha" data-sitekey="01be9b94-b7bc-4eba-96e8-ab547a8aa92c"></di v>
 
         <button class="form-submit" id="contact-submit-btn">
           Envoyer la demande →
