@@ -1,0 +1,202 @@
+# FortHeC° Site — Index Architecture (pour Claude Chat)
+
+> Ce fichier sert de référence rapide pour Claude Chat sur le repo `forthec-site` 
+> (site vitrine `forthec.fr`).
+> Mettre à jour après chaque évolution majeure : ajout de page, refonte design, 
+> changement d'hébergement, mise à jour SEO, campagne marketing.
+> Dernière MAJ : Session 34 — 22 juillet 2026
+
+---
+
+## 1. Vision & périmètre
+
+**forthec.fr** est le site vitrine institutionnel et commercial de FortHeC°. Il porte :
+- La présentation produit (Energy, Inventory, Mode Suite)
+- La grille tarifaire officielle et le programme Design Partner
+- Le formulaire de contact commercial (`/contact`)
+- Le blog SEO à venir (`/blog`)
+- Les mentions légales, CGV, DPA RGPD, politique cookies
+
+**Repo GitHub** : `github.com/Yokaiiroo/forthec-site` (privé, à confirmer public à terme)
+
+**Rôle stratégique** : point d'entrée du tunnel de vente. Ce que voit un prospect qui 
+tape "forthec" sur Google ou clique sur le lien d'un email de prospection.
+
+---
+
+## 2. Stack technique
+
+**[À COMPLÉTER]** — Framework, langue (statique HTML/CSS/JS ? Next.js ? Astro ? 
+Nuxt ? Hugo ? Gatsby ?), gestion des styles (Tailwind ? CSS vanilla ? styled-components ?)
+
+**Hébergement actuel** : à confirmer (GitHub Pages transitoire OU Scaleway Static Web 
+Pages OU VPS Scaleway)
+
+**Hébergement cible** : selon volume de trafic à venir. GitHub Pages OK jusqu'à quelques 
+milliers de vues/mois. Scaleway Object Storage + Static Web Pages pour scale avec 
+souveraineté. Passage éventuel à VPS Scaleway si besoin d'un backend dynamique.
+
+**Domaine** : `forthec.fr`
+- Registrar : à confirmer
+- DNS : à confirmer
+- Certificat SSL : Let's Encrypt via l'hébergeur
+
+**Sous-domaines prévus** :
+- `admin.forthec.fr` → dashboard admin (repo `forthec-admin`)
+- `api.forthec.fr` → backend API agents (VPS Scaleway, à venir)
+- `app.forthec.fr` (optionnel) → redirect vers Energy Streamlit hébergé Scaleway
+
+---
+
+## 3. Structure des pages
+
+### Pages existantes
+
+**[À COMPLÉTER]** — Liste actuelle :
+- `/` (accueil)
+- ... ?
+
+### Pages à créer (backlog Priorité 1)
+
+**`/tarifs`** — Page de conversion principale
+- Grille 4 plans (Solo Energy / Solo Suite / Cabinet Suite / Cabinet+)
+- Prix mensuel + prix annuel -20%
+- Compteur places Design Partner restantes par palier (dynamique ou statique)
+- Tableau comparatif détaillé des fonctionnalités par plan
+- Calculateur ROI interactif (input : nombre d'audits/an + équipe + prix/j client → 
+  output : économie estimée + plan recommandé)
+- FAQ pricing (10-15 questions)
+- CTA "Essai gratuit 30 jours sans CB"
+
+**`/contact`** — Formulaire de contact
+- Champs : nom, prénom, email pro, téléphone, entreprise, message, source
+- Submission via Edge Function `contact-submit` (déjà déployée côté Supabase 
+  `FortHeC° Agents`) → table `contact_submissions`
+- Rate limit : géré via table `rate_limit_log` côté Edge Function
+- Envoi email notification Yokaiiro
+- Réponse manuelle sous 48h
+
+**`/blog`** — Publication SEO (Sprint SEO ultérieur)
+- Articles ciblés mots-clés secteur ("audit énergétique NF EN 16247", "ISO 50001 
+  industriel", "obligation audit 2,75 GWh", "CEE fiche IND-UT", etc.)
+- Génération semi-auto via agent SEO Mistral (Sprint futur)
+- Publication 1-2 articles/semaine (rythme cible)
+
+### Pages légales (backlog Priorité 2)
+
+- `/mentions-legales`
+- `/cgv`
+- `/dpa` (Data Processing Agreement RGPD)
+- `/politique-cookies`
+
+---
+
+## 4. SEO & référencement
+
+### On-page technique (à finaliser)
+
+- [ ] Meta titles + meta descriptions par page (rédigés manuellement, 55/155 chars max)
+- [ ] JSON-LD structured data : `Organization`, `SoftwareApplication`, `Service`
+- [ ] Open Graph + Twitter Cards par page
+- [ ] Sitemap.xml généré (statique ou dynamique)
+- [ ] robots.txt
+- [ ] Balises `<h1>` uniques et pertinentes par page
+- [ ] Attributs `alt` sur toutes les images
+- [ ] Compression images (WebP + fallback JPG)
+
+### Enregistrements outils
+
+- [ ] Google Search Console
+- [ ] Bing Webmaster Tools
+- [ ] Analytics souverain (Plausible EU ou Matomo self-hosted) — jamais Google Analytics
+
+### Annuaires professionnels à référencer (backlog SEO)
+
+- Guide BE (bureaux d'études)
+- ATEE (Association Technique Énergie Environnement)
+- ADEME (Agence de l'Environnement et de la Maîtrise de l'Énergie)
+- énergie2050
+- Batiactu
+- Editions du Moniteur
+
+---
+
+## 5. Analytics & tracking
+
+**Souveraineté stricte** : jamais Google Analytics, jamais Meta Pixel.
+
+**Options EU/souveraines à évaluer** :
+- **Plausible Analytics** (EU, cookie-less, RGPD-friendly, payant ~10€/mois)
+- **Matomo self-hosted** (open source, sur VPS Scaleway, gratuit + charge serveur)
+- **Simple Analytics** (EU, similaire Plausible)
+
+**Table Supabase existante** : `site_events` (colonnes exactes à documenter dans 
+INDEX_AGENTS §6). Alimentée par JS client léger custom. Peut servir de source primaire 
+avant/en complément d'un outil pro.
+
+---
+
+## 6. Point de contact avec les autres repos
+
+- **`forthec-agents`** — Edge Function `contact-submit` déployée côté Supabase 
+  `FortHeC° Agents` traite les submissions du formulaire `/contact`. Rate limit via 
+  `rate_limit_log`. Table cible `contact_submissions`.
+- **`forthec-admin`** — le dashboard admin lira les tables `contact_submissions`, 
+  `site_events`, `emails_envoyes`, `interactions` pour affichage.
+- **`forthec-energy` / `forthec-inventory`** — le site vitrine renvoie via CTA "Essai 
+  gratuit" vers un formulaire d'inscription qui crée un compte Prod (à intégrer avec le 
+  chantier Multi-tenant).
+
+---
+
+## 7. Backlog Site
+
+### Priorité 1
+
+- [ ] **Page `/tarifs` complète** (grille officielle 500/950/1500/2500, ROI calculateur, 
+  compteur Design Partner, FAQ)
+- [ ] **Formulaire `/contact` fonctionnel** via Edge Function `contact-submit`
+- [ ] **SEO on-page technique de base** (meta, JSON-LD, sitemap, robots.txt)
+- [ ] **Mentions légales à jour** après création micro-entreprise (SIREN, adresse, 
+  responsable de traitement)
+
+### Priorité 2
+
+- [ ] **Enregistrement Google/Bing Search Console**
+- [ ] **Analytics souverain déployé** (Plausible ou Matomo)
+- [ ] **Référencement 5-10 annuaires professionnels**
+- [ ] **Page `/blog` structurée** (prête à recevoir les articles)
+- [ ] **CGV / DPA / Politique cookies** (post-achat modèle validé juridiquement)
+
+### Priorité 3
+
+- [ ] **Article de fond pilier SEO** : "Guide complet audit énergétique NF EN 16247 
+  pour industriels français" (5000 mots, référencement long tail)
+- [ ] **Agent SEO on-page** (Sprint 6+, backlog Agents) — génération automatique 
+  d'articles blog + optimisation continue metas
+- [ ] **Version anglaise** (long terme, si expansion hors France)
+
+---
+
+## 8. Journal des sessions
+
+### Session 33-34 (21-22 juillet 2026) — Création repo + Index
+
+- Création repo `forthec-site` (Session 33)
+- Meta-repo `forthec-suite` créé pour docs stratégie transverse
+- Décisions pricing (INDEX_TARIFICATION) impactant directement `/tarifs`
+- Création de ce fichier `INDEX_SITE.md`
+
+### À compléter
+
+- Session à venir : setup structure des pages + SEO on-page technique
+- Session à venir : implémentation `/tarifs`
+- Session à venir : intégration formulaire `/contact` avec Edge Function
+
+---
+
+*INDEX_SITE.md — Version 0.1 (squelette) — Session 34 — 22 juillet 2026*
+
+**⚠️ Ce fichier est un squelette.** Les sections `[À COMPLÉTER]` doivent être remplies 
+lors de la prochaine session dédiée au site vitrine avec Claude Chat, une fois le code 
+du repo consulté.
