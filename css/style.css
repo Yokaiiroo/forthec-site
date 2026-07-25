@@ -463,6 +463,15 @@ section.dark .section-sub { color: #8B8FA8; }
 }
 .btn-white:hover { transform: translateY(-1px); }
 
+/* ── Teaser Espace client (S35) ─────────── */
+.teaser-section { padding: 2.5rem 10% 3rem; }
+.teaser-card {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+.teaser-card p { margin-bottom: 0; }
+
 /* ── Footer ──────────────────────────────── */
 footer {
   background: var(--ink);
