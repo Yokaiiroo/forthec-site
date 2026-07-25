@@ -1,0 +1,85 @@
+/* ── Grille tarifs : prix et métadonnées plan ── */
+.plan-price {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.25rem;
+}
+.plan-price span { font-size: 0.95rem; font-weight: 500; color: var(--muted); }
+.plan-price-annual {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+}
+.plan-meta {
+  display: flex; flex-direction: column; gap: 0.3rem;
+  font-size: 0.85rem;
+  color: #4A4D65;
+  margin-bottom: 1.25rem;
+}
+.plan-meta strong { color: var(--ink); font-weight: 600; }
+.suite-card .plan-price { color: var(--white); }
+.suite-card .plan-price span { color: #A0A3BC; }
+.suite-card .plan-price-annual { color: #A0A3BC; }
+.suite-card .plan-meta { color: #A0A3BC; }
+.suite-card .plan-meta strong { color: var(--white); }
+
+/* ── Design Partner ──────────────────────── */
+section.design-partner {
+  background:
+    radial-gradient(ellipse 60% 80% at 15% 20%, rgba(124,92,252,0.25) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 85% 80%, rgba(0,229,160,0.18) 0%, transparent 60%),
+    var(--ink);
+  color: var(--white);
+}
+section.design-partner .section-eyebrow { color: var(--teal); }
+section.design-partner .section-sub { color: #8B8FA8; }
+
+/* ── ROI ─────────────────────────────────── */
+.gain-card h3 {
+  color: var(--white);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.roi-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+.roi-list li { font-size: 0.85rem; color: #C0C3D8; }
+.roi-list li.roi-highlight { color: var(--teal); font-weight: 700; font-size: 1rem; }
+
+/* ── FAQ ─────────────────────────────────── */
+.faq-list {
+  display: flex; flex-direction: column; gap: 0.75rem;
+  margin-top: 2rem;
+  max-width: 720px;
+}
+.faq-item {
+  background: var(--white);
+  border: 1px solid var(--paper-mid);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+}
+.faq-item summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+';
+  font-size: 1.25rem;
+  color: var(--violet);
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item p {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
