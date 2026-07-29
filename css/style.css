@@ -593,6 +593,78 @@ footer {
 .footer-links a { font-size: 0.8rem; color: var(--muted); transition: color 0.2s; }
 .footer-links a:hover { color: var(--white); }
 
+/* ── App switcher (Console / Energy) ───────── */
+.app-switcher {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+}
+.app-switcher-tab {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  background: var(--violet);
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 1rem 0.55rem;
+  border-radius: 8px 0 0 8px;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+.app-switcher-tab:hover { background: var(--violet-lt); }
+.app-switcher.open .app-switcher-tab { border-radius: 0 0 0 8px; }
+.app-switcher-panel {
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  translate: 0 -50%;
+  background: var(--white);
+  border-radius: 12px 0 0 12px;
+  box-shadow: -4px 0 24px rgba(13,15,26,0.18);
+  padding: 1.25rem;
+  width: 220px;
+  max-width: calc(100vw - 3rem);
+  transform: translateX(12px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.app-switcher.open .app-switcher-panel {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+.app-switcher-panel h4 {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+.app-switcher-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--paper);
+  margin-bottom: 0.5rem;
+  transition: background 0.15s, color 0.15s;
+}
+.app-switcher-link:last-child { margin-bottom: 0; }
+.app-switcher-link:hover { background: var(--violet); color: var(--white); }
+
 /* ── Animations ──────────────────────────── */
 .reveal {
   opacity: 0;
@@ -616,4 +688,6 @@ footer {
   .contact-wrapper { grid-template-columns: 1fr; gap: 2rem; }
   .gains-grid { grid-template-columns: repeat(2, 1fr); }
   footer { flex-direction: column; text-align: center; }
+  .app-switcher-tab { font-size: 0.7rem; padding: 0.85rem 0.45rem; }
+  .app-switcher-panel { width: 190px; }
 }

@@ -45,3 +45,36 @@ const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 document.querySelectorAll('.nav-links a').forEach(a => {
   if (a.getAttribute('href') === currentPage) a.classList.add('active');
 });
+
+// ── App switcher (Console / Energy) ───────
+(function () {
+  const STORAGE_KEY = 'forthec-app-switcher-open';
+
+  const wrap = document.createElement('div');
+  wrap.className = 'app-switcher';
+  wrap.innerHTML = `
+    <div class="app-switcher-panel">
+      <h4>Nos applications</h4>
+      <a class="app-switcher-link" href="https://console-app.forthec.fr/" target="_blank" rel="noopener">🖥 Console</a>
+      <a class="app-switcher-link" href="https://app.forthec.fr/" target="_blank" rel="noopener">⚡ Energy</a>
+    </div>
+    <button type="button" class="app-switcher-tab" aria-expanded="false">Applications</button>
+  `;
+  document.body.appendChild(wrap);
+
+  const tab = wrap.querySelector('.app-switcher-tab');
+
+  function setOpen(open) {
+    wrap.classList.toggle('open', open);
+    tab.setAttribute('aria-expanded', String(open));
+    localStorage.setItem(STORAGE_KEY, open ? '1' : '0');
+  }
+
+  if (localStorage.getItem(STORAGE_KEY) === '1') setOpen(true);
+
+  tab.addEventListener('click', () => setOpen(!wrap.classList.contains('open')));
+
+  document.addEventListener('click', (e) => {
+    if (wrap.classList.contains('open') && !wrap.contains(e.target)) setOpen(false);
+  });
+})();
