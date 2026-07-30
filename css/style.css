@@ -170,6 +170,15 @@ nav a img { display: block; }
   transition: background 0.2s !important;
 }
 .nav-cta:hover { background: var(--violet-lt) !important; }
+.nav-console {
+  color: var(--violet-lt) !important;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--violet-lt);
+  border-radius: 6px;
+  font-weight: 600 !important;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-console:hover { background: var(--violet-lt); color: var(--ink) !important; }
 
 /* ── Hero (dark) ─────────────────────────── */
 .hero {
