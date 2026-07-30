@@ -1,0 +1,77 @@
+# Mentions légales
+
+**Dernière mise à jour : 30 juillet 2026**
+
+Les présentes mentions légales s'appliquent au site forthec.fr et à l'ensemble des applications éditées sous la marque FortHeC° (ci-après désignés collectivement "les Services").
+
+## 1. Éditeur
+
+Les Services sont édités par :
+
+**Hugo Chambefort**, entrepreneur individuel exerçant sous le régime de la micro-entreprise, exploitant le nom commercial **FortHeC°**.
+
+- Adresse du siège social : 11 chemin de Fournaulis, 31170 Tournefeuille
+- SIRET : 108 072 661 00011
+- SIREN : 108 072 661
+- Code APE : 5829C - Édition de logiciels applicatifs
+- Numéro de TVA intracommunautaire : Non applicable (franchise en base de TVA, article 293 B du Code général des impôts)
+- Adresse électronique : contact@forthec.fr
+- Directeur de la publication : Hugo Chambefort
+
+## 2. Hébergement
+
+### 2.1 Site vitrine forthec.fr et applications FortHeC° Energy et FortHeC° Admin
+
+Ces services sont hébergés sur infrastructure VPS opérée par :
+
+**Scaleway SAS**, 8 rue de la Ville l'Évêque, 75008 Paris, France, immatriculée au RCS de Paris sous le numéro 433 115 904.
+
+Datacenter : Paris (France).
+
+### 2.2 Base de données et stockage fichiers
+
+Données hébergées via :
+
+**Supabase Inc.**, 970 Toa Payoh North #07-04, Singapore 318992, opérant l'infrastructure de traitement au sein de datacenters Amazon Web Services situés dans la région eu-west-3 (Paris, France).
+
+### 2.3 Application mobile FortHeC° Inventory
+
+Distribuée sous forme d'APK signé via l'infrastructure Expo Application Services :
+
+**650 Industries, Inc.**, 44 Tehama Street, San Francisco, CA 94105, États-Unis.
+
+L'application ne stocke pas de données utilisateur sur cette infrastructure : elle est utilisée uniquement pour la compilation et la distribution du binaire. Les données saisies par l'auditeur sont exclusivement transmises à la base Supabase Paris décrite en 2.3.
+
+## 3. Propriété intellectuelle
+
+L'ensemble des éléments composant les Services (interfaces, textes, graphismes, logos, iconographies, code source des applications, base de données, marque FortHeC°, méthodologies de calcul des indicateurs de performance énergétique, bibliothèques de préconisations) est la propriété exclusive de Hugo Chambefort ou fait l'objet d'une autorisation d'utilisation.
+
+Toute reproduction, représentation, modification, publication, adaptation, exploitation commerciale de tout ou partie des Services, quel que soit le moyen ou le procédé utilisé, est interdite sans l'autorisation écrite préalable de l'éditeur.
+
+Toute exploitation non autorisée des Services est susceptible d'engager la responsabilité civile ou pénale de son auteur au titre notamment de la contrefaçon (articles L. 335-2 et suivants du Code de la propriété intellectuelle).
+
+Les rapports d'audit énergétique générés par les utilisateurs à l'aide de FortHeC° Energy demeurent la propriété pleine et entière de l'utilisateur ou de son organisation cliente. FortHeC° ne revendique aucun droit sur le contenu des audits produits.
+
+## 4. Marques
+
+FortHeC° est un nom commercial utilisé par Hugo Chambefort dans le cadre de son activité d'édition de logiciels.
+
+Les marques citées incidemment sur les Services (Scaleway, Supabase, Mistral AI, Google, hCaptcha, Expo, etc.) sont la propriété de leurs titulaires respectifs.
+
+## 5. Liens hypertextes
+
+Les Services peuvent contenir des liens vers des sites tiers. L'éditeur ne saurait être tenu responsable du contenu de ces sites, de leur politique de confidentialité, ni des dommages ou pertes avérés ou allégués faisant suite à leur consultation.
+
+La création de liens pointant vers forthec.fr est libre à condition que ces liens ne portent pas atteinte à l'image ou aux intérêts de l'éditeur. L'éditeur se réserve le droit de demander la suppression de tout lien qu'il estimerait contraire à ses intérêts.
+
+## 6. Contact
+
+Pour toute question relative aux Services, à leur fonctionnement, à leur contenu ou aux présentes mentions légales : **contact@forthec.fr**.
+
+## 7. Droit applicable et juridiction compétente
+
+Les présentes mentions légales sont soumises au droit français. En cas de litige, et à défaut de résolution amiable, les tribunaux français seront seuls compétents.
+
+## 8. Signalement de contenus illicites
+
+Conformément à la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique, tout contenu manifestement illicite peut être signalé à l'éditeur à l'adresse contact@forthec.fr.

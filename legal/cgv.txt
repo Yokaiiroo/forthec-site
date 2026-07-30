@@ -1,0 +1,417 @@
+# Conditions Générales d'Utilisation et de Vente
+
+**Version 1.0 30 juillet 2026**
+
+Les présentes conditions générales d'utilisation et de vente (ci-après "CGU/CGV" ou "Conditions") régissent l'accès et l'utilisation des services logiciels édités sous la marque FortHeC° ainsi que la souscription aux offres d'abonnement associées.
+
+Elles sont conclues entre :
+
+**Hugo Chambefort**, entrepreneur individuel exerçant sous le régime de la micro-entreprise, exploitant le nom commercial **FortHeC°**,
+- Adresse : 11 chemin de Fournaulis, 31170 Tournefeuille
+- SIRET : 108 072 661 00011
+- SIREN : 108 072 661
+- Contact : contact@forthec.fr
+
+Ci-après désigné "**FortHeC°**" ou "**l'Éditeur**",
+
+et toute personne physique majeure agissant à titre professionnel, ou personne morale, souscrivant un compte d'accès aux Services,
+
+Ci-après désigné "**le Client**" ou "**l'Utilisateur**".
+
+FortHeC° et le Client étant ci-après désignés collectivement "**les Parties**".
+
+---
+
+## Article 1. Définitions
+
+- **"Services"** : ensemble des services logiciels édités par FortHeC°, comprenant l'application web FortHeC° Energy, l'application mobile FortHeC° Inventory, et tout service complémentaire mis à disposition par l'Éditeur.
+- **"Compte"** : espace personnel du Client permettant d'accéder aux Services après authentification.
+- **"Abonnement"** : formule payante souscrite par le Client donnant accès à un ou plusieurs Services selon un plan choisi.
+- **"Essai gratuit"** : période de 30 jours pendant laquelle le Client peut évaluer les Services sans engagement de paiement.
+- **"Design Partner"** : statut accordé aux premiers Clients signataires par plan, ouvrant droit à une remise commerciale de 30% pendant 12 mois en contrepartie d'un feedback structuré.
+- **"Organisation"** : entité juridique (bureau d'études, société d'ingénierie, cabinet d'audit) au sein de laquelle un ou plusieurs Utilisateurs sont regroupés.
+- **"Contenu Client"** : ensemble des données, textes, images, mesures, rapports générés ou téléversés par le Client dans les Services.
+- **"DPA"** : Data Processing Agreement, accord de sous-traitance conclu séparément entre FortHeC° et le Client pour encadrer le traitement des données personnelles au sens du RGPD.
+
+## Article 2. Objet et champ d'application
+
+Les présentes Conditions ont pour objet de définir les modalités selon lesquelles FortHeC° met à disposition du Client les Services, et les conditions financières applicables aux Abonnements.
+
+Elles s'appliquent :
+- À toute utilisation des Services, qu'elle soit gratuite (Essai gratuit, compte de démonstration) ou payante (Abonnement souscrit)
+- À toute souscription d'un Abonnement à l'un des plans commercialisés par FortHeC°
+
+Les Services sont exclusivement destinés à un usage professionnel, dans le cadre d'activités d'audit énergétique industriel ou d'ingénierie associée. Ils ne sont pas destinés à un usage par des consommateurs au sens du Code de la consommation.
+
+## Article 3. Acceptation des Conditions
+
+L'acceptation des présentes Conditions est réalisée :
+- Lors de la création d'un Compte (case à cocher obligatoire, mention "J'accepte les CGU/CGV")
+- Lors de la souscription d'un Abonnement payant (double acceptation : au moment de l'inscription, puis à la validation du paiement)
+
+Le Client reconnaît avoir pris connaissance des Conditions et les accepter sans réserve. En cas de désaccord avec tout ou partie des Conditions, le Client doit renoncer à l'utilisation des Services.
+
+Les Conditions applicables sont celles en vigueur à la date de création du Compte ou de renouvellement de l'Abonnement.
+
+## Article 4. Description des Services
+
+### 4.1 FortHeC° Energy
+
+Application web d'audit énergétique industriel, conforme aux normes NF EN 16247 et ISO 50006, comprenant notamment :
+- Import et structuration de données de consommation énergétique
+- Calcul d'Indicateurs de Performance Énergétique (IPE) par régression linéaire
+- Bibliothèque de préconisations d'actions d'économie d'énergie
+- Aide à la rédaction de plans d'actions et de rapports d'audit
+- Génération automatisée de rapports Word conformes NF EN 16247-3
+- Assistance à la valorisation des aides financières (CEE, ATEE, aides régionales)
+
+### 4.2 FortHeC° Inventory
+
+Application mobile de collecte terrain, comprenant notamment :
+- Inventaire d'équipements industriels avec reconnaissance optique de caractères sur plaques signalétiques
+- Saisie vocale de commentaires et transcription automatique
+- Cartographie 2D des bâtiments et zones auditées
+- Photos géolocalisées par zone
+- Synchronisation hors ligne des données terrain
+
+### 4.3 Mode Suite
+
+Combinaison intégrée Energy + Inventory, permettant un flux continu de la collecte terrain à la génération du rapport d'audit.
+
+### 4.4 Évolution des Services
+
+FortHeC° se réserve le droit de faire évoluer les Services, d'ajouter ou de retirer des fonctionnalités, dans le cadre d'un cycle de développement continu. Les évolutions majeures font l'objet d'une notification aux Utilisateurs actifs.
+
+## Article 5. Comptes et inscription
+
+### 5.1 Création de Compte
+
+La création d'un Compte est ouverte à toute personne physique majeure agissant à titre professionnel ou à toute personne morale, sous réserve de fournir des informations exactes et complètes.
+
+Les données requises à la création sont :
+- Nom, prénom, fonction
+- Email professionnel valide
+- Nom de l'Organisation d'appartenance
+- Acceptation des présentes Conditions et de la politique de confidentialité
+
+### 5.2 Types de Compte
+
+- **Compte de démonstration** : accès limité dans le temps (durée fixée par FortHeC°), destiné à l'évaluation des Services par un prospect. Accessible sur demande.
+- **Compte d'Essai gratuit** : accès complet aux fonctionnalités d'un plan choisi pendant 30 jours, sans carte bancaire requise à l'inscription.
+- **Compte payant (Abonnement actif)** : accès complet aux fonctionnalités du plan souscrit pendant toute la durée de l'Abonnement.
+- **Compte administrateur d'Organisation** : compte disposant de droits étendus pour gérer les autres Utilisateurs d'une même Organisation (plans Cabinet Suite et supérieurs).
+
+### 5.3 Sécurité du Compte
+
+Le Client est responsable de la confidentialité de ses identifiants et de tout usage effectué depuis son Compte. Il s'engage à :
+- Choisir un mot de passe fort (au moins 12 caractères, complexité recommandée)
+- Ne pas partager ses identifiants avec des tiers
+- Notifier FortHeC° sans délai en cas de suspicion d'accès non autorisé à contact@forthec.fr
+
+FortHeC° ne saurait être tenu responsable des conséquences d'un usage non autorisé du Compte résultant d'un défaut de vigilance du Client.
+
+### 5.4 Multi-utilisateurs (plans Cabinet Suite et supérieurs)
+
+Les plans Cabinet Suite (jusqu'à 5 Utilisateurs) et Cabinet+ (Utilisateurs illimités) permettent la création de plusieurs Comptes rattachés à une même Organisation. L'administrateur de l'Organisation est responsable de la gestion des invitations, des rôles et de la révocation des accès de ses collaborateurs.
+
+## Article 6. Accès aux Services
+
+### 6.1 Prérequis techniques
+
+L'accès aux Services requiert :
+- Un navigateur web moderne (Chrome, Firefox, Edge, Safari, dernière version stable) pour FortHeC° Energy
+- Un smartphone Android compatible (version minimale communiquée par FortHeC°) pour FortHeC° Inventory
+- Une connexion internet stable pour la synchronisation
+
+### 6.2 Disponibilité et engagement de moyens
+
+FortHeC° met en oeuvre des efforts raisonnables pour assurer une disponibilité continue des Services 24 heures sur 24 et 7 jours sur 7, sous réserve :
+- Des opérations de maintenance planifiées (annoncées avec un préavis raisonnable)
+- Des interventions de maintenance corrective en cas d'incident
+- Des cas de force majeure au sens de l'article 1218 du Code civil
+- Des défaillances des prestataires techniques tiers (hébergeur, opérateur télécom, prestataires d'authentification)
+
+L'engagement de FortHeC° au titre de la disponibilité constitue une obligation de moyens et non de résultat. Aucun taux de disponibilité chiffré (SLA) n'est garanti dans le cadre des présentes Conditions, sauf stipulation contractuelle particulière conclue avec le Client.
+
+### 6.3 Maintenance
+
+FortHeC° peut interrompre temporairement l'accès aux Services pour des opérations de maintenance. Ces interruptions sont annoncées lorsque possible, et planifiées de préférence en dehors des heures ouvrées.
+
+## Article 7. Utilisation des Services
+
+### 7.1 Usage acceptable
+
+Le Client s'engage à utiliser les Services conformément à leur destination professionnelle (réalisation d'audits énergétiques industriels, activités d'ingénierie associées) et dans le respect :
+- Des lois et règlements en vigueur
+- Des droits des tiers, notamment de la propriété intellectuelle et des données personnelles
+- Des présentes Conditions
+
+### 7.2 Interdictions
+
+Le Client s'interdit notamment :
+- De tenter d'accéder à des Comptes ou données d'autres Organisations
+- De contourner ou tenter de contourner les mesures de sécurité mises en place par FortHeC°
+- De pratiquer l'ingénierie inverse, la décompilation ou la désassemblage des Services
+- D'utiliser les Services pour héberger, transmettre ou stocker des contenus illicites, injurieux, diffamatoires ou portant atteinte aux droits des tiers
+- De revendre, sous-louer ou céder l'accès aux Services à des tiers sans autorisation écrite préalable de FortHeC°
+- De pratiquer un usage automatisé abusif (scraping massif, injection de charges anormales)
+
+### 7.3 Propriété du Contenu Client
+
+Le Client conserve la propriété pleine et entière du Contenu Client qu'il crée ou téléverse dans les Services (données d'audit, mesures, photos, rapports générés, préconisations personnalisées).
+
+FortHeC° ne revendique aucun droit de propriété intellectuelle sur les rapports d'audit produits par le Client via les Services.
+
+### 7.4 Licence d'usage à FortHeC°
+
+Le Client concède à FortHeC° une licence non exclusive, gratuite et limitée à la durée de son Abonnement, portant sur le Contenu Client, aux seules fins :
+- D'héberger, sauvegarder et restituer ce Contenu au Client
+- D'exécuter les Services souscrits (traitement, calcul, génération de rapports)
+- De faire fonctionner les fonctions d'intelligence artificielle intégrées (rédaction assistée, OCR, transcription vocale)
+
+FortHeC° s'interdit tout usage du Contenu Client à des fins autres que l'exécution des Services, notamment tout usage à des fins publicitaires, statistiques nominatives, ou d'entraînement de modèles d'intelligence artificielle sans le consentement exprès et écrit du Client.
+
+### 7.5 Statistiques d'usage anonymisées
+
+FortHeC° se réserve le droit d'établir des statistiques d'usage strictement anonymisées et agrégées, aux seules fins d'amélioration des Services et de communication commerciale non-nominative.
+
+## Article 8. Essai gratuit
+
+### 8.1 Modalités
+
+Tout nouveau Client peut bénéficier d'un Essai gratuit de 30 jours calendaires, sans carte bancaire requise à l'inscription, donnant accès complet aux fonctionnalités d'un plan choisi.
+
+### 8.2 Fin de l'Essai gratuit
+
+Un email de rappel est envoyé au Client 3 jours avant l'expiration de l'Essai gratuit.
+
+À l'issue des 30 jours, deux cas se présentent :
+- Si le Client a renseigné une carte bancaire dans son espace personnel : bascule automatique en Abonnement payant au plan choisi
+- Si aucune carte bancaire n'a été renseignée : suspension automatique du Compte. Les données du Client sont conservées 90 jours puis purgées définitivement, sauf réactivation par souscription d'un Abonnement payant dans ce délai
+
+### 8.3 Limitation
+
+L'Essai gratuit est réservé aux nouveaux Clients. Un même Client (identifié par email ou par Organisation) ne peut bénéficier de plusieurs Essais gratuits successifs.
+
+## Article 9. Abonnements et tarifs
+
+### 9.1 Plans
+
+FortHeC° commercialise plusieurs plans d'Abonnement adaptés à la taille et à l'activité du Client (plans Solo Energy, Solo Suite, Cabinet Suite, Cabinet+). Le détail des inclusions par plan et les tarifs applicables sont consultables sur la page tarifs du site officiel : **[https://forthec.fr/tarifs.html](https://forthec.fr/tarifs.html)**.
+
+Les tarifs affichés sur cette page prévalent sur toute autre indication tarifaire.
+
+### 9.2 Récurrence
+
+Les Abonnements peuvent être souscrits :
+- En récurrence **mensuelle** : facturation le jour anniversaire de souscription chaque mois
+- En récurrence **annuelle** avec remise commerciale, telle que fixée sur la page tarifs
+
+Le passage d'une récurrence mensuelle à annuelle (ou inversement) prend effet à la fin de la période en cours.
+
+### 9.3 Design Partner
+
+FortHeC° propose un statut Design Partner aux premiers Clients signataires par plan (nombre de places limité, communiqué sur la page tarifs).
+
+**Contreparties du statut Design Partner** :
+- Bénéfice d'une remise commerciale de 30% pendant 12 mois, appliquée au tarif mensuel
+- Engagement de participer à un feedback structuré (1 réunion de 30 minutes par mois ou formulaire écrit équivalent)
+- Autorisation d'utiliser le logo du Client comme référence commerciale, sous réserve de son accord préalable écrit
+- Fourniture d'un témoignage écrit ou vidéo au 6ème mois d'utilisation
+
+**Engagement** : le statut Design Partner engage le Client sur une durée de 12 mois. La résiliation anticipée entraîne la perte du statut Design Partner et la facturation rétroactive au tarif normal en vigueur au moment de la souscription, au prorata des mois consommés.
+
+À l'issue des 12 mois, le Client bascule automatiquement au tarif normal (mensuel), sauf choix explicite d'une récurrence annuelle avec remise standard.
+
+### 9.4 Franchise en base de TVA
+
+FortHeC° bénéficie du régime de franchise en base de TVA prévu à l'article 293 B du Code général des impôts. À ce titre, les factures sont émises sans TVA, avec la mention obligatoire "TVA non applicable, article 293 B du CGI".
+
+En cas de dépassement des seuils légaux entraînant l'assujettissement à la TVA, les tarifs pourront être ajustés en conséquence, avec un préavis de 30 jours notifié au Client.
+
+### 9.5 Évolution des tarifs
+
+FortHeC° se réserve le droit de faire évoluer sa grille tarifaire. Les évolutions s'appliquent :
+- Aux nouveaux Abonnements souscrits après la date de mise à jour de la page tarifs
+- Aux Abonnements existants, à la date de renouvellement suivante, avec un préavis de 30 jours notifié au Client par email
+
+En cas d'augmentation tarifaire, le Client dispose du droit de résilier son Abonnement sans pénalité avant l'entrée en vigueur du nouveau tarif.
+
+## Article 10. Modalités de paiement
+
+### 10.1 Prestataire de paiement
+
+Les paiements sont traités par **Stripe Payments Europe Ltd.**, prestataire agréé au niveau européen. FortHeC° ne conserve ni ne traite directement les données de carte bancaire, qui sont sécurisées par Stripe conformément à la norme PCI-DSS.
+
+### 10.2 Prélèvement
+
+Le paiement est effectué automatiquement à la date anniversaire de souscription (récurrence mensuelle) ou annuelle, selon la formule retenue par le Client.
+
+### 10.3 Défaut de paiement
+
+En cas d'échec de prélèvement, FortHeC° notifie le Client par email et procède à une nouvelle tentative dans un délai raisonnable.
+
+En cas de défaut de paiement persistant à l'issue de 15 jours calendaires suivant la première tentative :
+- L'accès aux Services est suspendu, sans préjudice des sommes dues
+- Les données du Client sont conservées pendant 90 jours dans l'attente d'une régularisation
+- Passé ce délai sans régularisation, l'Abonnement est résilié de plein droit et les données peuvent être purgées
+
+Toute somme impayée à échéance porte intérêt de plein droit, sans mise en demeure préalable, au taux d'intérêt légal majoré, majoré d'une indemnité forfaitaire de recouvrement de 40 euros (article D.441-5 du Code de commerce).
+
+### 10.4 Aucun remboursement au prorata
+
+En cas de résiliation par le Client en cours de période payée, les sommes déjà versées demeurent acquises à FortHeC°, sans remboursement au prorata de la période non consommée.
+
+## Article 11. Durée, résiliation et suspension
+
+### 11.1 Durée
+
+L'Abonnement est conclu pour une durée mensuelle ou annuelle selon la récurrence choisie, reconductible tacitement à chaque échéance, sauf résiliation dans les conditions prévues ci-après.
+
+**Exception Design Partner** : les Clients bénéficiant du statut Design Partner sont engagés sur une durée ferme de 12 mois (voir article 9.3).
+
+### 11.2 Résiliation par le Client
+
+Hors cas Design Partner, le Client peut résilier son Abonnement à tout moment, sans motif à justifier, depuis son espace personnel ou par email à contact@forthec.fr.
+
+La résiliation prend effet à la fin de la période de facturation en cours. Aucun remboursement au prorata n'est effectué (article 10.4).
+
+### 11.3 Résiliation par FortHeC°
+
+FortHeC° peut résilier l'Abonnement du Client, avec un préavis raisonnable :
+- Pour non-respect des présentes Conditions
+- Pour non-paiement persistant (article 10.3)
+- Pour usage manifestement contraire à la destination des Services
+
+En cas de manquement grave (fraude, atteinte à la sécurité des Services, usage illicite), la résiliation peut intervenir sans préavis.
+
+### 11.4 Effets de la résiliation
+
+À l'issue de la résiliation, quelle qu'en soit la cause :
+- L'accès aux Services est immédiatement coupé
+- Le Client peut demander la restitution ou la destruction de ses données personnelles dans les conditions prévues au DPA (article 12 du DPA)
+- Le Contenu Client non-personnel (rapports générés, préconisations personnalisées) est conservé 3 ans à des fins de continuité d'usage en cas de réabonnement, puis purgé
+
+## Article 12. Propriété intellectuelle
+
+### 12.1 Propriété de FortHeC°
+
+L'ensemble des composants des Services (code source, interfaces, bases de données, marque FortHeC°, méthodologies de calcul des IPE, bibliothèques de préconisations, algorithmes, documentation) demeure la propriété exclusive de FortHeC° ou fait l'objet d'autorisations d'exploitation à son profit.
+
+La souscription à un Abonnement confère au Client un droit d'usage personnel, non exclusif, non cessible et limité à la durée de l'Abonnement, pour la seule utilisation des Services conformément à leur destination.
+
+Toute reproduction, représentation, adaptation, décompilation, ou exploitation non expressément autorisée par les présentes Conditions est strictement interdite et engage la responsabilité de son auteur au titre de la contrefaçon (articles L.335-2 et suivants du Code de la propriété intellectuelle).
+
+### 12.2 Propriété du Client
+
+Le Client conserve la pleine propriété du Contenu Client qu'il produit dans le cadre des Services (voir article 7.3).
+
+## Article 13. Confidentialité
+
+Chaque Partie s'engage à préserver la confidentialité des informations et données auxquelles elle pourrait avoir accès dans le cadre de l'exécution des présentes Conditions.
+
+Cette obligation de confidentialité perdure sans limitation de durée après la fin de l'Abonnement.
+
+Elle ne s'applique pas aux informations librement accessibles au public, ni à celles dont la communication est requise par une autorité judiciaire ou administrative compétente.
+
+## Article 14. Données personnelles
+
+Le traitement des données à caractère personnel dans le cadre des Services est régi :
+- Par la politique de confidentialité de FortHeC° : **[https://forthec.fr/legal.html?doc=confidentialite](https://forthec.fr/legal.html?doc=confidentialite)** pour les traitements dont FortHeC° est responsable de traitement (comptes utilisateurs, prospection commerciale, formulaire de contact, etc.)
+- Par le DPA conclu séparément entre FortHeC° et le Client, pour les traitements dont FortHeC° agit en qualité de sous-traitant (données saisies par les auditeurs du Client dans les Services concernant les sites industriels qu'il audite pour le compte de ses propres clients)
+
+La signature du DPA est obligatoire pour toute souscription d'Abonnement payant. Le DPA est mis à disposition du Client lors de la souscription.
+
+## Article 15. Responsabilité
+
+### 15.1 Nature des obligations de FortHeC°
+
+Les obligations de FortHeC° au titre des présentes Conditions constituent des obligations de moyens et non de résultat.
+
+FortHeC° s'engage à mettre en oeuvre les moyens raisonnables pour fournir les Services conformément à leur description, dans le respect de l'état de l'art applicable aux services logiciels d'audit énergétique.
+
+### 15.2 Exclusions de responsabilité
+
+FortHeC° ne saurait être tenu responsable :
+- Des interruptions de service liées à un cas de force majeure au sens de l'article 1218 du Code civil
+- Des interruptions liées à une défaillance des prestataires techniques tiers (hébergeur, opérateur télécom, fournisseur d'intelligence artificielle, etc.)
+- Des dommages résultant d'un usage non conforme des Services par le Client
+- Des dommages résultant d'un défaut de vigilance du Client dans la gestion de ses identifiants
+- De la qualité, de l'exactitude ou de la conformité réglementaire des rapports d'audit produits par le Client à l'aide des Services : la responsabilité de la réalisation des audits énergétiques et de la conformité de leurs livrables aux normes NF EN 16247, ISO 50006 ou tout autre référentiel applicable incombe exclusivement au Client, en sa qualité de professionnel qualifié
+
+### 15.3 Plafond de responsabilité
+
+Sauf faute lourde ou dolosive de FortHeC°, la responsabilité totale de FortHeC° au titre des présentes Conditions, tous chefs de préjudices confondus, est expressément limitée aux montants effectivement versés par le Client au titre de l'Abonnement pendant les 12 mois précédant le fait générateur du dommage.
+
+Les dommages indirects (perte de chiffre d'affaires, perte de clientèle, atteinte à la réputation, perte de données) sont expressément exclus de tout indemnisation.
+
+### 15.4 Force majeure
+
+Sont notamment considérés comme cas de force majeure : les défaillances graves des réseaux publics de télécommunications, les interruptions imposées par les fournisseurs d'énergie ou d'infrastructure cloud, les événements climatiques exceptionnels, les grèves d'ampleur nationale, les décisions administratives ou judiciaires imposant l'interruption du Service.
+
+En cas de force majeure de plus de 30 jours consécutifs, chaque Partie peut résilier de plein droit les présentes Conditions, sans indemnité de part et d'autre.
+
+## Article 16. Assurance
+
+FortHeC° souscrit et maintient en vigueur, pendant toute la durée des présentes Conditions, une assurance de responsabilité civile professionnelle couvrant les conséquences pécuniaires des dommages qu'il pourrait causer dans le cadre de l'exécution des Services.
+
+Une attestation d'assurance à jour est fournie au Client sur simple demande écrite.
+
+## Article 17. Modification des Conditions
+
+FortHeC° se réserve le droit de modifier les présentes Conditions à tout moment, notamment pour tenir compte d'évolutions légales, réglementaires, techniques ou commerciales.
+
+Les modifications sont notifiées aux Clients actifs par email, avec un préavis de 30 jours avant leur entrée en vigueur.
+
+En cas de désaccord avec les modifications substantielles affectant ses droits, le Client dispose du droit de résilier son Abonnement sans pénalité avant leur entrée en vigueur, par email à contact@forthec.fr.
+
+À défaut de résiliation dans ce délai, les modifications sont réputées acceptées.
+
+## Article 18. Références commerciales
+
+Sauf refus expressément notifié par le Client à contact@forthec.fr, FortHeC° est autorisé à citer le nom et le logo du Client à titre de référence commerciale, sur son site internet, ses supports de communication et lors de démarches commerciales, dans un cadre strictement factuel (mention d'utilisation des Services).
+
+Cette autorisation prend fin de plein droit à la résiliation de l'Abonnement.
+
+Les Clients bénéficiant du statut Design Partner autorisent expressément cette utilisation dans les conditions prévues à l'article 9.3.
+
+## Article 19. Non-sollicitation de personnel
+
+Pendant toute la durée de l'Abonnement et durant les 12 mois suivant sa cessation, chaque Partie s'interdit de solliciter directement ou indirectement, en vue d'un embauche ou d'une collaboration, tout collaborateur de l'autre Partie ayant participé à l'exécution des Services, sauf accord écrit préalable.
+
+## Article 20. Cession
+
+Les présentes Conditions ne peuvent être cédées par le Client à un tiers sans l'accord préalable écrit de FortHeC°.
+
+FortHeC° pourra librement céder tout ou partie de ses droits et obligations au titre des présentes Conditions, dans le cadre d'une opération de restructuration, cession d'activité ou constitution de société (notamment lors de la bascule prévue de la micro-entreprise vers une forme sociétaire), sous réserve d'en informer le Client par écrit.
+
+## Article 21. Dispositions générales
+
+### 21.1 Intégralité
+
+Les présentes Conditions, la politique de confidentialité, le DPA et la page tarifs constituent l'intégralité de l'accord entre les Parties.
+
+Elles annulent et remplacent tout accord antérieur, écrit ou verbal, ayant le même objet.
+
+### 21.2 Nullité partielle
+
+Si une ou plusieurs stipulations des présentes Conditions étaient tenues pour non valides ou déclarées telles en application d'une loi, d'un règlement ou d'une décision de justice définitive, les autres stipulations conserveraient toute leur force et leur portée.
+
+### 21.3 Tolérance
+
+Le fait pour l'une des Parties de ne pas exercer un droit prévu aux présentes Conditions ne pourra en aucun cas être interprété comme une renonciation à ce droit.
+
+### 21.4 Notifications
+
+Sauf stipulation contraire, toute notification entre les Parties se fait par email à l'adresse renseignée dans le Compte du Client (côté Client) et à contact@forthec.fr (côté FortHeC°).
+
+## Article 22. Loi applicable et juridiction compétente
+
+Les présentes Conditions sont régies par le droit français.
+
+Tout litige relatif à leur formation, leur interprétation, leur exécution ou leur résiliation qui ne pourrait être résolu à l'amiable dans un délai de 30 jours à compter de la première notification écrite d'une Partie à l'autre relève de la compétence exclusive des tribunaux du ressort de la Cour d'appel de Toulouse, nonobstant pluralité de défendeurs ou appel en garantie.
+
+---
+
+*Conditions Générales d'Utilisation et de Vente FortHeC° version 1.0.*
+*Acceptées à la création du Compte et à la souscription de tout Abonnement.*

@@ -1,0 +1,205 @@
+# Politique de confidentialité
+
+**Dernière mise à jour : 30 juillet 2026**
+
+La présente politique décrit la manière dont FortHeC° collecte, utilise et protège les données à caractère personnel des personnes qui interagissent avec ses services : visiteurs du site forthec.fr, utilisateurs des applications FortHeC° Energy et FortHeC° Inventory, personnes contactées dans le cadre d'actions commerciales.
+
+Cette politique est rédigée en application du Règlement (UE) 2016/679 (RGPD) et de la loi n° 78-17 du 6 janvier 1978 modifiée (Informatique et Libertés).
+
+## 1. Responsable de traitement
+
+Le responsable de traitement des données visées par la présente politique est :
+
+**Hugo Chambefort**, entrepreneur individuel exerçant sous le régime de la micro-entreprise, exploitant le nom commercial **FortHeC°**.
+
+- Adresse : 11 chemin de Fournaulis, 31170 Tournefeuille
+- SIRET : 108 072 661 00011
+- Contact données personnelles : contact@forthec.fr
+
+Aucun Délégué à la Protection des Données (DPO) n'a été désigné, la désignation n'étant pas obligatoire au regard des critères de l'article 37 du RGPD (absence de traitement à grande échelle de données sensibles ou de personnes vulnérables, absence de suivi systématique à grande échelle).
+
+## 2. Double rôle RGPD de FortHeC°
+
+Selon la nature des données concernées, FortHeC° intervient à deux titres distincts :
+
+**Responsable de traitement** : pour les données personnelles collectées directement auprès des visiteurs du site, des utilisateurs des applications (comptes auditeurs, comptes démonstration), des personnes physiques démarchées commercialement, et des personnes contactant FortHeC° via le formulaire de contact.
+
+**Sous-traitant au sens de l'article 28 du RGPD** : pour les données personnelles saisies par les utilisateurs auditeurs dans les applications à propos des sites industriels qu'ils auditent pour le compte de leurs propres clients. Dans ce cas, le bureau d'études utilisateur demeure responsable de traitement vis-à-vis de ses clients industriels, et FortHeC° agit exclusivement sur ses instructions dans le cadre d'un accord de sous-traitance (DPA) distinct.
+
+La présente politique décrit uniquement les traitements pour lesquels FortHeC° est responsable de traitement. Les modalités du rôle de sous-traitant sont détaillées dans le DPA remis aux clients professionnels.
+
+## 3. Données collectées, finalités et bases légales
+
+### 3.1 Visiteurs du site forthec.fr
+
+**Données collectées** :
+- Formulaire de contact : nom, adresse email, message, adresse IP, horodatage
+- Données de navigation techniques : adresse IP, type de navigateur, pages consultées, dates et heures d'accès
+- Réponses au challenge hCaptcha (validation anti-bot)
+
+**Finalités** :
+- Répondre aux demandes formulées via le formulaire de contact
+- Assurer la sécurité et la disponibilité du site
+- Prévenir les soumissions abusives (spam, bots)
+
+**Base légale** : exécution de mesures précontractuelles à la demande de la personne concernée (article 6.1.b RGPD) pour le formulaire de contact ; intérêt légitime de FortHeC° à sécuriser son site (article 6.1.f RGPD) pour les données techniques et anti-bot.
+
+### 3.2 Utilisateurs des applications (comptes auditeurs)
+
+**Données collectées** :
+- Données d'identification : nom, prénom, adresse email professionnelle, numéro de téléphone professionnel, nom de l'organisation employeuse, fonction, qualifications professionnelles éventuelles (OPQIBI notamment)
+- Données d'authentification : mot de passe (stocké sous forme hachée uniquement), historique des connexions, adresses IP de connexion, jetons de session
+- Données d'utilisation : projets d'audit créés, préférences d'affichage, paramètres de compte
+- Données techniques : type d'appareil, système d'exploitation, version des applications
+- Données de facturation (lors de la souscription à un abonnement payant) : traitées par le prestataire de paiement (Stripe), FortHeC° ne conserve que les métadonnées nécessaires à la comptabilité (montant, date, plan souscrit, référence de transaction)
+
+**Finalités** :
+- Créer, gérer et sécuriser le compte utilisateur
+- Fournir l'accès aux fonctionnalités des applications
+- Assurer le support technique et fonctionnel
+- Facturer les abonnements
+- Adresser des communications relatives au service (mises à jour, incidents, maintenance)
+- Établir des statistiques d'usage anonymisées à des fins d'amélioration du produit
+
+**Base légale** : exécution du contrat conclu avec l'utilisateur ou son organisation (article 6.1.b RGPD) ; obligation légale pour la conservation comptable des factures (article 6.1.c RGPD) ; intérêt légitime pour les statistiques d'usage anonymisées (article 6.1.f RGPD).
+
+### 3.3 Comptes de démonstration
+
+**Données collectées** : adresse email, données saisies pendant la démonstration.
+
+**Finalités** : permettre l'évaluation gratuite des applications, prospection commerciale sur les comptes ayant demandé une démo.
+
+**Base légale** : exécution de mesures précontractuelles (article 6.1.b RGPD).
+
+### 3.4 Prospects démarchés commercialement
+
+FortHeC° met en oeuvre une prospection commerciale ciblée auprès de bureaux d'études qualifiés OPQIBI et de professionnels de l'audit énergétique industriel, exclusivement dans un contexte B2B.
+
+**Données collectées** :
+- Données publiquement accessibles : raison sociale, SIREN/SIRET, adresse professionnelle, téléphone professionnel, qualifications OPQIBI, informations issues d'annuaires professionnels et de bases publiques (Sirene, OPQIBI, Pappers, sites internet publics)
+- Emails professionnels génériques ou nominatifs collectés depuis des sources publiques
+- Historique des interactions : emails envoyés, ouvertures, clics, réponses, désinscriptions
+
+**Finalités** :
+- Prospection commerciale ciblée par email dans un cadre B2B strict
+- Suivi des interactions pour ajuster la fréquence et la pertinence des communications
+- Gestion des désinscriptions et exclusion des personnes ayant exprimé leur opposition
+
+**Base légale** : intérêt légitime de FortHeC° à développer son activité commerciale B2B (article 6.1.f RGPD), conformément à la position de la CNIL sur la prospection B2B (Guide CNIL sur la prospection commerciale, section professionnelle).
+
+Toute personne prospectée dispose d'un droit d'opposition simple et gratuit, exerçable :
+- via le lien de désinscription présent dans chaque email de prospection
+- par email à contact@forthec.fr
+
+L'opposition est prise en compte sans délai et entraîne l'inscription en liste d'exclusion permanente.
+
+### 3.5 Personnes contactant FortHeC° (support, commercial, partenariats)
+
+**Données collectées** : nom, adresse email, contenu des échanges, éventuelles pièces jointes.
+
+**Finalités** : traiter la demande, assurer la traçabilité des échanges, améliorer la qualité du support.
+
+**Base légale** : exécution de mesures précontractuelles ou contractuelles (article 6.1.b RGPD) ou intérêt légitime (article 6.1.f RGPD) selon le contexte.
+
+## 4. Durées de conservation
+
+| Catégorie de données | Durée de conservation |
+|---|---|
+| Compte utilisateur actif | Durée de la relation contractuelle |
+| Compte utilisateur après résiliation (données standards : compte, projets, données terrain) | 3 ans à compter de la fin de la relation contractuelle |
+| Rapports d'audit générés (fichiers .docx) | Non conservés côté serveur, générés à la demande et téléchargés directement par l'utilisateur |
+| Documents déposés volontairement par l'utilisateur dans le Vault (espace de stockage partagé de son organisation) | Conservés tant que le compte de l'organisation est actif, jusqu'à suppression manuelle par un membre de l'organisation ou à la résiliation (voir durée standard ci-dessus) |
+| Données de facturation et pièces comptables | 10 ans (article L.123-22 Code de commerce) |
+| Comptes de démonstration | Jusqu'à expiration du compte, puis 3 mois avant purge |
+| Formulaire de contact (soumissions) | 3 ans à compter du dernier contact |
+| Prospects (base commerciale) | 3 ans à compter du dernier contact utile (recommandation CNIL prospection B2B) |
+| Personnes désinscrites (liste d'exclusion) | Conservation permanente de l'email en liste d'exclusion, aux seules fins de garantir l'opposition |
+| Logs techniques et de connexion | 1 an |
+| Logs de sécurité (tentatives d'intrusion, incidents) | 3 ans |
+
+## 5. Destinataires et sous-traitants
+
+Les données personnelles sont destinées à FortHeC° et aux sous-traitants suivants, chacun intervenant dans le périmètre strict de sa mission :
+
+| Sous-traitant | Rôle | Localisation traitement | Cadre juridique |
+|---|---|---|---|
+| **Scaleway SAS** (France) | Hébergement VPS (site vitrine, applications Energy et Admin) et emailing transactionnel (Scaleway TEM) | Paris, France | Contrat de sous-traitance et DPA Scaleway |
+| **Supabase Inc.** (États-Unis) | Base de données PostgreSQL, service d'authentification, stockage fichiers, Edge Functions | Datacenter AWS eu-west-3 (Paris, France) pour la base de production ; datacenter AWS eu-west-2 (Londres, Royaume-Uni) pour la base de prospection commerciale, hébergée sur un projet Supabase distinct | DPA Supabase, Clauses Contractuelles Types de la Commission européenne (SCC 2021) |
+| **Mistral AI SAS** (France) | Traitement par intelligence artificielle des textes de préconisations et rédaction assistée | La Défense, France | DPA Mistral AI, souveraineté européenne |
+| **Google LLC** (États-Unis) | Reconnaissance optique de caractères sur photos de plaques signalétiques (Google Vision) et transcription vocale (Google Speech-to-Text) | Datacenters Google Cloud Europe | Google Cloud Data Processing Addendum, SCC 2021 |
+| **Intuition Machines, Inc. / hCaptcha** (États-Unis / Union européenne) | Service anti-bot sur le formulaire de contact | Union européenne (configuration EU) | Conditions hCaptcha, SCC 2021 |
+| **650 Industries, Inc. / Expo** (États-Unis) | Compilation et distribution du binaire APK de l'application mobile Inventory | États-Unis | Aucune donnée personnelle utilisateur transitée (usage limité à la distribution du binaire) |
+| **Stripe Payments Europe, Ltd.** (Irlande) | Traitement des paiements par abonnement (à compter du lancement de l'offre payante) | Union européenne | DPA Stripe, PCI DSS certifié |
+
+FortHeC° s'assure contractuellement que chaque sous-traitant présente des garanties suffisantes en matière de sécurité, de confidentialité et de conformité au RGPD.
+
+## 6. Transferts hors Union Européenne
+
+Les données personnelles sont hébergées et traitées, en principe, sur le territoire de l'Union européenne.
+
+Certains sous-traitants ont leur siège social hors UE (Supabase, Google, Intuition Machines, Expo, notamment aux États-Unis). Ces sous-traitants peuvent, dans le cadre limité de leur mission, être amenés à effectuer des transferts hors UE ou à faire intervenir des sous-traitants ultérieurs situés hors UE.
+
+Ces transferts sont encadrés par les Clauses Contractuelles Types adoptées par la Commission européenne le 4 juin 2021 (décision d'exécution 2021/914), et le cas échéant par le cadre Data Privacy Framework (DPF) lorsque le sous-traitant en bénéficie.
+
+FortHeC° a inscrit dans sa feuille de route une migration vers un stack technique 100% souverain européen, portant en priorité sur la reconnaissance optique de caractères et la transcription vocale, aujourd'hui assurées par Google Cloud.
+
+## 7. Sécurité
+
+FortHeC° met en oeuvre des mesures techniques et organisationnelles appropriées pour préserver la sécurité des données personnelles, notamment :
+
+- Chiffrement TLS des communications (HTTPS Let's Encrypt sur l'ensemble des sous-domaines forthec.fr)
+- Chiffrement des données au repos sur l'infrastructure Supabase et Scaleway
+- Authentification par mot de passe haché et jetons JWT signés
+- Isolation stricte des données par organisation (Row Level Security PostgreSQL activée)
+- Rôles utilisateurs cloisonnés (administrateur, auditeur, démonstration)
+- Rate limiting sur les points d'accès publics
+- Journalisation des accès et des événements de sécurité
+- Sauvegardes régulières de la base de données
+- Mots de passe et clés d'API stockés en gestionnaire sécurisé (Proton Pass, Streamlit secrets, Supabase secrets)
+
+En cas de violation de données à caractère personnel susceptible d'engendrer un risque pour les droits et libertés des personnes, FortHeC° notifiera la CNIL dans un délai de 72 heures conformément à l'article 33 du RGPD, et informera les personnes concernées lorsque cela est requis par l'article 34 du RGPD.
+
+## 8. Droits des personnes
+
+Conformément aux articles 15 à 22 du RGPD et à la loi Informatique et Libertés, toute personne concernée dispose des droits suivants sur ses données personnelles :
+
+- **Droit d'accès** : obtenir la confirmation que ses données sont traitées et en obtenir une copie
+- **Droit de rectification** : obtenir la correction de données inexactes ou incomplètes
+- **Droit à l'effacement** ("droit à l'oubli") : obtenir l'effacement de ses données dans les cas prévus par le RGPD
+- **Droit à la limitation** du traitement : obtenir la suspension temporaire du traitement dans certains cas
+- **Droit à la portabilité** : recevoir ses données dans un format structuré et lisible par machine
+- **Droit d'opposition** : s'opposer à tout moment au traitement de ses données à des fins de prospection, ou pour tout traitement fondé sur l'intérêt légitime pour des raisons tenant à sa situation particulière
+- **Droit de retrait du consentement** à tout moment, lorsque le traitement est fondé sur le consentement
+- **Droit de définir des directives** relatives à la conservation, à l'effacement et à la communication de ses données après son décès
+
+Ces droits s'exercent :
+- Par email à : **contact@forthec.fr**
+- Par courrier à l'adresse du responsable de traitement indiquée en section 1
+
+FortHeC° s'engage à répondre à toute demande dans un délai maximum d'un mois à compter de la réception, prolongeable de deux mois en cas de complexité ou de nombre élevé de demandes. Une pièce d'identité pourra être demandée en cas de doute raisonnable sur l'identité du demandeur.
+
+En cas de réponse insatisfaisante, ou d'absence de réponse, la personne concernée dispose du droit d'introduire une réclamation auprès de la Commission Nationale de l'Informatique et des Libertés (CNIL) :
+
+- Site : www.cnil.fr
+- Adresse : 3 Place de Fontenoy, TSA 80715, 75334 Paris Cedex 07
+- Téléphone : 01 53 73 22 22
+
+## 9. Cookies et traceurs
+
+Les modalités d'utilisation des cookies et autres traceurs sur le site forthec.fr sont décrites dans une **politique cookies dédiée** [LIEN VERS POLITIQUE COOKIES], à publier après diagnostic technique complet des traceurs déployés.
+
+## 10. Modifications de la politique
+
+FortHeC° se réserve le droit de modifier la présente politique à tout moment, notamment pour tenir compte d'évolutions légales, réglementaires, jurisprudentielles ou techniques. La date de dernière mise à jour figure en tête du document. Les utilisateurs sont invités à consulter régulièrement la version en vigueur.
+
+En cas de modification substantielle affectant les droits des personnes concernées, FortHeC° notifiera individuellement les utilisateurs actifs par email.
+
+## 11. Contact
+
+Pour toute question relative à la présente politique ou à l'exercice de vos droits :
+
+**contact@forthec.fr**
+
+Hugo Chambefort / FortHeC°
+11 chemin de Fournaulis
+31170 Tournefeuille

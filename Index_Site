@@ -1,10 +1,28 @@
 # FortHeC° Site — Index Architecture (pour Claude Chat)
 
-> Ce fichier sert de référence rapide pour Claude Chat sur le repo `forthec-site` 
+> Ce fichier sert de référence rapide pour Claude Chat sur le repo `forthec-site`
 > (site vitrine `forthec.fr`).
-> Mettre à jour après chaque évolution majeure : ajout de page, refonte design, 
+> Mettre à jour après chaque évolution majeure : ajout de page, refonte design,
 > changement d'hébergement, mise à jour SEO, campagne marketing.
-> Dernière MAJ : Session 34 — 22 juillet 2026
+> Dernière MAJ : 30 juillet 2026 — Pages légales publiées (SIRET reçu), page Console ajoutée
+
+---
+
+## Session 30 juillet 2026 — Pages légales publiées + page Console
+
+Immatriculation micro-entreprise reçue (SIREN 108 072 661, SIRET 108 072 661 00011, code APE 5829C). Débloque la publication des pages légales, jusque-là au backlog Priorité 2 (jamais créées).
+
+**Pages légales** : contrairement au plan initial (3 pages séparées `/mentions-legales`, `/cgv`, `/dpa`), une seule page `legal.html` avec sélecteur d'onglets (Mentions légales / CGU-CGV / Politique de confidentialité), même pattern que `pages_user/legal.py` côté forthec-console-app. Contenu source dans `legal/*.txt` (copie du contenu final validé côté Console, identique mot pour mot sauf les URLs de renvoi internes adaptées à la structure du site). Rendu par un petit convertisseur markdown→HTML vanilla JS inline dans `legal.html` (headings, gras, italique, listes, tableaux GFM, liens), pas de dépendance externe. `mentions-legales.html`, `cgv.html`, `politique-confidentialite.html` : stubs de redirection vers `legal.html?doc=...`, pour que les URLs citées dans les documents eux-mêmes fonctionnent.
+
+Lien "Mentions légales" ajouté au footer de toutes les pages (absent jusqu'ici).
+
+**Page Console** (`console.html`) : demandée par Hugo pour présenter l'espace client (forthec-console-app, en prod depuis fin juillet). Maquette abstraite de l'interface en CSS pur (barre de fenêtre + sidebar + skeleton content), PAS de vraie capture d'écran (aucun outil de capture disponible côté Claude Code au moment de la création). À remplacer par de vraies captures quand Hugo en fournira (voir note dans la page : "Aperçu schématique de l'interface. Captures d'écran réelles à venir."). Décrit les 6 fonctionnalités : Mon profil, Mes abonnements, Mon organisation, Coffre fort Audits (Vault), RGPD, Docs légales.
+
+**Teaser obsolète corrigé** (`energy.html`, section "Teaser Espace client (S35)") : disait "arrive fin 2026" alors que la Console est en prod depuis le 29/07/2026. Passé de tag "À venir" à "Disponible", lien ajouté vers `console.html`.
+
+Lien "Console" ajouté au footer de toutes les pages.
+
+Reste en dette : remplacer la maquette abstraite de `console.html` par de vraies captures d'écran ; `[LIEN VERS POLITIQUE COOKIES]` toujours en placeholder dans `politique-confidentialite.txt` (nécessite un diagnostic technique des traceurs déployés, hors périmètre de cette session).
 
 ---
 
@@ -82,12 +100,11 @@ souveraineté. Passage éventuel à VPS Scaleway si besoin d'un backend dynamiqu
 - Génération semi-auto via agent SEO Mistral (Sprint futur)
 - Publication 1-2 articles/semaine (rythme cible)
 
-### Pages légales (backlog Priorité 2)
+### Pages légales
 
-- `/mentions-legales`
-- `/cgv`
-- `/dpa` (Data Processing Agreement RGPD)
-- `/politique-cookies`
+- `legal.html` ✅ (30/07/2026) — mentions légales, CGU/CGV et politique de confidentialité réunies sur une seule page à onglets. Stubs de redirection : `mentions-legales.html`, `cgv.html`, `politique-confidentialite.html`.
+- `/dpa` (Data Processing Agreement RGPD) — toujours au backlog, nécessaire avant tout abonnement payant (voir CGV article 14).
+- `/politique-cookies` — toujours au backlog, nécessite un diagnostic technique des traceurs déployés avant rédaction.
 
 ---
 

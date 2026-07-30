@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FortHeC° — Mentions légales, CGV et confidentialité</title>
+  <meta name="description" content="Mentions légales, Conditions Générales d'Utilisation et de Vente, et politique de confidentialité de FortHeC°.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" href="img/n2-app-icon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .legal-tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .legal-tab {
+      border: 1px solid var(--paper-mid);
+      border-radius: 6px;
+      padding: 0.5rem 1.1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.15s;
+      background: var(--white);
+      font-family: inherit;
+    }
+    .legal-tab.active, .legal-tab:hover {
+      border-color: var(--violet);
+      color: var(--violet);
+      background: rgba(124,92,252,0.05);
+    }
+    .legal-content {
+      max-width: 780px;
+      background: var(--white);
+      border: 1px solid var(--paper-mid);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 2.5rem clamp(1.5rem, 4vw, 3rem);
+    }
+    .legal-content h1 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .legal-content h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 2rem 0 0.75rem;
+    }
+    .legal-content h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 1.5rem 0 0.5rem;
+      color: var(--ink-mid);
+    }
+    .legal-content p {
+      font-size: 0.9rem;
+      color: #3A3D52;
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+    .legal-content ul {
+      margin: 0 0 1.25rem 1.25rem;
+    }
+    .legal-content li {
+      font-size: 0.9rem;
+      color: #3A3D52;
+      line-height: 1.7;
+      margin-bottom: 0.4rem;
+    }
+    .legal-content strong { color: var(--ink); font-weight: 700; }
+    .legal-content em { color: var(--muted); }
+    .legal-content a { color: var(--violet); font-weight: 600; }
+    .legal-content a:hover { text-decoration: underline; }
+    .legal-content hr {
+      border: none;
+      border-top: 1px solid var(--paper-mid);
+      margin: 2rem 0;
+    }
+    .legal-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin: 1.25rem 0 1.75rem;
+    }
+    .legal-table th {
+      text-align: left;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0.6rem 0.75rem;
+      border-bottom: 2px solid var(--paper-mid);
+    }
+    .legal-table td {
+      padding: 0.65rem 0.75rem;
+      border-bottom: 1px solid var(--paper-mid);
+      color: #3A3D52;
+      vertical-align: top;
+    }
+    .legal-loading {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    @media (max-width: 768px) {
+      .legal-content { padding: 1.75rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="img/n2-icon-mark.png" alt="" height="46">
+    <span>FortHeC<em>°</em></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="energy.html">Energy</a></li>
+    <li><a href="inventory.html">Inventory</a></li>
+    <li><a href="suite.html">Suite</a></li>
+    <li><a href="tarifs.html">Tarifs</a></li>
+    <li><a href="contact.html" class="nav-cta">Demander une démo</a></li>
+  </ul>
+</nav>
+
+<section style="padding-top: 120px;">
+  <p class="section-eyebrow reveal">Informations légales</p>
+  <h1 class="section-title reveal" style="max-width:none">Mentions légales, CGV et confidentialité</h1>
+  <p class="section-sub reveal">Éditeur, conditions d'utilisation et de vente, traitement des données personnelles : tout ce qui encadre l'usage des Services FortHeC°.</p>
+
+  <div class="legal-tabs reveal">
+    <button type="button" class="legal-tab" data-doc="mentions">Mentions légales</button>
+    <button type="button" class="legal-tab" data-doc="cgv">CGU / CGV</button>
+    <button type="button" class="legal-tab" data-doc="confidentialite">Politique de confidentialité</button>
+  </div>
+
+  <div id="legal-content" class="legal-content reveal">
+    <p class="legal-loading">Chargement du document...</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">
+    <img src="img/n2-icon-mark.png" alt="" height="36">
+    <span>FortHeC<em>°</em></span>
+  </div>
+  <div class="footer-meta">© 2026 FortHeC°. Données hébergées en France. contact@forthec.fr</div>
+  <div class="footer-links">
+    <a href="index.html">Accueil</a>
+    <a href="energy.html">Energy</a>
+    <a href="inventory.html">Inventory</a>
+    <a href="tarifs.html">Tarifs</a>
+    <a href="console.html">Console</a>
+    <a href="legal.html" class="active">Mentions légales</a>
+    <a href="https://www.linkedin.com/in/hugo-chambefort-41097715b/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+const DOC_FILES = {
+  mentions: 'legal/mentions-legales.txt',
+  cgv: 'legal/cgv.txt',
+  confidentialite: 'legal/politique-confidentialite.txt'
+};
+const DOC_LABELS = {
+  mentions: 'Mentions légales',
+  cgv: "Conditions Générales d'Utilisation et de Vente",
+  confidentialite: 'Politique de confidentialité'
+};
+
+const docCache = {};
+
+function inline(text) {
+  text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+  text = text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+  text = text.replace(/(^|[^*])\*([^*]+)\*($|[^*])/g, '$1<em>$2</em>$3');
+  return text;
+}
+
+function renderMarkdown(md) {
+  const lines = md.replace(/\r\n/g, '\n').split('\n');
+  let html = '';
+  let i = 0;
+  let inList = false;
+
+  function closeList() {
+    if (inList) { html += '</ul>'; inList = false; }
+  }
+
+  while (i < lines.length) {
+    const line = lines[i];
+    const trimmed = line.trim();
+
+    if (trimmed === '') { closeList(); i++; continue; }
+    if (trimmed === '---') { closeList(); html += '<hr>'; i++; continue; }
+
+    if (line.startsWith('### ')) { closeList(); html += `<h3>${inline(line.slice(4))}</h3>`; i++; continue; }
+    if (line.startsWith('## '))  { closeList(); html += `<h2>${inline(line.slice(3))}</h2>`; i++; continue; }
+    if (line.startsWith('# '))   { closeList(); html += `<h1>${inline(line.slice(2))}</h1>`; i++; continue; }
+
+    if (trimmed.startsWith('- ')) {
+      if (!inList) { html += '<ul>'; inList = true; }
+      html += `<li>${inline(trimmed.slice(2))}</li>`;
+      i++; continue;
+    }
+
+    if (trimmed.startsWith('|')) {
+      closeList();
+      const tableLines = [];
+      while (i < lines.length && lines[i].trim().startsWith('|')) {
+        tableLines.push(lines[i].trim());
+        i++;
+      }
+      const rows = tableLines.map(l => l.replace(/^\||\|$/g, '').split('|').map(c => c.trim()));
+      const dataRows = rows.filter(r => !r.every(c => /^:?-+:?$/.test(c)));
+      html += '<table class="legal-table">';
+      dataRows.forEach((r, idx) => {
+        const tag = idx === 0 ? 'th' : 'td';
+        html += '<tr>' + r.map(c => `<${tag}>${inline(c)}</${tag}>`).join('') + '</tr>';
+      });
+      html += '</table>';
+      continue;
+    }
+
+    closeList();
+    const para = [line];
+    i++;
+    while (
+      i < lines.length &&
+      lines[i].trim() !== '' &&
+      !lines[i].startsWith('#') &&
+      lines[i].trim() !== '---' &&
+      !lines[i].trim().startsWith('- ') &&
+      !lines[i].trim().startsWith('|')
+    ) {
+      para.push(lines[i]);
+      i++;
+    }
+    html += `<p>${inline(para.join(' '))}</p>`;
+  }
+  closeList();
+  return html;
+}
+
+async function loadDoc(key) {
+  const container = document.getElementById('legal-content');
+  container.innerHTML = '<p class="legal-loading">Chargement du document...</p>';
+
+  document.querySelectorAll('.legal-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.doc === key);
+  });
+
+  try {
+    if (!docCache[key]) {
+      const res = await fetch(DOC_FILES[key]);
+      if (!res.ok) throw new Error('fetch failed');
+      docCache[key] = await res.text();
+    }
+    container.innerHTML = renderMarkdown(docCache[key]);
+    document.title = `FortHeC° — ${DOC_LABELS[key]}`;
+  } catch (err) {
+    container.innerHTML = '<p>Document indisponible pour le moment. Contactez contact@forthec.fr.</p>';
+  }
+}
+
+document.querySelectorAll('.legal-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    loadDoc(tab.dataset.doc);
+    const url = new URL(window.location.href);
+    url.searchParams.set('doc', tab.dataset.doc);
+    history.replaceState(null, '', url);
+  });
+});
+
+const initialDoc = new URLSearchParams(window.location.search).get('doc');
+loadDoc(DOC_FILES[initialDoc] ? initialDoc : 'mentions');
+</script>
+</body>
+</html>
