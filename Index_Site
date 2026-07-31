@@ -153,14 +153,22 @@ souveraineté. Passage éventuel à VPS Scaleway si besoin d'un backend dynamiqu
 §6, `forthec-agents`). Alimentée depuis Session 43 par `js/main.js` (bloc
 `window.forthecTrack`, inclus sur les 8 pages réelles du site) via l'Edge Function
 `site-track` — **déployée et vérifiée en réel** (appel de test → `200` → ligne confirmée
-dans `site_events`, IP bien anonymisée, donnée de test supprimée ensuite). Deux
-itérations de déploiement ont été nécessaires côté Hugo (dossier de travail incorrect au
-premier essai, puis `verify_jwt` manquant dans `config.toml` pour `site-track` — voir
-`INDEX_AGENTS.md` §Session 43 pour le détail). Un `pageview` part automatiquement au
-chargement de chaque page ; `form_submit` est câblé
-sur le succès du formulaire `/contact`. `click_demo`/`click_contact` restent au backlog
-(pas de sélecteur CTA vérifié). Peut servir de source primaire avant/en complément d'un
-outil pro.
+dans `site_events`, IP bien anonymisée, donnée de test supprimée ensuite). Trois
+déploiements ont été nécessaires côté Hugo au total : deux pour `site-track`
+(`forthec-agents`, dossier de travail incorrect puis `verify_jwt` manquant dans
+`config.toml` — voir `INDEX_AGENTS.md` §Session 43), et un pour **ce repo lui-même**
+(`forthec-site`) — oublié au premier passage ("j'avais déployé que agent et admin, ma
+faute" — Hugo), alors que c'est justement là que vit `main.js`. Le site est statique,
+servi par nginx sur `forthec-prod-01` : un `git push` seul ne suffit jamais, il faut un
+`git pull` sur la VPS dans le dossier réellement servi par nginx (pas d'auto-déploiement
+GitHub Pages malgré le fichier `CNAME` présent dans le repo). Un `pageview` part
+automatiquement au chargement de chaque page ; `form_submit` est câblé sur le succès du
+formulaire `/contact` ; `click_contact`/`click_demo` sont câblés en délégation
+d'événement sur le `<a href>` cliqué (pas sur le libellé du bouton — "Demander une
+démo"/"démonstration" pointent vers `contact.html` donc `click_contact`, "Essayer la
+démo gratuite" pointe vers `app.forthec.fr/?demo=...` donc `click_demo`, précisé par
+Hugo lui-même après coup). Peut servir de source primaire avant/en complément d'un outil
+pro.
 
 **Opt-out perso (pas de filtre par IP, trop instable)** : visiter une fois une page avec
 `?ff_notrack=1` pose un flag permanent en `localStorage` sur ce navigateur, qui bloque
