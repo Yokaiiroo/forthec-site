@@ -4,9 +4,12 @@
 > (site vitrine `forthec.fr`).
 > Mettre à jour après chaque évolution majeure : ajout de page, refonte design,
 > changement d'hébergement, mise à jour SEO, campagne marketing.
-> Dernière MAJ : Session 43 — 31 juillet 2026 — Tracking analytics `site_events` câblé
-> dans `js/main.js` (Edge Function `site-track` côté `forthec-agents`), **déployé et
-> vérifié en réel**, avec opt-out perso via `?ff_notrack=1`.
+> Dernière MAJ : Session 44 — 31 juillet 2026 — infrastructure `/blog` livrée
+> (CSS + génération statique côté `agent_referencement_seo`, voir section "Pages à
+> créer"), aucun article publié pour l'instant. Session 43 précédente : Tracking
+> analytics `site_events` câblé dans `js/main.js` (Edge Function `site-track` côté
+> `forthec-agents`), **déployé et vérifié en réel**, avec opt-out perso via
+> `?ff_notrack=1`.
 
 ---
 
@@ -96,17 +99,25 @@ souveraineté. Passage éventuel à VPS Scaleway si besoin d'un backend dynamiqu
 - Envoi email notification Yokaiiro
 - Réponse manuelle sous 48h
 
-**`/blog`** — Publication SEO (Sprint SEO ultérieur)
-- Articles ciblés mots-clés secteur ("audit énergétique NF EN 16247", "ISO 50001 
+**`/blog`** — Publication SEO ✅ infrastructure livrée (31/07/2026, Session 44)
+- Articles ciblés mots-clés secteur ("audit énergétique NF EN 16247", "ISO 50001
   industriel", "obligation audit 2,75 GWh", "CEE fiche IND-UT", etc.)
-- Génération semi-auto via agent SEO Mistral (Sprint futur)
-- Publication 1-2 articles/semaine (rythme cible)
+- Génération via `agent_referencement_seo` (Mistral), voir `forthec-agents/INDEX_AGENTS.md`
+  Session 44 pour le détail complet. Revue humaine dans `forthec-admin` (`/blog`) avant
+  publication. Publication = commande CLI locale (`publish`) qui écrit `blog/<slug>.html`
+  + régénère `blog/index.html` directement dans ce repo, à committer/pousser/déployer
+  ensuite comme d'habitude. Classes CSS `.blog-content`/`.blog-list` ajoutées à
+  `css/style.css`.
+- **Pas encore fait** : aucun article réellement généré/publié à ce stade (migration
+  `blog_articles` côté Supabase Agents pas encore exécutée par Hugo). Rythme de
+  publication (1-2/semaine visé) pas encore établi, dépend de la cadence à laquelle
+  Hugo lance `generate`/`publish` et relit les drafts.
 
 ### Pages légales
 
 - `legal.html` ✅ (30/07/2026) — mentions légales, CGU/CGV et politique de confidentialité réunies sur une seule page à onglets. Stubs de redirection : `mentions-legales.html`, `cgv.html`, `politique-confidentialite.html`.
-- `/dpa` (Data Processing Agreement RGPD) — toujours au backlog, nécessaire avant tout abonnement payant (voir CGV article 14).
-- `/politique-cookies` — toujours au backlog, nécessite un diagnostic technique des traceurs déployés avant rédaction.
+- `/dpa` (Data Processing Agreement RGPD) — contractuel, à faire signer par client, pas destiné à une page publique du site (voir `forthec-suite/INDEX_LEGAL.md`).
+- `/politique-cookies` — contenu drafté et à jour (`forthec-suite/politique_cookies.md`, plus de placeholder `[LIEN VERS POLITIQUE COOKIES]` depuis le 31/07/2026), mais **publication effective sur le site pas confirmée** : pas trouvé de page HTML dédiée dans ce repo, `legal.html` ne couvre que mentions légales/CGU-CGV/confidentialité. À vérifier/créer.
 
 ---
 
@@ -206,8 +217,10 @@ discret dans l'UI pour ça — à taper à la main dans l'URL pour l'instant.
 - [ ] **Enregistrement Google/Bing Search Console**
 - [ ] **Analytics souverain déployé** (Plausible ou Matomo)
 - [ ] **Référencement 5-10 annuaires professionnels**
-- [ ] **Page `/blog` structurée** (prête à recevoir les articles)
-- [ ] **CGV / DPA / Politique cookies** (post-achat modèle validé juridiquement)
+- [x] **Page `/blog` structurée** (infrastructure livrée Session 44, aucun article publié)
+- [x] **CGV / Politique cookies** publiées (`legal.html`, SIRET/dates remplis 30-31/07/2026,
+  voir `forthec-suite/INDEX_LEGAL.md`) — DPA reste un modèle à faire signer par client,
+  pas publié sur le site (nature différente, contractuel)
 
 ### Priorité 3
 
