@@ -136,3 +136,20 @@ window.forthecTrack = (function () {
 
   return track;
 })();
+
+// ── Clics CTA (click_contact / click_demo) ────────────────────────────────
+// Classé par destination du lien, pas par le libellé du bouton : tout ce qui
+// mène vers contact.html est un "clic contact" (ex. "Demander une démo" qui
+// arrive en fait sur le formulaire de contact), tout ce qui mène vers
+// app.forthec.fr en mode démo (?demo=...) est un "clic démo" (essai direct
+// sans passer par le formulaire).
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('a[href]');
+  if (!link) return;
+  const href = link.getAttribute('href') || '';
+  if (href.startsWith('contact.html')) {
+    window.forthecTrack('click_contact');
+  } else if (href.includes('app.forthec.fr') && href.includes('demo=')) {
+    window.forthecTrack('click_demo');
+  }
+});
