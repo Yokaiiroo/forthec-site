@@ -5,8 +5,8 @@
 > Mettre à jour après chaque évolution majeure : ajout de page, refonte design,
 > changement d'hébergement, mise à jour SEO, campagne marketing.
 > Dernière MAJ : Session 43 — 31 juillet 2026 — Tracking analytics `site_events` câblé
-> dans `js/main.js` (Edge Function `site-track` côté `forthec-agents`, pas encore
-> déployée), avec opt-out perso via `?ff_notrack=1`.
+> dans `js/main.js` (Edge Function `site-track` côté `forthec-agents`), **déployé et
+> vérifié en réel**, avec opt-out perso via `?ff_notrack=1`.
 
 ---
 
@@ -152,8 +152,12 @@ souveraineté. Passage éventuel à VPS Scaleway si besoin d'un backend dynamiqu
 **Table Supabase existante** : `site_events` (colonnes documentées dans `INDEX_AGENTS.md`
 §6, `forthec-agents`). Alimentée depuis Session 43 par `js/main.js` (bloc
 `window.forthecTrack`, inclus sur les 8 pages réelles du site) via l'Edge Function
-`site-track` — **fonction pas encore déployée**, donc aucun événement réel encore reçu.
-Un `pageview` part automatiquement au chargement de chaque page ; `form_submit` est câblé
+`site-track` — **déployée et vérifiée en réel** (appel de test → `200` → ligne confirmée
+dans `site_events`, IP bien anonymisée, donnée de test supprimée ensuite). Deux
+itérations de déploiement ont été nécessaires côté Hugo (dossier de travail incorrect au
+premier essai, puis `verify_jwt` manquant dans `config.toml` pour `site-track` — voir
+`INDEX_AGENTS.md` §Session 43 pour le détail). Un `pageview` part automatiquement au
+chargement de chaque page ; `form_submit` est câblé
 sur le succès du formulaire `/contact`. `click_demo`/`click_contact` restent au backlog
 (pas de sélecteur CTA vérifié). Peut servir de source primaire avant/en complément d'un
 outil pro.
@@ -217,9 +221,10 @@ qui ont motivé ce chantier). Résumé côté ce repo :
 - `js/main.js` : bloc `window.forthecTrack` ajouté (session/visitor id, capture UTM,
   opt-out `?ff_notrack=1`/`=0` via `localStorage`, `pageview` auto au chargement).
 - `contact.html` : `form_submit` déclenché au succès de l'envoi du formulaire.
-- Pas de test end-to-end réel possible : `site-track` doit encore être déployée côté
-  `forthec-agents` (`supabase functions deploy site-track --project-ref
-  ofsmrflyjxrxmwcndymt`).
+- `site-track` déployée par Hugo côté `forthec-agents` et testée en réel (curl → `200`
+  → ligne confirmée dans `site_events`, IP anonymisée). Deux itérations nécessaires
+  (mauvais dossier de travail au premier essai, puis `verify_jwt` manquant dans
+  `config.toml`) — détail dans `INDEX_AGENTS.md` §Session 43.
 
 ### Session 33-34 (21-22 juillet 2026) — Création repo + Index
 
