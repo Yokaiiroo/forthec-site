@@ -78,3 +78,61 @@ document.querySelectorAll('.nav-links a').forEach(a => {
     if (wrap.classList.contains('open') && !wrap.contains(e.target)) setOpen(false);
   });
 })();
+
+// ── Analytics maison (site_events, RGPD-friendly, pas de cookie tiers) ────
+// Opt-out perso : visiter une fois une page avec ?ff_notrack=1 (ex. après un
+// clic sur un lien de prospection qu'on teste soi-même) désactive tout
+// tracking sur ce navigateur, de façon permanente (localStorage, pas lié à
+// l'IP qui change selon le réseau). ?ff_notrack=0 réactive.
+window.forthecTrack = (function () {
+  const NOTRACK_KEY = 'forthec_notrack';
+  const VISITOR_KEY = 'forthec_visitor_id';
+  const SESSION_KEY = 'forthec_session_id';
+  const TRACK_ENDPOINT = 'https://ofsmrflyjxrxmwcndymt.supabase.co/functions/v1/site-track';
+
+  const params = new URLSearchParams(window.location.search);
+  if (params.has('ff_notrack')) {
+    localStorage.setItem(NOTRACK_KEY, params.get('ff_notrack') === '1' ? '1' : '0');
+  }
+  const isOptedOut = localStorage.getItem(NOTRACK_KEY) === '1';
+
+  function getOrCreate(storage, key) {
+    let value = storage.getItem(key);
+    if (!value) {
+      value = (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`);
+      storage.setItem(key, value);
+    }
+    return value;
+  }
+
+  function track(eventType, extra) {
+    if (isOptedOut) return;
+
+    const visitorId = getOrCreate(localStorage, VISITOR_KEY);
+    const sessionId = getOrCreate(sessionStorage, SESSION_KEY);
+
+    const payload = Object.assign({
+      event_type: eventType,
+      page_url: window.location.pathname + window.location.search,
+      page_title: document.title,
+      session_id: sessionId,
+      visitor_id: visitorId,
+      utm_source: params.get('utm_source') || undefined,
+      utm_medium: params.get('utm_medium') || undefined,
+      utm_campaign: params.get('utm_campaign') || undefined,
+    }, extra || {});
+
+    fetch(TRACK_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      keepalive: true,
+    }).catch(() => {
+      // Analytics best-effort : un échec réseau ne doit jamais impacter la navigation.
+    });
+  }
+
+  if (!isOptedOut) track('pageview');
+
+  return track;
+})();

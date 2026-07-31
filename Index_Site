@@ -4,7 +4,9 @@
 > (site vitrine `forthec.fr`).
 > Mettre à jour après chaque évolution majeure : ajout de page, refonte design,
 > changement d'hébergement, mise à jour SEO, campagne marketing.
-> Dernière MAJ : 30 juillet 2026 — Pages légales publiées (SIRET reçu), page Console ajoutée
+> Dernière MAJ : Session 43 — 31 juillet 2026 — Tracking analytics `site_events` câblé
+> dans `js/main.js` (Edge Function `site-track` côté `forthec-agents`, pas encore
+> déployée), avec opt-out perso via `?ff_notrack=1`.
 
 ---
 
@@ -147,9 +149,19 @@ souveraineté. Passage éventuel à VPS Scaleway si besoin d'un backend dynamiqu
 - **Matomo self-hosted** (open source, sur VPS Scaleway, gratuit + charge serveur)
 - **Simple Analytics** (EU, similaire Plausible)
 
-**Table Supabase existante** : `site_events` (colonnes exactes à documenter dans 
-INDEX_AGENTS §6). Alimentée par JS client léger custom. Peut servir de source primaire 
-avant/en complément d'un outil pro.
+**Table Supabase existante** : `site_events` (colonnes documentées dans `INDEX_AGENTS.md`
+§6, `forthec-agents`). Alimentée depuis Session 43 par `js/main.js` (bloc
+`window.forthecTrack`, inclus sur les 8 pages réelles du site) via l'Edge Function
+`site-track` — **fonction pas encore déployée**, donc aucun événement réel encore reçu.
+Un `pageview` part automatiquement au chargement de chaque page ; `form_submit` est câblé
+sur le succès du formulaire `/contact`. `click_demo`/`click_contact` restent au backlog
+(pas de sélecteur CTA vérifié). Peut servir de source primaire avant/en complément d'un
+outil pro.
+
+**Opt-out perso (pas de filtre par IP, trop instable)** : visiter une fois une page avec
+`?ff_notrack=1` pose un flag permanent en `localStorage` sur ce navigateur, qui bloque
+tout envoi vers `site-track` ensuite ; `?ff_notrack=0` réactive. Pas encore de lien
+discret dans l'UI pour ça — à taper à la main dans l'URL pour l'instant.
 
 ---
 
@@ -196,6 +208,18 @@ avant/en complément d'un outil pro.
 ---
 
 ## 8. Journal des sessions
+
+### Session 43 (31/07/2026) — Tracking analytics `site_events` + opt-out perso
+
+Voir détail complet côté `forthec-agents/INDEX_AGENTS.md` (Session 43, Edge Function
+`site-track`) et `forthec-admin/Index_Admin.md` (Session 43, pages `/site` + `/api-costs`
+qui ont motivé ce chantier). Résumé côté ce repo :
+- `js/main.js` : bloc `window.forthecTrack` ajouté (session/visitor id, capture UTM,
+  opt-out `?ff_notrack=1`/`=0` via `localStorage`, `pageview` auto au chargement).
+- `contact.html` : `form_submit` déclenché au succès de l'envoi du formulaire.
+- Pas de test end-to-end réel possible : `site-track` doit encore être déployée côté
+  `forthec-agents` (`supabase functions deploy site-track --project-ref
+  ofsmrflyjxrxmwcndymt`).
 
 ### Session 33-34 (21-22 juillet 2026) — Création repo + Index
 
