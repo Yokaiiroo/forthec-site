@@ -145,9 +145,9 @@ nav a img { display: block; }
 }
 .nav-logo span {
   font-size: 1.4rem;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--white);
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
 }
 .nav-logo span em { font-style: normal; color: var(--violet-lt); }
 .nav-links {
@@ -592,9 +592,9 @@ footer {
 }
 .footer-logo span {
   font-size: 1.05rem;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--white);
-  letter-spacing: -0.02em;
+  letter-spacing: 0.01em;
 }
 .footer-logo span em { font-style: normal; color: var(--violet-lt); }
 .footer-meta { font-size: 0.75rem; color: var(--muted); }
