@@ -46,6 +46,41 @@ document.querySelectorAll('.nav-links a').forEach(a => {
   if (a.getAttribute('href') === currentPage) a.classList.add('active');
 });
 
+// ── Menu mobile (hamburger) ───────────────
+// Injecté en JS plutôt que dupliqué dans les 16 pages HTML -- une seule
+// source de vérité, même pattern que l'app-switcher ci-dessous. Corrige un
+// vrai bug : sous 768px, .nav-links passait en display:none (css/style.css)
+// sans aucun bouton pour le rouvrir -- la navigation disparaissait purement
+// et simplement sur mobile/tablette.
+(function () {
+  const nav = document.querySelector('nav');
+  const links = document.querySelector('.nav-links');
+  if (!nav || !links) return;
+
+  const toggle = document.createElement('button');
+  toggle.type = 'button';
+  toggle.className = 'nav-toggle';
+  toggle.setAttribute('aria-label', 'Ouvrir le menu');
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.innerHTML = '<span></span><span></span><span></span>';
+  nav.appendChild(toggle);
+
+  function setOpen(open) {
+    links.classList.toggle('open', open);
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    document.body.classList.toggle('nav-open-lock', open);
+  }
+
+  toggle.addEventListener('click', () => setOpen(!links.classList.contains('open')));
+  links.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+  // Repasser en desktop (rotation, fenêtre agrandie) sans laisser le tiroir
+  // ouvert affiché en position:fixed derrière le nav horizontal.
+  window.addEventListener('resize', () => { if (window.innerWidth > 768) setOpen(false); });
+})();
+
 // ── App switcher (Console / Energy) ───────
 (function () {
   const STORAGE_KEY = 'forthec-app-switcher-open';
