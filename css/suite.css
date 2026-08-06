@@ -1,12 +1,39 @@
 /* Tableau comparatif */
 .compare-table {
   width: 100%;
+  min-width: 560px;
   border-collapse: collapse;
   font-size: 0.875rem;
-  margin-top: 2rem;
+  margin-top: 0;
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow);
+}
+@media (max-width: 768px) {
+  .table-scroll:has(.compare-table) { overflow-x: visible; }
+  .compare-table { min-width: 0; font-size: 0.85rem; box-shadow: none; }
+  .compare-table thead { display: none; }
+  .compare-table, .compare-table tbody, .compare-table tr, .compare-table td { display: block; width: 100%; }
+  .compare-table tr {
+    margin-bottom: 0.85rem;
+    border: 1px solid var(--paper-mid);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .compare-table tr:last-child { margin-bottom: 0; }
+  .compare-table td { padding: 0.7rem 1rem; border-bottom: none; }
+  .compare-table td:first-child { font-weight: 700; background: var(--paper); }
+  .compare-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+  }
+  .compare-table td.col-suite { background: rgba(124,92,252,0.06); }
 }
 .compare-table th {
   padding: 1rem 1.5rem;

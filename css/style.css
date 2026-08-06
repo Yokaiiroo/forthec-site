@@ -123,7 +123,9 @@ body {
   line-height: 1.6;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
+html { overflow-x: hidden; }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 
@@ -466,11 +468,18 @@ section.dark .section-sub { color: #8B8FA8; }
   color: var(--muted);
   font-weight: 500;
 }
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 2rem;
+}
 .gains-table {
   width: 100%;
+  min-width: 560px;
   border-collapse: collapse;
   font-size: 0.9rem;
-  margin-top: 2rem;
+  margin-top: 0;
 }
 .gains-table th {
   text-align: left;
@@ -754,6 +763,41 @@ footer {
   .hero { padding: 100px 6% 60px; }
   .contact-wrapper { grid-template-columns: 1fr; gap: 2rem; }
   .gains-grid { grid-template-columns: repeat(2, 1fr); }
+  .table-scroll:has(.gains-table) { overflow-x: visible; }
+  .gains-table { min-width: 0; }
+  .gains-table thead { display: none; }
+  .gains-table, .gains-table tbody, .gains-table tr, .gains-table td { display: block; width: 100%; }
+  .gains-table tr {
+    margin-bottom: 0.85rem;
+    padding: 1rem 1.1rem;
+    background: var(--ink-mid);
+    border-radius: var(--radius);
+    border-bottom: none;
+  }
+  .gains-table tr:last-child { margin-bottom: 0; }
+  .gains-table td {
+    padding: 0.3rem 0;
+    border-bottom: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .gains-table td::before {
+    content: attr(data-label);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .gains-table td:first-child {
+    font-size: 1rem;
+    padding-bottom: 0.6rem;
+    margin-bottom: 0.4rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .gains-table td:first-child::before { content: none; }
   footer { flex-direction: column; text-align: center; }
   .app-switcher-tab { font-size: 0.7rem; padding: 0.85rem 0.45rem; }
   .app-switcher-panel { width: 190px; }
