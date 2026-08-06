@@ -624,7 +624,7 @@ footer {
 }
 .footer-logo span em { font-style: normal; color: var(--violet-lt); }
 .footer-meta { font-size: 0.75rem; color: var(--muted); }
-.footer-links { display: flex; gap: 1.5rem; }
+.footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
 .footer-links a { font-size: 0.8rem; color: var(--muted); transition: color 0.2s; }
 .footer-links a:hover { color: var(--white); }
 
