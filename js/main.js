@@ -186,5 +186,10 @@ document.addEventListener('click', (e) => {
     window.forthecTrack('click_contact');
   } else if (href.includes('app.forthec.fr') && href.includes('demo=')) {
     window.forthecTrack('click_demo');
+  } else if (link.hasAttribute('download')) {
+    // Plaquettes PDF + rapport de démo téléchargeable (docx) : signal
+    // d'intérêt qualifié à distinguer d'un simple pageview, event_type déjà
+    // prévu au schéma site_events mais jamais câblé jusqu'ici.
+    window.forthecTrack('download');
   }
 });
