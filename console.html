@@ -140,27 +140,27 @@
   <div class="product-grid">
     <div class="product-card reveal">
       <span class="card-tag">Profil</span>
-      <h3>👤 Mon profil</h3>
+      <h3>Mon profil</h3>
       <p>Gérez votre nom d'utilisateur et votre photo de profil, réinitialisez votre mot de passe par lien magique, consultez votre rôle et votre pack commercial.</p>
     </div>
     <div class="product-card reveal">
       <span class="card-tag">Abonnements</span>
-      <h3>📦 Mes abonnements</h3>
+      <h3>Mes abonnements</h3>
       <p>Visualisez les produits actifs sur votre compte (Energy, Inventory, ou Suite) ainsi que votre consommation d'audits.</p>
     </div>
     <div class="product-card reveal">
       <span class="card-tag">Cabinet</span>
-      <h3>🏢 Mon organisation</h3>
+      <h3>Mon organisation</h3>
       <p>Les administrateurs de cabinet retrouvent en un coup d'oeil les membres de leur organisation et leur statut.</p>
     </div>
     <div class="product-card reveal">
       <span class="card-tag">Documents</span>
-      <h3>🗄️ Coffre fort Audits</h3>
+      <h3>Coffre fort Audits</h3>
       <p>Un espace de dépôt partagé et sécurisé (stockage privé, isolation stricte par organisation) pour centraliser les rapports finaux de votre cabinet.</p>
     </div>
     <div class="product-card reveal">
       <span class="card-tag">RGPD</span>
-      <h3>🛡️ RGPD</h3>
+      <h3>RGPD</h3>
       <p>Exportez l'intégralité de vos données personnelles au format JSON, ou effectuez une demande de suppression traitée sous 30 jours.</p>
     </div>
     <div class="product-card reveal">
@@ -179,28 +179,15 @@
     Chaque cabinet ne voit que ses propres données. L'isolation est appliquée au niveau de la base de données (Row Level Security PostgreSQL), pas seulement dans l'interface.
   </p>
 
-  <div class="stack-grid reveal">
-    <div class="stack-item">
-      <span class="stack-icon">🔒</span>
-      <div>
-        <strong>RGPD PostgreSQL</strong>
-        <span>Isolation des données appliquée au niveau base, pas uniquement côté interface.</span>
-      </div>
-    </div>
-    <div class="stack-item">
-      <span class="stack-icon">🇫🇷</span>
-      <div>
-        <strong>Hébergement Paris</strong>
-        <span>Même infrastructure souveraine que FortHeC° Energy, Supabase Paris (eu-west-3).</span>
-      </div>
-    </div>
-    <div class="stack-item">
-      <span class="stack-icon">✉</span>
-      <div>
-        <strong>Authentification sans mot de passe en clair</strong>
-        <span>Création de compte et réinitialisation par lien magique envoyé par email.</span>
-      </div>
-    </div>
+  <div class="table-scroll">
+  <table class="spec-table">
+    <thead><tr><th>Composant</th><th>Détail</th></tr></thead>
+    <tbody>
+      <tr><td><span class="spec-tag">RLS</span>RGPD PostgreSQL</td><td>Isolation des données appliquée au niveau base, pas uniquement côté interface.</td></tr>
+      <tr><td><span class="spec-tag">FR</span>Hébergement Paris</td><td>Même infrastructure souveraine que FortHeC° Energy, Supabase Paris (eu-west-3).</td></tr>
+      <tr><td><span class="spec-tag">AUTH</span>Sans mot de passe en clair</td><td>Création de compte et réinitialisation par lien magique envoyé par email.</td></tr>
+    </tbody>
+  </table>
   </div>
 </section>
 

@@ -199,35 +199,16 @@
   <h2 class="section-title reveal">Souveraineté et sécurité renforcées</h2>
   <p class="section-sub reveal">L'architecture retenue garantit qu'aucun compte ne peut consulter les données d'un autre, à aucun niveau.</p>
 
-  <div class="stack-grid">
-    <div class="stack-item reveal">
-      <span class="stack-icon">🇫🇷</span>
-      <div>
-        <strong>Chaîne 100% France</strong>
-        <span>Hébergement Scaleway Paris, base de données Supabase Paris, IA Mistral Paris. Aucun cloud américain.</span>
-      </div>
-    </div>
-    <div class="stack-item reveal">
-      <span class="stack-icon">🔒</span>
-      <div>
-        <strong>Isolation stricte par compte</strong>
-        <span>Chaque compte ne voit que ses propres données. La séparation est appliquée directement dans la base de données, pas seulement dans l'application.</span>
-      </div>
-    </div>
-    <div class="stack-item reveal">
-      <span class="stack-icon">🛡️</span>
-      <div>
-        <strong>Aucun accès administrateur depuis le navigateur</strong>
-        <span>L'application web ne détient jamais de droits d'administrateur. Impossible d'accéder aux données d'un autre compte en manipulant l'interface.</span>
-      </div>
-    </div>
-    <div class="stack-item reveal">
-      <span class="stack-icon">📋</span>
-      <div>
-        <strong>Traçabilité RGPD complète</strong>
-        <span>Chaque action est journalisée en base de données et peut être exportée à votre demande.</span>
-      </div>
-    </div>
+  <div class="table-scroll">
+  <table class="spec-table">
+    <thead><tr><th>Composant</th><th>Détail</th></tr></thead>
+    <tbody>
+      <tr><td><span class="spec-tag">FR</span>Chaîne 100% France</td><td>Hébergement Scaleway Paris, base de données Supabase Paris, IA Mistral Paris. Aucun cloud américain.</td></tr>
+      <tr><td><span class="spec-tag">RLS</span>Isolation stricte par compte</td><td>Chaque compte ne voit que ses propres données. La séparation est appliquée directement dans la base de données, pas seulement dans l'application.</td></tr>
+      <tr><td><span class="spec-tag">ADMIN</span>Aucun accès admin navigateur</td><td>L'application web ne détient jamais de droits d'administrateur. Impossible d'accéder aux données d'un autre compte en manipulant l'interface.</td></tr>
+      <tr><td><span class="spec-tag">LOG</span>Traçabilité RGPD complète</td><td>Chaque action est journalisée en base de données et peut être exportée à votre demande.</td></tr>
+    </tbody>
+  </table>
   </div>
 </section>
 
@@ -238,8 +219,8 @@
       <h3>Testez sur vos données</h3>
       <p>Une démonstration sur vos propres fichiers pour mesurer le gain de temps concret sur vos audits NF EN 16247.</p>
       <div class="contact-links">
-        <a href="mailto:contact@forthec.fr">✉ contact@forthec.fr</a>
-        <a href="tel:0778325955">📞 07 78 32 59 55</a>
+        <a href="mailto:contact@forthec.fr"><span class="spec-tag">MAIL</span>contact@forthec.fr</a>
+        <a href="tel:0778325955"><span class="spec-tag">TEL</span>07 78 32 59 55</a>
       </div>
     </div>
     <div class="contact-cta-box reveal">

@@ -42,11 +42,17 @@
       color: var(--ink);
     }
     .contact-block-item .icon {
-      width: 36px; height: 36px;
+      min-width: 44px; height: 26px;
+      padding: 0 0.4rem;
       background: rgba(52,226,122,0.08);
-      border-radius: 8px;
+      border: 1px solid rgba(52,226,122,0.2);
+      border-radius: 6px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1rem;
+      font-family: 'Plex Mono', 'SF Mono', Consolas, monospace;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      color: var(--volt-deep);
       flex-shrink: 0;
     }
     .contact-block-item a {
@@ -292,23 +298,23 @@
 
       <div class="contact-block" style="margin-top: 2rem;">
         <div class="contact-block-item">
-          <div class="icon">✉</div>
+          <div class="icon">MAIL</div>
           <div><a href="mailto:contact@forthec.fr">contact@forthec.fr</a></div>
         </div>
         <div class="contact-block-item">
-          <div class="icon">✉</div>
+          <div class="icon">MAIL</div>
           <div><a href="mailto:hugo.chambefort@forthec.fr">hugo.chambefort@forthec.fr</a></div>
         </div>
         <div class="contact-block-item">
-          <div class="icon">📞</div>
+          <div class="icon">TEL</div>
           <div><a href="tel:0778325955">07 78 32 59 55</a></div>
         </div>
         <div class="contact-block-item">
-          <div class="icon">🌐</div>
+          <div class="icon">WEB</div>
           <div>forthec.fr</div>
         </div>
         <div class="contact-block-item">
-          <div class="icon">💼</div>
+          <div class="icon">IN</div>
           <div><a href="https://www.linkedin.com/in/hugo-chambefort-41097715b/" target="_blank" rel="noopener">LinkedIn</a></div>
         </div>
       </div>
@@ -324,22 +330,12 @@
         </ul>
       </div>
 
-      <div class="stack-grid" style="margin-top: 2.5rem; grid-template-columns: 1fr 1fr;">
-        <div class="stack-item">
-          <span class="stack-icon">🇫🇷</span>
-          <div>
-            <strong>Données EU</strong>
-            <span>100% hébergé France / UE</span>
-          </div>
-        </div>
-        <div class="stack-item">
-          <span class="stack-icon">🔒</span>
-          <div>
-            <strong>RGPD</strong>
-            <span>Vos fichiers ne quittent jamais le serveur</span>
-          </div>
-        </div>
-      </div>
+      <table class="spec-table" style="margin-top: 2.5rem;">
+        <tbody>
+          <tr><td><span class="spec-tag">FR</span>Données EU</td><td>100% hébergé France / UE</td></tr>
+          <tr><td><span class="spec-tag">RGPD</span>Confidentialité</td><td>Vos fichiers ne quittent jamais le serveur</td></tr>
+        </tbody>
+      </table>
     </div>
 
     <!-- Colonne droite : formulaire -->

@@ -704,9 +704,10 @@ section.dark .section-sub { color: #8B8FA8; }
    final -- vert = données/temps, ambre = la valeur concrète qui en résulte. */
 .gains-banner strong { color: var(--amber-lt); font-weight: 700; }
 
-/* ── Souveraineté (homepage) : fiche technique, pas grille d'icônes ──
-   .stack-grid/.stack-item restent utilisées telles quelles par
-   energy/inventory/contact/console -- pas touchées cette passe. */
+/* ── Souveraineté : fiche technique, pas grille d'icônes ──
+   Réutilisée sur toutes les pages (pas que la home) depuis la session
+   2026-08-11 pt.2. .stack-grid/.stack-item restent définies plus bas
+   pour compat mais ne sont plus utilisées dans le HTML. */
 .spec-table {
   width: 100%;
   border-collapse: collapse;
@@ -750,6 +751,11 @@ section.dark .section-sub { color: #8B8FA8; }
 @media (max-width: 700px) {
   .spec-table td:first-child { white-space: normal; }
 }
+/* Variante section sombre (energy.html "Souveraineté et sécurité") */
+section.dark .spec-table th { border-bottom-color: rgba(255,255,255,0.14); }
+section.dark .spec-table td { border-bottom-color: rgba(255,255,255,0.08); }
+section.dark .spec-table td:first-child { color: var(--white); }
+section.dark .spec-table td:last-child { color: #A0A3BC; }
 
 .stack-grid {
   display: grid;
