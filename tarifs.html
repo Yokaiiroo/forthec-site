@@ -29,10 +29,39 @@
 </nav>
 
 <!-- ── Hero Tarifs ────────────────────────── -->
-<section class="hero" style="min-height:60vh">
-  <p class="hero-eyebrow">FortHeC° — Tarifs</p>
-  <h1>Un tarif clair<br><em>par usage</em></h1>
-  <p class="hero-sub">4 plans, essai gratuit 30 jours sans carte bancaire. Engagement mensuel.</p>
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">FortHeC° — Tarifs</p>
+    <h1>Un tarif clair<br><em>par usage</em></h1>
+    <p class="hero-sub">4 plans, essai gratuit 30 jours sans carte bancaire. Engagement mensuel.</p>
+  </div>
+
+  <!-- Pas un ROI inventé : les deux montants sont déjà publiés ailleurs sur
+       le site (bandeau "4 000 EUR libérés par audit" de la page d'accueil,
+       et le prix du plan Solo Energy plus bas sur cette page). On les met
+       juste face à face. -->
+  <div class="hero-chart">
+    <div class="hero-chart-titlebar">
+      <div class="hero-chart-dots"><span></span><span></span><span></span></div>
+      <span class="hero-chart-titlebar-label">tarifs.forthec.fr — roi_calcul.json</span>
+    </div>
+    <div class="hero-chart-body">
+      <div class="hero-chart-label"><span>Ce qu'un audit libère vs. le prix d'un mois</span><span>ROI</span></div>
+      <div class="roi-bars">
+        <div class="roi-bar-row">
+          <span class="roi-bar-label">1 audit NF EN 16247 (Energy)</span>
+          <div class="roi-bar-track"><div class="roi-bar-fill roi-bar-value"></div></div>
+          <span class="roi-bar-amount">4 000 €</span>
+        </div>
+        <div class="roi-bar-row">
+          <span class="roi-bar-label">1 mois d'abonnement Solo Energy</span>
+          <div class="roi-bar-track"><div class="roi-bar-fill roi-bar-cost"></div></div>
+          <span class="roi-bar-amount">500 €</span>
+        </div>
+      </div>
+      <div class="hero-chart-foot">Un seul audit type couvre <strong>8 mois</strong> d'abonnement Solo Energy — détail du calcul sur la page Energy</div>
+    </div>
+  </div>
 </section>
 
 <!-- ── Grille des plans ────────────────────── -->

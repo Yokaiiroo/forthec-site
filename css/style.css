@@ -517,6 +517,32 @@ nav a img { display: block; }
   .hero-plaque-scan { animation: none; opacity: 0; }
   .hero-plaque-fields > div { animation: none; opacity: 1; }
 }
+
+/* Tarifs : deux barres, deux montants déjà publiés ailleurs sur le site
+   (pas de 3e chiffre inventé). Se remplissent une fois au chargement,
+   comme le reste des instruments du site. */
+.roi-bars { display: flex; flex-direction: column; gap: 1rem; }
+.roi-bar-row { display: flex; flex-direction: column; gap: 0.35rem; }
+.roi-bar-label { font-size: 0.72rem; color: var(--muted); }
+.roi-bar-track {
+  height: 10px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.roi-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  width: 0;
+  animation: roi-grow .9s cubic-bezier(.4,0,.2,1) forwards;
+}
+.roi-bar-value { background: var(--grad); animation-delay: .2s; --roi-w: 100%; }
+.roi-bar-cost { background: var(--volt-deep); animation-delay: .5s; --roi-w: 12.5%; }
+@keyframes roi-grow { to { width: var(--roi-w); } }
+.roi-bar-amount { font-family: 'Plex Mono', 'SF Mono', Consolas, monospace; font-size: 0.85rem; font-weight: 700; color: var(--white); }
+@media (prefers-reduced-motion: reduce) {
+  .roi-bar-fill { animation: none; width: var(--roi-w); }
+}
 .hero-chart-foot {
   margin-top: 1rem;
   padding-top: 1rem;
