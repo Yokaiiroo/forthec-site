@@ -262,10 +262,14 @@
     </div>
   </div>
 
-  <!-- Vraie plaque signalétique (moteur ABB M2BAX 160 MLA 4, gabarit de test
-       OCR du projet Inventory) -> vraie liste de champs qu'un OCR structuré
-       en extrairait. Même mécanique que le hero-chart des autres pages :
-       une preuve du produit, pas une icône appareil-photo générique. -->
+  <!-- Vraie photo de plaque signalétique (moteur TECHTOP T 802-4, Dimotor
+       S.A.) -- plus un gabarit généré, une vraie plaque photographiée.
+       Champs relevés pour la config France (400V étoile / 50Hz) parmi les
+       4 lignes tension/fréquence de la plaque -- vérifié cohérent avant
+       publication : P_entrée = √3×400×1,80×0,73 ≈ 0,91kW, et 0,75kW /
+       82,5% (IE3, 100% charge) ≈ 0,91kW aussi. Même mécanique que le
+       hero-chart des autres pages : une preuve du produit, pas une icône
+       appareil-photo générique. -->
   <div class="hero-chart hero-plaque">
     <div class="hero-chart-titlebar">
       <div class="hero-chart-dots"><span></span><span></span><span></span></div>
@@ -275,20 +279,20 @@
       <div class="hero-chart-label"><span>Photo → champs structurés</span><span>OCR</span></div>
       <div class="hero-plaque-grid">
         <div class="hero-plaque-photo">
-          <img src="img/plaque-demo-moteur-abb.svg" alt="Plaque signalétique moteur électrique ABB M2BAX 160 MLA 4">
+          <img src="img/plaque-demo-moteur-techtop.webp" alt="Plaque signalétique moteur électrique TECHTOP T 802-4">
           <div class="hero-plaque-scan"></div>
         </div>
         <dl class="hero-plaque-fields">
-          <div><dt>Marque</dt><dd>ABB</dd></div>
-          <div><dt>Modèle</dt><dd>M2BAX 160 MLA 4</dd></div>
-          <div><dt>Puissance</dt><dd>11 kW</dd></div>
-          <div><dt>Tension / Fréq.</dt><dd>380-420 V / 50 Hz</dd></div>
-          <div><dt>Courant</dt><dd>22,4 A</dd></div>
-          <div><dt>Vitesse</dt><dd>1455 rpm</dd></div>
-          <div><dt>Rendement</dt><dd>IE3 — η 91,4 %</dd></div>
-          <div><dt>Classe / IP</dt><dd>F / IP55</dd></div>
-          <div><dt>Poids</dt><dd>112 kg</dd></div>
-          <div><dt>N° série</dt><dd>ABB-2021-774423</dd></div>
+          <div><dt>Marque</dt><dd>TECHTOP</dd></div>
+          <div><dt>Type</dt><dd>T 802-4</dd></div>
+          <div><dt>Puissance</dt><dd>0,75 kW</dd></div>
+          <div><dt>Tension / Fréq.</dt><dd>400 V (Y) / 50 Hz</dd></div>
+          <div><dt>Courant</dt><dd>1,80 A</dd></div>
+          <div><dt>Vitesse</dt><dd>1430 tr/min</dd></div>
+          <div><dt>Rendement</dt><dd>IE3 — 82,5 %</dd></div>
+          <div><dt>Classe / IP</dt><dd>H / IP55</dd></div>
+          <div><dt>Roulements</dt><dd>6204-6204</dd></div>
+          <div><dt>N° série</dt><dd>012103-205</dd></div>
         </dl>
       </div>
       <div class="hero-chart-foot">10 champs extraits automatiquement · <strong>0 ressaisie</strong>, injectés directement dans la fiche équipement</div>
