@@ -543,6 +543,16 @@ nav a img { display: block; }
 @media (prefers-reduced-motion: reduce) {
   .roi-bar-fill { animation: none; width: var(--roi-w); }
 }
+
+/* Suite : extrait du vrai tableau comparatif plus bas sur la page --
+   pas de nouvelle animation, le tableau complet plus bas a déjà son
+   propre "reveal" au scroll. */
+.hero-compare-mini { width: 100%; border-collapse: collapse; font-size: 0.76rem; }
+.hero-compare-mini td { padding: 0.55rem 0.4rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.hero-compare-mini td:first-child { color: var(--muted); }
+.hero-compare-mini .mini-audit { color: var(--muted); text-align: right; width: 30%; }
+.hero-compare-mini .mini-audit.mini-none { color: rgba(139,144,136,0.5); }
+.hero-compare-mini .mini-suite { color: var(--volt-lt); font-weight: 600; text-align: right; width: 40%; }
 .hero-chart-foot {
   margin-top: 1rem;
   padding-top: 1rem;
