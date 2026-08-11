@@ -50,20 +50,21 @@
     </div>
   </div>
 
-  <!-- Vraie régression ISO 50006 : les 24 points sont la conso gaz mensuelle
-       réelle vs. DJU Toulouse réels du dossier de démo (Fonderie Alumi-Test
-       SA), passés dans le même scipy.stats.linregress que le backend.
-       r²=0.58 volontairement affiché tel quel (pas maquillé à 0.95) --
-       une vraie conso industrielle est en partie process, pas 100%
-       météo, et c'est justement ce que l'outil détecte et signale. -->
+  <!-- Vraie régression ISO 50006 : les 24 points sont la conso élec du four
+       à induction (sous-comptage Enedis) vs. la production réelle (tonnes de
+       billettes coulées) du dossier de démo (Fonderie Alumi-Test SA),
+       passées dans le même scipy.stats.linregress que le backend.
+       r²=0.96 -- pas retouché, une conso de four à induction suit
+       vraiment la production de très près (contrairement au gaz, gardé
+       en tête pour un futur cas d'usage moins évident). -->
   <div class="hero-chart">
     <div class="hero-chart-titlebar">
       <div class="hero-chart-dots"><span></span><span></span><span></span></div>
       <span class="hero-chart-titlebar-label">energy.forthec.fr — regression_iso50006.json</span>
     </div>
     <div class="hero-chart-body">
-      <div class="hero-chart-label"><span>Régression ISO 50006 — Gaz naturel</span><span>n=24 mois</span></div>
-      <svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Nuage de points consommation de gaz naturel mensuelle en fonction des degrés-jours unifiés de chauffage, avec droite de régression, sur un cas réel de fonderie sur 24 mois. Coefficient de détermination r² = 0,58.">
+      <div class="hero-chart-label"><span>Régression ISO 50006 — Électricité</span><span>n=24 mois</span></div>
+      <svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Nuage de points consommation électrique mensuelle du four à induction en fonction du tonnage produit, avec droite de régression, sur un cas réel de fonderie sur 24 mois. Coefficient de détermination r² = 0,96.">
         <defs>
           <linearGradient id="regLineGrad" x1="0" y1="1" x2="1" y2="0">
             <stop offset="0%" stop-color="#F0C578"/>
@@ -73,40 +74,40 @@
         <line class="hero-chart-grid" x1="0" y1="10" x2="320" y2="10"></line>
         <line class="hero-chart-grid" x1="0" y1="75" x2="320" y2="75"></line>
         <line class="hero-chart-grid" x1="0" y1="140" x2="320" y2="140"></line>
-        <path class="hero-chart-regline" d="M20,81.0 L300,14.1"></path>
+        <path class="hero-chart-regline" d="M20,124.8 L300,10.4"></path>
         <g class="hero-chart-scatter">
-          <circle cx="277.9" cy="33.9" r="2.6"></circle>
-          <circle cx="229.4" cy="28.4" r="2.6"></circle>
-          <circle cx="168.5" cy="29.5" r="2.6"></circle>
-          <circle cx="103.0" cy="40.9" r="2.6"></circle>
-          <circle cx="39.0" cy="73.6" r="2.6"></circle>
-          <circle cx="22.0" cy="54.1" r="2.6"></circle>
-          <circle cx="20.0" cy="116.2" r="2.6"></circle>
-          <circle cx="20.0" cy="121.2" r="2.6"></circle>
-          <circle cx="29.8" cy="76.6" r="2.6"></circle>
-          <circle cx="90.1" cy="61.4" r="2.6"></circle>
-          <circle cx="173.7" cy="48.8" r="2.6"></circle>
-          <circle cx="261.7" cy="27.1" r="2.6"></circle>
-          <circle cx="290.1" cy="38.3" r="2.6"></circle>
-          <circle cx="232.9" cy="18.7" r="2.6"></circle>
-          <circle cx="173.6" cy="30.9" r="2.6"></circle>
-          <circle cx="90.3" cy="54.8" r="2.6"></circle>
-          <circle cx="41.2" cy="58.6" r="2.6"></circle>
-          <circle cx="21.9" cy="55.3" r="2.6"></circle>
-          <circle cx="20.0" cy="105.4" r="2.6"></circle>
-          <circle cx="20.0" cy="119.5" r="2.6"></circle>
-          <circle cx="29.5" cy="56.3" r="2.6"></circle>
-          <circle cx="91.3" cy="55.3" r="2.6"></circle>
-          <circle cx="200.8" cy="27.7" r="2.6"></circle>
-          <circle cx="240.7" cy="36.9" r="2.6"></circle>
+          <circle cx="188.8" cy="51.4" r="2.6"></circle>
+          <circle cx="235.3" cy="29.8" r="2.6"></circle>
+          <circle cx="281.2" cy="20.4" r="2.6"></circle>
+          <circle cx="272.5" cy="23.5" r="2.6"></circle>
+          <circle cx="224.4" cy="48.2" r="2.6"></circle>
+          <circle cx="289.6" cy="18.2" r="2.6"></circle>
+          <circle cx="82.4" cy="109.8" r="2.6"></circle>
+          <circle cx="60.7" cy="113.1" r="2.6"></circle>
+          <circle cx="210.4" cy="49.2" r="2.6"></circle>
+          <circle cx="202.0" cy="48.6" r="2.6"></circle>
+          <circle cx="215.5" cy="38.4" r="2.6"></circle>
+          <circle cx="213.2" cy="40.1" r="2.6"></circle>
+          <circle cx="190.0" cy="47.1" r="2.6"></circle>
+          <circle cx="261.8" cy="22.5" r="2.6"></circle>
+          <circle cx="271.7" cy="24.9" r="2.6"></circle>
+          <circle cx="260.0" cy="27.1" r="2.6"></circle>
+          <circle cx="267.7" cy="26.7" r="2.6"></circle>
+          <circle cx="262.3" cy="29.1" r="2.6"></circle>
+          <circle cx="109.1" cy="88.2" r="2.6"></circle>
+          <circle cx="63.3" cy="106.1" r="2.6"></circle>
+          <circle cx="284.7" cy="30.6" r="2.6"></circle>
+          <circle cx="221.6" cy="38.5" r="2.6"></circle>
+          <circle cx="241.7" cy="24.4" r="2.6"></circle>
+          <circle cx="187.2" cy="52.2" r="2.6"></circle>
         </g>
         <g class="hero-chart-axis" text-anchor="middle">
           <text x="20" y="154">0</text>
-          <text x="160" y="154">140 DJU</text>
-          <text x="300" y="154">280 DJU</text>
+          <text x="160" y="154">550 t</text>
+          <text x="300" y="154">1100 t</text>
         </g>
       </svg>
-      <div class="hero-chart-foot">Cas réel, 24 mois de données GrDF · pente <strong>1 288 kWh/DJU</strong> · r² = <strong>0,58</strong></div>
+      <div class="hero-chart-foot">Cas réel, four à induction, 24 mois Enedis · pente <strong>761 kWh/t</strong> · r² = <strong>0,96</strong></div>
     </div>
   </div>
 </section>
