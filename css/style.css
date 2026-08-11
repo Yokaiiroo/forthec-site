@@ -269,21 +269,12 @@ nav a img { display: block; }
   position: relative;
   overflow: hidden;
 }
-/* Texture de fond "circuit" -- très sobre exprès (opacité 0.16, statique,
-   pas de glow pulsé) : matérialise le double sens électrique/nature du
-   vert sans retomber dans le cliché dark+neon générique. Masquée pour
-   rester dans les zones vides, jamais derrière le texte. */
-.hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  z-index: 0;
-  opacity: 0.16;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320"><g fill="none" stroke="%2334E27A" stroke-width="1"><path d="M0 60 H100 V130 H200" /><path d="M60 0 V40 H10 V320" /><path d="M320 90 H230 V170 H130 V260 H0" /><path d="M260 0 V70 H320" /></g><g fill="%2334E27A"><circle cx="100" cy="130" r="2.2"/><circle cx="200" cy="130" r="2.2"/><circle cx="60" cy="40" r="2.2"/><circle cx="230" cy="90" r="2.2"/></g></svg>');
-  background-size: 320px 320px;
-  background-repeat: repeat;
-  mask-image: linear-gradient(105deg, transparent 0%, transparent 38%, black 70%, black 100%);
-  -webkit-mask-image: linear-gradient(105deg, transparent 0%, transparent 38%, black 70%, black 100%);
-}
+/* L'ancien fond tuilé statique (::before, opacité 0.16) est remplacé par un
+   vrai réseau de traces dessiné à la main (inline SVG, 1er enfant de .hero,
+   voir markup de chaque page) : congés arrondis façon cuivre gravé, pattes
+   soudées sur le hero-chart, signaux qui suivent les traces déjà dessinées,
+   1 trace "écho" des vrais chiffres de gain. Le SVG gère son propre
+   z-index:0 en style inline (plus prioritaire que la règle ci-dessous). */
 .hero > * { position: relative; z-index: 1; }
 /* Mise en page 2 colonnes uniquement quand .hero-chart est réellement
    présent (homepage) -- energy/inventory/suite/tarifs gardent la mise en
