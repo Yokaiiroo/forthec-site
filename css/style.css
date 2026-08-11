@@ -464,6 +464,59 @@ nav a img { display: block; }
   .hero-chart-line, .hero-chart-regline { animation: none; stroke-dashoffset: 0; }
   .hero-chart-fill, .hero-chart-points, .hero-chart-scatter { animation: none; opacity: 1; }
 }
+
+/* Inventory : plaque signalétique réelle -> champs extraits. Le "scan"
+   est la seule concession animée -- il montre littéralement l'action que
+   fait l'OCR (parcourt l'image), pas une boucle décorative -- une fois,
+   au chargement, comme le reste des animations du site. */
+.hero-plaque-grid { display: flex; flex-direction: column; gap: 1rem; }
+.hero-plaque-photo {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+  line-height: 0;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.hero-plaque-photo img { display: block; width: 100%; height: auto; }
+.hero-plaque-scan {
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 40%;
+  background: linear-gradient(180deg, rgba(52,226,122,0) 0%, rgba(52,226,122,0.35) 50%, rgba(52,226,122,0) 100%);
+  animation: plaque-scan 1.6s cubic-bezier(.4,0,.2,1) forwards;
+  animation-delay: .3s;
+  opacity: 0;
+}
+@keyframes plaque-scan {
+  0% { transform: translateY(-100%); opacity: 1; }
+  85% { opacity: 1; }
+  100% { transform: translateY(250%); opacity: 0; }
+}
+.hero-plaque-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem 1rem;
+  font-size: 0.74rem;
+  margin: 0;
+}
+.hero-plaque-fields > div {
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  opacity: 0;
+  animation: chart-fade .4s ease forwards;
+  animation-delay: 1.2s;
+}
+.hero-plaque-fields dt { color: var(--muted); margin-bottom: 0.15rem; }
+.hero-plaque-fields dd { margin: 0; color: var(--white); font-weight: 600; font-family: 'Plex Mono', 'SF Mono', Consolas, monospace; }
+@media (max-width: 380px) {
+  .hero-plaque-fields { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-plaque-scan { animation: none; opacity: 0; }
+  .hero-plaque-fields > div { animation: none; opacity: 1; }
+}
 .hero-chart-foot {
   margin-top: 1rem;
   padding-top: 1rem;
