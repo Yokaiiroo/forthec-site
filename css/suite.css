@@ -33,7 +33,7 @@
     color: var(--muted);
     margin-bottom: 0.2rem;
   }
-  .compare-table td.col-suite { background: rgba(124,92,252,0.06); }
+  .compare-table td.col-suite { background: rgba(52,226,122,0.08); }
 }
 .compare-table th {
   padding: 1rem 1.5rem;
@@ -52,13 +52,13 @@
   color: var(--muted);
 }
 .compare-table th.col-suite {
-  background: var(--violet);
+  background: var(--volt-deep);
   color: var(--white);
   position: relative;
 }
 .badge-reco {
   display: inline-block;
-  background: var(--teal);
+  background: var(--volt);
   color: var(--ink);
   font-size: 0.65rem;
   font-weight: 800;
@@ -82,10 +82,10 @@
   color: var(--muted);
 }
 .compare-table td.col-suite {
-  color: var(--violet);
+  color: var(--volt-deep);
   font-weight: 600;
 }
 .compare-table tr:last-child td { border-bottom: none; }
 .compare-table tr:hover td { background: var(--paper); }
-.check-teal { color: var(--teal); font-weight: 700; }
+.check-teal { color: var(--volt-deep); font-weight: 700; }
 .cross-muted { color: var(--muted); }

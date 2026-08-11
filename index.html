@@ -22,45 +22,103 @@
     <li><a href="suite.html">Suite</a></li>
     <li><a href="tarifs.html">Tarifs</a></li>
     <li><a href="blog/index.html">Blog</a></li>
-    <li><a href="console.html" class="nav-console">🔐 Console</a></li>
+    <li><a href="console.html" class="nav-console">Console</a></li>
     <li><a href="contact.html" class="nav-cta">Demander une démo</a></li>
   </ul>
 </nav>
 
 <!-- ── Hero ─────────────────────────────── -->
 <section class="hero">
-  <p class="hero-eyebrow">FortHeC° Suite — Logiciel d'audit énergétique</p>
-  <h1>L'audit NF EN 16247<br><em>sans les étapes chronophages </em></h1>
-  <p class="hero-sub">
-    Import automatique, régressions ISO 50006, IPE par sous-compteur et rapport Word complet.
-    Vos données industrielles restent en Europe, de l'import à la signature.
-  </p>
-  <div class="hero-actions">
-    <a href="contact.html" class="btn-primary">Demander une démonstration →</a>
-    <a href="rapport-demo/FortHeC_Rapport_Audit_Demo_Suite.docx" class="btn-ghost" download>📊 Télécharger un rapport test</a>
-    <a href="https://app.forthec.fr/?demo=energy" class="btn-ghost" target="_blank" rel="noopener">🧪 Essayer la démo gratuite</a>
-    <a href="energy.html" class="btn-ghost">Découvrir Energy</a>
+  <div class="hero-content">
+    <p class="hero-eyebrow">FortHeC° Suite — Logiciel d'audit énergétique</p>
+    <h1>L'audit NF EN 16247<br><em>en accéléré sans perte de qualité</em></h1>
+    <p class="hero-sub">
+      Import automatique, régressions ISO 50006, IPE par sous-compteur et rapport Word complet.
+      Vos données industrielles restent en Europe, de l'import à la signature.
+    </p>
+    <div class="hero-actions">
+      <a href="contact.html" class="btn-primary">Demander une démonstration →</a>
+      <a href="rapport-demo/FortHeC_Rapport_Audit_Demo_Suite.docx" class="btn-ghost" download>Télécharger un rapport test</a>
+      <a href="https://app.forthec.fr/?demo=energy" class="btn-ghost" target="_blank" rel="noopener">Essayer la démo gratuite</a>
+      <a href="energy.html" class="btn-ghost">Découvrir Energy</a>
+    </div>
+    <div class="hero-specs">
+      <span>NF EN 16247</span>
+      <span>ISO 50006:2023</span>
+      <span>Décret Tertiaire</span>
+      <span>100% UE RGPD</span>
+      <span>IA souveraine — Mistral Paris</span>
+    </div>
   </div>
-  <div class="hero-badges">
-    <span class="badge">NF EN 16247</span>
-    <span class="badge">ISO 50006 :2023</span>
-    <span class="badge">Décret Tertiaire</span>
-    <span class="badge">100% UE RGPD</span>
-    <span class="badge">IA souveraine Mistral Paris</span>
+
+  <!-- Vraie lecture des chiffres du tableau de gains plus bas -- pas un
+       visuel décoratif. Présentée comme une vraie fenêtre d'app, pas une
+       carte marketing. Seul endroit du site où le dégradé "glow". -->
+  <div class="hero-chart">
+    <div class="hero-chart-titlebar">
+      <div class="hero-chart-dots"><span></span><span></span><span></span></div>
+      <span class="hero-chart-titlebar-label">energy.forthec.fr — audit_gains.json</span>
+    </div>
+    <div class="hero-chart-body">
+      <div class="hero-chart-label"><span>Gain de temps réel, par étape</span><span>NF EN 16247</span></div>
+      <svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gain de temps par étape d'audit : traitement des données 85%, régressions ISO 50006 95%, rapport Word 90%, inventaire terrain 75%, audit complet 33%.">
+        <defs>
+          <linearGradient id="voltFade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#34E27A" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#34E27A" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#F0C578"/>
+            <stop offset="100%" stop-color="#34E27A"/>
+          </linearGradient>
+        </defs>
+        <line class="hero-chart-grid" x1="0" y1="10" x2="320" y2="10"></line>
+        <line class="hero-chart-grid" x1="0" y1="75" x2="320" y2="75"></line>
+        <line class="hero-chart-grid" x1="0" y1="140" x2="320" y2="140"></line>
+        <path class="hero-chart-fill" d="M20,29.5 L90,16.5 L160,23 L230,42.5 L300,97.1 L300,140 L20,140 Z"></path>
+        <path class="hero-chart-line" d="M20,29.5 L90,16.5 L160,23 L230,42.5 L300,97.1"></path>
+        <g class="hero-chart-points" fill="#D9DE86">
+          <circle cx="20" cy="29.5" r="3"></circle>
+          <circle cx="90" cy="16.5" r="3"></circle>
+          <circle cx="160" cy="23" r="3"></circle>
+          <circle cx="230" cy="42.5" r="3"></circle>
+          <circle cx="300" cy="97.1" r="3"></circle>
+          <text x="20" y="21" text-anchor="middle" font-size="10" font-weight="700">85%</text>
+          <text x="90" y="8" text-anchor="middle" font-size="10" font-weight="700">95%</text>
+          <text x="160" y="15" text-anchor="middle" font-size="10" font-weight="700">90%</text>
+          <text x="230" y="34" text-anchor="middle" font-size="10" font-weight="700">75%</text>
+          <text x="300" y="89" text-anchor="middle" font-size="10" font-weight="700">33%</text>
+        </g>
+        <g class="hero-chart-axis" text-anchor="middle">
+          <text x="20" y="154">Data</text>
+          <text x="90" y="154">Régr.</text>
+          <text x="160" y="154">Rapport</text>
+          <text x="230" y="154">Invent.</text>
+          <text x="300" y="154">Audit</text>
+        </g>
+      </svg>
+      <div class="hero-chart-foot">Étape la plus rapide : régressions ISO 50006, <strong>4 à 8h → 5 minutes</strong>.</div>
+    </div>
   </div>
 </section>
 
 <!-- ── Produits ──────────────────────────── -->
-<section>
-  <p class="section-eyebrow reveal">La suite</p>
-  <h2 class="section-title reveal">Deux outils, un seul flux de travail</h2>
-  <p class="section-sub reveal">
+<section id="produits">
+  <p class="section-eyebrow">La suite</p>
+  <h2 class="section-title">Deux outils, un seul flux de travail</h2>
+  <p class="section-sub">
     FortHeC° Energy traite vos données de consommation. FortHeC° Inventory collecte le terrain.
     Ensemble, ils produisent un rapport ancré dans la réalité du site.
   </p>
 
+  <div class="workflow">
+    <div class="workflow-step"><span class="workflow-num">01 <span>le cœur, autonome</span></span></div>
+    <div class="workflow-step"><span class="workflow-num">02 <span>terrain, optionnel</span></span></div>
+    <div class="workflow-step"><span class="workflow-num">03 <span>résultat combiné</span></span></div>
+  </div>
+
   <div class="product-grid">
-    <div class="product-card reveal">
+    <div class="product-card">
       <span class="card-tag">Web</span>
       <h3>FortHeC° Energy</h3>
       <p>Audit réglementaire complet NF EN 16247 depuis votre navigateur. Import multi-fichiers, régressions ISO 50006, rapport Word en 11 sections.</p>
@@ -73,7 +131,7 @@
       <a href="energy.html" class="card-link">Voir Energy →</a>
     </div>
 
-    <div class="product-card reveal">
+    <div class="product-card">
       <span class="card-tag">Mobile iOS / Android</span>
       <h3>FortHeC° Inventory</h3>
       <p>Inventaire terrain complet depuis votre smartphone. Photo de plaque, OCR, saisie vocale et cartographie des zones en une journée.</p>
@@ -86,7 +144,7 @@
       <a href="inventory.html" class="card-link">Voir Inventory →</a>
     </div>
 
-    <div class="product-card suite-card reveal">
+    <div class="product-card suite-card">
       <span class="card-tag">Suite</span>
       <h3>Mode Suite</h3>
       <p>Les données terrain collectées par Inventory alimentent directement Energy. Le rapport passe de 6 à 13 sections, avec des actions ciblées par équipement réel.</p>
@@ -101,14 +159,30 @@
   </div>
 </section>
 
+<!-- ── Le vrai outil ──────────────────────── -->
+<section class="alt">
+  <p class="section-eyebrow">Le vrai outil</p>
+  <h2 class="section-title">Pas une maquette</h2>
+  <p class="section-sub">Ce que vos auditeurs voient réellement à l'écran : régressions ISO 50006, plan d'actions chiffré et génération du rapport Word, sur un cas réel de fonderie industrielle.</p>
+  <div class="hero-chart app-shot">
+    <div class="hero-chart-titlebar">
+      <div class="hero-chart-dots"><span></span><span></span><span></span></div>
+      <span class="hero-chart-titlebar-label">app.forthec.fr/energy — Fonderie (démo)</span>
+    </div>
+    <video autoplay muted loop playsinline aria-label="Démonstration de FortHeC° Energy : régressions ISO 50006, plan d'actions et génération du rapport Word">
+      <source src="video/energy_video3_ipe_pda_rapport_v3.webm" type="video/webm">
+    </video>
+  </div>
+</section>
+
 <!-- ── Gains de temps ─────────────────────── -->
 <section class="dark">
-  <p class="section-eyebrow reveal">Gain de temps</p>
-  <h2 class="section-title reveal" style="color:var(--white)">Des chiffres concrets sur chaque étape</h2>
-  <p class="section-sub reveal">Sur un audit industriel type NF EN 16247, FortHeC° Energy libère environ 4 000 EUR de temps par audit.</p>
+  <p class="section-eyebrow">Gain de temps</p>
+  <h2 class="section-title" style="color:var(--white)">Des chiffres concrets sur chaque étape</h2>
+  <p class="section-sub">Sur un audit industriel type NF EN 16247, FortHeC° Energy libère environ 4 000 EUR de temps par audit.</p>
 
   <div class="table-scroll">
-  <table class="gains-table reveal">
+  <table class="gains-table">
     <thead>
       <tr>
         <th>Etape</th>
@@ -118,88 +192,77 @@
       </tr>
     </thead>
     <tbody>
-      <tr><td>Traitement des données</td><td data-label="Sans FortHeC°">2 à 3 jours</td><td data-label="Avec FortHeC°">2 à 3 heures</td><td class="gain-pct" data-label="Gain">~85% de temps gagné</td></tr>
-      <tr><td>Régressions ISO 50006</td><td data-label="Sans FortHeC°">4 à 8 heures</td><td data-label="Avec FortHeC°">5 minutes</td><td class="gain-pct" data-label="Gain">~95% de temps gagné</td></tr>
-      <tr><td>Rapport Word NF EN 16247</td><td data-label="Sans FortHeC°">1 à 2 jours</td><td data-label="Avec FortHeC°">15 minutes</td><td class="gain-pct" data-label="Gain">~90% de temps gagné</td></tr>
-      <tr><td>Inventaire terrain complet</td><td data-label="Sans FortHeC°">3 à 4 jours</td><td data-label="Avec FortHeC°">1 journée</td><td class="gain-pct" data-label="Gain">~75% de temps gagné</td></tr>
-      <tr><td>Audit complet</td><td data-label="Sans FortHeC°">15 jours</td><td data-label="Avec FortHeC°">10 jours</td><td class="gain-pct" data-label="Gain">~33% de temps gagné</td></tr>
+      <tr><td>Traitement des données</td><td data-label="Sans FortHeC°">2 à 3 jours</td><td data-label="Avec FortHeC°">2 à 3 heures</td><td class="gain-pct" data-label="Gain"><span data-target="85" data-prefix="~" data-suffix="% de temps gagné">~0% de temps gagné</span></td></tr>
+      <tr><td>Régressions ISO 50006</td><td data-label="Sans FortHeC°">4 à 8 heures</td><td data-label="Avec FortHeC°">5 minutes</td><td class="gain-pct" data-label="Gain"><span data-target="95" data-prefix="~" data-suffix="% de temps gagné">~0% de temps gagné</span></td></tr>
+      <tr><td>Rapport Word NF EN 16247</td><td data-label="Sans FortHeC°">1 à 2 jours</td><td data-label="Avec FortHeC°">15 minutes</td><td class="gain-pct" data-label="Gain"><span data-target="90" data-prefix="~" data-suffix="% de temps gagné">~0% de temps gagné</span></td></tr>
+      <tr><td>Inventaire terrain complet</td><td data-label="Sans FortHeC°">3 à 4 jours</td><td data-label="Avec FortHeC°">1 journée</td><td class="gain-pct" data-label="Gain"><span data-target="75" data-prefix="~" data-suffix="% de temps gagné">~0% de temps gagné</span></td></tr>
+      <tr><td>Audit complet</td><td data-label="Sans FortHeC°">15 jours</td><td data-label="Avec FortHeC°">10 jours</td><td class="gain-pct" data-label="Gain"><span data-target="33" data-prefix="~" data-suffix="% de temps gagné">~0% de temps gagné</span></td></tr>
     </tbody>
   </table>
   </div>
 
-  <div class="gains-banner reveal">Gain financier estimé : <strong>4 000 EUR libérés par audit</strong></div>
+  <div class="gains-banner">Gain financier estimé : <strong><span data-target="4000" data-suffix=" EUR">4 000 EUR</span> libérés par audit</strong></div>
 </section>
 
 <!-- ── Souveraineté ───────────────────────── -->
-<section class="alt">
-  <p class="section-eyebrow reveal">Souveraineté</p>
-  <h2 class="section-title reveal">Vos données industrielles restent en Europe</h2>
-  <p class="section-sub reveal">
+<section class="alt" id="souverainete">
+  <p class="section-eyebrow">Souveraineté</p>
+  <h2 class="section-title">Vos données industrielles restent en Europe</h2>
+  <p class="section-sub">
     Vos données d'audit sont stockées en France : VPS Scaleway (Iliad group, Paris) pour l'application Energy, base Supabase Paris pour toutes les données d'inventaire et les photos. Le traitement IA principal utilise Mistral (souveraineté EU). Les briques OCR et transcription vocale s'appuient aujourd'hui sur Google Cloud Europe, avec une migration vers un stack 100% souverain planifiée pour la version 2.0.
   </p>
 
-  <div class="stack-grid">
-    <div class="stack-item reveal">
-      <span class="stack-icon">🇫🇷</span>
-      <div>
-        <strong>Hébergement France</strong>
-        <span>Scaleway, datacenter Paris. Application et fichiers sur serveur dédié français.</span>
-      </div>
-    </div>
-    <div class="stack-item reveal">
-      <span class="stack-icon">🇪🇺</span>
-      <div>
-        <strong>Base de données France</strong>
-        <span>Supabase Paris (France), certifié RGPD, chiffrement AES-256 au repos et en transit.</span>
-      </div>
-    </div>
-    <div class="stack-item reveal">
-      <span class="stack-icon">🇫🇷</span>
-      <div>
-        <strong>IA souveraine</strong>
-        <span>Mistral Large 2, entreprise française, hébergement Paris. Vos données industrielles restent en Europe.</span>
-      </div>
-    </div>
-    <div class="stack-item reveal">
-      <span class="stack-icon">🔒</span>
-      <div>
-        <strong>Fichiers client locaux</strong>
-        <span>Vos Excel et courbes de charge ne quittent jamais le serveur. Seuls des agrégats anonymisés transitent vers l'IA.</span>
-      </div>
-    </div>
-    <div class="stack-item reveal">
-      <span class="stack-icon">👤</span>
-      <div>
-        <strong>Authentification sécurisée</strong>
-        <span>Supabase Auth natif, sessions sécurisées, 3 niveaux de rôles. Logs RGPD complets.</span>
-      </div>
-    </div>
-    <div class="stack-item reveal">
-      <span class="stack-icon">📋</span>
-      <div>
-        <strong>Conformité réglementaire</strong>
-        <span>NF EN 16247-1/3, ISO 50006 :2023, Décret Tertiaire, RGPD UE 2016/679.</span>
-      </div>
-    </div>
+  <div class="table-scroll">
+  <table class="spec-table">
+    <thead>
+      <tr><th>Composant</th><th>Détail</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="spec-tag">FR</span>Hébergement</td>
+        <td>Scaleway, datacenter Paris. Application et fichiers sur serveur dédié français.</td>
+      </tr>
+      <tr>
+        <td><span class="spec-tag">FR</span>Base de données</td>
+        <td>Supabase Paris (France), certifié RGPD, chiffrement AES-256 au repos et en transit.</td>
+      </tr>
+      <tr>
+        <td><span class="spec-tag">FR</span>IA souveraine</td>
+        <td>Mistral Large 2, entreprise française, hébergement Paris. Vos données industrielles restent en Europe.</td>
+      </tr>
+      <tr>
+        <td><span class="spec-tag">AES-256</span>Fichiers client</td>
+        <td>Vos Excel et courbes de charge ne quittent jamais le serveur. Seuls des agrégats anonymisés transitent vers l'IA.</td>
+      </tr>
+      <tr>
+        <td><span class="spec-tag">AUTH</span>Authentification</td>
+        <td>Supabase Auth natif, sessions sécurisées, 3 niveaux de rôles. Logs RGPD complets.</td>
+      </tr>
+      <tr>
+        <td><span class="spec-tag">RGPD</span>Conformité</td>
+        <td>NF EN 16247-1/3, ISO 50006 :2023, Décret Tertiaire, RGPD UE 2016/679.</td>
+      </tr>
+    </tbody>
+  </table>
   </div>
 </section>
 
 <!-- ── Ressources ─────────────────────────── -->
 <section>
-  <p class="section-eyebrow reveal">Ressources</p>
-  <h2 class="section-title reveal">Téléchargez les plaquettes produit</h2>
-  <p class="section-sub reveal">
+  <p class="section-eyebrow">Ressources</p>
+  <h2 class="section-title">Téléchargez les plaquettes produit</h2>
+  <p class="section-sub">
     Fonctionnalités, gains de temps par étape et souveraineté des données, en 4 pages pour chaque produit.
   </p>
 
   <div class="product-grid">
-    <div class="product-card reveal">
+    <div class="product-card">
       <span class="card-tag">PDF</span>
       <h3>FortHeC° Energy</h3>
       <p>Audit réglementaire NF EN 16247 : workflow en 6 étapes, gains de temps chiffrés et conformité.</p>
       <a href="plaquettes/FortHeC_Energy_Plaquette.pdf" class="card-link" download>Télécharger la plaquette →</a>
     </div>
-    <div class="product-card reveal">
+    <div class="product-card">
       <span class="card-tag">PDF</span>
       <h3>FortHeC° Inventory</h3>
       <p>Application mobile d'inventaire terrain : workflow en 6 étapes, gains de temps chiffrés et conformité.</p>
@@ -211,16 +274,16 @@
 <!-- ── CTA final ──────────────────────────── -->
 <section>
   <div class="contact-wrapper">
-    <div class="contact-info reveal">
+    <div class="contact-info">
       <h3>Hugo Chambefort</h3>
       <p>Ingénieur Maîtrise des Energies, Polytech Nantes.<br>Testez FortHeC° sur vos propres données.</p>
       <div class="contact-links">
-        <a href="mailto:contact@forthec.fr">✉ contact@forthec.fr</a>
-        <a href="mailto:hugo.chambefort@forthec.fr">✉ hugo.chambefort@forthec.fr</a>
-        <a href="tel:0778325955">📞 07 78 32 59 55</a>
+        <a href="mailto:contact@forthec.fr"><span class="spec-tag">MAIL</span>contact@forthec.fr</a>
+        <a href="mailto:hugo.chambefort@forthec.fr"><span class="spec-tag">MAIL</span>hugo.chambefort@forthec.fr</a>
+        <a href="tel:0778325955"><span class="spec-tag">TEL</span>07 78 32 59 55</a>
       </div>
     </div>
-    <div class="contact-cta-box reveal">
+    <div class="contact-cta-box">
       <h4>Demandez votre démonstration</h4>
       <p>Une session sur vos propres données pour mesurer le gain de temps concret sur vos audits NF EN 16247.</p>
       <a href="contact.html" class="btn-white">Planifier une session →</a>

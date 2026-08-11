@@ -10,10 +10,24 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 // ── Compteur animé ────────────────────────
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 function animateCounter(el) {
   const target = parseFloat(el.dataset.target);
   const suffix = el.dataset.suffix || '';
   const prefix = el.dataset.prefix || '';
+
+  // Respecte prefers-reduced-motion : affiche direct la valeur finale,
+  // pas de comptage anime (plus on en ajoute -- ici 5 pourcentages du
+  // tableau de gains en plus du compteur EUR -- plus ca compte de le
+  // respecter reellement, pas juste le documenter).
+  if (prefersReducedMotion) {
+    const isNegFinal = target < 0;
+    const displayFinal = Number.isInteger(target) ? Math.abs(target).toLocaleString('fr-FR') : Math.abs(target).toFixed(1);
+    el.textContent = prefix + (isNegFinal ? '-' : '') + displayFinal + suffix;
+    return;
+  }
+
   const duration = 1400;
   const start = performance.now();
   const isNeg = target < 0;
@@ -23,7 +37,7 @@ function animateCounter(el) {
     const progress = Math.min((now - start) / duration, 1);
     const ease = 1 - Math.pow(1 - progress, 3);
     const val = abs * ease;
-    const display = Number.isInteger(target) ? Math.round(val) : val.toFixed(1);
+    const display = Number.isInteger(target) ? Math.round(val).toLocaleString('fr-FR') : val.toFixed(1);
     el.textContent = prefix + (isNeg ? '-' : '') + display + suffix;
     if (progress < 1) requestAnimationFrame(step);
   }
@@ -90,8 +104,8 @@ document.querySelectorAll('.nav-links a').forEach(a => {
   wrap.innerHTML = `
     <div class="app-switcher-panel">
       <h4>Nos applications</h4>
-      <a class="app-switcher-link" href="https://console-app.forthec.fr/" target="_blank" rel="noopener">🖥 Console</a>
-      <a class="app-switcher-link" href="https://app.forthec.fr/" target="_blank" rel="noopener">⚡ Energy</a>
+      <a class="app-switcher-link" href="https://console-app.forthec.fr/" target="_blank" rel="noopener">Console</a>
+      <a class="app-switcher-link" href="https://app.forthec.fr/" target="_blank" rel="noopener">Energy</a>
     </div>
     <button type="button" class="app-switcher-tab" aria-expanded="false">Applications</button>
   `;

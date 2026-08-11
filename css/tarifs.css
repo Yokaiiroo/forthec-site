@@ -28,12 +28,12 @@
 /* ── Design Partner ──────────────────────── */
 section.design-partner {
   background:
-    radial-gradient(ellipse 60% 80% at 15% 20%, rgba(124,92,252,0.25) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 80% at 85% 80%, rgba(0,229,160,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 15% 20%, rgba(224,162,61,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 85% 80%, rgba(52,226,122,0.2) 0%, transparent 60%),
     var(--ink);
   color: var(--white);
 }
-section.design-partner .section-eyebrow { color: var(--teal); }
+section.design-partner .section-eyebrow { color: var(--volt-lt); }
 section.design-partner .section-sub { color: #8B8FA8; }
 
 /* ── ROI ─────────────────────────────────── */
@@ -45,7 +45,7 @@ section.design-partner .section-sub { color: #8B8FA8; }
 }
 .roi-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
 .roi-list li { font-size: 0.85rem; color: #C0C3D8; }
-.roi-list li.roi-highlight { color: var(--teal); font-weight: 700; font-size: 1rem; }
+.roi-list li.roi-highlight { color: var(--volt-lt); font-weight: 700; font-size: 1rem; }
 
 /* ── FAQ ─────────────────────────────────── */
 .faq-list {
@@ -72,7 +72,7 @@ section.design-partner .section-sub { color: #8B8FA8; }
 .faq-item summary::after {
   content: '+';
   font-size: 1.25rem;
-  color: var(--violet);
+  color: var(--volt-deep);
   flex-shrink: 0;
   transition: transform 0.2s;
 }

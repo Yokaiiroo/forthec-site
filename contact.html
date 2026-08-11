@@ -43,14 +43,14 @@
     }
     .contact-block-item .icon {
       width: 36px; height: 36px;
-      background: rgba(124,92,252,0.08);
+      background: rgba(52,226,122,0.08);
       border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
       font-size: 1rem;
       flex-shrink: 0;
     }
     .contact-block-item a {
-      color: var(--violet);
+      color: var(--volt-deep);
       font-weight: 500;
       transition: opacity 0.2s;
     }
@@ -100,7 +100,7 @@
       content: '';
       position: absolute; top: 0; left: 0; right: 0;
       height: 3px;
-      background: linear-gradient(90deg, var(--violet), var(--teal));
+      background: var(--grad);
     }
     .contact-form h3 {
       font-size: 1.25rem;
@@ -140,8 +140,8 @@
     .form-group input:focus,
     .form-group select:focus,
     .form-group textarea:focus {
-      border-color: var(--violet);
-      box-shadow: 0 0 0 3px rgba(124,92,252,0.1);
+      border-color: var(--volt);
+      box-shadow: 0 0 0 3px rgba(52,226,122,0.15);
     }
     .form-group textarea {
       resize: vertical;
@@ -154,8 +154,8 @@
     }
     .form-submit {
       width: 100%;
-      background: var(--violet);
-      color: var(--white);
+      background: var(--grad);
+      color: var(--ink);
       border: none;
       padding: 0.875rem 2rem;
       border-radius: 8px;
@@ -171,7 +171,7 @@
       margin-top: 0.5rem;
     }
     .form-submit:hover {
-      background: var(--violet-lt);
+      filter: brightness(1.08);
       transform: translateY(-1px);
     }
     .form-note {
@@ -221,7 +221,7 @@
       margin-bottom: 1.5rem;
     }
     .form-success a {
-      color: var(--violet);
+      color: var(--volt-deep);
       font-weight: 600;
     }
     /* Produits */
@@ -244,9 +244,9 @@
     }
     .produit-pill.active,
     .produit-pill:hover {
-      border-color: var(--violet);
-      color: var(--violet);
-      background: rgba(124,92,252,0.05);
+      border-color: var(--volt);
+      color: var(--volt-deep);
+      background: rgba(52,226,122,0.06);
     }
     @media (max-width: 768px) {
       .contact-page-grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -268,7 +268,7 @@
     <li><a href="suite.html">Suite</a></li>
     <li><a href="tarifs.html">Tarifs</a></li>
     <li><a href="blog/index.html">Blog</a></li>
-    <li><a href="console.html" class="nav-console">🔐 Console</a></li>
+    <li><a href="console.html" class="nav-console">Console</a></li>
     <li><a href="contact.html" class="nav-cta active">Demander une démo</a></li>
   </ul>
 </nav>
@@ -422,13 +422,13 @@
 
   <div class="product-grid">
     <div class="product-card reveal">
-      <span class="card-tag" style="background:rgba(0,229,160,0.1);color:var(--teal)">Disponible</span>
+      <span class="card-tag" style="background:rgba(52,226,122,0.1);color:var(--volt-deep)">Disponible</span>
       <h3>FortHeC° Energy</h3>
       <p>Application web. Audit réglementaire complet NF EN 16247, rapport Word automatisé, régressions ISO 50006, 29 secteurs.</p>
       <a href="energy.html" class="card-link">Découvrir →</a>
     </div>
     <div class="product-card reveal">
-      <span class="card-tag" style="background:rgba(0,229,160,0.1);color:var(--teal)">Disponible</span>
+      <span class="card-tag" style="background:rgba(52,226,122,0.1);color:var(--volt-deep)">Disponible</span>
       <h3>FortHeC° Inventory</h3>
       <p>Application mobile iOS/Android. Inventaire terrain par photo et IA, cartographie bâtimentaire, enveloppe thermique, registre F-Gaz.</p>
       <a href="inventory.html" class="card-link">Découvrir →</a>
