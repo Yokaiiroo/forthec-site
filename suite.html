@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FortHeC° Mode Suite — Audit + Terrain</title>
-  <meta name="description" content="Mode Suite FortHeC° : Energy + Inventory combinés. Le terrain collecté au smartphone alimente directement le rapport d'audit, jusqu'à 13 sections avec actions ciblées par équipement réel.">
-  <link rel="icon" type="image/png" href="img/n2-app-icon.png">
-  <link rel="canonical" href="https://forthec.fr/suite.html">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="FortHeC°">
-  <meta property="og:locale" content="fr_FR">
-  <meta property="og:title" content="FortHeC° Mode Suite — Audit + Terrain">
-  <meta property="og:description" content="Mode Suite FortHeC° : Energy + Inventory combinés. Le terrain collecté au smartphone alimente directement le rapport d'audit, jusqu'à 13 sections avec actions ciblées par équipement réel.">
-  <meta property="og:url" content="https://forthec.fr/suite.html">
-  <meta property="og:image" content="https://forthec.fr/img/n2-app-icon.png">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="FortHeC° Mode Suite — Audit + Terrain">
-  <meta name="twitter:description" content="Mode Suite FortHeC° : Energy + Inventory combinés. Le terrain collecté au smartphone alimente directement le rapport d'audit, jusqu'à 13 sections avec actions ciblées par équipement réel.">
-  <meta name="twitter:image" content="https://forthec.fr/img/n2-app-icon.png">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/suite.css">
-  <script type="application/ld+json">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FortHeC° Mode Suite — Audit + Terrain</title>
+<meta name="description" content="Mode Suite FortHeC° : Energy + Inventory combinés. Le terrain collecté au smartphone alimente directement le rapport d'audit, jusqu'à 13 sections avec actions ciblées par équipement réel.">
+<link rel="icon" type="image/png" href="img/n2-app-icon.png">
+<link rel="canonical" href="https://forthec.fr/suite.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FortHeC°">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="FortHeC° Mode Suite — Audit + Terrain">
+<meta property="og:description" content="Mode Suite FortHeC° : Energy + Inventory combinés. Le terrain collecté au smartphone alimente directement le rapport d'audit, jusqu'à 13 sections avec actions ciblées par équipement réel.">
+<meta property="og:url" content="https://forthec.fr/suite.html">
+<meta property="og:image" content="https://forthec.fr/img/n2-app-icon.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FortHeC° Mode Suite — Audit + Terrain">
+<meta name="twitter:description" content="Mode Suite FortHeC° : Energy + Inventory combinés. Le terrain collecté au smartphone alimente directement le rapport d'audit, jusqu'à 13 sections avec actions ciblées par équipement réel.">
+<meta name="twitter:image" content="https://forthec.fr/img/n2-app-icon.png">
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -40,421 +38,499 @@
     "url": "https://forthec.fr/"
   }
 }
-  </script>
+</script>
+
+<style>
+/* ============ Fonts (real brand faces, self-hosted, local relative paths) ============ */
+@font-face{
+  font-family:'Plex Sans'; font-weight:700; font-style:normal; font-display:swap;
+  src:url('fonts/plexsans-700-normal.woff2') format('woff2');
+}
+@font-face{
+  font-family:'Plex Sans'; font-weight:500; font-style:normal; font-display:swap;
+  src:url('fonts/plexsans-500-normal.woff2') format('woff2');
+}
+@font-face{
+  font-family:'Plex Mono'; font-weight:400; font-style:normal; font-display:swap;
+  src:url('fonts/plexmono-400-normal.woff2') format('woff2');
+}
+
+/* ============ Tokens — deliberate single dark world (eco-cyber-reactor), not a light/dark pair ============ */
+:root{
+  --void:       #05080a;   /* base ground */
+  --void-2:     #0a1219;   /* panel surface, slightly blue-green lifted */
+  --void-3:     #0e1a20;   /* panel border/hover surface */
+  --volt:       #34e27a;   /* primary — data / electric / nature (real brand) */
+  --volt-lt:    #8cffb8;
+  --volt-deep:  #123322;
+  --amber:      #e0a23d;   /* secondary — money / payoff (real brand) */
+  --amber-lt:   #f0c578;
+  --cyan:       #2fd8ff;   /* tertiary — cyber / signal depth (new, for this lab only) */
+  --plasma:     #b46bff;   /* rare flare accent — used once, on purpose */
+  --ink:        #eaf6f0;   /* body text, cool-tinted near-white */
+  --muted:      #7e9490;
+  --font-display:'Plex Sans', system-ui, sans-serif;
+  --font-mono:  'Plex Mono', 'SF Mono', Consolas, monospace;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--void);
+  color:var(--ink);
+  font-family:var(--font-display);
+  font-weight:500;
+  overflow-x:hidden;
+}
+::selection{background:var(--volt); color:#04120a;}
+
+a{color:inherit;}
+
+/* ============ HUD frame + noise/scanline atmosphere (global, behind everything meaningful) ============ */
+.hud-frame{position:fixed; inset:14px; z-index:50; pointer-events:none; border:1px solid rgba(52,226,122,0.14);}
+.hud-frame::before,.hud-frame::after,
+.hud-frame b::before,.hud-frame b::after{
+  content:''; position:absolute; width:22px; height:22px; border-color:var(--volt); opacity:.55;
+}
+.hud-frame::before{top:-1px;left:-1px;border-top:2px solid;border-left:2px solid;}
+.hud-frame::after{top:-1px;right:-1px;border-top:2px solid;border-right:2px solid;}
+.hud-frame b::before{bottom:-1px;left:-1px;border-bottom:2px solid;border-left:2px solid;position:absolute;}
+.hud-frame b::after{bottom:-1px;right:-1px;border-bottom:2px solid;border-right:2px solid;position:absolute;}
+.hud-frame .tag{position:absolute; top:8px; left:20px; font:11px/1 var(--font-mono); letter-spacing:.14em; color:var(--muted); opacity:.7;}
+.hud-frame .tag.r{left:auto; right:20px; color:var(--amber-lt);}
+/* overlaps the nav logo/badge at narrow widths (real bug, confirmed via screenshot) --
+   these labels are decorative, the nav already carries the essential info */
+@media (max-width:600px){ .hud-frame .tag{display:none;} }
+
+.scanlines{
+  position:fixed; inset:0; z-index:40; pointer-events:none; mix-blend-mode:overlay; opacity:.35;
+  background:repeating-linear-gradient(to bottom, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 3px);
+}
+.vignette{position:fixed; inset:0; z-index:39; pointer-events:none;
+  background:radial-gradient(ellipse at 50% 40%, transparent 45%, rgba(0,0,0,0.55) 100%);
+}
+
+/* ============ Boot sequence overlay (energy + web-dev fusion: it "compiles" before it powers on) ============ */
+.boot-overlay{
+  position:fixed; inset:0; z-index:200; background:var(--void);
+  display:flex; align-items:center; padding:0 10vw;
+  transition:opacity .6s ease;
+}
+.boot-overlay.hidden{opacity:0; pointer-events:none;}
+.boot-lines{font:14px/1.9 var(--font-mono); color:var(--volt-lt); max-width:640px;}
+.boot-line{white-space:pre-wrap; word-break:break-word; text-shadow:0 0 10px rgba(52,226,122,.35);}
+.boot-line .cursor{display:inline-block; width:8px; height:1em; background:var(--volt); margin-left:2px; vertical-align:-2px; animation:blink 1s steps(1) infinite;}
+@keyframes blink{50%{opacity:0;}}
+
+/* ============ NAV ============ */
+nav{
+  position:relative; z-index:60; display:flex; align-items:center; justify-content:space-between;
+  padding:22px 40px; font-family:var(--font-mono); font-size:13px; letter-spacing:.04em;
+}
+.nav-logo{display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--ink); font-weight:400;}
+.nav-logo .dot{width:9px; height:9px; border-radius:50%; background:var(--volt); box-shadow:0 0 12px var(--volt), 0 0 24px var(--volt);}
+.nav-logo em{color:var(--amber-lt); font-style:normal;}
+.nav-badge{border:1px solid rgba(240,197,120,0.4); color:var(--amber-lt); padding:4px 10px; border-radius:3px; font-size:11px; letter-spacing:.12em;}
+.nav-links{display:flex; align-items:center; gap:20px; list-style:none; margin:0; padding:0; flex-wrap:wrap;}
+.nav-links a{color:var(--muted); text-decoration:none; font:12px/1 var(--font-mono); letter-spacing:.02em; transition:color .2s;}
+.nav-links a:hover{color:var(--volt-lt);}
+.nav-links a.active{color:var(--volt-lt);}
+.nav-links a.cta{color:#04120a; background:linear-gradient(120deg, var(--amber-lt), var(--volt)); padding:7px 14px; border-radius:3px; font-weight:700; letter-spacing:0;}
+@media (max-width:760px){ .nav-badge{display:none;} }
+
+/* ---- App switcher (real site component, js/main.js) ---- */
+.app-switcher{position:fixed; top:50%; right:0; transform:translateY(-50%); z-index:150; display:flex; align-items:center;}
+.app-switcher-tab{writing-mode:vertical-rl; text-orientation:mixed; background:linear-gradient(160deg, var(--amber-lt), var(--volt)); color:#04120a; font:12px var(--font-mono); font-weight:700; letter-spacing:.03em; padding:16px 9px; border-radius:6px 0 0 6px; cursor:pointer; border:none;}
+.app-switcher-tab:hover{filter:brightness(1.08);}
+.app-switcher.open .app-switcher-tab{border-radius:0 0 0 6px;}
+.app-switcher-panel{position:absolute; right:100%; top:50%; translate:0 -50%; background:rgba(10,18,25,.9); backdrop-filter:blur(14px); border:1px solid rgba(52,226,122,.25); border-radius:8px 0 0 8px; box-shadow:-8px 0 30px rgba(0,0,0,.5); padding:18px; width:200px; max-width:calc(100vw - 3rem); transform:translateX(12px); opacity:0; pointer-events:none; transition:transform .2s ease, opacity .2s ease;}
+.app-switcher.open .app-switcher-panel{transform:translateX(0); opacity:1; pointer-events:auto;}
+.app-switcher-panel h4{font:10px var(--font-mono); text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin:0 0 12px;}
+.app-switcher-link{display:flex; align-items:center; padding:10px 12px; border-radius:4px; font:12px var(--font-mono); color:var(--ink); background:rgba(255,255,255,.03); border:1px solid rgba(234,246,240,.1); margin-bottom:8px; text-decoration:none;}
+.app-switcher-link:last-child{margin-bottom:0;}
+.app-switcher-link:hover{border-color:var(--volt); color:var(--volt-lt); background:rgba(52,226,122,.08);}
+
+/* ============ HERO ============ */
+.hero{position:relative; min-height:100svh; display:grid; place-items:center; overflow:hidden;}
+
+#reactor-canvas{position:fixed; inset:0; z-index:0; width:100%; height:100%; display:block;}
+
+.aurora{
+  position:fixed; inset:-10%; z-index:1; pointer-events:none; mix-blend-mode:screen; opacity:.5;
+  background:
+    radial-gradient(38% 42% at 22% 28%, rgba(52,226,122,0.22), transparent 60%),
+    radial-gradient(34% 38% at 82% 70%, rgba(47,216,255,0.16), transparent 60%),
+    radial-gradient(30% 34% at 65% 15%, rgba(224,162,61,0.12), transparent 60%);
+  animation:aurora-drift 22s ease-in-out infinite alternate;
+}
+@keyframes aurora-drift{
+  0%{transform:translate3d(0,0,0) scale(1);}
+  100%{transform:translate3d(-2%,3%,0) scale(1.06);}
+}
+
+.hero-grid{
+  position:relative; z-index:5; width:min(1360px,92vw); margin:0 auto;
+  display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:center;
+  padding-top:64px;
+}
+@media (max-width:920px){ .hero-grid{grid-template-columns:1fr; gap:40px;} }
+
+.eyebrow{
+  font:12px/1 var(--font-mono); letter-spacing:.2em; text-transform:uppercase; color:var(--volt-lt);
+  display:flex; align-items:center; gap:10px; margin:0 0 22px;
+}
+.eyebrow::before{content:''; width:26px; height:1px; background:var(--volt); box-shadow:0 0 8px var(--volt);}
+
+h1{
+  font-family:'Plex Mono', var(--font-mono); font-weight:400; margin:0 0 22px; letter-spacing:-0.01em;
+  font-size:clamp(1.5rem, 4.6vw, 3.7rem); line-height:1.15; color:var(--ink);
+}
+h1 .line{display:block; overflow:hidden;}
+h1 .line span{display:inline-block; white-space:normal;}
+@media (max-width:600px){ h1{font-size:1.4rem; line-height:1.25;} }
+h1 em{
+  font-style:normal;
+  background:linear-gradient(100deg, var(--amber-lt) 0%, var(--volt) 65%, var(--cyan) 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  text-shadow:0 0 40px rgba(52,226,122,0.25);
+}
+
+.hero-sub{max-width:52ch; color:var(--muted); font-size:1.02rem; line-height:1.65; margin:0 0 26px; text-shadow:0 2px 16px var(--void), 0 0 6px var(--void);}
+
+.cycle-line{
+  font:14px/1 var(--font-mono); color:var(--ink); margin:0 0 34px; display:flex; align-items:center; gap:10px;
+  perspective:400px;
+}
+.cycle-line .lbl{color:var(--muted);}
+.cycle-word{
+  position:relative; color:var(--volt-lt); min-width:190px; height:1.3em; display:inline-block;
+  transform-style:preserve-3d;
+}
+.cycle-word span{
+  position:absolute; inset:0; opacity:0; transform:rotateX(90deg); transform-origin:50% 100%;
+}
+.cycle-word span.active{opacity:1; transform:rotateX(0deg); transition:transform .5s cubic-bezier(.2,.8,.2,1), opacity .35s ease;}
+.cycle-word span.leaving{opacity:0; transform:rotateX(-90deg); transition:transform .5s cubic-bezier(.2,.8,.2,1), opacity .35s ease;}
+
+.hero-actions{display:flex; flex-wrap:wrap; gap:14px; margin-bottom:34px;}
+.btn-primary{
+  position:relative; padding:14px 26px; border-radius:3px; text-decoration:none; font-weight:700;
+  font-size:14px; letter-spacing:.02em; color:#04120a;
+  background:linear-gradient(120deg, var(--amber-lt), var(--volt));
+  box-shadow:0 0 0 1px rgba(52,226,122,.4), 0 8px 30px -8px rgba(52,226,122,.7);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.btn-primary:hover{transform:translateY(-2px); box-shadow:0 0 0 1px rgba(52,226,122,.6), 0 14px 40px -8px rgba(52,226,122,.9);}
+.btn-ghost{
+  padding:14px 22px; border-radius:3px; text-decoration:none; font-size:14px; color:var(--ink);
+  border:1px solid rgba(234,246,240,0.18); background:rgba(255,255,255,0.02);
+  transition:border-color .25s ease, background .25s ease;
+}
+.btn-ghost:hover{border-color:var(--cyan); background:rgba(47,216,255,0.06);}
+
+.spec-row{display:flex; flex-wrap:wrap; gap:10px;}
+.spec-chip{
+  font:11px/1 var(--font-mono); letter-spacing:.08em; padding:7px 11px; border-radius:2px;
+  border:1px solid rgba(234,246,240,0.14); color:var(--muted);
+}
+.spec-chip.hot{border-color:rgba(240,197,120,0.45); color:var(--amber-lt);}
+
+/* ---- HUD telemetry panel ---- */
+.hud-panel{
+  position:relative; background:rgba(10,18,25,0.55); backdrop-filter:blur(14px) saturate(140%);
+  border:1px solid rgba(52,226,122,0.22); border-radius:6px; padding:26px 26px 22px;
+  box-shadow:0 0 0 1px rgba(0,0,0,.3), 0 30px 60px -20px rgba(0,0,0,.6), inset 0 0 40px rgba(52,226,122,0.03);
+}
+.hud-panel::before{
+  content:''; position:absolute; top:0; left:24px; right:24px; height:1px;
+  background:linear-gradient(90deg, transparent, var(--volt), transparent);
+  animation:sweep 4s linear infinite;
+}
+@keyframes sweep{0%{transform:translateX(-40%);}100%{transform:translateX(40%);}}
+.hud-panel-head{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:18px;}
+.hud-panel-head span:first-child{font:11px var(--font-mono); letter-spacing:.14em; color:var(--muted); text-transform:uppercase;}
+.hud-panel-head span:last-child{font:11px var(--font-mono); color:var(--volt-lt);}
+
+.money-readout{margin-bottom:20px;}
+.money-readout .num{
+  font-family:var(--font-mono); font-size:2.5rem; font-weight:400; color:var(--amber-lt);
+  text-shadow:0 0 22px rgba(224,162,61,.45); font-variant-numeric:tabular-nums; line-height:1;
+}
+.money-readout .cap{font:11px var(--font-mono); color:var(--muted); letter-spacing:.1em; margin-top:6px;}
+
+.bar-row{margin-bottom:12px;}
+.bar-row .bh{display:flex; justify-content:space-between; font:11px var(--font-mono); color:var(--muted); margin-bottom:5px;}
+.bar-row .bh b{color:var(--ink); font-weight:400;}
+.bar-track{height:6px; border-radius:3px; background:rgba(255,255,255,0.06); overflow:hidden; position:relative;}
+.bar-fill{
+  height:100%; width:0%; border-radius:3px;
+  background:linear-gradient(90deg, var(--amber-lt), var(--volt));
+  box-shadow:0 0 10px var(--volt), 0 0 2px var(--volt-lt);
+  transition:width 1.4s cubic-bezier(.16,.8,.2,1);
+}
+
+/* ---- Real nameplate photo → OCR fields, same component as the live site's
+   hero-plaque (css/style.css .hero-plaque-*), just reskinned to the reactor
+   palette — this is the actual proof, an abstracted KPI number isn't. ---- */
+.plaque-label{display:flex; justify-content:space-between; align-items:center; font:11px var(--font-mono); color:var(--muted); letter-spacing:.08em; text-transform:uppercase; margin-bottom:14px;}
+.plaque-label .tag{color:var(--volt-lt); border:1px solid rgba(52,226,122,.3); padding:2px 8px; border-radius:2px; font-size:10px;}
+.plaque-photo{position:relative; border-radius:6px; overflow:hidden; border:1px solid rgba(234,246,240,.12); line-height:0; max-width:260px; margin:0 auto 16px;}
+.plaque-photo img{display:block; width:100%; height:auto;}
+.plaque-scan{
+  position:absolute; left:0; right:0; top:0; height:40%;
+  background:linear-gradient(180deg, transparent 0%, rgba(52,226,122,.4) 50%, transparent 100%);
+  animation:plaque-scan 2.6s cubic-bezier(.4,0,.2,1) infinite;
+}
+@keyframes plaque-scan{
+  0%{transform:translateY(-100%); opacity:0;}
+  10%{opacity:1;} 55%{opacity:1;}
+  70%{transform:translateY(250%); opacity:0;}
+  100%{transform:translateY(250%); opacity:0;}
+}
+.plaque-fields{display:grid; grid-template-columns:1fr 1fr; gap:8px 14px; font-size:11px; margin:0 0 14px;}
+.plaque-fields > div{padding-bottom:6px; border-bottom:1px solid rgba(234,246,240,.08);}
+.plaque-fields dt{color:var(--muted); margin-bottom:2px; font:10px var(--font-mono); letter-spacing:.04em;}
+.plaque-fields dd{margin:0; color:var(--ink); font-weight:600; font-family:var(--font-mono);}
+.plaque-foot{font:11px var(--font-mono); color:var(--muted); text-align:center; padding-top:10px; border-top:1px solid rgba(234,246,240,.1);}
+.plaque-foot strong{color:var(--amber-lt);}
+
+/* ---- Real 4-row extract of the comparatif.compare-table further down the
+   live suite.html page — same content, reskinned, not a new summary ---- */
+.compare-mini{width:100%; table-layout:fixed; border-collapse:collapse; font:11px var(--font-mono); margin-bottom:14px;}
+.compare-mini th:nth-child(1), .compare-mini td:nth-child(1){width:42%;}
+.compare-mini th:nth-child(2), .compare-mini td:nth-child(2){width:16%;}
+.compare-mini th:nth-child(3), .compare-mini td:nth-child(3){width:42%;}
+.compare-mini th{text-align:left; font-weight:400; color:var(--muted); letter-spacing:.06em; text-transform:uppercase; font-size:10px; padding-bottom:8px; border-bottom:1px solid rgba(234,246,240,.14);}
+.compare-mini th:nth-child(2), .compare-mini th:nth-child(3){text-align:right;}
+.compare-mini td{padding:7px 0; border-bottom:1px solid rgba(234,246,240,.08); color:var(--ink); vertical-align:top; white-space:normal; word-break:break-word; line-height:1.35;}
+.compare-mini td.v-audit{text-align:right; color:var(--muted);}
+.compare-mini td.v-audit.v-none{color:rgba(126,148,144,.6);}
+.compare-mini td.v-suite{text-align:right; color:var(--volt-lt); font-weight:600;}
+@media (prefers-reduced-motion: reduce){ .plaque-scan{animation:none; opacity:0;} }
+
+/* ---- Suite telemetry: real KPIs from different FortHeC° products, not one product's bars ---- */
+.kpi-block{
+  padding:14px 0; border-top:1px solid rgba(234,246,240,0.1);
+  opacity:0; transform:translateY(8px); transition:opacity .5s ease, transform .5s ease;
+}
+.kpi-block.in{opacity:1; transform:none;}
+.kpi-row{display:flex; justify-content:space-between; align-items:baseline; gap:12px;}
+.kpi-lbl{font:11px var(--font-mono); color:var(--muted); letter-spacing:.04em;}
+.kpi-val{font:16px var(--font-mono); color:var(--cyan); text-shadow:0 0 12px rgba(47,216,255,.4); white-space:nowrap;}
+.kpi-sub{font:11px var(--font-mono); color:var(--muted); opacity:.75; margin-top:4px;}
+
+/* ============ Real page sections below the hero ============ */
+.section{
+  position:relative; padding:90px 40px; max-width:1100px; margin:0 auto;
+  background:linear-gradient(180deg, transparent 0%, var(--void) 10%, var(--void) 100%);
+}
+.section-eyebrow{font:12px var(--font-mono); letter-spacing:.2em; color:var(--cyan); text-transform:uppercase;}
+.section h2{font-family:'Plex Mono'; font-weight:400; font-size:clamp(1.5rem,3vw,2.1rem); margin:12px 0 10px; color:var(--ink);}
+.section .lede{max-width:65ch; color:var(--muted); font-size:.98rem; line-height:1.6; margin-bottom:40px;}
+.reveal{opacity:0; transform:translateY(20px); transition:opacity .7s ease, transform .7s ease;}
+.reveal.in{opacity:1; transform:none;}
+
+.video-frame{border-radius:6px; overflow:hidden; border:1px solid rgba(234,246,240,.14); box-shadow:0 20px 50px -20px rgba(0,0,0,.7); line-height:0;}
+.video-frame video{display:block; width:100%;}
+
+.gains-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+@media (max-width:860px){ .gains-grid{grid-template-columns:1fr 1fr;} }
+@media (max-width:560px){ .gains-grid{grid-template-columns:1fr;} }
+.gain-card{background:rgba(10,18,25,.55); border:1px solid rgba(52,226,122,.16); border-radius:6px; padding:22px; text-align:center;}
+.gain-card h3{font-family:var(--font-display); font-size:.92rem; color:var(--ink); margin:0 0 12px;}
+.gain-number{font:2.1rem var(--font-mono); color:var(--volt-lt); text-shadow:0 0 16px rgba(52,226,122,.4); line-height:1;}
+.gain-label{font-size:.76rem; color:var(--muted); line-height:1.5; margin-top:8px;}
+
+.cta-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+@media (max-width:760px){ .cta-grid{grid-template-columns:1fr;} }
+.cta-box{background:rgba(10,18,25,.55); border:1px solid rgba(234,246,240,.12); border-radius:6px; padding:28px;}
+.cta-box.hot{border-color:rgba(240,197,120,.35);}
+.cta-box h3, .cta-box h4{font-family:var(--font-display); color:var(--ink); margin:0 0 10px; font-size:1.1rem;}
+.cta-box p{color:var(--muted); font-size:.9rem; line-height:1.6; margin:0 0 14px;}
+.cta-box ul{margin:0 0 14px; padding-left:16px; color:var(--muted); font-size:.85rem; line-height:1.7;}
+
+.compare-mini-full{width:100%; border-collapse:collapse; font:12px var(--font-mono);}
+.compare-mini-full th{text-align:left; font-weight:400; color:var(--muted); letter-spacing:.05em; text-transform:uppercase; font-size:10px; padding:0 10px 10px 0; border-bottom:1px solid rgba(234,246,240,.16); white-space:nowrap;}
+.compare-mini-full th:nth-child(2), .compare-mini-full th:nth-child(3){text-align:right;}
+.compare-mini-full td{padding:10px 10px 10px 0; border-bottom:1px solid rgba(234,246,240,.08); color:var(--ink); vertical-align:top;}
+.compare-mini-full td.v-audit{text-align:right; color:var(--muted); white-space:nowrap;}
+.compare-mini-full td.v-audit.v-none{color:rgba(126,148,144,.5);}
+.compare-mini-full td.v-suite{text-align:right; color:var(--volt-lt); font-weight:600;}
+.compare-mini-full .reco{color:var(--amber-lt); font-size:9px; letter-spacing:.06em; margin-left:6px;}
+
+footer{position:relative; z-index:5; text-align:center; padding:50px 40px; font:11px var(--font-mono); color:var(--muted); letter-spacing:.08em; background:var(--void);}
+.footer-nav{display:flex; flex-wrap:wrap; justify-content:center; gap:18px; margin-top:16px;}
+.footer-nav a{color:var(--muted); text-decoration:none;}
+.footer-nav a:hover{color:var(--volt-lt);}
+
+@media (prefers-reduced-motion: reduce){
+  .aurora, .hud-panel::before{animation:none;}
+  .bar-fill{transition:none;}
+  .cycle-word span{transition:none;}
+}
+</style>
 </head>
 <body>
 
+<div class="boot-overlay" id="bootOverlay"><div class="boot-lines" id="bootLines"></div></div>
+
+<div class="scanlines"></div>
+<div class="vignette"></div>
+<div class="hud-frame"><b></b></div>
+
 <nav>
-  <a href="index.html" class="nav-logo">
-    <img src="img/n2-icon-mark.png" alt="" height="34">
-    <span>FortHeC<em>°</em></span>
-  </a>
+  <a class="nav-logo" href="index.html"><img src="img/n2-icon-mark.png" alt="" height="30"><span class="dot"></span>FortHeC<em>°</em></a>
   <ul class="nav-links">
     <li><a href="index.html">Accueil</a></li>
     <li><a href="energy.html">Energy</a></li>
     <li><a href="inventory.html">Inventory</a></li>
-    <li><a href="suite.html" class="active">Suite</a></li>
+    <li><a href="suite.html">Suite</a></li>
     <li><a href="tarifs.html">Tarifs</a></li>
-    <li><a href="blog/index.html">Blog</a></li>
-    <li><a href="console.html" class="nav-console">Console</a></li>
-    <li><a href="contact.html" class="nav-cta">Demander une démo</a></li>
-  </ul>
-</nav>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="console.html">Console</a></li>
+    <li><a href="contact.html" class="cta">Contact</a></li>
+  </ul></nav>
 
-<!-- ── Hero Suite ─────────────────────────── -->
 <section class="hero">
-  <!-- Reseau circuit : congés arrondis façon cuivre gravé, pattes soudées sur
-       le hero-chart, signaux qui suivent des traces déjà dessinées (pas des
-       pastilles flottantes), 1 trace "écho" des vrais chiffres de gain
-       (85/95/90/75/33%), séquence démarrage puis boucle. Testé/itéré avec
-       Hugo via artifact avant implémentation ici. -->
-  <svg style="position:absolute;inset:0;z-index:0;pointer-events:none;width:100%;height:100%" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
-    <!-- plans de cuivre, tres discrets -->
-    <path d="M700,420 L820,400 L900,440 L860,520 L740,520 Z" fill="#34E27A" opacity="0.05"/>
-    <path d="M900,60 L1000,60 L1000,200 L950,220 Z" fill="#34E27A" opacity="0.05"/>
-    <!-- reseau de traces : dessin "boot" une fois, puis signaux en boucle -->
-    <g>
-      <g stroke-linecap="round" stroke-linejoin="round">
-      <path d="M891,120 L907.0,120.0 Q921,120 931.6,110.9 L991,60" fill="none" stroke="#34E27A" stroke-width="3.4000000000000004" opacity="0.09" stroke-dasharray="160" stroke-dashoffset="160">
-        <animate attributeName="stroke-dashoffset" from="160" to="0" dur="1.38s" begin="0.00s" fill="freeze"/>
-      </path>
-      <path id="trace0" d="M891,120 L907.0,120.0 Q921,120 931.6,110.9 L991,60" fill="none" stroke="#34E27A" stroke-width="1.2" opacity="0.32" stroke-dasharray="160" stroke-dashoffset="160">
-        <animate id="boot" attributeName="stroke-dashoffset" from="160" to="0" dur="1.38s" begin="0.00s" fill="freeze"/>
-      </path>
-      </g>
-      <g stroke-linecap="round" stroke-linejoin="round">
-      <path d="M891,180 L907.0,180.0 Q921,180 931.6,170.9 L991,120" fill="none" stroke="#34E27A" stroke-width="3.4000000000000004" opacity="0.09" stroke-dasharray="160" stroke-dashoffset="160">
-        <animate attributeName="stroke-dashoffset" from="160" to="0" dur="1.42s" begin="0.05s" fill="freeze"/>
-      </path>
-      <path id="trace1" d="M891,180 L907.0,180.0 Q921,180 931.6,170.9 L991,120" fill="none" stroke="#34E27A" stroke-width="1.2" opacity="0.32" stroke-dasharray="160" stroke-dashoffset="160">
-        <animate attributeName="stroke-dashoffset" from="160" to="0" dur="1.42s" begin="0.05s" fill="freeze"/>
-      </path>
-      </g>
-      <g stroke-linecap="round" stroke-linejoin="round">
-      <path d="M891,240 L907.0,240.0 Q921,240 931.6,249.1 L991,300" fill="none" stroke="#34E27A" stroke-width="3.4000000000000004" opacity="0.09" stroke-dasharray="160" stroke-dashoffset="160">
-        <animate attributeName="stroke-dashoffset" from="160" to="0" dur="1.17s" begin="0.10s" fill="freeze"/>
-      </path>
-      <path id="trace2" d="M891,240 L907.0,240.0 Q921,240 931.6,249.1 L991,300" fill="none" stroke="#34E27A" stroke-width="1.2" opacity="0.32" stroke-dasharray="160" stroke-dashoffset="160">
-        <animate attributeName="stroke-dashoffset" from="160" to="0" dur="1.17s" begin="0.10s" fill="freeze"/>
-      </path>
-      </g>
-      <g stroke-linecap="round" stroke-linejoin="round">
-      <path d="M891,300 L907.0,300.0 Q921,300 931.6,309.1 L991,360" fill="none" stroke="#34E27A" stroke-width="3.4000000000000004" opacity="0.09" stroke-dasharray="160" stroke-dashoffset="160">
-        <animate attributeName="stroke-dashoffset" from="160" to="0" dur="0.99s" begin="0.15s" fill="freeze"/>
-      </path>
-      <path id="trace3" d="M891,300 L907.0,300.0 Q921,300 931.6,309.1 L991,360" fill="none" stroke="#34E27A" stroke-width="1.2" opacity="0.32" stroke-dasharray="160" stroke-dashoffset="160">
-        <animate attributeName="stroke-dashoffset" from="160" to="0" dur="0.99s" begin="0.15s" fill="freeze"/>
-      </path>
-      </g>
-      <g stroke-linecap="round" stroke-linejoin="round">
-      <path d="M650,330 L650.0,344.0 Q650,358 636.0,358.0 L560,358" fill="none" stroke="#34E27A" stroke-width="3.4000000000000004" opacity="0.09" stroke-dasharray="118" stroke-dashoffset="118">
-        <animate attributeName="stroke-dashoffset" from="118" to="0" dur="1.29s" begin="0.20s" fill="freeze"/>
-      </path>
-      <path id="trace4" d="M650,330 L650.0,344.0 Q650,358 636.0,358.0 L560,358" fill="none" stroke="#34E27A" stroke-width="1.2" opacity="0.32" stroke-dasharray="118" stroke-dashoffset="118">
-        <animate attributeName="stroke-dashoffset" from="118" to="0" dur="1.29s" begin="0.20s" fill="freeze"/>
-      </path>
-      </g>
-      <g stroke-linecap="round" stroke-linejoin="round">
-      <path d="M740,330 L740.0,344.0 Q740,358 754.0,358.0 L830,358" fill="none" stroke="#34E27A" stroke-width="3.4000000000000004" opacity="0.09" stroke-dasharray="118" stroke-dashoffset="118">
-        <animate attributeName="stroke-dashoffset" from="118" to="0" dur="1.21s" begin="0.25s" fill="freeze"/>
-      </path>
-      <path id="trace5" d="M740,330 L740.0,344.0 Q740,358 754.0,358.0 L830,358" fill="none" stroke="#34E27A" stroke-width="1.2" opacity="0.32" stroke-dasharray="118" stroke-dashoffset="118">
-        <animate attributeName="stroke-dashoffset" from="118" to="0" dur="1.21s" begin="0.25s" fill="freeze"/>
-      </path>
-      </g>
-      <g stroke-linecap="round" stroke-linejoin="round">
-      <path d="M830,330 L830.0,344.0 Q830,358 844.0,358.0 L920,358" fill="none" stroke="#34E27A" stroke-width="3.4000000000000004" opacity="0.09" stroke-dasharray="118" stroke-dashoffset="118">
-        <animate attributeName="stroke-dashoffset" from="118" to="0" dur="0.96s" begin="0.30s" fill="freeze"/>
-      </path>
-      <path id="trace6" d="M830,330 L830.0,344.0 Q830,358 844.0,358.0 L920,358" fill="none" stroke="#34E27A" stroke-width="1.2" opacity="0.32" stroke-dasharray="118" stroke-dashoffset="118">
-        <animate attributeName="stroke-dashoffset" from="118" to="0" dur="0.96s" begin="0.30s" fill="freeze"/>
-      </path>
-      </g>
-      <g stroke-linecap="round" stroke-linejoin="round">
-      <path d="M650,80 L650,56" fill="none" stroke="#34E27A" stroke-width="3.2" opacity="0.09" stroke-dasharray="24" stroke-dashoffset="24">
-        <animate attributeName="stroke-dashoffset" from="24" to="0" dur="1.05s" begin="0.35s" fill="freeze"/>
-      </path>
-      <path id="trace7" d="M650,80 L650,56" fill="none" stroke="#34E27A" stroke-width="1" opacity="0.32" stroke-dasharray="24" stroke-dashoffset="24">
-        <animate attributeName="stroke-dashoffset" from="24" to="0" dur="1.05s" begin="0.35s" fill="freeze"/>
-      </path>
-      </g>
-      <g stroke-linecap="round" stroke-linejoin="round">
-      <path d="M740,80 L740,56" fill="none" stroke="#34E27A" stroke-width="3.2" opacity="0.09" stroke-dasharray="24" stroke-dashoffset="24">
-        <animate attributeName="stroke-dashoffset" from="24" to="0" dur="1.16s" begin="0.40s" fill="freeze"/>
-      </path>
-      <path id="trace8" d="M740,80 L740,56" fill="none" stroke="#34E27A" stroke-width="1" opacity="0.32" stroke-dasharray="24" stroke-dashoffset="24">
-        <animate attributeName="stroke-dashoffset" from="24" to="0" dur="1.16s" begin="0.40s" fill="freeze"/>
-      </path>
-      </g>
-      <g stroke-linecap="round" stroke-linejoin="round">
-      <path d="M830,80 L830,56" fill="none" stroke="#34E27A" stroke-width="3.2" opacity="0.09" stroke-dasharray="24" stroke-dashoffset="24">
-        <animate attributeName="stroke-dashoffset" from="24" to="0" dur="1.21s" begin="0.45s" fill="freeze"/>
-      </path>
-      <path id="trace9" d="M830,80 L830,56" fill="none" stroke="#34E27A" stroke-width="1" opacity="0.32" stroke-dasharray="24" stroke-dashoffset="24">
-        <animate attributeName="stroke-dashoffset" from="24" to="0" dur="1.21s" begin="0.45s" fill="freeze"/>
-      </path>
-      </g>
-      <g stroke-linecap="round" stroke-linejoin="round">
-      <path d="M991,240 L990.5,240.0 Q990,240 990.0,240.5 L990,460" fill="none" stroke="#34E27A" stroke-width="3.1" opacity="0.09" stroke-dasharray="221" stroke-dashoffset="221">
-        <animate attributeName="stroke-dashoffset" from="221" to="0" dur="0.92s" begin="0.50s" fill="freeze"/>
-      </path>
-      <path id="trace10" d="M991,240 L990.5,240.0 Q990,240 990.0,240.5 L990,460" fill="none" stroke="#34E27A" stroke-width="0.9" opacity="0.32" stroke-dasharray="221" stroke-dashoffset="221">
-        <animate attributeName="stroke-dashoffset" from="221" to="0" dur="0.92s" begin="0.50s" fill="freeze"/>
-      </path>
-      </g>
-      <g stroke-linecap="round" stroke-linejoin="round">
-      <path d="M990,460 L914.0,460.0 Q900,460 900.0,474.0 L900,540" fill="none" stroke="#34E27A" stroke-width="3.1" opacity="0.09" stroke-dasharray="170" stroke-dashoffset="170">
-        <animate attributeName="stroke-dashoffset" from="170" to="0" dur="1.01s" begin="0.55s" fill="freeze"/>
-      </path>
-      <path id="trace11" d="M990,460 L914.0,460.0 Q900,460 900.0,474.0 L900,540" fill="none" stroke="#34E27A" stroke-width="0.9" opacity="0.32" stroke-dasharray="170" stroke-dashoffset="170">
-        <animate attributeName="stroke-dashoffset" from="170" to="0" dur="1.01s" begin="0.55s" fill="freeze"/>
-      </path>
-      </g>
-      <g stroke-linecap="round" stroke-linejoin="round">
-      <path d="M700,90 L700,50" fill="none" stroke="#34E27A" stroke-width="3.1" opacity="0.09" stroke-dasharray="40" stroke-dashoffset="40">
-        <animate attributeName="stroke-dashoffset" from="40" to="0" dur="1.00s" begin="0.60s" fill="freeze"/>
-      </path>
-      <path id="trace12" d="M700,90 L700,50" fill="none" stroke="#34E27A" stroke-width="0.9" opacity="0.32" stroke-dasharray="40" stroke-dashoffset="40">
-        <animate attributeName="stroke-dashoffset" from="40" to="0" dur="1.00s" begin="0.60s" fill="freeze"/>
-      </path>
-      </g>
-      <g stroke-linecap="round" stroke-linejoin="round">
-      <path d="M830,590 L830.0,587.5 Q830,585 832.5,585.0 L960,585" fill="none" stroke="#34E27A" stroke-width="3.1" opacity="0.09" stroke-dasharray="135" stroke-dashoffset="135">
-        <animate attributeName="stroke-dashoffset" from="135" to="0" dur="1.28s" begin="0.65s" fill="freeze"/>
-      </path>
-      <path id="trace13" d="M830,590 L830.0,587.5 Q830,585 832.5,585.0 L960,585" fill="none" stroke="#34E27A" stroke-width="0.9" opacity="0.32" stroke-dasharray="135" stroke-dashoffset="135">
-        <animate attributeName="stroke-dashoffset" from="135" to="0" dur="1.28s" begin="0.65s" fill="freeze"/>
-      </path>
-      </g>
-      <g stroke-linecap="round" stroke-linejoin="round">
-      <path d="M960,130 L960.0,186.0 Q960,200 946.0,200.0 L910,200" fill="none" stroke="#34E27A" stroke-width="3.1" opacity="0.09" stroke-dasharray="120" stroke-dashoffset="120">
-        <animate attributeName="stroke-dashoffset" from="120" to="0" dur="1.42s" begin="0.70s" fill="freeze"/>
-      </path>
-      <path id="trace14" d="M960,130 L960.0,186.0 Q960,200 946.0,200.0 L910,200" fill="none" stroke="#34E27A" stroke-width="0.9" opacity="0.32" stroke-dasharray="120" stroke-dashoffset="120">
-        <animate attributeName="stroke-dashoffset" from="120" to="0" dur="1.42s" begin="0.70s" fill="freeze"/>
-      </path>
-      </g>
-      <g stroke-linecap="round" stroke-linejoin="round">
-      <path d="M680,480 L680,560" fill="none" stroke="#34E27A" stroke-width="3.1" opacity="0.09" stroke-dasharray="80" stroke-dashoffset="80">
-        <animate attributeName="stroke-dashoffset" from="80" to="0" dur="1.11s" begin="0.75s" fill="freeze"/>
-      </path>
-      <path id="trace15" d="M680,480 L680,560" fill="none" stroke="#34E27A" stroke-width="0.9" opacity="0.32" stroke-dasharray="80" stroke-dashoffset="80">
-        <animate attributeName="stroke-dashoffset" from="80" to="0" dur="1.11s" begin="0.75s" fill="freeze"/>
-      </path>
-      </g>
-      <g stroke-linecap="round" stroke-linejoin="round">
-      <path d="M650,560 L650.0,497.5 Q650,483.5 664.0,483.5 L728.0,483.5 Q732.5,483.5 732.5,479.0 L732.5,479.0 Q732.5,474.5 737.0,474.5 L812.8,474.5 Q815,474.5 815.0,476.8 L815.0,476.8 Q815,479 817.3,479.0 L890.8,479.0 Q897.5,479 897.5,485.8 L897.5,485.8 Q897.5,492.5 904.3,492.5 L966.0,492.5 Q980,492.5 980.0,506.5 L980,530.3" fill="none" stroke="#34E27A" stroke-width="3.8000000000000003" opacity="0.09" stroke-dasharray="471.29999999999995" stroke-dashoffset="471.29999999999995">
-        <animate attributeName="stroke-dashoffset" from="471.29999999999995" to="0" dur="1.10s" begin="0.80s" fill="freeze"/>
-      </path>
-      <path id="trace16" d="M650,560 L650.0,497.5 Q650,483.5 664.0,483.5 L728.0,483.5 Q732.5,483.5 732.5,479.0 L732.5,479.0 Q732.5,474.5 737.0,474.5 L812.8,474.5 Q815,474.5 815.0,476.8 L815.0,476.8 Q815,479 817.3,479.0 L890.8,479.0 Q897.5,479 897.5,485.8 L897.5,485.8 Q897.5,492.5 904.3,492.5 L966.0,492.5 Q980,492.5 980.0,506.5 L980,530.3" fill="none" stroke="#34E27A" stroke-width="1.6" opacity="0.32" stroke-dasharray="471.29999999999995" stroke-dashoffset="471.29999999999995">
-        <animate attributeName="stroke-dashoffset" from="471.29999999999995" to="0" dur="1.10s" begin="0.80s" fill="freeze"/>
-      </path>
-      </g>
-    </g>
-    <g fill="#34E27A" opacity="0.25"><circle cx="891" cy="120" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="891" cy="120" r="1.3"/><circle cx="991" cy="60" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="991" cy="60" r="1.3"/><circle cx="891" cy="180" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="891" cy="180" r="1.3"/><circle cx="991" cy="120" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="991" cy="120" r="1.3"/><circle cx="891" cy="240" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="891" cy="240" r="1.3"/><circle cx="991" cy="300" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="991" cy="300" r="1.3"/><circle cx="891" cy="300" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="891" cy="300" r="1.3"/><circle cx="991" cy="360" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="991" cy="360" r="1.3"/><circle cx="650" cy="330" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="650" cy="330" r="1.3"/><circle cx="560" cy="358" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="560" cy="358" r="1.3"/><circle cx="740" cy="330" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="740" cy="330" r="1.3"/><circle cx="830" cy="358" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="830" cy="358" r="1.3"/><circle cx="830" cy="330" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="830" cy="330" r="1.3"/><circle cx="920" cy="358" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="920" cy="358" r="1.3"/><circle cx="650" cy="80" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="650" cy="80" r="1.3"/><circle cx="650" cy="56" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="650" cy="56" r="1.3"/><circle cx="740" cy="80" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="740" cy="80" r="1.3"/><circle cx="740" cy="56" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="740" cy="56" r="1.3"/><circle cx="830" cy="80" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="830" cy="80" r="1.3"/><circle cx="830" cy="56" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="830" cy="56" r="1.3"/><circle cx="991" cy="240" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="991" cy="240" r="1.3"/><circle cx="990" cy="460" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="990" cy="460" r="1.3"/><circle cx="990" cy="460" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="990" cy="460" r="1.3"/><circle cx="900" cy="540" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="900" cy="540" r="1.3"/><circle cx="700" cy="90" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="700" cy="90" r="1.3"/><circle cx="700" cy="50" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="700" cy="50" r="1.3"/><circle cx="830" cy="590" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="830" cy="590" r="1.3"/><circle cx="960" cy="585" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="960" cy="585" r="1.3"/><circle cx="960" cy="130" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="960" cy="130" r="1.3"/><circle cx="910" cy="200" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="910" cy="200" r="1.3"/><circle cx="680" cy="480" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="680" cy="480" r="1.3"/><circle cx="680" cy="560" r="3" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.5"/><circle cx="680" cy="560" r="1.3"/></g>
-    <circle cx="990" cy="240" r="5" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.3"/><circle cx="900" cy="540" r="5" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.3"/><circle cx="830" cy="585" r="5" fill="none" stroke="#34E27A" stroke-width="0.8" opacity="0.3"/>
-    <circle r="3.0" fill="#34E27A" opacity="0.90">
-      <animateMotion dur="9s" begin="boot.end+1.64s" repeatCount="indefinite"><mpath href="#trace0"/></animateMotion>
-    </circle>
-    <circle r="2.4" fill="#34E27A" opacity="0.68">
-      <animateMotion dur="9s" begin="boot.end+1.74s" repeatCount="indefinite"><mpath href="#trace0"/></animateMotion>
-    </circle>
-    <circle r="1.8" fill="#34E27A" opacity="0.46">
-      <animateMotion dur="9s" begin="boot.end+1.84s" repeatCount="indefinite"><mpath href="#trace0"/></animateMotion>
-    </circle>
-    <circle r="1.2" fill="#34E27A" opacity="0.24">
-      <animateMotion dur="9s" begin="boot.end+1.94s" repeatCount="indefinite"><mpath href="#trace0"/></animateMotion>
-    </circle>
-    <circle r="3.0" fill="#8CFFB8" opacity="0.90">
-      <animateMotion dur="12s" begin="boot.end+0.41s" repeatCount="indefinite"><mpath href="#trace10"/></animateMotion>
-    </circle>
-    <circle r="2.4" fill="#8CFFB8" opacity="0.68">
-      <animateMotion dur="12s" begin="boot.end+0.51s" repeatCount="indefinite"><mpath href="#trace10"/></animateMotion>
-    </circle>
-    <circle r="1.8" fill="#8CFFB8" opacity="0.46">
-      <animateMotion dur="12s" begin="boot.end+0.61s" repeatCount="indefinite"><mpath href="#trace10"/></animateMotion>
-    </circle>
-    <circle r="1.2" fill="#8CFFB8" opacity="0.24">
-      <animateMotion dur="12s" begin="boot.end+0.71s" repeatCount="indefinite"><mpath href="#trace10"/></animateMotion>
-    </circle>
-    <circle r="3.0" fill="#F0C578" opacity="0.90">
-      <animateMotion dur="10s" begin="boot.end+1.87s" repeatCount="indefinite"><mpath href="#trace4"/></animateMotion>
-    </circle>
-    <circle r="2.4" fill="#F0C578" opacity="0.68">
-      <animateMotion dur="10s" begin="boot.end+1.97s" repeatCount="indefinite"><mpath href="#trace4"/></animateMotion>
-    </circle>
-    <circle r="1.8" fill="#F0C578" opacity="0.46">
-      <animateMotion dur="10s" begin="boot.end+2.07s" repeatCount="indefinite"><mpath href="#trace4"/></animateMotion>
-    </circle>
-    <circle r="1.2" fill="#F0C578" opacity="0.24">
-      <animateMotion dur="10s" begin="boot.end+2.17s" repeatCount="indefinite"><mpath href="#trace4"/></animateMotion>
-    </circle>
-    <circle r="3.0" fill="#34E27A" opacity="0.90">
-      <animateMotion dur="14s" begin="boot.end+1.11s" repeatCount="indefinite"><mpath href="#trace16"/></animateMotion>
-    </circle>
-    <circle r="2.4" fill="#34E27A" opacity="0.68">
-      <animateMotion dur="14s" begin="boot.end+1.21s" repeatCount="indefinite"><mpath href="#trace16"/></animateMotion>
-    </circle>
-    <circle r="1.8" fill="#34E27A" opacity="0.46">
-      <animateMotion dur="14s" begin="boot.end+1.31s" repeatCount="indefinite"><mpath href="#trace16"/></animateMotion>
-    </circle>
-    <circle r="1.2" fill="#34E27A" opacity="0.24">
-      <animateMotion dur="14s" begin="boot.end+1.41s" repeatCount="indefinite"><mpath href="#trace16"/></animateMotion>
-    </circle>
+  <canvas id="reactor-canvas"></canvas>
+  <div class="aurora"></div>
 
-    <circle cx="990" cy="240" r="1.6" fill="#8CFFB8">
-      <animate attributeName="r" values="1.6;5;1.6" dur="9s" begin="boot.end+1.0s" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values="0.5;1;0.3" dur="9s" begin="boot.end+1.0s" repeatCount="indefinite"/>
-    </circle>
-    <circle cx="900" cy="540" r="1.6" fill="#8CFFB8">
-      <animate attributeName="r" values="1.6;5;1.6" dur="9s" begin="boot.end+4.0s" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values="0.5;1;0.3" dur="9s" begin="boot.end+4.0s" repeatCount="indefinite"/>
-    </circle>
-    <circle cx="830" cy="585" r="1.6" fill="#8CFFB8">
-      <animate attributeName="r" values="1.6;5;1.6" dur="9s" begin="boot.end+7.0s" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values="0.5;1;0.3" dur="9s" begin="boot.end+7.0s" repeatCount="indefinite"/>
-    </circle>
+  <div class="hero-grid">
+    <div>
+      <p class="eyebrow">FortHeC° Suite — Energy + Inventory</p>
+      <h1>
+        <div class="line"><span>Un rapport ancré dans</span></div>
+        <div class="line"><em>la réalité du site</em></div>
+      </h1>
+      <p class="hero-sub">FortHeC° Inventory collecte le terrain. FortHeC° Energy l'analyse. Le rapport passe de 6 à 13 sections, avec des actions ciblées par équipement réel plutôt que des recommandations génériques.</p>
 
-  </svg>
+      <p class="cycle-line">
+        <span class="lbl">&gt;_ suite —</span>
+        <span class="cycle-word" id="cycleWord">
+          <span class="active">Inventory collecte.</span>
+          <span>Energy analyse.</span>
+          <span>6 → 13 sections.</span>
+          <span>Actions ciblées.</span>
+        </span>
+      </p>
 
-  <div class="hero-content">
-    <p class="hero-eyebrow">FortHeC° Suite — Energy + Inventory</p>
-    <h1>Un rapport ancré dans<br><em>la réalité du site</em></h1>
-    <p class="hero-sub">
-      FortHeC° Inventory collecte le terrain. FortHeC° Energy l'analyse. Le rapport passe de 6 à 13 sections, avec des actions ciblées par équipement réel plutôt que des recommandations génériques.
-    </p>
-    <div class="hero-actions">
-      <a href="contact.html" class="btn-primary">Demander une démonstration →</a>
-      <a href="https://app.forthec.fr/?demo=suite" class="btn-ghost" target="_blank" rel="noopener">Essayer la démo gratuite</a>
-      <a href="energy.html" class="btn-ghost">Voir Energy</a>
+      <div class="hero-actions">
+        <a class="btn-primary" href="contact.html">Demander une démonstration →</a>
+        <a class="btn-ghost" href="https://app.forthec.fr/?demo=suite" target="_blank" rel="noopener">Essayer la démo gratuite</a>
+        <a class="btn-ghost" href="energy.html">Voir Energy</a>
+      </div>
+
+      <div class="spec-row">
+        <span class="spec-chip">NF EN 16247</span>
+        <span class="spec-chip">ISO 50006:2023</span>
+        <span class="spec-chip">UE 517/2014</span>
+        <span class="spec-chip hot">100% UE RGPD</span>
+      </div>
     </div>
-    <div class="hero-badges">
-      <span class="badge">NF EN 16247</span>
-      <span class="badge">ISO 50006 :2023</span>
-      <span class="badge">UE 517/2014</span>
-      <span class="badge">100% UE RGPD</span>
-    </div>
-  </div>
 
-  <!-- Extrait du vrai tableau comparatif plus bas sur cette page (pas un
-       résumé inventé) : les 4 lignes qui montrent le plus concrètement ce
-       que le terrain ajoute au rapport. -->
-  <div class="hero-chart">
-    <div class="hero-chart-titlebar">
-      <div class="hero-chart-dots"><span></span><span></span><span></span></div>
-      <span class="hero-chart-titlebar-label">suite.forthec.fr — comparatif.json</span>
-    </div>
-    <div class="hero-chart-body">
-      <div class="hero-chart-label"><span>Audit seul → Mode Suite</span><span>Extrait</span></div>
-      <table class="hero-compare-mini">
+    <div class="hud-panel">
+      <div class="hud-panel-head"><span>comparatif.json</span><span>● live</span></div>
+      <div class="plaque-label"><span>Audit seul → Mode Suite</span><span class="tag">EXTRAIT</span></div>
+      <table class="compare-mini">
+        <thead><tr><th></th><th>Audit seul</th><th>Mode Suite</th></tr></thead>
         <tbody>
-          <tr><td>Sections rapport Word</td><td class="mini-audit">6</td><td class="mini-suite">13</td></tr>
-          <tr><td>Équipements identifiés</td><td class="mini-audit mini-none">Aucun</td><td class="mini-suite">Marque, modèle, puissance, âge</td></tr>
-          <tr><td>Registre F-Gaz</td><td class="mini-audit mini-none">Non</td><td class="mini-suite">GWP, tonnes éq. CO2</td></tr>
-          <tr><td>Cartographie des zones</td><td class="mini-audit mini-none">Non</td><td class="mini-suite">Plan interactif</td></tr>
+          <tr><td>Sections rapport Word</td><td class="v-audit">6</td><td class="v-suite">13</td></tr>
+          <tr><td>Équipements identifiés</td><td class="v-audit v-none">Aucun</td><td class="v-suite">Marque, modèle, puissance, âge</td></tr>
+          <tr><td>Registre F-Gaz</td><td class="v-audit v-none">Non</td><td class="v-suite">GWP, tonnes éq. CO2</td></tr>
+          <tr><td>Cartographie des zones</td><td class="v-audit v-none">Non</td><td class="v-suite">Plan interactif</td></tr>
         </tbody>
       </table>
-      <div class="hero-chart-foot">Comparatif complet plus bas — 10 critères, Audit seul vs <strong>Mode Suite</strong></div>
+      <div class="plaque-foot">Comparatif complet plus bas — 10 critères, Audit seul vs <strong>Mode Suite</strong></div>
     </div>
   </div>
 </section>
 
-<!-- ── Comparatif ─────────────────────────── -->
-<section>
+<!-- ── Comparatif complet ───────────────── -->
+<section class="section">
   <p class="section-eyebrow reveal">Comparatif</p>
-  <h2 class="section-title reveal">Audit seul ou Mode Suite ?</h2>
+  <h2 class="reveal">Audit seul ou Mode Suite ?</h2>
 
-  <div class="table-scroll">
-  <table class="compare-table reveal">
-    <thead>
-      <tr>
-        <th>Fonctionnalité</th>
-        <th class="col-audit">Audit seul</th>
-        <th class="col-suite">Mode Suite<span class="badge-reco">RECOMMANDE</span></th>
-      </tr>
-    </thead>
+  <div style="overflow-x:auto">
+  <table class="compare-mini-full reveal">
+    <thead><tr><th>Fonctionnalité</th><th>Audit seul</th><th>Mode Suite<span class="reco">RECOMMANDÉ</span></th></tr></thead>
     <tbody>
-      <tr>
-        <td>Sections rapport Word</td>
-        <td class="col-audit" data-label="Audit seul">6 sections</td>
-        <td class="col-suite" data-label="Mode Suite">13 sections</td>
-      </tr>
-      <tr>
-        <td>Actions recommandées</td>
-        <td class="col-audit" data-label="Audit seul">Génériques secteur</td>
-        <td class="col-suite" data-label="Mode Suite">Ciblées par équipement réel</td>
-      </tr>
-      <tr>
-        <td>Equipements identifiés</td>
-        <td class="col-audit cross-muted" data-label="Audit seul">Aucun</td>
-        <td class="col-suite" data-label="Mode Suite">Marque, modèle, puissance, âge</td>
-      </tr>
-      <tr>
-        <td>Enveloppe thermique</td>
-        <td class="col-audit cross-muted" data-label="Audit seul">Non</td>
-        <td class="col-suite" data-label="Mode Suite">U-value par zone, seuils RT2012</td>
-      </tr>
-      <tr>
-        <td>Registre F-Gaz</td>
-        <td class="col-audit cross-muted" data-label="Audit seul">Non</td>
-        <td class="col-suite" data-label="Mode Suite">GWP, tonnes eq. CO2, alertes UE 517/2014</td>
-      </tr>
-      <tr>
-        <td>Cartographie des zones</td>
-        <td class="col-audit cross-muted" data-label="Audit seul">Non</td>
-        <td class="col-suite" data-label="Mode Suite">Plan interactif avec équipements</td>
-      </tr>
-      <tr>
-        <td>Scénario électrification</td>
-        <td class="col-audit cross-muted" data-label="Audit seul">Non</td>
-        <td class="col-suite" data-label="Mode Suite">Chiffré par équipement</td>
-      </tr>
-      <tr>
-        <td>Fiches AAPE</td>
-        <td class="col-audit" data-label="Audit seul">Génériques</td>
-        <td class="col-suite" data-label="Mode Suite">Enrichies données terrain</td>
-      </tr>
-      <tr>
-        <td>Plan de comptage</td>
-        <td class="col-audit cross-muted" data-label="Audit seul">Non</td>
-        <td class="col-suite" data-label="Mode Suite">Depuis inventaire Inventory</td>
-      </tr>
-      <tr>
-        <td>Temps inventaire terrain</td>
-        <td class="col-audit" data-label="Audit seul">3-4 jours</td>
-        <td class="col-suite" data-label="Mode Suite">1 journée</td>
-      </tr>
+      <tr><td>Sections rapport Word</td><td class="v-audit">6 sections</td><td class="v-suite">13 sections</td></tr>
+      <tr><td>Actions recommandées</td><td class="v-audit">Génériques secteur</td><td class="v-suite">Ciblées par équipement réel</td></tr>
+      <tr><td>Équipements identifiés</td><td class="v-audit v-none">Aucun</td><td class="v-suite">Marque, modèle, puissance, âge</td></tr>
+      <tr><td>Enveloppe thermique</td><td class="v-audit v-none">Non</td><td class="v-suite">U-value par zone, seuils RT2012</td></tr>
+      <tr><td>Registre F-Gaz</td><td class="v-audit v-none">Non</td><td class="v-suite">GWP, tonnes eq. CO2, alertes UE 517/2014</td></tr>
+      <tr><td>Cartographie des zones</td><td class="v-audit v-none">Non</td><td class="v-suite">Plan interactif avec équipements</td></tr>
+      <tr><td>Scénario électrification</td><td class="v-audit v-none">Non</td><td class="v-suite">Chiffré par équipement</td></tr>
+      <tr><td>Fiches AAPE</td><td class="v-audit">Génériques</td><td class="v-suite">Enrichies données terrain</td></tr>
+      <tr><td>Plan de comptage</td><td class="v-audit v-none">Non</td><td class="v-suite">Depuis inventaire Inventory</td></tr>
+      <tr><td>Temps inventaire terrain</td><td class="v-audit">3-4 jours</td><td class="v-suite">1 journée</td></tr>
     </tbody>
   </table>
   </div>
 </section>
 
-<!-- ── Vidéo comparatif ───────────────────── -->
-<section class="dark">
+<!-- ── Vidéo comparatif ─────────────────── -->
+<section class="section">
   <p class="section-eyebrow reveal">En action</p>
-  <h2 class="section-title reveal" style="color:var(--white)">Voyez la différence en 60 secondes</h2>
-  <p class="section-sub reveal">Même site industriel, même audit. Avec et sans les données terrain Inventory.</p>
+  <h2 class="reveal">Voyez la différence en 60 secondes</h2>
+  <p class="lede reveal">Même site industriel, même audit. Avec et sans les données terrain Inventory.</p>
 
-  <div class="reveal" style="max-width:900px;margin:2rem auto 0">
-    <video autoplay muted loop playsinline
-           style="width:100%;border-radius:12px;box-shadow:0 8px 48px rgba(0,0,0,0.4)">
+  <div class="reveal video-frame" style="max-width:900px; margin:0 auto">
+    <video autoplay muted loop playsinline>
       <source src="video/energy_video2_mode_suite_diff_v4.webm" type="video/webm">
     </video>
   </div>
 </section>
 
-<!-- ── Gains Mode Suite ───────────────────── -->
-<section class="alt">
+<!-- ── Gains Mode Suite ─────────────────── -->
+<section class="section">
   <p class="section-eyebrow reveal">Gains Mode Suite</p>
-  <h2 class="section-title reveal">Le terrain change la nature du rapport</h2>
+  <h2 class="reveal">Le terrain change la nature du rapport</h2>
 
   <div class="gains-grid">
     <div class="gain-card reveal">
-      <div class="gain-number" data-target="13">0</div>
+      <div class="gain-number">13</div>
       <div class="gain-label">Sections rapport<br>contre 6 en audit seul</div>
     </div>
     <div class="gain-card reveal">
-      <div class="gain-number" data-target="75" data-suffix="%">0%</div>
+      <div class="gain-number">75%</div>
       <div class="gain-label">Gain inventaire terrain</div>
     </div>
     <div class="gain-card reveal">
-      <div class="gain-number" data-target="100" data-suffix="%">0%</div>
+      <div class="gain-number">100%</div>
       <div class="gain-label">des actions ciblées sur l'équipement réel</div>
     </div>
     <div class="gain-card reveal">
-      <div class="gain-number" data-target="0">0</div>
+      <div class="gain-number">0</div>
       <div class="gain-label">Ressaisie entre Inventory et Energy</div>
     </div>
   </div>
 </section>
 
-<!-- ── CTA ────────────────────────────────── -->
-<section>
-  <div class="contact-wrapper">
-    <div class="contact-info reveal">
+<!-- ── CTA ──────────────────────────────── -->
+<section class="section">
+  <div class="cta-grid">
+    <div class="cta-box reveal">
       <h3>Ce que couvre la démo Suite</h3>
-      <ul class="feature-list">
+      <ul>
         <li>Import données consommation + inventaire terrain</li>
         <li>Rapport 13 sections généré en direct</li>
         <li>Comparaison avec rapport audit seul</li>
         <li>Questions intégration workflow cabinet</li>
       </ul>
     </div>
-    <div class="contact-cta-box reveal">
+    <div class="cta-box hot reveal">
       <h4>Demander une démonstration Suite</h4>
       <p>Hugo Chambefort, Ingénieur Maîtrise des Energies, Polytech Nantes.</p>
-      <a href="contact.html" class="btn-white">Planifier une session →</a>
+      <a class="btn-primary" href="contact.html">Planifier une session →</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="footer-logo">
-    <img src="img/n2-icon-mark.png" alt="" height="24">
-    <span>FortHeC<em>°</em></span>
-  </div>
-  <div class="footer-meta">© 2026 FortHeC°. Données hébergées en France. contact@forthec.fr</div>
-  <div class="footer-links">
+  © 2026 FortHeC°. Données hébergées en France. contact@forthec.fr
+  <div class="footer-nav">
     <a href="index.html">Accueil</a>
     <a href="energy.html">Energy</a>
     <a href="inventory.html">Inventory</a>
@@ -463,10 +539,101 @@
     <a href="console.html">Console</a>
     <a href="blog/index.html">Blog</a>
     <a href="legal.html">Mentions légales</a>
-    <a href="https://www.linkedin.com/in/hugo-chambefort-41097715b/" target="_blank" rel="noopener">LinkedIn</a>
   </div>
 </footer>
 
-<script src="js/main.js"></script>
+<!-- ============ Libraries ============ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.165.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.165.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module">
+import { initReactorLab, runBoot, reduceMotion, markActiveNav, shouldSkipBoot, markBooted, initAppSwitcher } from './js/reactor-lab.js';
+markActiveNav();
+initAppSwitcher();
+
+const { cableMat } = initReactorLab({
+  coreOffsetX: 2.0,
+  premiumCore: true,
+  // real data, but genuinely Energy's own gains table — kept honest by
+  // labelling it as what it is: what Inventory's captures feed downstream,
+  // Suite has no 5-point series of its own either — same honest cross-
+  // reference used on the Inventory port, labelled as what it is.
+  echoValues: [85, 95, 90, 75, 33],
+  echoLabel: 'suite → energy.forthec.fr · audit_gains'
+});
+
+/* ============ Boot sequence — it "compiles" before it powers on (energy + web-dev fusion) ============ */
+const bootOverlay = document.getElementById('bootOverlay');
+const bootLines = [
+  '> npm run build:suite',
+  '> merging inventory + energy ...',
+  '> comparatif.json -- 6 -> 13 sections',
+  '> rendering rapport_word.docx ...',
+  '> render complete'
+];
+
+/* ============ Entrance timeline (runs after boot) ============ */
+function startEntrance(){
+  const tl = gsap.timeline({ defaults:{ ease:'power3.out' } });
+  tl.from('.hud-frame', { opacity:0, duration:.6 })
+    .from('.eyebrow', { opacity:0, y:14, duration:.5 }, '-=.2')
+    .from('h1 .line span', { opacity:0, y:'100%', duration:.7, stagger:.12 }, '-=.2')
+    .from('.hero-sub', { opacity:0, y:14, duration:.5 }, '-=.3')
+    .from('.cycle-line', { opacity:0, y:10, duration:.5 }, '-=.3')
+    .from('.hero-actions a', { opacity:0, y:12, duration:.45, stagger:.08 }, '-=.25')
+    .from('.spec-chip', { opacity:0, y:8, duration:.4, stagger:.05 }, '-=.2')
+    .from('.hud-panel', { opacity:0, x:30, duration:.7 }, '-=.9')
+    .from('.compare-mini tbody tr', { opacity:0, y:6, duration:.35, stagger:.06 }, '-=.3');
+
+  // decoupled from the GSAP chain on purpose — a plain timer is one less
+  // moving part to debug than a callback nested inside a timeline.
+  setTimeout(()=>{
+    if(cableMat) gsap.to(cableMat, { opacity:1, duration:.35, yoyo:true, repeat:1, ease:'power1.inOut' });
+  }, 1500);
+}
+
+if(reduceMotion || shouldSkipBoot()){
+  bootOverlay.classList.add('hidden');
+  startEntrance();
+  markBooted();
+} else {
+  runBoot(bootLines, ()=>{
+    bootOverlay.classList.add('hidden');
+    startEntrance();
+    markBooted();
+  });
+}
+
+/* ============ Word cycle (real pipeline steps, not decoration) ============ */
+if(!reduceMotion){
+  const wrap = document.getElementById('cycleWord');
+  const spans = [...wrap.children];
+  let idx = 0;
+  setInterval(()=>{
+    spans[idx].classList.remove('active');
+    spans[idx].classList.add('leaving');
+    const next = (idx+1) % spans.length;
+    spans[next].classList.remove('leaving');
+    // force reflow so the transition retriggers
+    void spans[next].offsetWidth;
+    spans[next].classList.add('active');
+    setTimeout(()=> spans[idx].classList.remove('leaving'), 550);
+    idx = next;
+  }, 2400);
+}
+
+/* ============ Section 2 reveal ============ */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{ if(en.isIntersecting) en.target.classList.add('in'); });
+}, { threshold:0.2 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
 </body>
 </html>

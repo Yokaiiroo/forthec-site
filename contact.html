@@ -1,304 +1,428 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FortHeC° — Contact et démonstration</title>
-  <meta name="description" content="Demandez une démonstration FortHeC° sur vos propres données. Hugo Chambefort, Ingénieur Maîtrise des Energies, Polytech Nantes.">
-  <link rel="icon" type="image/png" href="img/n2-app-icon.png">
-  <link rel="canonical" href="https://forthec.fr/contact.html">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="FortHeC°">
-  <meta property="og:locale" content="fr_FR">
-  <meta property="og:title" content="FortHeC° — Contact et démonstration">
-  <meta property="og:description" content="Demandez une démonstration FortHeC° sur vos propres données. Hugo Chambefort, Ingénieur Maîtrise des Energies, Polytech Nantes.">
-  <meta property="og:url" content="https://forthec.fr/contact.html">
-  <meta property="og:image" content="https://forthec.fr/img/n2-app-icon.png">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="FortHeC° — Contact et démonstration">
-  <meta name="twitter:description" content="Demandez une démonstration FortHeC° sur vos propres données. Hugo Chambefort, Ingénieur Maîtrise des Energies, Polytech Nantes.">
-  <meta name="twitter:image" content="https://forthec.fr/img/n2-app-icon.png">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
-  <style>
-    .contact-page-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: start;
-    }
-    .contact-left h2 {
-      font-size: clamp(1.75rem, 3vw, 2.5rem);
-      font-weight: 800;
-      letter-spacing: -0.025em;
-      line-height: 1.15;
-      margin-bottom: 1rem;
-    }
-    .contact-left p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.7;
-      margin-bottom: 2rem;
-    }
-    .contact-block {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-bottom: 2.5rem;
-    }
-    .contact-block-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 0.9rem;
-      color: var(--ink);
-    }
-    .contact-block-item .icon {
-      min-width: 44px; height: 26px;
-      padding: 0 0.4rem;
-      background: rgba(52,226,122,0.08);
-      border: 1px solid rgba(52,226,122,0.2);
-      border-radius: 6px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Plex Mono', 'SF Mono', Consolas, monospace;
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      color: var(--volt-deep);
-      flex-shrink: 0;
-    }
-    .contact-block-item a {
-      color: var(--volt-deep);
-      font-weight: 500;
-      transition: opacity 0.2s;
-    }
-    .contact-block-item a:hover { opacity: 0.75; }
-    .profile-card {
-      background: var(--paper-mid);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-      margin-top: 1rem;
-    }
-    .profile-avatar {
-      width: 56px; height: 56px;
-      border-radius: 50%;
-      flex-shrink: 0;
-      overflow: hidden;
-    }
-    .profile-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .profile-name {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--ink);
-    }
-    .profile-title {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 0.2rem;
-    }
-    /* Formulaire de contact */
-    .contact-form {
-      background: var(--white);
-      border: 1px solid var(--paper-mid);
-      border-radius: var(--radius-lg);
-      padding: 2.5rem;
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-    }
-    .contact-form::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--grad);
-    }
-    .contact-form h3 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-    .contact-form p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 1.75rem;
-    }
-    .form-group {
-      margin-bottom: 1.25rem;
-    }
-    .form-group label {
-      display: block;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 0.4rem;
-      letter-spacing: 0.02em;
-    }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      border: 1px solid var(--paper-mid);
-      border-radius: 8px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.875rem;
-      color: var(--ink);
-      background: var(--paper);
-      transition: border-color 0.2s, box-shadow 0.2s;
-      outline: none;
-    }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--volt);
-      box-shadow: 0 0 0 3px rgba(52,226,122,0.15);
-    }
-    .form-group textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-    .form-submit {
-      width: 100%;
-      background: var(--grad);
-      color: var(--ink);
-      border: none;
-      padding: 0.875rem 2rem;
-      border-radius: 8px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
-    }
-    .form-submit:hover {
-      filter: brightness(1.08);
-      transform: translateY(-1px);
-    }
-    .form-note {
-      font-size: 0.75rem;
-      color: var(--muted);
-      text-align: center;
-      margin-top: 0.75rem;
-    }
-    .form-error-banner {
-      background: rgba(214,48,74,0.08);
-      border: 1px solid rgba(214,48,74,0.3);
-      color: #D6304A;
-      font-size: 0.85rem;
-      line-height: 1.5;
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      margin-bottom: 1.25rem;
-    }
-    .h-captcha {
-      margin: 0.25rem 0 1.25rem 0;
-    }
-    .form-group input:disabled,
-    .form-group select:disabled,
-    .form-group textarea:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-    .form-submit:disabled {
-      opacity: 0.7;
-      cursor: not-allowed;
-      transform: none;
-    }
-    .form-success {
-      text-align: center;
-      padding: 1.5rem 0.5rem;
-    }
-    .form-success h4 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 0.75rem;
-    }
-    .form-success p {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.65;
-      margin-bottom: 1.5rem;
-    }
-    .form-success a {
-      color: var(--volt-deep);
-      font-weight: 600;
-    }
-    /* Produits */
-    .produit-pills {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
-    }
-    .produit-pill {
-      border: 1px solid var(--paper-mid);
-      border-radius: 6px;
-      padding: 0.4rem 0.9rem;
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--muted);
-      cursor: pointer;
-      transition: all 0.15s;
-      background: var(--white);
-    }
-    .produit-pill.active,
-    .produit-pill:hover {
-      border-color: var(--volt);
-      color: var(--volt-deep);
-      background: rgba(52,226,122,0.06);
-    }
-    @media (max-width: 768px) {
-      .contact-page-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .form-row { grid-template-columns: 1fr; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FortHeC° — Contact et démonstration</title>
+<meta name="description" content="Demandez une démonstration FortHeC° sur vos propres données. Hugo Chambefort, Ingénieur Maîtrise des Energies, Polytech Nantes.">
+<link rel="icon" type="image/png" href="img/n2-app-icon.png">
+<link rel="canonical" href="https://forthec.fr/contact.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FortHeC°">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="FortHeC° — Contact et démonstration">
+<meta property="og:description" content="Demandez une démonstration FortHeC° sur vos propres données. Hugo Chambefort, Ingénieur Maîtrise des Energies, Polytech Nantes.">
+<meta property="og:url" content="https://forthec.fr/contact.html">
+<meta property="og:image" content="https://forthec.fr/img/n2-app-icon.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FortHeC° — Contact et démonstration">
+<meta name="twitter:description" content="Demandez une démonstration FortHeC° sur vos propres données. Hugo Chambefort, Ingénieur Maîtrise des Energies, Polytech Nantes.">
+<meta name="twitter:image" content="https://forthec.fr/img/n2-app-icon.png">
+<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+
+<style>
+/* ============ Fonts (real brand faces, self-hosted, local relative paths) ============ */
+@font-face{
+  font-family:'Plex Sans'; font-weight:700; font-style:normal; font-display:swap;
+  src:url('fonts/plexsans-700-normal.woff2') format('woff2');
+}
+@font-face{
+  font-family:'Plex Sans'; font-weight:500; font-style:normal; font-display:swap;
+  src:url('fonts/plexsans-500-normal.woff2') format('woff2');
+}
+@font-face{
+  font-family:'Plex Mono'; font-weight:400; font-style:normal; font-display:swap;
+  src:url('fonts/plexmono-400-normal.woff2') format('woff2');
+}
+
+/* ============ Tokens — deliberate single dark world (eco-cyber-reactor), not a light/dark pair ============ */
+:root{
+  --void:       #05080a;   /* base ground */
+  --void-2:     #0a1219;   /* panel surface, slightly blue-green lifted */
+  --void-3:     #0e1a20;   /* panel border/hover surface */
+  --volt:       #34e27a;   /* primary — data / electric / nature (real brand) */
+  --volt-lt:    #8cffb8;
+  --volt-deep:  #123322;
+  --amber:      #e0a23d;   /* secondary — money / payoff (real brand) */
+  --amber-lt:   #f0c578;
+  --cyan:       #2fd8ff;   /* tertiary — cyber / signal depth (new, for this lab only) */
+  --plasma:     #b46bff;   /* rare flare accent — used once, on purpose */
+  --ink:        #eaf6f0;   /* body text, cool-tinted near-white */
+  --muted:      #7e9490;
+  --font-display:'Plex Sans', system-ui, sans-serif;
+  --font-mono:  'Plex Mono', 'SF Mono', Consolas, monospace;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--void);
+  color:var(--ink);
+  font-family:var(--font-display);
+  font-weight:500;
+  overflow-x:hidden;
+}
+::selection{background:var(--volt); color:#04120a;}
+
+a{color:inherit;}
+
+/* ============ HUD frame + noise/scanline atmosphere (global, behind everything meaningful) ============ */
+.hud-frame{position:fixed; inset:14px; z-index:50; pointer-events:none; border:1px solid rgba(52,226,122,0.14);}
+.hud-frame::before,.hud-frame::after,
+.hud-frame b::before,.hud-frame b::after{
+  content:''; position:absolute; width:22px; height:22px; border-color:var(--volt); opacity:.55;
+}
+.hud-frame::before{top:-1px;left:-1px;border-top:2px solid;border-left:2px solid;}
+.hud-frame::after{top:-1px;right:-1px;border-top:2px solid;border-right:2px solid;}
+.hud-frame b::before{bottom:-1px;left:-1px;border-bottom:2px solid;border-left:2px solid;position:absolute;}
+.hud-frame b::after{bottom:-1px;right:-1px;border-bottom:2px solid;border-right:2px solid;position:absolute;}
+.hud-frame .tag{position:absolute; top:8px; left:20px; font:11px/1 var(--font-mono); letter-spacing:.14em; color:var(--muted); opacity:.7;}
+.hud-frame .tag.r{left:auto; right:20px; color:var(--amber-lt);}
+/* overlaps the nav logo/badge at narrow widths (real bug, confirmed via screenshot) --
+   these labels are decorative, the nav already carries the essential info */
+@media (max-width:600px){ .hud-frame .tag{display:none;} }
+
+.scanlines{
+  position:fixed; inset:0; z-index:40; pointer-events:none; mix-blend-mode:overlay; opacity:.35;
+  background:repeating-linear-gradient(to bottom, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 3px);
+}
+.vignette{position:fixed; inset:0; z-index:39; pointer-events:none;
+  background:radial-gradient(ellipse at 50% 40%, transparent 45%, rgba(0,0,0,0.55) 100%);
+}
+
+/* ============ Boot sequence overlay (energy + web-dev fusion: it "compiles" before it powers on) ============ */
+.boot-overlay{
+  position:fixed; inset:0; z-index:200; background:var(--void);
+  display:flex; align-items:center; padding:0 10vw;
+  transition:opacity .6s ease;
+}
+.boot-overlay.hidden{opacity:0; pointer-events:none;}
+.boot-lines{font:14px/1.9 var(--font-mono); color:var(--volt-lt); max-width:640px;}
+.boot-line{white-space:pre-wrap; word-break:break-word; text-shadow:0 0 10px rgba(52,226,122,.35);}
+.boot-line .cursor{display:inline-block; width:8px; height:1em; background:var(--volt); margin-left:2px; vertical-align:-2px; animation:blink 1s steps(1) infinite;}
+@keyframes blink{50%{opacity:0;}}
+
+/* ============ NAV ============ */
+nav{
+  position:relative; z-index:60; display:flex; align-items:center; justify-content:space-between;
+  padding:22px 40px; font-family:var(--font-mono); font-size:13px; letter-spacing:.04em;
+}
+.nav-logo{display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--ink); font-weight:400;}
+.nav-logo .dot{width:9px; height:9px; border-radius:50%; background:var(--volt); box-shadow:0 0 12px var(--volt), 0 0 24px var(--volt);}
+.nav-logo em{color:var(--amber-lt); font-style:normal;}
+.nav-badge{border:1px solid rgba(240,197,120,0.4); color:var(--amber-lt); padding:4px 10px; border-radius:3px; font-size:11px; letter-spacing:.12em;}
+.nav-links{display:flex; align-items:center; gap:20px; list-style:none; margin:0; padding:0; flex-wrap:wrap;}
+.nav-links a{color:var(--muted); text-decoration:none; font:12px/1 var(--font-mono); letter-spacing:.02em; transition:color .2s;}
+.nav-links a:hover{color:var(--volt-lt);}
+.nav-links a.active{color:var(--volt-lt);}
+.nav-links a.cta{color:#04120a; background:linear-gradient(120deg, var(--amber-lt), var(--volt)); padding:7px 14px; border-radius:3px; font-weight:700; letter-spacing:0;}
+@media (max-width:760px){ .nav-badge{display:none;} }
+
+/* ---- App switcher (real site component, js/main.js) ---- */
+.app-switcher{position:fixed; top:50%; right:0; transform:translateY(-50%); z-index:150; display:flex; align-items:center;}
+.app-switcher-tab{writing-mode:vertical-rl; text-orientation:mixed; background:linear-gradient(160deg, var(--amber-lt), var(--volt)); color:#04120a; font:12px var(--font-mono); font-weight:700; letter-spacing:.03em; padding:16px 9px; border-radius:6px 0 0 6px; cursor:pointer; border:none;}
+.app-switcher-tab:hover{filter:brightness(1.08);}
+.app-switcher.open .app-switcher-tab{border-radius:0 0 0 6px;}
+.app-switcher-panel{position:absolute; right:100%; top:50%; translate:0 -50%; background:rgba(10,18,25,.9); backdrop-filter:blur(14px); border:1px solid rgba(52,226,122,.25); border-radius:8px 0 0 8px; box-shadow:-8px 0 30px rgba(0,0,0,.5); padding:18px; width:200px; max-width:calc(100vw - 3rem); transform:translateX(12px); opacity:0; pointer-events:none; transition:transform .2s ease, opacity .2s ease;}
+.app-switcher.open .app-switcher-panel{transform:translateX(0); opacity:1; pointer-events:auto;}
+.app-switcher-panel h4{font:10px var(--font-mono); text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin:0 0 12px;}
+.app-switcher-link{display:flex; align-items:center; padding:10px 12px; border-radius:4px; font:12px var(--font-mono); color:var(--ink); background:rgba(255,255,255,.03); border:1px solid rgba(234,246,240,.1); margin-bottom:8px; text-decoration:none;}
+.app-switcher-link:last-child{margin-bottom:0;}
+.app-switcher-link:hover{border-color:var(--volt); color:var(--volt-lt); background:rgba(52,226,122,.08);}
+
+/* ============ HERO ============ */
+.hero{position:relative; min-height:100svh; display:grid; place-items:center; overflow:hidden;}
+
+/* fixed, not absolute: stays pinned behind the WHOLE page as you scroll,
+   instead of scrolling away with the hero section — this is the actual
+   "background that persists" effect being tested. */
+#reactor-canvas{position:fixed; inset:0; z-index:0; width:100%; height:100%; display:block;}
+
+.aurora{
+  position:fixed; inset:-10%; z-index:1; pointer-events:none; mix-blend-mode:screen; opacity:.5;
+  background:
+    radial-gradient(38% 42% at 22% 28%, rgba(52,226,122,0.22), transparent 60%),
+    radial-gradient(34% 38% at 82% 70%, rgba(47,216,255,0.16), transparent 60%),
+    radial-gradient(30% 34% at 65% 15%, rgba(224,162,61,0.12), transparent 60%);
+  animation:aurora-drift 22s ease-in-out infinite alternate;
+}
+@keyframes aurora-drift{
+  0%{transform:translate3d(0,0,0) scale(1);}
+  100%{transform:translate3d(-2%,3%,0) scale(1.06);}
+}
+
+.hero-grid{
+  position:relative; z-index:5; width:min(1360px,92vw); margin:0 auto;
+  display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:center;
+  padding-top:64px;
+}
+@media (max-width:920px){ .hero-grid{grid-template-columns:1fr; gap:40px;} }
+
+.eyebrow{
+  font:12px/1 var(--font-mono); letter-spacing:.2em; text-transform:uppercase; color:var(--volt-lt);
+  display:flex; align-items:center; gap:10px; margin:0 0 22px;
+}
+.eyebrow::before{content:''; width:26px; height:1px; background:var(--volt); box-shadow:0 0 8px var(--volt);}
+
+h1{
+  font-family:'Plex Mono', var(--font-mono); font-weight:400; margin:0 0 22px; letter-spacing:-0.01em;
+  font-size:clamp(1.5rem, 4.6vw, 3.7rem); line-height:1.15; color:var(--ink);
+}
+h1 .line{display:block; overflow:hidden;}
+h1 .line span{display:inline-block; white-space:normal;}
+@media (max-width:600px){ h1{font-size:1.4rem; line-height:1.25;} }
+h1 em{
+  font-style:normal;
+  background:linear-gradient(100deg, var(--amber-lt) 0%, var(--volt) 65%, var(--cyan) 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  text-shadow:0 0 40px rgba(52,226,122,0.25);
+}
+
+.hero-sub{max-width:52ch; color:var(--muted); font-size:1.02rem; line-height:1.65; margin:0 0 26px; text-shadow:0 2px 16px var(--void), 0 0 6px var(--void);}
+
+.cycle-line{
+  font:14px/1 var(--font-mono); color:var(--ink); margin:0 0 34px; display:flex; align-items:center; gap:10px;
+  perspective:400px;
+}
+.cycle-line .lbl{color:var(--muted);}
+.cycle-word{
+  position:relative; color:var(--volt-lt); min-width:190px; height:1.3em; display:inline-block;
+  transform-style:preserve-3d;
+}
+.cycle-word span{
+  position:absolute; inset:0; opacity:0; transform:rotateX(90deg); transform-origin:50% 100%;
+}
+.cycle-word span.active{opacity:1; transform:rotateX(0deg); transition:transform .5s cubic-bezier(.2,.8,.2,1), opacity .35s ease;}
+.cycle-word span.leaving{opacity:0; transform:rotateX(-90deg); transition:transform .5s cubic-bezier(.2,.8,.2,1), opacity .35s ease;}
+
+.hero-actions{display:flex; flex-wrap:wrap; gap:14px; margin-bottom:34px;}
+.btn-primary{
+  position:relative; padding:14px 26px; border-radius:3px; text-decoration:none; font-weight:700;
+  font-size:14px; letter-spacing:.02em; color:#04120a;
+  background:linear-gradient(120deg, var(--amber-lt), var(--volt));
+  box-shadow:0 0 0 1px rgba(52,226,122,.4), 0 8px 30px -8px rgba(52,226,122,.7);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.btn-primary:hover{transform:translateY(-2px); box-shadow:0 0 0 1px rgba(52,226,122,.6), 0 14px 40px -8px rgba(52,226,122,.9);}
+.btn-ghost{
+  padding:14px 22px; border-radius:3px; text-decoration:none; font-size:14px; color:var(--ink);
+  border:1px solid rgba(234,246,240,0.18); background:rgba(255,255,255,0.02);
+  transition:border-color .25s ease, background .25s ease;
+}
+.btn-ghost:hover{border-color:var(--cyan); background:rgba(47,216,255,0.06);}
+
+.spec-row{display:flex; flex-wrap:wrap; gap:10px;}
+.spec-chip{
+  font:11px/1 var(--font-mono); letter-spacing:.08em; padding:7px 11px; border-radius:2px;
+  border:1px solid rgba(234,246,240,0.14); color:var(--muted);
+}
+.spec-chip.hot{border-color:rgba(240,197,120,0.45); color:var(--amber-lt);}
+
+/* ---- HUD telemetry panel ---- */
+.hud-panel{
+  position:relative; background:rgba(10,18,25,0.55); backdrop-filter:blur(14px) saturate(140%);
+  border:1px solid rgba(52,226,122,0.22); border-radius:6px; padding:26px 26px 22px;
+  box-shadow:0 0 0 1px rgba(0,0,0,.3), 0 30px 60px -20px rgba(0,0,0,.6), inset 0 0 40px rgba(52,226,122,0.03);
+}
+.hud-panel::before{
+  content:''; position:absolute; top:0; left:24px; right:24px; height:1px;
+  background:linear-gradient(90deg, transparent, var(--volt), transparent);
+  animation:sweep 4s linear infinite;
+}
+@keyframes sweep{0%{transform:translateX(-40%);}100%{transform:translateX(40%);}}
+.hud-panel-head{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:18px;}
+.hud-panel-head span:first-child{font:11px var(--font-mono); letter-spacing:.14em; color:var(--muted); text-transform:uppercase;}
+.hud-panel-head span:last-child{font:11px var(--font-mono); color:var(--volt-lt);}
+
+.money-readout{margin-bottom:20px;}
+.money-readout .num{
+  font-family:var(--font-mono); font-size:2.5rem; font-weight:400; color:var(--amber-lt);
+  text-shadow:0 0 22px rgba(224,162,61,.45); font-variant-numeric:tabular-nums; line-height:1;
+}
+.money-readout .cap{font:11px var(--font-mono); color:var(--muted); letter-spacing:.1em; margin-top:6px;}
+
+.bar-row{margin-bottom:12px;}
+.bar-row .bh{display:flex; justify-content:space-between; font:11px var(--font-mono); color:var(--muted); margin-bottom:5px;}
+.bar-row .bh b{color:var(--ink); font-weight:400;}
+.bar-track{height:6px; border-radius:3px; background:rgba(255,255,255,0.06); overflow:hidden; position:relative;}
+.bar-fill{
+  height:100%; width:0%; border-radius:3px;
+  background:linear-gradient(90deg, var(--amber-lt), var(--volt));
+  box-shadow:0 0 10px var(--volt), 0 0 2px var(--volt-lt);
+  transition:width 1.4s cubic-bezier(.16,.8,.2,1);
+}
+
+/* ---- Suite telemetry: real KPIs from different FortHeC° products, not one product's bars ---- */
+.kpi-block{
+  padding:14px 0; border-top:1px solid rgba(234,246,240,0.1);
+  opacity:0; transform:translateY(8px); transition:opacity .5s ease, transform .5s ease;
+}
+.kpi-block.in{opacity:1; transform:none;}
+.kpi-row{display:flex; justify-content:space-between; align-items:baseline; gap:12px;}
+.kpi-lbl{font:11px var(--font-mono); color:var(--muted); letter-spacing:.04em;}
+.kpi-val{font:16px var(--font-mono); color:var(--cyan); text-shadow:0 0 12px rgba(47,216,255,.4); white-space:nowrap;}
+.kpi-sub{font:11px var(--font-mono); color:var(--muted); opacity:.75; margin-top:4px;}
+
+/* ============ Real page sections below the hero — the reactor now stays
+   visible behind ALL of them (fixed canvas), so every section gets a
+   near-opaque backdrop to keep its content readable over the glow. ============ */
+.section{
+  position:relative; padding:90px 40px; max-width:1100px; margin:0 auto;
+  background:linear-gradient(180deg, transparent 0%, var(--void) 10%, var(--void) 100%);
+}
+.section-eyebrow{font:12px var(--font-mono); letter-spacing:.2em; color:var(--cyan); text-transform:uppercase;}
+.section h2{font-family:'Plex Mono'; font-weight:400; font-size:clamp(1.5rem,3vw,2.1rem); margin:12px 0 10px; color:var(--ink);}
+.section .lede{max-width:65ch; color:var(--muted); font-size:.98rem; line-height:1.6; margin-bottom:40px;}
+
+.reveal{opacity:0; transform:translateY(20px); transition:opacity .7s ease, transform .7s ease;}
+.reveal.in{opacity:1; transform:none;}
+
+.step-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+@media (max-width:860px){ .step-grid{grid-template-columns:1fr 1fr;} }
+@media (max-width:560px){ .step-grid{grid-template-columns:1fr;} }
+.step-card{background:rgba(10,18,25,.55); backdrop-filter:blur(10px); border:1px solid rgba(52,226,122,.16); border-radius:6px; padding:20px;}
+.step-tag{display:inline-block; font:10px var(--font-mono); letter-spacing:.1em; color:var(--volt-lt); border:1px solid rgba(52,226,122,.3); padding:3px 8px; border-radius:2px; margin-bottom:12px;}
+.step-card h3{font-family:var(--font-display); font-size:.98rem; font-weight:700; margin:0 0 10px; color:var(--ink);}
+.step-card ul{margin:0; padding-left:16px; font-size:.82rem; color:var(--muted); line-height:1.6;}
+.step-card li{margin-bottom:4px;}
+
+.video-grid{display:grid; grid-template-columns:1fr; gap:48px;}
+.video-card-label{font:11px var(--font-mono); letter-spacing:.08em; color:var(--volt-lt); text-transform:uppercase; margin-bottom:10px;}
+.video-frame{border-radius:6px; overflow:hidden; border:1px solid rgba(234,246,240,.14); box-shadow:0 20px 50px -20px rgba(0,0,0,.7); line-height:0;}
+.video-frame video{display:block; width:100%;}
+.video-cap{font-size:.82rem; color:var(--muted); margin-top:10px; line-height:1.5;}
+
+.gains-table-lab{width:100%; border-collapse:collapse; font:12px var(--font-mono); margin-bottom:24px;}
+.gains-table-lab th{text-align:left; font-weight:400; color:var(--muted); letter-spacing:.05em; text-transform:uppercase; font-size:10px; padding-bottom:10px; border-bottom:1px solid rgba(234,246,240,.16);}
+.gains-table-lab td{padding:10px 6px; border-bottom:1px solid rgba(234,246,240,.08); color:var(--ink);}
+.gains-table-lab td.gain{color:var(--volt-lt); font-weight:600; text-align:right;}
+.gains-banner-lab{text-align:center; padding:24px; border-radius:6px; background:rgba(10,18,25,.55); border:1px solid rgba(240,197,120,.25); font:15px var(--font-mono); color:var(--ink);}
+.gains-banner-lab strong{color:var(--amber-lt); text-shadow:0 0 14px rgba(240,197,120,.4);}
+
+.conf-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:12px;}
+@media (max-width:560px){ .conf-grid{grid-template-columns:1fr;} }
+.conf-item{display:flex; justify-content:space-between; align-items:center; background:rgba(10,18,25,.5); border:1px solid rgba(234,246,240,.1); border-radius:4px; padding:14px 18px; font:13px var(--font-mono); color:var(--ink);}
+.conf-ok{color:var(--volt-lt); font-weight:700; font-size:11px; letter-spacing:.06em;}
+
+.sec-list{display:flex; flex-direction:column; gap:14px;}
+.sec-row{display:grid; grid-template-columns:220px 1fr; gap:18px; padding-bottom:14px; border-bottom:1px solid rgba(234,246,240,.08);}
+@media (max-width:640px){ .sec-row{grid-template-columns:1fr;} }
+.sec-row .lbl{display:flex; align-items:center; gap:8px; font:13px var(--font-display); font-weight:700; color:var(--ink);}
+.sec-row .desc{font-size:.85rem; color:var(--muted); line-height:1.55;}
+
+.cta-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+@media (max-width:760px){ .cta-grid{grid-template-columns:1fr;} }
+.cta-box{background:rgba(10,18,25,.55); border:1px solid rgba(234,246,240,.12); border-radius:6px; padding:28px;}
+.cta-box.hot{border-color:rgba(240,197,120,.35);}
+.cta-box h3, .cta-box h4{font-family:var(--font-display); color:var(--ink); margin:0 0 10px; font-size:1.1rem;}
+.cta-box p{color:var(--muted); font-size:.9rem; line-height:1.6; margin:0 0 14px;}
+.cta-links a{display:flex; align-items:center; gap:8px; color:var(--ink); text-decoration:none; font:12px var(--font-mono); margin-top:8px;}
+.cta-links .spec-tag{font:10px var(--font-mono); color:var(--volt-lt); border:1px solid rgba(52,226,122,.3); padding:2px 6px; border-radius:2px;}
+
+.teaser-card{text-align:center; padding:28px; max-width:600px; margin:0 auto; background:rgba(10,18,25,.5); border:1px solid rgba(52,226,122,.2); border-radius:6px;}
+.teaser-card p{color:var(--muted); font-size:.9rem; line-height:1.6; margin:0 0 14px;}
+
+/* ---- Real contact page — profile, contact block, inert form ---- */
+.contact-page-grid{display:grid; grid-template-columns:.85fr 1.15fr; gap:40px; align-items:start;}
+@media (max-width:800px){ .contact-page-grid{grid-template-columns:1fr;} }
+
+.profile-card{display:flex; align-items:center; gap:16px; background:rgba(10,18,25,.55); border:1px solid rgba(234,246,240,.12); border-radius:6px; padding:18px; margin-bottom:24px;}
+.profile-avatar{width:52px; height:52px; border-radius:50%; overflow:hidden; flex-shrink:0; border:1px solid rgba(52,226,122,.3);}
+.profile-avatar img{width:100%; height:100%; object-fit:cover; display:block;}
+.profile-name{font-family:var(--font-display); font-weight:700; color:var(--ink); font-size:.95rem;}
+.profile-title{font-size:.78rem; color:var(--muted); margin-top:2px;}
+
+.contact-block{display:flex; flex-direction:column; gap:10px; margin-bottom:28px;}
+.contact-block-item{display:flex; align-items:center; gap:10px; font-size:.88rem; color:var(--ink);}
+.contact-block-item a{color:var(--ink); text-decoration:none;}
+.contact-block-item a:hover{color:var(--volt-lt);}
+
+.contact-feature-list{margin:0 0 8px; padding-left:16px; color:var(--muted); font-size:.85rem; line-height:1.8;}
+
+.contact-form{background:rgba(10,18,25,.55); backdrop-filter:blur(10px); border:1px solid rgba(52,226,122,.16); border-radius:6px; padding:28px;}
+.contact-form h3{font-family:var(--font-display); color:var(--ink); margin:0 0 8px; font-size:1.15rem;}
+.contact-form > p{color:var(--muted); font-size:.85rem; line-height:1.5; margin:0 0 20px;}
+.produit-pills{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;}
+.produit-pill{border:1px solid rgba(234,246,240,.16); border-radius:4px; padding:7px 14px; font-size:.78rem; color:var(--muted); cursor:pointer; transition:all .15s;}
+.produit-pill.active{border-color:var(--volt); color:var(--volt-lt); background:rgba(52,226,122,.08);}
+.form-row{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+@media (max-width:480px){ .form-row{grid-template-columns:1fr;} }
+.form-group{margin-bottom:16px;}
+.form-group label{display:block; font-size:.75rem; color:var(--muted); letter-spacing:.04em; margin-bottom:6px;}
+.form-group input, .form-group select, .form-group textarea{
+  width:100%; padding:10px 12px; border-radius:4px; font-family:var(--font-display); font-size:.85rem;
+  color:var(--ink); background:rgba(255,255,255,.03); border:1px solid rgba(234,246,240,.14); outline:none;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus{border-color:var(--volt);}
+.form-group textarea{resize:vertical; min-height:80px;}
+.form-submit{
+  width:100%; padding:13px; border-radius:4px; border:none; cursor:pointer;
+  font-family:var(--font-display); font-weight:700; font-size:.9rem; color:#04120a;
+  background:linear-gradient(120deg, var(--amber-lt), var(--volt));
+  box-shadow:0 0 0 1px rgba(52,226,122,.4), 0 8px 30px -8px rgba(52,226,122,.7);
+}
+.form-note{font-size:.75rem; color:var(--muted); text-align:center; margin-top:12px; line-height:1.5;}
+.form-error-banner{background:rgba(214,48,74,.1); border:1px solid rgba(214,48,74,.35); color:#ff8a9a; font-size:.85rem; line-height:1.5; padding:12px 16px; border-radius:6px; margin-bottom:20px;}
+.form-success{text-align:center; padding:24px 8px;}
+.form-success h4{font-family:var(--font-display); font-size:1.1rem; color:var(--ink); margin:0 0 12px;}
+.form-success p{color:var(--muted); font-size:.9rem; line-height:1.6; margin:0 0 20px;}
+.form-success a{color:var(--volt-lt); font-weight:600; text-decoration:none;}
+.form-group input:disabled, .form-group select:disabled, .form-group textarea:disabled{opacity:.5; cursor:not-allowed;}
+.form-submit:disabled{opacity:.6; cursor:not-allowed;}
+
+footer{position:relative; z-index:5; text-align:center; padding:50px 40px; font:11px var(--font-mono); color:var(--muted); letter-spacing:.08em; background:var(--void);}
+.footer-nav{display:flex; flex-wrap:wrap; justify-content:center; gap:18px; margin-top:16px;}
+.footer-nav a{color:var(--muted); text-decoration:none;}
+.footer-nav a:hover{color:var(--volt-lt);}
+
+@media (prefers-reduced-motion: reduce){
+  .aurora, .hud-panel::before{animation:none;}
+  .bar-fill{transition:none;}
+  .cycle-word span{transition:none;}
+}
+</style>
 </head>
 <body>
 
+<div class="boot-overlay" id="bootOverlay"><div class="boot-lines" id="bootLines"></div></div>
+
+<div class="scanlines"></div>
+<div class="vignette"></div>
+<div class="hud-frame"><b></b></div>
+
 <nav>
-  <a href="index.html" class="nav-logo">
-    <img src="img/n2-icon-mark.png" alt="" height="34">
-    <span>FortHeC<em>°</em></span>
-  </a>
+  <a class="nav-logo" href="index.html"><img src="img/n2-icon-mark.png" alt="" height="30"><span class="dot"></span>FortHeC<em>°</em></a>
   <ul class="nav-links">
     <li><a href="index.html">Accueil</a></li>
     <li><a href="energy.html">Energy</a></li>
     <li><a href="inventory.html">Inventory</a></li>
     <li><a href="suite.html">Suite</a></li>
     <li><a href="tarifs.html">Tarifs</a></li>
-    <li><a href="blog/index.html">Blog</a></li>
-    <li><a href="console.html" class="nav-console">Console</a></li>
-    <li><a href="contact.html" class="nav-cta active">Demander une démo</a></li>
-  </ul>
-</nav>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="console.html">Console</a></li>
+    <li><a href="contact.html" class="cta">Contact</a></li>
+  </ul></nav>
 
-<section style="padding-top: 120px;">
-  <p class="section-eyebrow reveal">Contact</p>
-  <h1 class="section-title reveal" style="max-width:none">Planifions une démonstration</h1>
-  <p class="section-sub reveal">Sur vos propres données, pour un gain de temps concret et mesurable dès la première session.</p>
+<section class="hero">
+  <canvas id="reactor-canvas"></canvas>
+  <div class="aurora"></div>
 
-  <div class="contact-page-grid" style="margin-top: 3rem;">
+  <div class="hero-grid" style="grid-template-columns:1fr; max-width:760px; text-align:center; justify-items:center;">
+    <div>
+      <p class="eyebrow" style="justify-content:center">FortHeC° — Contact</p>
+      <h1>
+        <div class="line"><span>Planifions une</span></div>
+        <div class="line"><em>démonstration</em></div>
+      </h1>
+      <p class="hero-sub" style="margin-left:auto; margin-right:auto">Sur vos propres données, pour un gain de temps concret et mesurable dès la première session.</p>
+    </div>
+  </div>
+</section>
 
-    <!-- Colonne gauche -->
+<!-- ── Contact + Formulaire ─────────────── -->
+<section class="section">
+  <div class="contact-page-grid">
     <div class="contact-left reveal">
       <div class="profile-card">
         <div class="profile-avatar"><img src="img/hugo-chambefort-avatar.jpg" alt="Hugo Chambefort"></div>
@@ -308,49 +432,29 @@
         </div>
       </div>
 
-      <div class="contact-block" style="margin-top: 2rem;">
-        <div class="contact-block-item">
-          <div class="icon">MAIL</div>
-          <div><a href="mailto:contact@forthec.fr">contact@forthec.fr</a></div>
-        </div>
-        <div class="contact-block-item">
-          <div class="icon">MAIL</div>
-          <div><a href="mailto:hugo.chambefort@forthec.fr">hugo.chambefort@forthec.fr</a></div>
-        </div>
-        <div class="contact-block-item">
-          <div class="icon">TEL</div>
-          <div><a href="tel:0778325955">07 78 32 59 55</a></div>
-        </div>
-        <div class="contact-block-item">
-          <div class="icon">WEB</div>
-          <div>forthec.fr</div>
-        </div>
-        <div class="contact-block-item">
-          <div class="icon">IN</div>
-          <div><a href="https://www.linkedin.com/in/hugo-chambefort-41097715b/" target="_blank" rel="noopener">LinkedIn</a></div>
-        </div>
+      <div class="contact-block">
+        <div class="contact-block-item"><span class="spec-tag">MAIL</span><a href="mailto:contact@forthec.fr">contact@forthec.fr</a></div>
+        <div class="contact-block-item"><span class="spec-tag">MAIL</span><a href="mailto:hugo.chambefort@forthec.fr">hugo.chambefort@forthec.fr</a></div>
+        <div class="contact-block-item"><span class="spec-tag">TEL</span><a href="tel:0778325955">07 78 32 59 55</a></div>
+        <div class="contact-block-item"><span class="spec-tag">WEB</span><span>forthec.fr</span></div>
+        <div class="contact-block-item"><span class="spec-tag">IN</span><a href="https://www.linkedin.com/in/hugo-chambefort-41097715b/" target="_blank" rel="noopener">LinkedIn</a></div>
       </div>
 
-      <div style="margin-top: 1rem;">
-        <p class="section-eyebrow" style="margin-bottom: 1rem;">Ce que couvre la démo</p>
-        <ul class="feature-list" style="gap: 0.75rem;">
-          <li>Import de vos propres fichiers Excel/CSV Enedis/GrDF</li>
-          <li>Calcul IPE et régressions ISO 50006 en direct</li>
-          <li>Génération du rapport Word NF EN 16247</li>
-          <li>Présentation Inventory sur site réel si souhaité</li>
-          <li>Questions techniques sur l'intégration dans votre workflow</li>
-        </ul>
-      </div>
+      <p class="section-eyebrow" style="margin-bottom:14px">Ce que couvre la démo</p>
+      <ul class="contact-feature-list">
+        <li>Import de vos propres fichiers Excel/CSV Enedis/GrDF</li>
+        <li>Calcul IPE et régressions ISO 50006 en direct</li>
+        <li>Génération du rapport Word NF EN 16247</li>
+        <li>Présentation Inventory sur site réel si souhaité</li>
+        <li>Questions techniques sur l'intégration dans votre workflow</li>
+      </ul>
 
-      <table class="spec-table" style="margin-top: 2.5rem;">
-        <tbody>
-          <tr><td><span class="spec-tag">FR</span>Données EU</td><td>100% hébergé France / UE</td></tr>
-          <tr><td><span class="spec-tag">RGPD</span>Confidentialité</td><td>Vos fichiers ne quittent jamais le serveur</td></tr>
-        </tbody>
-      </table>
+      <div class="sec-list" style="margin-top:28px">
+        <div class="sec-row"><div class="lbl"><span class="step-tag">FR</span>Données EU</div><div class="desc">100% hébergé France / UE</div></div>
+        <div class="sec-row"><div class="lbl"><span class="step-tag">RGPD</span>Confidentialité</div><div class="desc">Vos fichiers ne quittent jamais le serveur</div></div>
+      </div>
     </div>
 
-    <!-- Colonne droite : formulaire -->
     <div class="contact-form reveal">
       <h3>Demande de démonstration</h3>
       <p>Réponse sous 24h ouvrées. Indiquez le produit qui vous intéresse et quelques mots sur votre contexte.</p>
@@ -365,26 +469,11 @@
         </div>
 
         <div class="form-row">
-          <div class="form-group">
-            <label>Prénom</label>
-            <input type="text" id="form-prenom" placeholder="Jean">
-          </div>
-          <div class="form-group">
-            <label>Nom</label>
-            <input type="text" id="form-nom" placeholder="Dupont">
-          </div>
+          <div class="form-group"><label>Prénom</label><input type="text" id="form-prenom" placeholder="Jean"></div>
+          <div class="form-group"><label>Nom</label><input type="text" id="form-nom" placeholder="Dupont"></div>
         </div>
-
-        <div class="form-group">
-          <label>Email professionnel</label>
-          <input type="email" id="form-email" placeholder="jean.dupont@cabinet.fr">
-        </div>
-
-        <div class="form-group">
-          <label>Cabinet / Entreprise</label>
-          <input type="text" id="form-entreprise" placeholder="Cabinet Energie Conseil">
-        </div>
-
+        <div class="form-group"><label>Email professionnel</label><input type="email" id="form-email" placeholder="jean.dupont@cabinet.fr"></div>
+        <div class="form-group"><label>Cabinet / Entreprise</label><input type="text" id="form-entreprise" placeholder="Cabinet Energie Conseil"></div>
         <div class="form-group">
           <label>Secteur d'activité principal</label>
           <select id="form-secteur">
@@ -396,17 +485,11 @@
             <option>Autre</option>
           </select>
         </div>
-
-        <div class="form-group">
-          <label>Votre contexte (optionnel)</label>
-          <textarea id="form-contexte" placeholder="Nombre d'audits par an, types de sites, outils utilisés actuellement..."></textarea>
-        </div>
+        <div class="form-group"><label>Votre contexte (optionnel)</label><textarea id="form-contexte" placeholder="Nombre d'audits par an, types de sites, outils utilisés actuellement..."></textarea></div>
 
         <div class="h-captcha" data-sitekey="01be9b94-b7bc-4eba-96e8-ab547a8aa92c"></div>
 
-        <button class="form-submit" id="contact-submit-btn">
-          Envoyer la demande →
-        </button>
+        <button class="form-submit" id="contact-submit-btn">Envoyer la demande →</button>
         <p class="form-note">Vos données sont traitées par Hugo Chambefort / FortHeC° et transmises via contact@forthec.fr. Elles transitent par nos sous-traitants techniques (hCaptcha pour la validation anti-bot, Supabase Paris pour le traitement, Scaleway pour l'envoi de l'email). Aucune donnée n'est vendue ni transmise à des tiers commerciaux. Détails complets dans notre politique de confidentialité.</p>
       </div>
 
@@ -418,44 +501,39 @@
         <a href="#" id="contact-reset-link">Envoyer une autre demande</a>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- Roadmap -->
-<section class="alt">
+<!-- ── Roadmap ──────────────────────────── -->
+<section class="section">
   <p class="section-eyebrow reveal">Roadmap</p>
-  <h2 class="section-title reveal">La suite FortHeC°</h2>
-  <p class="section-sub reveal">Chaque module est utilisable de façon indépendante ou intégré dans la suite complète.</p>
+  <h2 class="reveal">La suite FortHeC°</h2>
+  <p class="lede reveal">Chaque module est utilisable de façon indépendante ou intégré dans la suite complète.</p>
 
-  <div class="product-grid">
-    <div class="product-card reveal">
-      <span class="card-tag" style="background:rgba(52,226,122,0.1);color:var(--volt-deep)">Disponible</span>
+  <div class="step-grid">
+    <div class="step-card reveal">
+      <span class="step-tag" style="border-color:rgba(52,226,122,.4); color:var(--volt-lt)">Disponible</span>
       <h3>FortHeC° Energy</h3>
-      <p>Application web. Audit réglementaire complet NF EN 16247, rapport Word automatisé, régressions ISO 50006, 29 secteurs.</p>
-      <a href="energy.html" class="card-link">Découvrir →</a>
+      <p style="font-size:.82rem; color:var(--muted); line-height:1.6; margin:0 0 12px">Application web. Audit réglementaire complet NF EN 16247, rapport Word automatisé, régressions ISO 50006, 29 secteurs.</p>
+      <a class="btn-ghost" style="display:inline-block; padding:8px 14px; font-size:12px" href="energy.html">Découvrir →</a>
     </div>
-    <div class="product-card reveal">
-      <span class="card-tag" style="background:rgba(52,226,122,0.1);color:var(--volt-deep)">Disponible</span>
+    <div class="step-card reveal">
+      <span class="step-tag" style="border-color:rgba(52,226,122,.4); color:var(--volt-lt)">Disponible</span>
       <h3>FortHeC° Inventory</h3>
-      <p>Application mobile iOS/Android. Inventaire terrain par photo et IA, cartographie bâtimentaire, enveloppe thermique, registre F-Gaz.</p>
-      <a href="inventory.html" class="card-link">Découvrir →</a>
+      <p style="font-size:.82rem; color:var(--muted); line-height:1.6; margin:0 0 12px">Application mobile iOS/Android. Inventaire terrain par photo et IA, cartographie bâtimentaire, enveloppe thermique, registre F-Gaz.</p>
+      <a class="btn-ghost" style="display:inline-block; padding:8px 14px; font-size:12px" href="inventory.html">Découvrir →</a>
     </div>
-    <div class="product-card reveal">
-      <span class="card-tag">A venir</span>
+    <div class="step-card reveal">
+      <span class="step-tag">A venir</span>
       <h3>FortHeC° Monitor</h3>
-      <p>Suivi continu des consommations et des scénarios du plan d'actions. Le lien final entre l'audit et la performance dans le temps.</p>
+      <p style="font-size:.82rem; color:var(--muted); line-height:1.6; margin:0">Suivi continu des consommations et des scénarios du plan d'actions. Le lien final entre l'audit et la performance dans le temps.</p>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="footer-logo">
-    <img src="img/n2-icon-mark.png" alt="" height="24">
-    <span>FortHeC<em>°</em></span>
-  </div>
-  <div class="footer-meta">© 2026 FortHeC°. Données hébergées en France. contact@forthec.fr</div>
-  <div class="footer-links">
+  © 2026 FortHeC°. Données hébergées en France. contact@forthec.fr
+  <div class="footer-nav">
     <a href="index.html">Accueil</a>
     <a href="energy.html">Energy</a>
     <a href="inventory.html">Inventory</a>
@@ -463,23 +541,76 @@
     <a href="console.html">Console</a>
     <a href="blog/index.html">Blog</a>
     <a href="legal.html">Mentions légales</a>
-    <a href="https://www.linkedin.com/in/hugo-chambefort-41097715b/" target="_blank" rel="noopener">LinkedIn</a>
   </div>
 </footer>
 
-<script src="js/main.js"></script>
-<script>
+<!-- ============ Libraries ============ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.165.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.165.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module">
+import { initReactorLab, runBoot, reduceMotion, markActiveNav, shouldSkipBoot, markBooted, initAppSwitcher } from './js/reactor-lab.js';
+markActiveNav();
+initAppSwitcher();
+
+initReactorLab({
+  coreOffsetX: 2.0,
+  premiumCore: true,
+  // Contact has no numeric table of its own — same honest cross-reference
+  // used on the other secondary pages, labelled as what it is.
+  echoValues: [85, 95, 90, 75, 33],
+  echoLabel: 'contact → energy.forthec.fr · audit_gains'
+});
+
+/* ============ Boot sequence — it "compiles" before it powers on (energy + web-dev fusion) ============ */
+const bootOverlay = document.getElementById('bootOverlay');
+const bootLines = [
+  '> npm run build:contact',
+  '> validating captcha widget ...',
+  '> contact-submit.json -- ready',
+  '> routing -> contact@forthec.fr',
+  '> render complete'
+];
+
+/* ============ Entrance timeline (runs after boot) — this page's hero has
+   no hud-panel/cycle-line, so the chain is shorter than the other pages ============ */
+function startEntrance(){
+  const tl = gsap.timeline({ defaults:{ ease:'power3.out' } });
+  tl.from('.hud-frame', { opacity:0, duration:.6 })
+    .from('.eyebrow', { opacity:0, y:14, duration:.5 }, '-=.2')
+    .from('h1 .line span', { opacity:0, y:'100%', duration:.7, stagger:.12 }, '-=.2')
+    .from('.hero-sub', { opacity:0, y:14, duration:.5 }, '-=.3');
+}
+
+if(reduceMotion || shouldSkipBoot()){
+  bootOverlay.classList.add('hidden');
+  startEntrance();
+  markBooted();
+} else {
+  runBoot(bootLines, ()=>{
+    bootOverlay.classList.add('hidden');
+    startEntrance();
+    markBooted();
+  });
+}
+
+/* ============ Real contact form — same submission logic as the previous
+   version of this page (Supabase Edge Function + hCaptcha). ============ */
 const PRODUIT_MAP = {
   "FortHeC° Energy": "energy",
   "FortHeC° Inventory": "inventory",
   "Mode Suite": "suite"
 };
-
 const CONTACT_ENDPOINT = "https://ofsmrflyjxrxmwcndymt.supabase.co/functions/v1/contact-submit";
-
 let isSubmitting = false;
 
-// Pills interactives
 document.querySelectorAll('.produit-pill').forEach(pill => {
   pill.addEventListener('click', () => {
     if (isSubmitting) return;
@@ -493,13 +624,11 @@ function showError(message) {
   banner.textContent = message;
   banner.style.display = 'block';
 }
-
 function hideError() {
   const banner = document.getElementById('contact-error');
   banner.style.display = 'none';
   banner.textContent = '';
 }
-
 function setFormDisabled(disabled) {
   document.getElementById('contact-fields').querySelectorAll('input, select, textarea').forEach(el => {
     el.disabled = disabled;
@@ -508,11 +637,8 @@ function setFormDisabled(disabled) {
     p.style.pointerEvents = disabled ? 'none' : '';
   });
 }
-
 function resetCaptcha() {
-  if (typeof hcaptcha !== 'undefined') {
-    hcaptcha.reset();
-  }
+  if (typeof hcaptcha !== 'undefined') hcaptcha.reset();
 }
 
 async function handleSubmit() {
@@ -541,16 +667,7 @@ async function handleSubmit() {
     return;
   }
 
-  const payload = {
-    produit_interet: produitInteret,
-    prenom,
-    nom,
-    email,
-    entreprise,
-    secteur,
-    contexte,
-    hcaptcha_token: hcaptchaToken
-  };
+  const payload = { produit_interet: produitInteret, prenom, nom, email, entreprise, secteur, contexte, hcaptcha_token: hcaptchaToken };
 
   const btn = document.getElementById('contact-submit-btn');
   isSubmitting = true;
@@ -559,14 +676,12 @@ async function handleSubmit() {
   setFormDisabled(true);
 
   let succeeded = false;
-
   try {
     const response = await fetch(CONTACT_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
-
     if (response.ok) {
       succeeded = true;
       if (window.forthecTrack) window.forthecTrack('form_submit');
@@ -601,11 +716,16 @@ document.getElementById('contact-submit-btn').addEventListener('click', (e) => {
   e.preventDefault();
   handleSubmit();
 });
-
 document.getElementById('contact-reset-link').addEventListener('click', (e) => {
   e.preventDefault();
   location.reload();
 });
+
+/* ============ Scroll reveal for every real section below the hero ============ */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{ if(en.isIntersecting) en.target.classList.add('in'); });
+}, { threshold:0.2 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 </body>
 </html>
