@@ -377,6 +377,9 @@ h1 em{
   width:100%; padding:10px 12px; border-radius:4px; font-family:var(--font-display); font-size:.85rem;
   color:var(--ink); background:rgba(255,255,255,.03); border:1px solid rgba(234,246,240,.14); outline:none;
 }
+/* Popup natif <select> rendu par l'OS -- ignore le fond transparent ci-dessus, retombe sur blanc,
+   texte var(--ink) quasi-blanc devient illisible (retour Hugo, capture d'ecran, 12/08/2026). */
+.form-group select option{ background-color:var(--void); color:var(--ink); }
 .form-group input:focus, .form-group select:focus, .form-group textarea:focus{border-color:var(--volt);}
 .form-group textarea{resize:vertical; min-height:80px;}
 .form-submit{
