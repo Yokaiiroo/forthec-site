@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://forthec.fr/sitemap.xml
