@@ -56,6 +56,35 @@ export function initAppSwitcher() {
   });
 }
 
+// Real site's mobile hamburger (js/main.js) — injected in JS rather than
+// duplicated per page. Fixes the same real bug the comment over there
+// describes: under the CSS-only flex-wrap, 8 nav links + a CTA simply
+// overflow the viewport on real phone widths instead of wrapping — there is
+// no room for them to wrap into. Reskinned to the reactor palette below.
+export function initMobileNav() {
+  const nav = document.querySelector('nav');
+  const links = document.querySelector('.nav-links');
+  if (!nav || !links) return;
+  const toggle = document.createElement('button');
+  toggle.type = 'button';
+  toggle.className = 'nav-toggle';
+  toggle.setAttribute('aria-label', 'Ouvrir le menu');
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.innerHTML = '<span></span><span></span><span></span>';
+  nav.appendChild(toggle);
+  function setOpen(open) {
+    links.classList.toggle('open', open);
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+    document.body.classList.toggle('nav-open-lock', open);
+  }
+  toggle.addEventListener('click', () => setOpen(!links.classList.contains('open')));
+  links.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+  window.addEventListener('resize', () => { if (window.innerWidth > 768) setOpen(false); });
+}
+
 // Marks the current page's link in .nav-links — one shared function instead
 // of hardcoding an "active" class differently in each of the 6 lab pages.
 export function markActiveNav() {

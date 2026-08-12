@@ -118,6 +118,30 @@ nav{
 .nav-links a.cta{color:#04120a; background:linear-gradient(120deg, var(--amber-lt), var(--volt)); padding:7px 14px; border-radius:3px; font-weight:700; letter-spacing:0;}
 @media (max-width:760px){ .nav-badge{display:none;} }
 
+/* ---- Mobile hamburger nav (real site component, js/main.js — injected via reactor-lab.js initMobileNav()) ---- */
+.nav-toggle{display:none; flex-direction:column; justify-content:center; align-items:center; gap:5px; width:40px; height:40px; background:transparent; border:none; cursor:pointer; padding:0; flex-shrink:0;}
+.nav-toggle span{display:block; width:22px; height:2px; background:var(--ink); border-radius:2px; transition:transform .25s ease, opacity .2s ease;}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-toggle.open span:nth-child(2){opacity:0;}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+@media (max-width:768px){
+  nav{padding:18px 5%;}
+  .nav-toggle{display:flex;}
+  .nav-links{
+    position:fixed; top:64px; left:0; right:0; z-index:59;
+    flex-direction:column; flex-wrap:nowrap; align-items:stretch; gap:0;
+    background:rgba(8,14,17,.97); backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(52,226,122,.18);
+    max-height:0; overflow:hidden; opacity:0; pointer-events:none;
+    transition:max-height .25s ease, opacity .2s ease;
+  }
+  .nav-links.open{max-height:calc(100vh - 64px); overflow-y:auto; opacity:1; pointer-events:auto;}
+  .nav-links li{width:100%;}
+  .nav-links a{display:block; padding:1rem 5%; border-bottom:1px solid rgba(234,246,240,.06);}
+  .nav-links a.cta{border-radius:0;}
+  body.nav-open-lock{overflow:hidden;}
+}
+
 /* ---- App switcher (real site component, js/main.js) ---- */
 .app-switcher{position:fixed; top:50%; right:0; transform:translateY(-50%); z-index:150; display:flex; align-items:center;}
 .app-switcher-tab{writing-mode:vertical-rl; text-orientation:mixed; background:linear-gradient(160deg, var(--amber-lt), var(--volt)); color:#04120a; font:12px var(--font-mono); font-weight:700; letter-spacing:.03em; padding:16px 9px; border-radius:6px 0 0 6px; cursor:pointer; border:none;}
@@ -407,7 +431,7 @@ footer{position:relative; z-index:5; text-align:center; padding:50px 40px; font:
     <li><a href="inventory.html">Inventory</a></li>
     <li><a href="suite.html">Suite</a></li>
     <li><a href="tarifs.html">Tarifs</a></li>
-    <li><a href="blog.html">Blog</a></li>
+    <li><a href="blog/index.html">Blog</a></li>
     <li><a href="console.html">Console</a></li>
     <li><a href="contact.html" class="cta">Contact</a></li>
   </ul></nav>
@@ -539,9 +563,10 @@ footer{position:relative; z-index:5; text-align:center; padding:50px 40px; font:
 </script>
 
 <script type="module">
-import { initReactorLab, runBoot, reduceMotion, markActiveNav, shouldSkipBoot, markBooted, initAppSwitcher } from './js/reactor-lab.js';
+import { initReactorLab, runBoot, reduceMotion, markActiveNav, shouldSkipBoot, markBooted, initAppSwitcher, initMobileNav } from './js/reactor-lab.js';
 markActiveNav();
 initAppSwitcher();
+initMobileNav();
 
 initReactorLab({
   coreOffsetX: 2.0,
