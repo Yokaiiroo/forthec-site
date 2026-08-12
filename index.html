@@ -290,6 +290,7 @@ h1 em{
   position:relative; padding:90px 40px; max-width:1100px; margin:0 auto;
   background:linear-gradient(180deg, transparent 0%, var(--void) 10%, var(--void) 100%);
 }
+.section.section-wide{max-width:1400px;}
 .section-eyebrow{font:12px var(--font-mono); letter-spacing:.2em; color:var(--cyan); text-transform:uppercase;}
 .section h2{font-family:'Plex Mono'; font-weight:400; font-size:clamp(1.5rem,3vw,2.1rem); margin:12px 0 10px; color:var(--ink);}
 .section .lede{max-width:65ch; color:var(--muted); font-size:.98rem; line-height:1.6; margin-bottom:40px;}
@@ -313,7 +314,7 @@ h1 em{
 .video-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
 @media (max-width:760px){ .video-grid{grid-template-columns:1fr;} }
 .video-card-label{font:11px var(--font-mono); letter-spacing:.08em; color:var(--volt-lt); text-transform:uppercase; margin-bottom:10px; display:block;}
-.video-frame{border-radius:6px; overflow:hidden; border:1px solid rgba(234,246,240,.14); box-shadow:0 20px 50px -20px rgba(0,0,0,.7); line-height:0; max-width:420px; margin:0 auto;}
+.video-frame{border-radius:6px; overflow:hidden; border:1px solid rgba(234,246,240,.14); box-shadow:0 20px 50px -20px rgba(0,0,0,.7); line-height:0; max-width:640px; margin:0 auto;}
 .video-frame video{display:block; width:100%;}
 
 .gains-table-lab{width:100%; border-collapse:collapse; font:12px var(--font-mono); margin-bottom:24px;}
@@ -399,6 +400,7 @@ footer{position:relative; z-index:5; text-align:center; padding:50px 40px; font:
         <a class="btn-ghost" href="rapport-demo/FortHeC_Rapport_Audit_Demo_Suite.docx" download>Télécharger un rapport test</a>
         <a class="btn-ghost" href="https://app.forthec.fr/?demo=energy" target="_blank" rel="noopener">Essayer la démo gratuite</a>
         <a class="btn-ghost" href="energy.html">Découvrir Energy</a>
+        <a class="btn-ghost" href="inventory.html">Découvrir Inventory</a>
       </div>
 
       <div class="spec-row">
@@ -456,7 +458,7 @@ footer{position:relative; z-index:5; text-align:center; padding:50px 40px; font:
 </section>
 
 <!-- ── Le vrai outil ────────────────────── -->
-<section class="section">
+<section class="section section-wide">
   <p class="section-eyebrow reveal">Le vrai outil</p>
   <h2 class="reveal">Pas une maquette</h2>
   <p class="lede reveal">Ce que vos auditeurs voient réellement à l'écran, sur un cas réel de fonderie industrielle : import et détection automatique, puis régressions ISO 50006, plan d'actions chiffré et génération du rapport Word.</p>
