@@ -1,551 +1,63 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog — FortHeC°</title>
-<meta name="description" content="Ressources et articles pour les auditeurs énergétiques et cabinets d'audit : NF EN 16247, ISO 50001, CEE, décret tertiaire.">
-<link rel="icon" type="image/png" href="../img/n2-app-icon.png">
-<link rel="canonical" href="https://forthec.fr/blog/index.html">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="FortHeC°">
-<meta property="og:locale" content="fr_FR">
-<meta property="og:title" content="Blog — FortHeC°">
-<meta property="og:description" content="Ressources et articles pour les auditeurs énergétiques et cabinets d'audit : NF EN 16247, ISO 50001, CEE, décret tertiaire.">
-<meta property="og:url" content="https://forthec.fr/blog/index.html">
-<meta property="og:image" content="https://forthec.fr/img/n2-app-icon.png">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Blog — FortHeC°">
-<meta name="twitter:description" content="Ressources et articles pour les auditeurs énergétiques et cabinets d'audit : NF EN 16247, ISO 50001, CEE, décret tertiaire.">
-<meta name="twitter:image" content="https://forthec.fr/img/n2-app-icon.png">
-
-<style>
-/* ============ Fonts (real brand faces, self-hosted, local relative paths) ============ */
-@font-face{
-  font-family:'Plex Sans'; font-weight:700; font-style:normal; font-display:swap;
-  src:url('../fonts/plexsans-700-normal.woff2') format('woff2');
-}
-@font-face{
-  font-family:'Plex Sans'; font-weight:500; font-style:normal; font-display:swap;
-  src:url('../fonts/plexsans-500-normal.woff2') format('woff2');
-}
-@font-face{
-  font-family:'Plex Mono'; font-weight:400; font-style:normal; font-display:swap;
-  src:url('../fonts/plexmono-400-normal.woff2') format('woff2');
-}
-
-/* ============ Tokens — deliberate single dark world (eco-cyber-reactor), not a light/dark pair ============ */
-:root{
-  --void:       #05080a;   /* base ground */
-  --void-2:     #0a1219;   /* panel surface, slightly blue-green lifted */
-  --void-3:     #0e1a20;   /* panel border/hover surface */
-  --volt:       #34e27a;   /* primary — data / electric / nature (real brand) */
-  --volt-lt:    #8cffb8;
-  --volt-deep:  #123322;
-  --amber:      #e0a23d;   /* secondary — money / payoff (real brand) */
-  --amber-lt:   #f0c578;
-  --cyan:       #2fd8ff;   /* tertiary — cyber / signal depth (new, for this lab only) */
-  --plasma:     #b46bff;   /* rare flare accent — used once, on purpose */
-  --ink:        #eaf6f0;   /* body text, cool-tinted near-white */
-  --muted:      #7e9490;
-  --font-display:'Plex Sans', system-ui, sans-serif;
-  --font-mono:  'Plex Mono', 'SF Mono', Consolas, monospace;
-}
-
-*{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{
-  margin:0;
-  background:var(--void);
-  color:var(--ink);
-  font-family:var(--font-display);
-  font-weight:500;
-  overflow-x:hidden;
-}
-::selection{background:var(--volt); color:#04120a;}
-
-a{color:inherit;}
-
-/* ============ HUD frame + noise/scanline atmosphere (global, behind everything meaningful) ============ */
-.hud-frame{position:fixed; inset:14px; z-index:50; pointer-events:none; border:1px solid rgba(52,226,122,0.14);}
-.hud-frame::before,.hud-frame::after,
-.hud-frame b::before,.hud-frame b::after{
-  content:''; position:absolute; width:22px; height:22px; border-color:var(--volt); opacity:.55;
-}
-.hud-frame::before{top:-1px;left:-1px;border-top:2px solid;border-left:2px solid;}
-.hud-frame::after{top:-1px;right:-1px;border-top:2px solid;border-right:2px solid;}
-.hud-frame b::before{bottom:-1px;left:-1px;border-bottom:2px solid;border-left:2px solid;position:absolute;}
-.hud-frame b::after{bottom:-1px;right:-1px;border-bottom:2px solid;border-right:2px solid;position:absolute;}
-.hud-frame .tag{position:absolute; top:8px; left:20px; font:11px/1 var(--font-mono); letter-spacing:.14em; color:var(--muted); opacity:.7;}
-.hud-frame .tag.r{left:auto; right:20px; color:var(--amber-lt);}
-/* overlaps the nav logo/badge at narrow widths (real bug, confirmed via screenshot) --
-   these labels are decorative, the nav already carries the essential info */
-@media (max-width:600px){ .hud-frame .tag{display:none;} }
-
-.scanlines{
-  position:fixed; inset:0; z-index:40; pointer-events:none; mix-blend-mode:overlay; opacity:.35;
-  background:repeating-linear-gradient(to bottom, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 3px);
-}
-.vignette{position:fixed; inset:0; z-index:39; pointer-events:none;
-  background:radial-gradient(ellipse at 50% 40%, transparent 45%, rgba(0,0,0,0.55) 100%);
-}
-
-/* ============ Boot sequence overlay (energy + web-dev fusion: it "compiles" before it powers on) ============ */
-.boot-overlay{
-  position:fixed; inset:0; z-index:200; background:var(--void);
-  display:flex; align-items:center; padding:0 10vw;
-  transition:opacity .6s ease;
-}
-.boot-overlay.hidden{opacity:0; pointer-events:none;}
-.boot-lines{font:14px/1.9 var(--font-mono); color:var(--volt-lt); max-width:640px;}
-.boot-line{white-space:pre-wrap; word-break:break-word; text-shadow:0 0 10px rgba(52,226,122,.35);}
-.boot-line .cursor{display:inline-block; width:8px; height:1em; background:var(--volt); margin-left:2px; vertical-align:-2px; animation:blink 1s steps(1) infinite;}
-@keyframes blink{50%{opacity:0;}}
-
-/* ============ NAV ============ */
-nav{
-  position:relative; z-index:60; display:flex; align-items:center; justify-content:space-between;
-  padding:22px 40px; font-family:var(--font-mono); font-size:13px; letter-spacing:.04em;
-}
-.nav-logo{display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--ink); font-weight:400;}
-.nav-logo .dot{width:9px; height:9px; border-radius:50%; background:var(--volt); box-shadow:0 0 12px var(--volt), 0 0 24px var(--volt);}
-.nav-logo em{color:var(--amber-lt); font-style:normal;}
-.nav-badge{border:1px solid rgba(240,197,120,0.4); color:var(--amber-lt); padding:4px 10px; border-radius:3px; font-size:11px; letter-spacing:.12em;}
-.nav-links{display:flex; align-items:center; gap:20px; list-style:none; margin:0; padding:0; flex-wrap:wrap;}
-.nav-links a{color:var(--muted); text-decoration:none; font:12px/1 var(--font-mono); letter-spacing:.02em; transition:color .2s;}
-.nav-links a:hover{color:var(--volt-lt);}
-.nav-links a.active{color:var(--volt-lt);}
-.nav-links a.cta{color:#04120a; background:linear-gradient(120deg, var(--amber-lt), var(--volt)); padding:7px 14px; border-radius:3px; font-weight:700; letter-spacing:0;}
-@media (max-width:760px){ .nav-badge{display:none;} }
-
-/* ---- Mobile hamburger nav (real site component, js/main.js — injected via reactor-lab.js initMobileNav()) ---- */
-.nav-toggle{display:none; flex-direction:column; justify-content:center; align-items:center; gap:5px; width:40px; height:40px; background:transparent; border:none; cursor:pointer; padding:0; flex-shrink:0;}
-.nav-toggle span{display:block; width:22px; height:2px; background:var(--ink); border-radius:2px; transition:transform .25s ease, opacity .2s ease;}
-.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-toggle.open span:nth-child(2){opacity:0;}
-.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-@media (max-width:768px){
-  nav{padding:18px 5%;}
-  .nav-toggle{display:flex;}
-  .nav-links{
-    position:fixed; top:64px; left:0; right:0; z-index:59;
-    flex-direction:column; flex-wrap:nowrap; align-items:stretch; gap:0;
-    background:rgba(8,14,17,.97); backdrop-filter:blur(14px);
-    border-bottom:1px solid rgba(52,226,122,.18);
-    max-height:0; overflow:hidden; opacity:0; pointer-events:none;
-    transition:max-height .25s ease, opacity .2s ease;
-  }
-  .nav-links.open{max-height:calc(100vh - 64px); overflow-y:auto; opacity:1; pointer-events:auto;}
-  .nav-links li{width:100%;}
-  .nav-links a{display:block; padding:1rem 5%; border-bottom:1px solid rgba(234,246,240,.06);}
-  .nav-links a.cta{border-radius:0;}
-  body.nav-open-lock{overflow:hidden;}
-}
-
-/* ---- App switcher (real site component, js/main.js) ---- */
-.app-switcher{position:fixed; top:50%; right:0; transform:translateY(-50%); z-index:150; display:flex; align-items:center;}
-.app-switcher-tab{writing-mode:vertical-rl; text-orientation:mixed; background:linear-gradient(160deg, var(--amber-lt), var(--volt)); color:#04120a; font:12px var(--font-mono); font-weight:700; letter-spacing:.03em; padding:16px 9px; border-radius:6px 0 0 6px; cursor:pointer; border:none;}
-.app-switcher-tab:hover{filter:brightness(1.08);}
-.app-switcher.open .app-switcher-tab{border-radius:0 0 0 6px;}
-.app-switcher-panel{position:absolute; right:100%; top:50%; translate:0 -50%; background:rgba(10,18,25,.9); backdrop-filter:blur(14px); border:1px solid rgba(52,226,122,.25); border-radius:8px 0 0 8px; box-shadow:-8px 0 30px rgba(0,0,0,.5); padding:18px; width:200px; max-width:calc(100vw - 3rem); transform:translateX(12px); opacity:0; pointer-events:none; transition:transform .2s ease, opacity .2s ease;}
-.app-switcher.open .app-switcher-panel{transform:translateX(0); opacity:1; pointer-events:auto;}
-.app-switcher-panel h4{font:10px var(--font-mono); text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin:0 0 12px;}
-.app-switcher-link{display:flex; align-items:center; padding:10px 12px; border-radius:4px; font:12px var(--font-mono); color:var(--ink); background:rgba(255,255,255,.03); border:1px solid rgba(234,246,240,.1); margin-bottom:8px; text-decoration:none;}
-.app-switcher-link:last-child{margin-bottom:0;}
-.app-switcher-link:hover{border-color:var(--volt); color:var(--volt-lt); background:rgba(52,226,122,.08);}
-
-/* ============ HERO ============ */
-.hero{position:relative; min-height:100svh; display:grid; place-items:center; overflow:hidden;}
-
-/* fixed, not absolute: stays pinned behind the WHOLE page as you scroll,
-   instead of scrolling away with the hero section — this is the actual
-   "background that persists" effect being tested. */
-#reactor-canvas{position:fixed; inset:0; z-index:0; width:100%; height:100%; display:block;}
-
-.aurora{
-  position:fixed; inset:-10%; z-index:1; pointer-events:none; mix-blend-mode:screen; opacity:.5;
-  background:
-    radial-gradient(38% 42% at 22% 28%, rgba(52,226,122,0.22), transparent 60%),
-    radial-gradient(34% 38% at 82% 70%, rgba(47,216,255,0.16), transparent 60%),
-    radial-gradient(30% 34% at 65% 15%, rgba(224,162,61,0.12), transparent 60%);
-  animation:aurora-drift 22s ease-in-out infinite alternate;
-}
-@keyframes aurora-drift{
-  0%{transform:translate3d(0,0,0) scale(1);}
-  100%{transform:translate3d(-2%,3%,0) scale(1.06);}
-}
-
-.hero-grid{
-  position:relative; z-index:5; width:min(1360px,92vw); margin:0 auto;
-  display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:center;
-  padding-top:64px;
-}
-@media (max-width:920px){ .hero-grid{grid-template-columns:1fr; gap:40px;} }
-
-.eyebrow{
-  font:12px/1 var(--font-mono); letter-spacing:.2em; text-transform:uppercase; color:var(--volt-lt);
-  display:flex; align-items:center; gap:10px; margin:0 0 22px;
-}
-.eyebrow::before{content:''; width:26px; height:1px; background:var(--volt); box-shadow:0 0 8px var(--volt);}
-
-h1{
-  font-family:'Plex Mono', var(--font-mono); font-weight:400; margin:0 0 22px; letter-spacing:-0.01em;
-  font-size:clamp(1.5rem, 4.6vw, 3.7rem); line-height:1.15; color:var(--ink);
-}
-h1 .line{display:block; overflow:hidden;}
-h1 .line span{display:inline-block; white-space:normal;}
-@media (max-width:600px){ h1{font-size:1.4rem; line-height:1.25;} }
-h1 em{
-  font-style:normal;
-  background:linear-gradient(100deg, var(--amber-lt) 0%, var(--volt) 65%, var(--cyan) 100%);
-  -webkit-background-clip:text; background-clip:text; color:transparent;
-  text-shadow:0 0 40px rgba(52,226,122,0.25);
-}
-
-.hero-sub{max-width:52ch; color:var(--muted); font-size:1.02rem; line-height:1.65; margin:0 0 26px; text-shadow:0 2px 16px var(--void), 0 0 6px var(--void);}
-
-.cycle-line{
-  font:14px/1 var(--font-mono); color:var(--ink); margin:0 0 34px; display:flex; align-items:center; gap:10px;
-  perspective:400px;
-}
-.cycle-line .lbl{color:var(--muted);}
-.cycle-word{
-  position:relative; color:var(--volt-lt); min-width:190px; height:1.3em; display:inline-block;
-  transform-style:preserve-3d;
-}
-.cycle-word span{
-  position:absolute; inset:0; opacity:0; transform:rotateX(90deg); transform-origin:50% 100%;
-}
-.cycle-word span.active{opacity:1; transform:rotateX(0deg); transition:transform .5s cubic-bezier(.2,.8,.2,1), opacity .35s ease;}
-.cycle-word span.leaving{opacity:0; transform:rotateX(-90deg); transition:transform .5s cubic-bezier(.2,.8,.2,1), opacity .35s ease;}
-
-.hero-actions{display:flex; flex-wrap:wrap; gap:14px; margin-bottom:34px;}
-.btn-primary{
-  position:relative; padding:14px 26px; border-radius:3px; text-decoration:none; font-weight:700;
-  font-size:14px; letter-spacing:.02em; color:#04120a;
-  background:linear-gradient(120deg, var(--amber-lt), var(--volt));
-  box-shadow:0 0 0 1px rgba(52,226,122,.4), 0 8px 30px -8px rgba(52,226,122,.7);
-  transition:transform .25s ease, box-shadow .25s ease;
-}
-.btn-primary:hover{transform:translateY(-2px); box-shadow:0 0 0 1px rgba(52,226,122,.6), 0 14px 40px -8px rgba(52,226,122,.9);}
-.btn-ghost{
-  padding:14px 22px; border-radius:3px; text-decoration:none; font-size:14px; color:var(--ink);
-  border:1px solid rgba(234,246,240,0.18); background:rgba(255,255,255,0.02);
-  transition:border-color .25s ease, background .25s ease;
-}
-.btn-ghost:hover{border-color:var(--cyan); background:rgba(47,216,255,0.06);}
-
-.spec-row{display:flex; flex-wrap:wrap; gap:10px;}
-.spec-chip{
-  font:11px/1 var(--font-mono); letter-spacing:.08em; padding:7px 11px; border-radius:2px;
-  border:1px solid rgba(234,246,240,0.14); color:var(--muted);
-}
-.spec-chip.hot{border-color:rgba(240,197,120,0.45); color:var(--amber-lt);}
-
-/* ---- HUD telemetry panel ---- */
-.hud-panel{
-  position:relative; background:rgba(10,18,25,0.55); backdrop-filter:blur(14px) saturate(140%);
-  border:1px solid rgba(52,226,122,0.22); border-radius:6px; padding:26px 26px 22px;
-  box-shadow:0 0 0 1px rgba(0,0,0,.3), 0 30px 60px -20px rgba(0,0,0,.6), inset 0 0 40px rgba(52,226,122,0.03);
-}
-.hud-panel::before{
-  content:''; position:absolute; top:0; left:24px; right:24px; height:1px;
-  background:linear-gradient(90deg, transparent, var(--volt), transparent);
-  animation:sweep 4s linear infinite;
-}
-@keyframes sweep{0%{transform:translateX(-40%);}100%{transform:translateX(40%);}}
-.hud-panel-head{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:18px;}
-.hud-panel-head span:first-child{font:11px var(--font-mono); letter-spacing:.14em; color:var(--muted); text-transform:uppercase;}
-.hud-panel-head span:last-child{font:11px var(--font-mono); color:var(--volt-lt);}
-
-.money-readout{margin-bottom:20px;}
-.money-readout .num{
-  font-family:var(--font-mono); font-size:2.5rem; font-weight:400; color:var(--amber-lt);
-  text-shadow:0 0 22px rgba(224,162,61,.45); font-variant-numeric:tabular-nums; line-height:1;
-}
-.money-readout .cap{font:11px var(--font-mono); color:var(--muted); letter-spacing:.1em; margin-top:6px;}
-
-.bar-row{margin-bottom:12px;}
-.bar-row .bh{display:flex; justify-content:space-between; font:11px var(--font-mono); color:var(--muted); margin-bottom:5px;}
-.bar-row .bh b{color:var(--ink); font-weight:400;}
-.bar-track{height:6px; border-radius:3px; background:rgba(255,255,255,0.06); overflow:hidden; position:relative;}
-.bar-fill{
-  height:100%; width:0%; border-radius:3px;
-  background:linear-gradient(90deg, var(--amber-lt), var(--volt));
-  box-shadow:0 0 10px var(--volt), 0 0 2px var(--volt-lt);
-  transition:width 1.4s cubic-bezier(.16,.8,.2,1);
-}
-
-/* ---- Suite telemetry: real KPIs from different FortHeC° products, not one product's bars ---- */
-.kpi-block{
-  padding:14px 0; border-top:1px solid rgba(234,246,240,0.1);
-  opacity:0; transform:translateY(8px); transition:opacity .5s ease, transform .5s ease;
-}
-.kpi-block.in{opacity:1; transform:none;}
-.kpi-row{display:flex; justify-content:space-between; align-items:baseline; gap:12px;}
-.kpi-lbl{font:11px var(--font-mono); color:var(--muted); letter-spacing:.04em;}
-.kpi-val{font:16px var(--font-mono); color:var(--cyan); text-shadow:0 0 12px rgba(47,216,255,.4); white-space:nowrap;}
-.kpi-sub{font:11px var(--font-mono); color:var(--muted); opacity:.75; margin-top:4px;}
-
-/* ============ Real page sections below the hero — the reactor now stays
-   visible behind ALL of them (fixed canvas), so every section gets a
-   near-opaque backdrop to keep its content readable over the glow. ============ */
-.section{
-  position:relative; padding:90px 40px; max-width:1100px; margin:0 auto;
-  background:linear-gradient(180deg, transparent 0%, var(--void) 10%, var(--void) 100%);
-}
-.section-eyebrow{font:12px var(--font-mono); letter-spacing:.2em; color:var(--cyan); text-transform:uppercase;}
-.section h2{font-family:'Plex Mono'; font-weight:400; font-size:clamp(1.5rem,3vw,2.1rem); margin:12px 0 10px; color:var(--ink);}
-.section .lede{max-width:65ch; color:var(--muted); font-size:.98rem; line-height:1.6; margin-bottom:40px;}
-
-.reveal{opacity:0; transform:translateY(20px); transition:opacity .7s ease, transform .7s ease;}
-.reveal.in{opacity:1; transform:none;}
-
-.step-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
-@media (max-width:860px){ .step-grid{grid-template-columns:1fr 1fr;} }
-@media (max-width:560px){ .step-grid{grid-template-columns:1fr;} }
-.step-card{background:rgba(10,18,25,.55); backdrop-filter:blur(10px); border:1px solid rgba(52,226,122,.16); border-radius:6px; padding:20px;}
-.step-tag{display:inline-block; font:10px var(--font-mono); letter-spacing:.1em; color:var(--volt-lt); border:1px solid rgba(52,226,122,.3); padding:3px 8px; border-radius:2px; margin-bottom:12px;}
-.step-card h3{font-family:var(--font-display); font-size:.98rem; font-weight:700; margin:0 0 10px; color:var(--ink);}
-.step-card ul{margin:0; padding-left:16px; font-size:.82rem; color:var(--muted); line-height:1.6;}
-.step-card li{margin-bottom:4px;}
-
-.video-grid{display:grid; grid-template-columns:1fr; gap:48px;}
-.video-card-label{font:11px var(--font-mono); letter-spacing:.08em; color:var(--volt-lt); text-transform:uppercase; margin-bottom:10px;}
-.video-frame{border-radius:6px; overflow:hidden; border:1px solid rgba(234,246,240,.14); box-shadow:0 20px 50px -20px rgba(0,0,0,.7); line-height:0;}
-.video-frame video{display:block; width:100%;}
-.video-cap{font-size:.82rem; color:var(--muted); margin-top:10px; line-height:1.5;}
-
-.gains-table-lab{width:100%; border-collapse:collapse; font:12px var(--font-mono); margin-bottom:24px;}
-.gains-table-lab th{text-align:left; font-weight:400; color:var(--muted); letter-spacing:.05em; text-transform:uppercase; font-size:10px; padding-bottom:10px; border-bottom:1px solid rgba(234,246,240,.16);}
-.gains-table-lab td{padding:10px 6px; border-bottom:1px solid rgba(234,246,240,.08); color:var(--ink);}
-.gains-table-lab td.gain{color:var(--volt-lt); font-weight:600; text-align:right;}
-.gains-banner-lab{text-align:center; padding:24px; border-radius:6px; background:rgba(10,18,25,.55); border:1px solid rgba(240,197,120,.25); font:15px var(--font-mono); color:var(--ink);}
-.gains-banner-lab strong{color:var(--amber-lt); text-shadow:0 0 14px rgba(240,197,120,.4);}
-
-.conf-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:12px;}
-@media (max-width:560px){ .conf-grid{grid-template-columns:1fr;} }
-.conf-item{display:flex; justify-content:space-between; align-items:center; background:rgba(10,18,25,.5); border:1px solid rgba(234,246,240,.1); border-radius:4px; padding:14px 18px; font:13px var(--font-mono); color:var(--ink);}
-.conf-ok{color:var(--volt-lt); font-weight:700; font-size:11px; letter-spacing:.06em;}
-
-.sec-list{display:flex; flex-direction:column; gap:14px;}
-.sec-row{display:grid; grid-template-columns:220px 1fr; gap:18px; padding-bottom:14px; border-bottom:1px solid rgba(234,246,240,.08);}
-@media (max-width:640px){ .sec-row{grid-template-columns:1fr;} }
-.sec-row .lbl{display:flex; align-items:center; gap:8px; font:13px var(--font-display); font-weight:700; color:var(--ink);}
-.sec-row .desc{font-size:.85rem; color:var(--muted); line-height:1.55;}
-
-.cta-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
-@media (max-width:760px){ .cta-grid{grid-template-columns:1fr;} }
-.cta-box{background:rgba(10,18,25,.55); border:1px solid rgba(234,246,240,.12); border-radius:6px; padding:28px;}
-.cta-box.hot{border-color:rgba(240,197,120,.35);}
-.cta-box h3, .cta-box h4{font-family:var(--font-display); color:var(--ink); margin:0 0 10px; font-size:1.1rem;}
-.cta-box p{color:var(--muted); font-size:.9rem; line-height:1.6; margin:0 0 14px;}
-.cta-links a{display:flex; align-items:center; gap:8px; color:var(--ink); text-decoration:none; font:12px var(--font-mono); margin-top:8px;}
-.cta-links .spec-tag{font:10px var(--font-mono); color:var(--volt-lt); border:1px solid rgba(52,226,122,.3); padding:2px 6px; border-radius:2px;}
-
-.teaser-card{text-align:center; padding:28px; max-width:600px; margin:0 auto; background:rgba(10,18,25,.5); border:1px solid rgba(52,226,122,.2); border-radius:6px;}
-.teaser-card p{color:var(--muted); font-size:.9rem; line-height:1.6; margin:0 0 14px;}
-
-/* ---- Real contact page — profile, contact block, inert form ---- */
-.contact-page-grid{display:grid; grid-template-columns:.85fr 1.15fr; gap:40px; align-items:start;}
-@media (max-width:800px){ .contact-page-grid{grid-template-columns:1fr;} }
-
-.profile-card{display:flex; align-items:center; gap:16px; background:rgba(10,18,25,.55); border:1px solid rgba(234,246,240,.12); border-radius:6px; padding:18px; margin-bottom:24px;}
-.profile-avatar{width:52px; height:52px; border-radius:50%; overflow:hidden; flex-shrink:0; border:1px solid rgba(52,226,122,.3);}
-.profile-avatar img{width:100%; height:100%; object-fit:cover; display:block;}
-.profile-name{font-family:var(--font-display); font-weight:700; color:var(--ink); font-size:.95rem;}
-.profile-title{font-size:.78rem; color:var(--muted); margin-top:2px;}
-
-.contact-block{display:flex; flex-direction:column; gap:10px; margin-bottom:28px;}
-.contact-block-item{display:flex; align-items:center; gap:10px; font-size:.88rem; color:var(--ink);}
-.contact-block-item a{color:var(--ink); text-decoration:none;}
-.contact-block-item a:hover{color:var(--volt-lt);}
-
-.contact-feature-list{margin:0 0 8px; padding-left:16px; color:var(--muted); font-size:.85rem; line-height:1.8;}
-
-.contact-form{background:rgba(10,18,25,.55); backdrop-filter:blur(10px); border:1px solid rgba(52,226,122,.16); border-radius:6px; padding:28px;}
-.contact-form h3{font-family:var(--font-display); color:var(--ink); margin:0 0 8px; font-size:1.15rem;}
-.contact-form > p{color:var(--muted); font-size:.85rem; line-height:1.5; margin:0 0 20px;}
-.produit-pills{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;}
-.produit-pill{border:1px solid rgba(234,246,240,.16); border-radius:4px; padding:7px 14px; font-size:.78rem; color:var(--muted); cursor:pointer; transition:all .15s;}
-.produit-pill.active{border-color:var(--volt); color:var(--volt-lt); background:rgba(52,226,122,.08);}
-.form-row{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
-@media (max-width:480px){ .form-row{grid-template-columns:1fr;} }
-.form-group{margin-bottom:16px;}
-.form-group label{display:block; font-size:.75rem; color:var(--muted); letter-spacing:.04em; margin-bottom:6px;}
-.form-group input, .form-group select, .form-group textarea{
-  width:100%; padding:10px 12px; border-radius:4px; font-family:var(--font-display); font-size:.85rem;
-  color:var(--ink); background:rgba(255,255,255,.03); border:1px solid rgba(234,246,240,.14); outline:none;
-}
-/* Popup natif <select> rendu par l'OS -- ignore le fond transparent ci-dessus, retombe sur blanc,
-   texte var(--ink) quasi-blanc devient illisible (retour Hugo, capture d'ecran, 12/08/2026). */
-.form-group select option{ background-color:var(--void); color:var(--ink); }
-.form-group input:focus, .form-group select:focus, .form-group textarea:focus{border-color:var(--volt);}
-.form-group textarea{resize:vertical; min-height:80px;}
-.form-submit{
-  width:100%; padding:13px; border-radius:4px; border:none; cursor:pointer;
-  font-family:var(--font-display); font-weight:700; font-size:.9rem; color:#04120a;
-  background:linear-gradient(120deg, var(--amber-lt), var(--volt));
-  box-shadow:0 0 0 1px rgba(52,226,122,.4), 0 8px 30px -8px rgba(52,226,122,.7);
-}
-.form-note{font-size:.75rem; color:var(--muted); text-align:center; margin-top:12px; line-height:1.5;}
-
-/* ---- Schematic app mockup — honest placeholder, Console has no public
-   demo mode to screenshot for real (same call made on the real site) ---- */
-.app-mockup-lab{margin-top:32px; max-width:640px; margin-left:auto; margin-right:auto; border-radius:8px; overflow:hidden; border:1px solid rgba(52,226,122,.18); background:rgba(10,18,25,.55); backdrop-filter:blur(10px); text-align:left;}
-.app-mockup-lab-bar{display:flex; gap:6px; padding:10px 14px; border-bottom:1px solid rgba(234,246,240,.08);}
-.app-mockup-lab-bar span{width:8px; height:8px; border-radius:50%; background:rgba(234,246,240,.15);}
-.app-mockup-lab-body{display:flex; min-height:200px;}
-.app-mockup-lab-sidebar{width:28%; background:rgba(255,255,255,.02); padding:16px 12px; display:flex; flex-direction:column; gap:8px;}
-.mock-nav{height:10px; border-radius:3px; background:rgba(234,246,240,.08);}
-.mock-nav.active{background:var(--volt); box-shadow:0 0 8px var(--volt);}
-.app-mockup-lab-content{flex:1; padding:20px; display:flex; flex-direction:column; gap:10px;}
-.mock-line{height:8px; border-radius:3px; background:rgba(234,246,240,.08);}
-.mock-line.w40{width:40%;}
-.mock-line.w70{width:70%; height:14px; background:rgba(52,226,122,.15);}
-.mock-card{margin-top:6px; height:42px; border-radius:6px; background:rgba(255,255,255,.02); border:1px solid rgba(234,246,240,.08);}
-.mockup-note{text-align:center; font-size:.75rem; color:var(--muted); margin-top:14px;}
-
-/* ---- Article list — links to the real, untouched article pages ---- */
-.blog-list-lab{display:flex; flex-direction:column; gap:12px;}
-.blog-item{display:block; background:rgba(10,18,25,.5); border:1px solid rgba(234,246,240,.1); border-radius:6px; padding:20px 24px; text-decoration:none; transition:border-color .2s, background .2s;}
-.blog-item:hover{border-color:rgba(52,226,122,.35); background:rgba(10,18,25,.7);}
-.blog-item h2{margin:0 0 8px; font-family:var(--font-display); font-weight:700; font-size:.98rem; color:var(--ink); line-height:1.4;}
-.blog-item p{margin:0; color:var(--muted); font-size:.85rem; line-height:1.6;}
-.blog-item .date{display:block; margin-top:10px; font:11px var(--font-mono); color:var(--muted); opacity:.7;}
-
-footer{position:relative; z-index:5; text-align:center; padding:50px 40px; font:11px var(--font-mono); color:var(--muted); letter-spacing:.08em; background:var(--void);}
-.footer-nav{display:flex; flex-wrap:wrap; justify-content:center; gap:18px; margin-top:16px;}
-.footer-nav a{color:var(--muted); text-decoration:none;}
-.footer-nav a:hover{color:var(--volt-lt);}
-
-@media (prefers-reduced-motion: reduce){
-  .aurora, .hud-panel::before{animation:none;}
-  .bar-fill{transition:none;}
-  .cycle-word span{transition:none;}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — FortHeC°</title>
+  <meta name="description" content="Ressources et articles pour les auditeurs énergétiques et cabinets d'audit : NF EN 16247, ISO 50001, CEE, décret tertiaire.">
+  <link rel="icon" type="image/png" href="../img/n2-app-icon.png">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
-<div class="boot-overlay" id="bootOverlay"><div class="boot-lines" id="bootLines"></div></div>
-
-<div class="scanlines"></div>
-<div class="vignette"></div>
-<div class="hud-frame"><b></b></div>
-
 <nav>
-  <a class="nav-logo" href="../index.html"><img src="../img/n2-icon-mark.png" alt="" height="30"><span class="dot"></span>FortHeC<em>°</em></a>
+  <a href="../index.html" class="nav-logo">
+    <img src="../img/n2-icon-mark.png" alt="" height="46">
+    <span>FortHeC<em>°</em></span>
+  </a>
   <ul class="nav-links">
     <li><a href="../index.html">Accueil</a></li>
     <li><a href="../energy.html">Energy</a></li>
     <li><a href="../inventory.html">Inventory</a></li>
     <li><a href="../suite.html">Suite</a></li>
     <li><a href="../tarifs.html">Tarifs</a></li>
-    <li><a href="index.html">Blog</a></li>
-    <li><a href="../console.html">Console</a></li>
-    <li><a href="../contact.html" class="cta">Contact</a></li>
-  </ul></nav>
+    <li><a href="index.html" class="active">Blog</a></li>
+    <li><a href="../console.html" class="nav-console">🔐 Console</a></li>
+    <li><a href="../contact.html" class="nav-cta">Demander une démo</a></li>
+  </ul>
+</nav>
 
-<section class="hero">
-  <canvas id="reactor-canvas"></canvas>
-  <div class="aurora"></div>
+<section style="padding-top: 120px;">
+  <p class="section-eyebrow reveal">Ressources</p>
+  <h1 class="section-title reveal" style="max-width:none">Blog FortHeC°</h1>
+  <p class="section-sub reveal">Articles pour les auditeurs énergétiques et cabinets d'audit.</p>
 
-  <div class="hero-grid" style="grid-template-columns:1fr; max-width:760px; text-align:center; justify-items:center;">
-    <div>
-      <p class="eyebrow" style="justify-content:center">FortHeC° — Ressources</p>
-      <h1>
-        <div class="line"><span>Blog</span></div>
-        <div class="line"><em>FortHeC°</em></div>
-      </h1>
-      <p class="hero-sub" style="margin-left:auto; margin-right:auto">Articles pour les auditeurs énergétiques et cabinets d'audit.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ── Articles ─────────────────────────── -->
-<section class="section">
-  <p class="section-eyebrow reveal">14 articles</p>
-  <h2 class="reveal">Tous les articles</h2>
-  <p class="lede reveal">Les articles restent sur leur mise en forme d'origine (un nouveau arrive quasiment chaque jour) — seule cette page d'index est reconstruite ici.</p>
-
-  <div class="blog-list-lab">
-    <a class="blog-item reveal" href="decret-bacs-obligations-batiment-tertiaire.html">
-      <h2>Décret BACS : obligations et implications pour le bâtiment tertiaire</h2>
-      <p>Comprenez les obligations du décret BACS pour le bâtiment tertiaire : périmètre, échéances et impacts pour les auditeurs énergétiques.</p>
-      <span class="date">2026-08-12</span>
-    </a>
-    <a class="blog-item reveal" href="cee-entreprise-audit-energetique.html">
-      <h2>Certificats d'Économies d'Énergie (CEE) pour les entreprises : cadre, opportunités et intégration dans un audit énergétique</h2>
-      <p>Découvrez comment les CEE s'intègrent dans un audit énergétique, leur cadre réglementaire et leur valorisation pour les entreprises auditées.</p>
-      <span class="date">2026-08-11</span>
-    </a>
-    <a class="blog-item reveal" href="diagnostic-energetique-audit-differences.html">
-      <h2>Diagnostic énergétique tertiaire vs audit énergétique : quelles différences ?</h2>
-      <p>Comprenez les distinctions clés entre diagnostic énergétique tertiaire et audit énergétique NF EN 16247 pour conseiller vos clients avec précision.</p>
-      <span class="date">2026-08-11</span>
-    </a>
-    <a class="blog-item reveal" href="sous-comptage-energetique-industriel.html">
-      <h2>Sous-comptage énergétique industriel : méthodes, normes et bonnes pratiques pour les auditeurs</h2>
-      <p>Découvrez les méthodes, normes et bonnes pratiques du sous-comptage énergétique industriel pour optimiser vos audits énergétiques et répondre aux exigences réglementaires.</p>
-      <span class="date">2026-08-11</span>
-    </a>
-    <a class="blog-item reveal" href="modele-rapport-audit-energetique-nf-en-16247.html">
-      <h2>Modèle de rapport d'audit énergétique NF EN 16247 : structure et bonnes pratiques</h2>
-      <p>Découvrez la structure obligatoire et les bonnes pratiques pour rédiger un rapport d'audit énergétique conforme à la norme NF EN 16247, avec exemples concrets.</p>
-      <span class="date">2026-08-08</span>
-    </a>
-    <a class="blog-item reveal" href="outils-auditeur-energetique-independant.html">
-      <h2>Quels outils pour optimiser les audits énergétiques en tant qu'indépendant ?</h2>
-      <p>Découvrez les outils indispensables pour les auditeurs énergétiques indépendants : logiciels, normes, méthodologies et bonnes pratiques pour gagner en efficacité.</p>
-      <span class="date">2026-08-07</span>
-    </a>
-    <a class="blog-item reveal" href="plan-actions-efficacite-energetique-industrie.html">
-      <h2>Élaborer un plan d'actions efficacité énergétique industriel conforme et performant</h2>
-      <p>Découvrez comment construire un plan d'actions efficacité énergétique industriel aligné sur la NF EN 16247 et le Décret Tertiaire, avec méthodologie et exemples concrets.</p>
-      <span class="date">2026-08-06</span>
-    </a>
-    <a class="blog-item reveal" href="regression-ipe-iso-50006-guide.html">
-      <h2>Régression IPE selon l'ISO 50006 : méthodologie et bonnes pratiques pour les auditeurs énergétiques</h2>
-      <p>Découvrez comment appliquer la régression IPE selon l'ISO 50006 dans vos audits énergétiques, avec méthodologie, pièges à éviter et outils pour optimiser vos analyses.</p>
-      <span class="date">2026-08-05</span>
-    </a>
-    <a class="blog-item reveal" href="choisir-logiciel-audit-energetique.html">
-      <h2>Logiciel d'audit énergétique : comment choisir un outil adapté à vos missions NF EN 16247 et Décret Tertiaire</h2>
-      <p>Découvrez les critères essentiels pour sélectionner un logiciel d'audit énergétique performant, conforme aux normes NF EN 16247 et Décret Tertiaire, adapté aux auditeurs indépendants.</p>
-      <span class="date">2026-08-04</span>
-    </a>
-    <a class="blog-item reveal" href="decret-tertiaire-obligations-reglementaires.html">
-      <h2>Décret Tertiaire : obligations réglementaires et mise en œuvre pour les auditeurs énergétiques</h2>
-      <p>Décryptage des obligations du Décret Tertiaire pour les auditeurs énergétiques : seuils, échéances, méthodes et outils pour une conformité optimale.</p>
-      <span class="date">2026-08-03</span>
-    </a>
-    <a class="blog-item reveal" href="fiches-cee-industrie-ind-ut.html">
-      <h2>Comprendre et utiliser les fiches CEE IND-UT pour les audits énergétiques industriels</h2>
-      <p>Découvrez comment intégrer les fiches CEE IND-UT dans vos audits énergétiques industriels, leurs critères d'éligibilité et leur impact sur les plans d'actions.</p>
-      <span class="date">2026-08-02</span>
-    </a>
-    <a class="blog-item reveal" href="iso-50001-industriel-guide-pratique.html">
-      <h2>ISO 50001 industriel : guide pratique pour les auditeurs énergétiques</h2>
-      <p>Découvrez les spécificités de l'ISO 50001 en milieu industriel, ses exigences clés et des conseils pour auditer efficacement les systèmes de management de l'énergie.</p>
-      <span class="date">2026-08-02</span>
-    </a>
-    <a class="blog-item reveal" href="obligation-audit-energetique-2-75-gwh.html">
-      <h2>Comprendre l'obligation d'audit énergétique à partir de 2,75 GWh : cadre réglementaire et bonnes pratiques</h2>
-      <p>Décryptage de l'obligation d'audit énergétique pour les sites consommant plus de 2,75 GWh/an. Normes, exemptions et méthodologie pour les auditeurs.</p>
-      <span class="date">2026-08-02</span>
-    </a>
-    <a class="blog-item reveal" href="audit-energetique-nf-en-16247.html">
-      <h2>Audit énergétique NF EN 16247 : méthodologie, exigences et bonnes pratiques</h2>
-      <p>Découvrez les étapes clés, exigences et bonnes pratiques de l'audit énergétique NF EN 16247 pour garantir des résultats conformes et exploitables.</p>
-      <span class="date">2026-08-02</span>
-    </a>
+  <div class="blog-list reveal">
+    <div class="blog-list-item"><h2><a href="declaration-decret-tertiaire-operat.html">Déclaration Décret Tertiaire sur OPERAT : Guide Pratique pour les Auditeurs Énergétiques</a></h2><p>Découvrez comment déclarer les données énergétiques du Décret Tertiaire sur OPERAT, les étapes clés, les pièges à éviter et les bonnes pratiques pour les auditeurs.</p><p style="margin-top:0.5rem;font-size:0.8rem;">2026-08-13</p></div>
+    <div class="blog-list-item"><h2><a href="decret-bacs-obligations-batiment-tertiaire.html">Décret BACS : obligations et implications pour le bâtiment tertiaire</a></h2><p>Comprenez les obligations du décret BACS pour le bâtiment tertiaire : périmètre, échéances et impacts pour les auditeurs énergétiques.</p><p style="margin-top:0.5rem;font-size:0.8rem;">2026-08-12</p></div>
+    <div class="blog-list-item"><h2><a href="cee-entreprise-audit-energetique.html">Certificats d'Économies d'Énergie (CEE) pour les entreprises : cadre, opportunités et intégration dans un audit énergétique</a></h2><p>Découvrez comment les CEE s’intègrent dans un audit énergétique, leur cadre réglementaire et leur valorisation pour les entreprises auditées.</p><p style="margin-top:0.5rem;font-size:0.8rem;">2026-08-11</p></div>
+    <div class="blog-list-item"><h2><a href="sous-comptage-energetique-industriel.html">Sous-comptage énergétique industriel : méthodes, normes et bonnes pratiques pour les auditeurs</a></h2><p>Découvrez les méthodes, normes et bonnes pratiques du sous-comptage énergétique industriel pour optimiser vos audits énergétiques et répondre aux exigences réglementaires.</p><p style="margin-top:0.5rem;font-size:0.8rem;">2026-08-11</p></div>
+    <div class="blog-list-item"><h2><a href="diagnostic-energetique-audit-differences.html">Diagnostic énergétique tertiaire vs audit énergétique : quelles différences ?</a></h2><p>Comprenez les distinctions clés entre diagnostic énergétique tertiaire et audit énergétique NF EN 16247 pour conseiller vos clients avec précision.</p><p style="margin-top:0.5rem;font-size:0.8rem;">2026-08-11</p></div>
+    <div class="blog-list-item"><h2><a href="modele-rapport-audit-energetique-nf-en-16247.html">Modèle de rapport d'audit énergétique NF EN 16247 : structure et bonnes pratiques</a></h2><p>Découvrez la structure obligatoire et les bonnes pratiques pour rédiger un rapport d'audit énergétique conforme à la norme NF EN 16247, avec exemples concrets.</p><p style="margin-top:0.5rem;font-size:0.8rem;">2026-08-08</p></div>
+    <div class="blog-list-item"><h2><a href="outils-auditeur-energetique-independant.html">Quels outils pour optimiser les audits énergétiques en tant qu'indépendant ?</a></h2><p>Découvrez les outils indispensables pour les auditeurs énergétiques indépendants : logiciels, normes, méthodologies et bonnes pratiques pour gagner en efficacité.</p><p style="margin-top:0.5rem;font-size:0.8rem;">2026-08-07</p></div>
+    <div class="blog-list-item"><h2><a href="plan-actions-efficacite-energetique-industrie.html">Élaborer un plan d’actions efficacité énergétique industriel conforme et performant</a></h2><p>Découvrez comment construire un plan d’actions efficacité énergétique industriel aligné sur la NF EN 16247 et le Décret Tertiaire, avec méthodologie et exemples concrets.</p><p style="margin-top:0.5rem;font-size:0.8rem;">2026-08-06</p></div>
+    <div class="blog-list-item"><h2><a href="regression-ipe-iso-50006-guide.html">Régression IPE selon l'ISO 50006 : méthodologie et bonnes pratiques pour les auditeurs énergétiques</a></h2><p>Découvrez comment appliquer la régression IPE selon l'ISO 50006 dans vos audits énergétiques, avec méthodologie, pièges à éviter et outils pour optimiser vos analyses.</p><p style="margin-top:0.5rem;font-size:0.8rem;">2026-08-05</p></div>
+    <div class="blog-list-item"><h2><a href="choisir-logiciel-audit-energetique.html">Logiciel d'audit énergétique : comment choisir un outil adapté à vos missions NF EN 16247 et Décret Tertiaire</a></h2><p>Découvrez les critères essentiels pour sélectionner un logiciel d'audit énergétique performant, conforme aux normes NF EN 16247 et Décret Tertiaire, adapté aux auditeurs indépendants.</p><p style="margin-top:0.5rem;font-size:0.8rem;">2026-08-04</p></div>
+    <div class="blog-list-item"><h2><a href="decret-tertiaire-obligations-reglementaires.html">Décret Tertiaire : obligations réglementaires et mise en œuvre pour les auditeurs énergétiques</a></h2><p>Décryptage des obligations du Décret Tertiaire pour les auditeurs énergétiques : seuils, échéances, méthodes et outils pour une conformité optimale.</p><p style="margin-top:0.5rem;font-size:0.8rem;">2026-08-03</p></div>
+    <div class="blog-list-item"><h2><a href="fiches-cee-industrie-ind-ut.html">Comprendre et utiliser les fiches CEE IND-UT pour les audits énergétiques industriels</a></h2><p>Découvrez comment intégrer les fiches CEE IND-UT dans vos audits énergétiques industriels, leurs critères d'éligibilité et leur impact sur les plans d'actions.</p><p style="margin-top:0.5rem;font-size:0.8rem;">2026-08-02</p></div>
+    <div class="blog-list-item"><h2><a href="iso-50001-industriel-guide-pratique.html">ISO 50001 industriel : guide pratique pour les auditeurs énergétiques</a></h2><p>Découvrez les spécificités de l'ISO 50001 en milieu industriel, ses exigences clés et des conseils pour auditer efficacement les systèmes de management de l'énergie.</p><p style="margin-top:0.5rem;font-size:0.8rem;">2026-08-02</p></div>
+    <div class="blog-list-item"><h2><a href="obligation-audit-energetique-2-75-gwh.html">Comprendre l'obligation d'audit énergétique à partir de 2,75 GWh : cadre réglementaire et bonnes pratiques</a></h2><p>Décryptage de l'obligation d'audit énergétique pour les sites consommant plus de 2,75 GWh/an. Normes, exemptions et méthodologie pour les auditeurs.</p><p style="margin-top:0.5rem;font-size:0.8rem;">2026-08-02</p></div>
+    <div class="blog-list-item"><h2><a href="audit-energetique-nf-en-16247.html">Audit énergétique NF EN 16247 : méthodologie, exigences et bonnes pratiques</a></h2><p>Découvrez les étapes clés, exigences et bonnes pratiques de l'audit énergétique NF EN 16247 pour garantir des résultats conformes et exploitables.</p><p style="margin-top:0.5rem;font-size:0.8rem;">2026-08-02</p></div>
   </div>
 </section>
 
 <footer>
-  © 2026 FortHeC°. Données hébergées en France.
-  <div class="footer-nav">
+  <div class="footer-logo">
+    <img src="../img/n2-icon-mark.png" alt="" height="36">
+    <span>FortHeC<em>°</em></span>
+  </div>
+  <div class="footer-meta">© 2026 FortHeC°. Données hébergées en France. contact@forthec.fr</div>
+  <div class="footer-links">
     <a href="../index.html">Accueil</a>
     <a href="../energy.html">Energy</a>
     <a href="../inventory.html">Inventory</a>
@@ -556,70 +68,6 @@ footer{position:relative; z-index:5; text-align:center; padding:50px 40px; font:
   </div>
 </footer>
 
-<!-- ============ Libraries ============ -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script type="importmap">
-{
-  "imports": {
-    "three": "https://unpkg.com/three@0.165.0/build/three.module.js",
-    "three/addons/": "https://unpkg.com/three@0.165.0/examples/jsm/"
-  }
-}
-</script>
-
-<script type="module">
-import { initReactorLab, runBoot, reduceMotion, markActiveNav, shouldSkipBoot, markBooted, initAppSwitcher, initMobileNav, initAnalytics } from '../js/reactor-lab.js';
-markActiveNav();
-initAppSwitcher();
-initMobileNav();
-initAnalytics();
-
-initReactorLab({
-  coreOffsetX: 2.0,
-  premiumCore: true,
-  // Console has no numeric table of its own either — same honest cross-
-  // reference used on the other secondary pages, labelled as what it is.
-  echoValues: [85, 95, 90, 75, 33],
-  echoLabel: 'blog → energy.forthec.fr · audit_gains'
-});
-
-/* ============ Boot sequence — it "compiles" before it powers on (energy + web-dev fusion) ============ */
-const bootOverlay = document.getElementById('bootOverlay');
-const bootLines = [
-  '> npm run build:blog',
-  '> indexing 13 articles ...',
-  '> sitemap.xml -- ok',
-  '> mounting blog/ (unchanged) ...',
-  '> render complete'
-];
-
-/* ============ Entrance timeline (runs after boot) — this page's hero has
-   no hud-panel/cycle-line, so the chain is shorter than the other pages ============ */
-function startEntrance(){
-  const tl = gsap.timeline({ defaults:{ ease:'power3.out' } });
-  tl.from('.hud-frame', { opacity:0, duration:.6 })
-    .from('.eyebrow', { opacity:0, y:14, duration:.5 }, '-=.2')
-    .from('h1 .line span', { opacity:0, y:'100%', duration:.7, stagger:.12 }, '-=.2')
-    .from('.hero-sub', { opacity:0, y:14, duration:.5 }, '-=.3');
-}
-
-if(reduceMotion || shouldSkipBoot()){
-  bootOverlay.classList.add('hidden');
-  startEntrance();
-  markBooted();
-} else {
-  runBoot(bootLines, ()=>{
-    bootOverlay.classList.add('hidden');
-    startEntrance();
-    markBooted();
-  });
-}
-
-/* ============ Scroll reveal for every real section below the hero ============ */
-const io = new IntersectionObserver((entries)=>{
-  entries.forEach(en=>{ if(en.isIntersecting) en.target.classList.add('in'); });
-}, { threshold:0.2 });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-</script>
+<script src="../js/main.js"></script>
 </body>
 </html>
