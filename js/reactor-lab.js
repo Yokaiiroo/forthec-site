@@ -14,6 +14,12 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
 export const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+// Small phone screens get a lighter build of the same scene, not a
+// different one: fewer particles, capped pixel ratio, no AA, smaller bloom
+// buffer. Same 768px breakpoint the CSS/nav already use, checked once at
+// init (not on resize) — a phone doesn't turn into a desktop mid-session.
+export const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
 // The boot terminal is a first-impression flourish, not something that
 // should replay on every internal nav click now that the 6 pages link to
 // each other — play it once per browser session (sessionStorage, so a
@@ -180,8 +186,11 @@ export function initReactorLab({
 } = {}) {
 
   const canvas = document.getElementById(canvasId);
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  // antialias + a 2x pixel-ratio cap are the two biggest GPU/battery costs
+  // here — dropping both on phones is most of the win, before touching a
+  // single particle count.
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: !isMobile, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1 : 2));
   renderer.setSize(window.innerWidth, window.innerHeight);
   if (premiumCore) {
     // PBR materials read flat/washed-out under the default linear output —
@@ -301,7 +310,7 @@ export function initReactorLab({
   // clinging to the core rather than orbiting debris.
   let energyRing = null;
   if (premiumCore) {
-    const RING_N = 260;
+    const RING_N = isMobile ? 90 : 260;
     const ringPos = new Float32Array(RING_N * 3);
     const ringCol = new Float32Array(RING_N * 3);
     const ringPalette = [new THREE.Color(0x34e27a), new THREE.Color(0x8cffb8), new THREE.Color(0x2fd8ff)];
@@ -334,7 +343,7 @@ export function initReactorLab({
 
   // energy particle shell — plain glow dots (a glyph-text version was tried
   // and reverted: at full scale it scattered over the headline/paragraph).
-  const PCOUNT = 620;
+  const PCOUNT = isMobile ? 170 : 620;
   const positions = new Float32Array(PCOUNT * 3);
   const pcolors = new Float32Array(PCOUNT * 3);
   const palette = [
@@ -431,7 +440,7 @@ export function initReactorLab({
   // live feeder traces: rise from the board below and converge into the core +
   // the particle orbit around it, so the board visibly powers what's above it.
   const feederColors = [0x34e27a, 0xf0c578, 0x2fd8ff, 0x8cffb8];
-  const FEEDER_N = 8;
+  const FEEDER_N = isMobile ? 4 : 8;
   for (let i = 0; i < FEEDER_N; i++) {
     const spread = (i / (FEEDER_N - 1) - 0.5) * 6.2;
     const start = new THREE.Vector3(coreOffsetX + spread, -3.7 - Math.random() * 0.5, -0.9 + Math.random() * 1.8);
@@ -481,8 +490,9 @@ export function initReactorLab({
   // pulsing plasma arcs riding real curved paths — parented to the core so
   // they also inherit its rotation on top of their own flow dot.
   const arcColors = [0x34e27a, 0xf0c578, 0x2fd8ff];
-  for (let i = 0; i < 3; i++) {
-    const a = (i / 3) * Math.PI * 2;
+  const ARC_N = isMobile ? 2 : 3;
+  for (let i = 0; i < ARC_N; i++) {
+    const a = (i / ARC_N) * Math.PI * 2;
     const start = new THREE.Vector3(Math.cos(a) * 1.55, Math.sin(a) * 1.55, 0);
     const mid = new THREE.Vector3(Math.cos(a + 0.6) * 3.4, Math.sin(a + 0.6) * 3.4, (i - 1) * 0.8);
     const end = new THREE.Vector3(Math.cos(a + 1.2) * 1.55, Math.sin(a + 1.2) * 1.55, 0);
@@ -497,16 +507,23 @@ export function initReactorLab({
   // a soft blob and erases the facet reflections. Raise the threshold (and
   // trim the strength) so only genuine hotspots — direct light reflections —
   // bloom, not the whole lit surface.
+  // Bloom is a full extra render pass — trim its strength on mobile rather
+  // than dropping it outright, so the core still glows, just without the
+  // heaviest pass running at full intensity on a phone GPU.
   const bloom = premiumCore
-    ? new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 0.7, 0.55, 0.62)
-    : new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.15, 0.7, 0.12);
+    ? new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), isMobile ? 0.45 : 0.7, 0.55, 0.62)
+    : new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), isMobile ? 0.75 : 1.15, 0.7, 0.12);
   composer.addPass(bloom);
 
+  // Touch-drag fires pointermove too — without this a mobile scroll/swipe
+  // reads as camera parallax and adds jitter on top of everything else.
   let mouseX = 0, mouseY = 0;
-  window.addEventListener('pointermove', (e) => {
-    mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-    mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-  });
+  if (!isMobile) {
+    window.addEventListener('pointermove', (e) => {
+      mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+      mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+    });
+  }
   window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
@@ -556,8 +573,8 @@ export function initReactorLab({
         energyRing.rotation.x = t * 0.05;
       }
     }
-    const targetX = reduceMotion ? 0 : mouseX * 0.35;
-    const targetY = reduceMotion ? 0.2 : 0.2 - mouseY * 0.2;
+    const targetX = (reduceMotion || isMobile) ? 0 : mouseX * 0.35;
+    const targetY = (reduceMotion || isMobile) ? 0.2 : 0.2 - mouseY * 0.2;
     camera.position.x += (targetX - camera.position.x) * 0.04;
     camera.position.y += (targetY - camera.position.y) * 0.04;
     camera.position.z += (targetZ - camera.position.z) * 0.05;
