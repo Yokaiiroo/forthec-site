@@ -13,11 +13,13 @@
 <meta property="og:title" content="FortHeC° — Contact et démonstration">
 <meta property="og:description" content="Demandez une démonstration FortHeC° sur vos propres données. Hugo Chambefort, Ingénieur Maîtrise des Energies, Polytech Nantes.">
 <meta property="og:url" content="https://forthec.fr/contact.html">
-<meta property="og:image" content="https://forthec.fr/img/n2-app-icon.png">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://forthec.fr/img/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="FortHeC° — Contact et démonstration">
 <meta name="twitter:description" content="Demandez une démonstration FortHeC° sur vos propres données. Hugo Chambefort, Ingénieur Maîtrise des Energies, Polytech Nantes.">
-<meta name="twitter:image" content="https://forthec.fr/img/n2-app-icon.png">
+<meta name="twitter:image" content="https://forthec.fr/img/og-cover.png">
 <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 
 <style>
@@ -362,6 +364,16 @@ h1 em{
 .contact-block-item a{color:var(--ink); text-decoration:none;}
 .contact-block-item a:hover{color:var(--volt-lt);}
 
+/* ---- Contact icons: "chip" motif (pins + rounded outline), same soldered-
+   component identity as the hero cards, instead of generic stock icons or
+   the old plain MAIL/TEL/WEB/IN text tags. ---- */
+.c-icon{width:22px; height:22px; flex-shrink:0; color:var(--volt-lt);
+  filter:drop-shadow(0 0 3px rgba(140,255,184,.35));}
+.c-icon .chip-outline{stroke:currentColor; stroke-width:1.3; fill:none;}
+.c-icon .glyph{stroke:currentColor; stroke-width:1.15; fill:none; stroke-linecap:round; stroke-linejoin:round;}
+.c-icon .dot{fill:currentColor;}
+.c-icon text{fill:currentColor; font-family:var(--font-mono);}
+
 .contact-feature-list{margin:0 0 8px; padding-left:16px; color:var(--muted); font-size:.85rem; line-height:1.8;}
 
 .contact-form{background:rgba(10,18,25,.55); backdrop-filter:blur(10px); border:1px solid rgba(52,226,122,.16); border-radius:6px; padding:28px;}
@@ -463,11 +475,54 @@ footer{position:relative; z-index:5; text-align:center; padding:50px 40px; font:
       </div>
 
       <div class="contact-block">
-        <div class="contact-block-item"><span class="spec-tag">MAIL</span><a href="mailto:contact@forthec.fr">contact@forthec.fr</a></div>
-        <div class="contact-block-item"><span class="spec-tag">MAIL</span><a href="mailto:hugo.chambefort@forthec.fr">hugo.chambefort@forthec.fr</a></div>
-        <div class="contact-block-item"><span class="spec-tag">TEL</span><a href="tel:0778325955">07 78 32 59 55</a></div>
-        <div class="contact-block-item"><span class="spec-tag">WEB</span><span>forthec.fr</span></div>
-        <div class="contact-block-item"><span class="spec-tag">IN</span><a href="https://www.linkedin.com/in/hugo-chambefort-41097715b/" target="_blank" rel="noopener">LinkedIn</a></div>
+        <div class="contact-block-item">
+          <svg class="c-icon" viewBox="0 0 22 22" aria-hidden="true">
+            <line class="chip-outline" x1="0" y1="11" x2="4" y2="11"/>
+            <line class="chip-outline" x1="18" y1="11" x2="22" y2="11"/>
+            <rect class="chip-outline" x="4" y="4" width="14" height="14" rx="3"/>
+            <rect class="glyph" x="7.5" y="8.5" width="7" height="5" rx="0.5"/>
+            <path class="glyph" d="M7.5 8.5 L11 12 L14.5 8.5"/>
+          </svg>
+          <a href="mailto:contact@forthec.fr">contact@forthec.fr</a>
+        </div>
+        <div class="contact-block-item">
+          <svg class="c-icon" viewBox="0 0 22 22" aria-hidden="true">
+            <line class="chip-outline" x1="0" y1="11" x2="4" y2="11"/>
+            <line class="chip-outline" x1="18" y1="11" x2="22" y2="11"/>
+            <rect class="chip-outline" x="4" y="4" width="14" height="14" rx="3"/>
+            <rect class="glyph" x="7.5" y="8.5" width="7" height="5" rx="0.5"/>
+            <path class="glyph" d="M7.5 8.5 L11 12 L14.5 8.5"/>
+          </svg>
+          <a href="mailto:hugo.chambefort@forthec.fr">hugo.chambefort@forthec.fr</a>
+        </div>
+        <div class="contact-block-item">
+          <svg class="c-icon" viewBox="0 0 22 22" aria-hidden="true">
+            <line class="chip-outline" x1="0" y1="11" x2="4" y2="11"/>
+            <line class="chip-outline" x1="18" y1="11" x2="22" y2="11"/>
+            <rect class="chip-outline" x="4" y="4" width="14" height="14" rx="3"/>
+            <path class="glyph" d="M8.2 14.8 C 6.6 13.2 6.6 9.8 8.2 8.2 C 9 7.4 9.9 7.7 10.3 8.6 L 10.7 9.6 C 10.9 10.1 10.8 10.6 10.4 10.9 L 9.9 11.3 C 10.5 12.4 11.6 13.5 12.7 14.1 L 13.1 13.6 C 13.4 13.2 13.9 13.1 14.4 13.3 L 15.4 13.7 C 16.3 14.1 16.6 15 15.8 15.8 C 14.2 17.4 9.8 16.4 8.2 14.8 Z"/>
+          </svg>
+          <a href="tel:0778325955">07 78 32 59 55</a>
+        </div>
+        <div class="contact-block-item">
+          <svg class="c-icon" viewBox="0 0 22 22" aria-hidden="true">
+            <line class="chip-outline" x1="0" y1="11" x2="4" y2="11"/>
+            <line class="chip-outline" x1="18" y1="11" x2="22" y2="11"/>
+            <rect class="chip-outline" x="4" y="4" width="14" height="14" rx="3"/>
+            <polygon class="glyph" points="15.3,11 13.15,14.73 8.85,14.73 6.7,11 8.85,7.27 13.15,7.27"/>
+            <circle class="dot" cx="11" cy="11" r="1.1"/>
+          </svg>
+          <span>forthec.fr</span>
+        </div>
+        <div class="contact-block-item">
+          <svg class="c-icon" viewBox="0 0 22 22" aria-hidden="true">
+            <line class="chip-outline" x1="0" y1="11" x2="4" y2="11"/>
+            <line class="chip-outline" x1="18" y1="11" x2="22" y2="11"/>
+            <rect class="chip-outline" x="4" y="4" width="14" height="14" rx="3"/>
+            <text x="11" y="14.5" text-anchor="middle" font-size="8">in</text>
+          </svg>
+          <a href="https://www.linkedin.com/in/hugo-chambefort-41097715b/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
       </div>
 
       <p class="section-eyebrow" style="margin-bottom:14px">Ce que couvre la démo</p>
