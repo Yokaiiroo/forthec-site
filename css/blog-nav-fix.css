@@ -1,0 +1,45 @@
+/* Fix nav responsive uniquement pour le blog (17/08/2026) — le blog n'a pas eu
+   la refonte three.js/inline-style du reste du site (jugé trop coûteux pour 16
+   pages), donc il dépend encore entièrement de la nav de css/style.css. Cette
+   nav a 8 items (6 liens + 2 boutons) qui débordent/se chevauchent entre 769px
+   et ~1050px de large (tablette paysage, petit laptop, fenêtre partagée) — le
+   menu hamburger de css/style.css ne se déclenche qu'en dessous de 768px, trop
+   étroit pour ce nombre d'items. On duplique ici les mêmes règles de tiroir
+   mobile (identiques à css/style.css @media max-width:768px) mais avec un
+   seuil élargi, dans un fichier chargé uniquement par les pages du blog — zéro
+   impact sur le reste du site (dont certaines pages, déjà refaites, chargent
+   encore css/style.css mais l'écrasent via leur propre <style> inline).
+   Le bouton hamburger lui-même est injecté par js/main.js (partagé, seuil
+   768px pour la fermeture auto au resize) — comportement inchangé, seul
+   l'affichage CSS du bouton/tiroir est élargi ici. */
+@media (max-width: 1050px) {
+  .nav-toggle { display: flex; }
+  .nav-links {
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: rgba(10,16,12,0.98);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(52,226,122,0.15);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: max-height 0.25s ease, opacity 0.2s ease;
+  }
+  .nav-links.open {
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .nav-links li { width: 100%; }
+  .nav-links a {
+    display: block;
+    padding: 1rem 5%;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  body.nav-open-lock { overflow: hidden; }
+}
