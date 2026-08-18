@@ -594,19 +594,21 @@ export function initReactorLab({
   // Two guards that cost nothing visually but stop it competing with the
   // rest of the page for GPU/CPU (the actual source of framedrop while
   // scrolling long pages, not the particle/bloom budget itself):
-  // - hard-cap at 60fps regardless of the display's native refresh rate —
-  //   this motion is slow/ambient, a 120/144Hz panel gains nothing from
-  //   rendering (+ running full bloom) 2-4x more often than a 60Hz one.
   // - skip the render entirely while the tab is hidden, rather than
   //   relying on browsers' own (inconsistent) rAF throttling.
   // - skip it too once scrolled past hideThreshold (see above) — already
   //   fully covered by opaque page content at that point.
-  const FRAME_MS = 1000 / 60;
-  let lastFrameTime = 0;
-  function animate(now = 0) {
+  // (There used to be a manual 60fps cap here too. Reverted — comparing
+  // elapsed time against a fixed 16.6ms threshold doesn't line up evenly
+  // with a 120/144Hz panel's actual ~7-8ms tick, so it let frames through
+  // at an uneven cadence instead of a clean one — that drift reads as
+  // stutter even though the *average* rate is still 60fps. Now that the
+  // render buffer itself is resolution-capped, per-frame cost is cheap
+  // enough that running at the display's native rate is both smoother
+  // and not meaningfully more expensive.)
+  function animate() {
     requestAnimationFrame(animate);
-    if (document.hidden || window.scrollY > hideThreshold || now - lastFrameTime < FRAME_MS) return;
-    lastFrameTime = now;
+    if (document.hidden || window.scrollY > hideThreshold) return;
     const t = clock.getElapsedTime();
     // Lab is explicitly "push it to the max" — always full speed, regardless
     // of OS prefers-reduced-motion (unlike each page's own GSAP entrance/word
