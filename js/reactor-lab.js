@@ -587,8 +587,21 @@ export function initReactorLab({
   return { scene, core, camera, cableMat };
 }
 
+// Fixed time budget for the whole intro, split across however many lines/
+// characters a page passes in — capped at ~900ms total (typing + line
+// pauses + final pause) so it can never grow past the "max 1s" target no
+// matter how bootLines content changes later, instead of a per-char speed
+// that would silently get slower as lines get longer.
+const BOOT_TYPE_BUDGET_MS = 650;
+const BOOT_PAUSE_BUDGET_MS = 150;
+const BOOT_FINAL_PAUSE_MS = 100;
+
 export function runBoot(lines, onDone) {
   const bootLinesEl = document.getElementById('bootLines');
+  const totalChars = lines.reduce((n, l) => n + l.length, 0) || 1;
+  const charSpeed = Math.min(20, Math.max(2, BOOT_TYPE_BUDGET_MS / totalChars));
+  const pauseAfterLine = BOOT_PAUSE_BUDGET_MS / lines.length;
+
   function typeLine(el, text, speed, cb) {
     let j = 0;
     const iv = setInterval(() => {
@@ -599,16 +612,16 @@ export function runBoot(lines, onDone) {
   }
   let i = 0;
   function next() {
-    if (i >= lines.length) { return setTimeout(onDone, 200); }
+    if (i >= lines.length) { return setTimeout(onDone, BOOT_FINAL_PAUSE_MS); }
     const p = document.createElement('div');
     p.className = 'boot-line';
     bootLinesEl.appendChild(p);
     const cursor = document.createElement('span');
     cursor.className = 'cursor';
-    typeLine(p, lines[i], 16, () => {
+    typeLine(p, lines[i], charSpeed, () => {
       p.appendChild(cursor);
       i++;
-      setTimeout(() => { cursor.remove(); next(); }, 200);
+      setTimeout(() => { cursor.remove(); next(); }, pauseAfterLine);
     });
   }
   next();
