@@ -529,7 +529,23 @@ export function initReactorLab({
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
     composer.setSize(window.innerWidth, window.innerHeight);
+    updateMaxScroll();
   });
+
+  // document.documentElement.scrollHeight forces the browser to check/compute
+  // layout — fine once, but reading it inside the render loop meant doing
+  // that up to 60x/second on every page, competing with actual scroll/paint
+  // work on the main thread regardless of GPU headroom. Cache it and only
+  // recompute on resize, on load (late images/fonts still shifting height)
+  // and on a slow poll (content height can change outside those, e.g. a
+  // blog article's images finishing decode) — 2x/second instead of 60x/second.
+  let maxScroll = 1;
+  function updateMaxScroll() {
+    maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+  }
+  updateMaxScroll();
+  window.addEventListener('load', updateMaxScroll);
+  setInterval(updateMaxScroll, 500);
 
   const clock = new THREE.Clock();
   // #reactor-canvas is `position:fixed;inset:0` (full page, not just the
@@ -567,7 +583,7 @@ export function initReactorLab({
     // Based on the actual scrollable distance, not a fixed one-viewport
     // assumption — so the morph always completes by the bottom of the page,
     // whether the page is barely scrollable or several screens tall.
-    const maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+    // (maxScroll is cached above, not recomputed every frame.)
     const scrollProgress = Math.min(window.scrollY / maxScroll, 1);
     const targetZ = 7.2 - scrollProgress * 1.6;
 
