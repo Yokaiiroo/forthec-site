@@ -190,8 +190,29 @@ export function initReactorLab({
   // here — dropping both on phones is most of the win, before touching a
   // single particle count.
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: !isMobile, alpha: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1 : 2));
-  renderer.setSize(window.innerWidth, window.innerHeight);
+
+  // The composer/bloom cost scales with actual pixel count, not with "how
+  // powerful the GPU is" — a big 1440p/4K monitor (exactly what a gaming
+  // desktop has, unlike most laptop panels) pushes several MILLION more
+  // pixels through the same full-screen bloom pass every frame than a
+  // modest laptop screen does, at the same devicePixelRatio cap. That's
+  // the actual reason a "gamer" desktop can render this heavier than a
+  // laptop despite the stronger GPU. Fix: cap the real WebGL drawing
+  // buffer at ~1080p-worth of pixels regardless of window/DPR, and use
+  // three's updateStyle=false so the canvas still stretches to fill the
+  // viewport via CSS — the browser upscales, invisible for a soft ambient
+  // particle/bloom background.
+  const MAX_RENDER_PIXELS = 1920 * 1080;
+  function computeRenderSize() {
+    const dpr = Math.min(window.devicePixelRatio, isMobile ? 1 : 2);
+    const rawW = window.innerWidth * dpr;
+    const rawH = window.innerHeight * dpr;
+    const scale = Math.min(1, Math.sqrt(MAX_RENDER_PIXELS / (rawW * rawH)));
+    return { w: Math.round(rawW * scale), h: Math.round(rawH * scale) };
+  }
+  renderer.setPixelRatio(1); // we compute the exact buffer pixels ourselves above
+  let renderSize = computeRenderSize();
+  renderer.setSize(renderSize.w, renderSize.h, false);
   if (premiumCore) {
     // PBR materials read flat/washed-out under the default linear output —
     // ACES filmic is the standard tonemap that makes metal/clearcoat read
@@ -511,9 +532,10 @@ export function initReactorLab({
   // than dropping it outright, so the core still glows, just without the
   // heaviest pass running at full intensity on a phone GPU.
   const bloom = premiumCore
-    ? new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), isMobile ? 0.45 : 0.7, 0.55, 0.62)
-    : new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), isMobile ? 0.75 : 1.15, 0.7, 0.12);
+    ? new UnrealBloomPass(new THREE.Vector2(renderSize.w, renderSize.h), isMobile ? 0.45 : 0.7, 0.55, 0.62)
+    : new UnrealBloomPass(new THREE.Vector2(renderSize.w, renderSize.h), isMobile ? 0.75 : 1.15, 0.7, 0.12);
   composer.addPass(bloom);
+  composer.setSize(renderSize.w, renderSize.h);
 
   // Touch-drag fires pointermove too — without this a mobile scroll/swipe
   // reads as camera parallax and adds jitter on top of everything else.
@@ -527,8 +549,9 @@ export function initReactorLab({
   window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    composer.setSize(window.innerWidth, window.innerHeight);
+    renderSize = computeRenderSize();
+    renderer.setSize(renderSize.w, renderSize.h, false);
+    composer.setSize(renderSize.w, renderSize.h);
     updateMaxScroll();
   });
 
@@ -637,42 +660,11 @@ export function initReactorLab({
   return { scene, core, camera, cableMat };
 }
 
-// Fixed time budget for the whole intro, split across however many lines/
-// characters a page passes in — capped at ~900ms total (typing + line
-// pauses + final pause) so it can never grow past the "max 1s" target no
-// matter how bootLines content changes later, instead of a per-char speed
-// that would silently get slower as lines get longer.
-const BOOT_TYPE_BUDGET_MS = 650;
-const BOOT_PAUSE_BUDGET_MS = 150;
-const BOOT_FINAL_PAUSE_MS = 100;
-
+// Removed per request (not just shortened) — was adding a startup delay
+// on every page's first visit for a purely decorative flourish. lines/
+// bootLinesEl are unused now but each page still calls runBoot(bootLines,
+// cb) to unhide its content, so the signature stays — just resolves
+// immediately instead of typing anything out.
 export function runBoot(lines, onDone) {
-  const bootLinesEl = document.getElementById('bootLines');
-  const totalChars = lines.reduce((n, l) => n + l.length, 0) || 1;
-  const charSpeed = Math.min(20, Math.max(2, BOOT_TYPE_BUDGET_MS / totalChars));
-  const pauseAfterLine = BOOT_PAUSE_BUDGET_MS / lines.length;
-
-  function typeLine(el, text, speed, cb) {
-    let j = 0;
-    const iv = setInterval(() => {
-      el.textContent = text.slice(0, j + 1);
-      j++;
-      if (j >= text.length) { clearInterval(iv); cb && cb(); }
-    }, speed);
-  }
-  let i = 0;
-  function next() {
-    if (i >= lines.length) { return setTimeout(onDone, BOOT_FINAL_PAUSE_MS); }
-    const p = document.createElement('div');
-    p.className = 'boot-line';
-    bootLinesEl.appendChild(p);
-    const cursor = document.createElement('span');
-    cursor.className = 'cursor';
-    typeLine(p, lines[i], charSpeed, () => {
-      p.appendChild(cursor);
-      i++;
-      setTimeout(() => { cursor.remove(); next(); }, pauseAfterLine);
-    });
-  }
-  next();
+  onDone();
 }
