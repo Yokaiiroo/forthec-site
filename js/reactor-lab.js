@@ -547,6 +547,24 @@ export function initReactorLab({
   window.addEventListener('load', updateMaxScroll);
   setInterval(updateMaxScroll, 500);
 
+  // .section's own CSS fades to a near-opaque var(--void) backdrop after
+  // just the first ~10% of each section (see the "reactor stays fixed
+  // behind all of them" comment in the CSS) — so past roughly one hero's
+  // worth of scroll, the canvas is already 100% covered by real content on
+  // every page. Rendering (scene update + composer + bloom) is then pure
+  // waste — worst on a long blog article, where that's most of the time
+  // someone spends on the page. Skip the whole per-frame block once we're
+  // past that point; resume instantly on scrolling back up. Zero visual
+  // change since nothing was visible there anyway.
+  let hideThreshold = window.innerHeight;
+  function updateHideThreshold() {
+    const hero = document.querySelector('.hero');
+    hideThreshold = (hero ? hero.offsetHeight : window.innerHeight) + 250;
+  }
+  updateHideThreshold();
+  window.addEventListener('resize', updateHideThreshold);
+  window.addEventListener('load', updateHideThreshold);
+
   const clock = new THREE.Clock();
   // #reactor-canvas is `position:fixed;inset:0` (full page, not just the
   // hero) — this loop runs the whole time the tab is open, on every page.
@@ -558,11 +576,13 @@ export function initReactorLab({
   //   rendering (+ running full bloom) 2-4x more often than a 60Hz one.
   // - skip the render entirely while the tab is hidden, rather than
   //   relying on browsers' own (inconsistent) rAF throttling.
+  // - skip it too once scrolled past hideThreshold (see above) — already
+  //   fully covered by opaque page content at that point.
   const FRAME_MS = 1000 / 60;
   let lastFrameTime = 0;
   function animate(now = 0) {
     requestAnimationFrame(animate);
-    if (document.hidden || now - lastFrameTime < FRAME_MS) return;
+    if (document.hidden || window.scrollY > hideThreshold || now - lastFrameTime < FRAME_MS) return;
     lastFrameTime = now;
     const t = clock.getElapsedTime();
     // Lab is explicitly "push it to the max" — always full speed, regardless
