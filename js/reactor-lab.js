@@ -532,8 +532,22 @@ export function initReactorLab({
   });
 
   const clock = new THREE.Clock();
-  function animate() {
+  // #reactor-canvas is `position:fixed;inset:0` (full page, not just the
+  // hero) — this loop runs the whole time the tab is open, on every page.
+  // Two guards that cost nothing visually but stop it competing with the
+  // rest of the page for GPU/CPU (the actual source of framedrop while
+  // scrolling long pages, not the particle/bloom budget itself):
+  // - hard-cap at 60fps regardless of the display's native refresh rate —
+  //   this motion is slow/ambient, a 120/144Hz panel gains nothing from
+  //   rendering (+ running full bloom) 2-4x more often than a 60Hz one.
+  // - skip the render entirely while the tab is hidden, rather than
+  //   relying on browsers' own (inconsistent) rAF throttling.
+  const FRAME_MS = 1000 / 60;
+  let lastFrameTime = 0;
+  function animate(now = 0) {
     requestAnimationFrame(animate);
+    if (document.hidden || now - lastFrameTime < FRAME_MS) return;
+    lastFrameTime = now;
     const t = clock.getElapsedTime();
     // Lab is explicitly "push it to the max" — always full speed, regardless
     // of OS prefers-reduced-motion (unlike each page's own GSAP entrance/word
