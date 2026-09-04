@@ -642,7 +642,7 @@ function startEntrance(){
     .from('h1 .line span', { opacity:0, y:'100%', duration:.7, stagger:.12 }, '-=.2')
     .from('.hero-sub', { opacity:0, y:14, duration:.5 }, '-=.3')
     .from('.cycle-line', { opacity:0, y:10, duration:.5 }, '-=.3')
-    .from('.hero-actions a', { opacity:0, y:12, duration:.45, stagger:.08 }, '-=.25')
+    .from('.hero-actions a', { opacity:0, y:12, duration:.45, stagger:.08, clearProps:'transform' }, '-=.25')
     .from('.spec-chip', { opacity:0, y:8, duration:.4, stagger:.05 }, '-=.2')
     .from('.hud-panel', { opacity:0, x:30, duration:.7 }, '-=.9');
 
