@@ -1,157 +1,19 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FortHeC° — Mentions légales, CGV et confidentialité</title>
-  <meta name="description" content="Mentions légales, Conditions Générales d'Utilisation et de Vente, et politique de confidentialité de FortHeC°.">
-  <meta name="robots" content="noindex">
-  <link rel="icon" type="image/png" href="img/n2-app-icon.png">
-  <link rel="canonical" href="https://forthec.fr/legal.html">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="FortHeC°">
-  <meta property="og:locale" content="fr_FR">
-  <meta property="og:title" content="FortHeC° — Mentions légales, CGV et confidentialité">
-  <meta property="og:description" content="Mentions légales, Conditions Générales d'Utilisation et de Vente, et politique de confidentialité de FortHeC°.">
-  <meta property="og:url" content="https://forthec.fr/legal.html">
-  <meta property="og:image" content="https://forthec.fr/img/og-cover.png">
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#030d0d"><title>FortHeC° : Mentions légales, CGV et confidentialité</title><meta name="description" content="Mentions légales, Conditions Générales d'Utilisation et de Vente, et politique de confidentialité de FortHeC°.">
+<link rel="canonical" href="https://forthec.fr/legal.html"><meta property="og:type" content="website">
+<meta property="og:site_name" content="FortHeC°">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="FortHeC° : Mentions légales, CGV et confidentialité">
+<meta property="og:description" content="Mentions légales, Conditions Générales d'Utilisation et de Vente, et politique de confidentialité de FortHeC°.">
+<meta property="og:url" content="https://forthec.fr/legal.html">
+<meta property="og:image" content="https://forthec.fr/img/og-cover.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="FortHeC° — Mentions légales, CGV et confidentialité">
-  <meta name="twitter:description" content="Mentions légales, Conditions Générales d'Utilisation et de Vente, et politique de confidentialité de FortHeC°.">
-  <meta name="twitter:image" content="https://forthec.fr/img/og-cover.png">
-  <link rel="stylesheet" href="css/style.css">
-  <style>
-    .legal-tabs {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 2.5rem;
-    }
-    .legal-tab {
-      border: 1px solid var(--paper-mid);
-      border-radius: 6px;
-      padding: 0.5rem 1.1rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--muted);
-      cursor: pointer;
-      transition: all 0.15s;
-      background: var(--white);
-      font-family: inherit;
-    }
-    .legal-tab.active, .legal-tab:hover {
-      border-color: var(--volt);
-      color: var(--volt-deep);
-      background: rgba(52,226,122,0.06);
-    }
-    .legal-content {
-      max-width: 780px;
-      background: var(--white);
-      border: 1px solid var(--paper-mid);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow);
-      padding: 2.5rem clamp(1.5rem, 4vw, 3rem);
-    }
-    .legal-content h1 {
-      font-size: 1.75rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 1rem;
-    }
-    .legal-content h2 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      margin: 2rem 0 0.75rem;
-    }
-    .legal-content h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin: 1.5rem 0 0.5rem;
-      color: var(--ink-mid);
-    }
-    .legal-content p {
-      font-size: 0.9rem;
-      color: #3A3D52;
-      line-height: 1.75;
-      margin-bottom: 1rem;
-    }
-    .legal-content ul {
-      margin: 0 0 1.25rem 1.25rem;
-    }
-    .legal-content li {
-      font-size: 0.9rem;
-      color: #3A3D52;
-      line-height: 1.7;
-      margin-bottom: 0.4rem;
-    }
-    .legal-content strong { color: var(--ink); font-weight: 700; }
-    .legal-content em { color: var(--muted); }
-    .legal-content a { color: var(--volt-deep); font-weight: 600; }
-    .legal-content a:hover { text-decoration: underline; }
-    .legal-content hr {
-      border: none;
-      border-top: 1px solid var(--paper-mid);
-      margin: 2rem 0;
-    }
-    .legal-table {
-      display: block;
-      width: 100%;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      border-collapse: collapse;
-      font-size: 0.82rem;
-      margin: 1.25rem 0 1.75rem;
-    }
-    .legal-table th {
-      text-align: left;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--muted);
-      padding: 0.6rem 0.75rem;
-      border-bottom: 2px solid var(--paper-mid);
-    }
-    .legal-table td {
-      padding: 0.65rem 0.75rem;
-      border-bottom: 1px solid var(--paper-mid);
-      color: #3A3D52;
-      vertical-align: top;
-    }
-    .legal-loading {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-    @media (max-width: 768px) {
-      .legal-content { padding: 1.75rem 1.25rem; }
-    }
-  </style>
-</head>
-<body>
-
-<nav>
-  <a href="index.html" class="nav-logo">
-    <img src="img/n2-icon-mark.png" alt="" height="34">
-    <span>FortHeC<em>°</em></span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html">Accueil</a></li>
-    <li><a href="energy.html">Energy</a></li>
-    <li><a href="inventory.html">Inventory</a></li>
-    <li><a href="suite.html">Suite</a></li>
-    <li><a href="tarifs.html">Tarifs</a></li>
-    <li><a href="blog/index.html">Blog</a></li>
-    <li><a href="console.html" class="nav-console">Console</a></li>
-    <li><a href="contact.html" class="nav-cta">Demander une démo</a></li>
-  </ul>
-</nav>
-
-<section style="padding-top: 120px;">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FortHeC° : Mentions légales, CGV et confidentialité">
+<meta name="twitter:description" content="Mentions légales, Conditions Générales d'Utilisation et de Vente, et politique de confidentialité de FortHeC°.">
+<meta name="twitter:image" content="https://forthec.fr/img/og-cover.png"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="software.css"><link rel="stylesheet" href="atmosphere.css"><link rel="stylesheet" href="energy-first.css"><link rel="stylesheet" href="cinema.css"><link rel="stylesheet" href="site-v3.css"><link rel="stylesheet" href="product-scenes.css"><link rel="stylesheet" href="sharp-surfaces.css"><script src="analytics.js" defer></script><script src="living-field.js" defer></script><script src="site-v3.js" defer></script><script src="product-scenes.js" defer></script><link rel="stylesheet" href="living-theme.css"><script src="video-autoplay.js" defer></script></head><body class="site-page page-legal"><canvas id="energy-field" aria-hidden="true"></canvas><a class="skip" href="#contenu">Aller au contenu</a><header class="header"><a class="wordmark" href="index.html" aria-label="FortHeC, accueil">FortHeC<span>°</span></a><span class="header-note">ÉDITEUR FRANÇAIS<br>LOGICIELS D’AUDIT ÉNERGÉTIQUE</span><button class="menu-toggle" aria-controls="navigation" aria-expanded="false">Menu <span>＋</span></button><nav id="navigation" aria-label="Navigation principale"><a href="index.html">Accueil</a><a href="energy.html">Energy</a><a href="inventory.html">Inventory</a><a href="suite.html">Suite</a><a href="tarifs.html">Tarifs</a><a href="blog/index.html">Blog</a><a href="console.html">Console</a><a class="nav-contact" href="contact.html">Contact <span>↗</span></a></nav></header><main id="contenu"><div class="page-path"><a href="index.html">FortHeC°</a><span>/</span><span>legal</span><span class="page-edition">SUITE LOGICIELLE / NF EN 16247</span></div><section class="section">
   <p class="section-eyebrow reveal">Informations légales</p>
-  <h1 class="section-title reveal" style="max-width:none">Mentions légales, CGV et confidentialité</h1>
+  <h1 class="section-title reveal">Mentions légales, CGV et confidentialité</h1>
   <p class="section-sub reveal">Éditeur, conditions d'utilisation et de vente, traitement des données personnelles : tout ce qui encadre l'usage des Services FortHeC°.</p>
 
   <div class="legal-tabs reveal">
@@ -165,142 +27,703 @@
   </div>
 </section>
 
-<footer>
-  <div class="footer-logo">
-    <img src="img/n2-icon-mark.png" alt="" height="24">
-    <span>FortHeC<em>°</em></span>
-  </div>
-  <div class="footer-meta">© 2026 FortHeC°. Données hébergées en France. contact@forthec.fr</div>
-  <div class="footer-links">
-    <a href="index.html">Accueil</a>
-    <a href="energy.html">Energy</a>
-    <a href="inventory.html">Inventory</a>
-    <a href="tarifs.html">Tarifs</a>
-    <a href="console.html">Console</a>
-    <a href="legal.html" class="active">Mentions légales</a>
-    <a href="https://www.linkedin.com/in/hugo-chambefort-41097715b/" target="_blank" rel="noopener">LinkedIn</a>
-  </div>
-</footer>
+<template id="legal-source-mentions"># Mentions légales
 
-<script src="js/main.js"></script>
-<script>
-const DOC_FILES = {
-  mentions: 'legal/mentions-legales.txt',
-  cgv: 'legal/cgv.txt',
-  confidentialite: 'legal/politique-confidentialite.txt'
-};
-const DOC_LABELS = {
-  mentions: 'Mentions légales',
-  cgv: "Conditions Générales d'Utilisation et de Vente",
-  confidentialite: 'Politique de confidentialité'
-};
+**Dernière mise à jour : 30 juillet 2026**
 
-const docCache = {};
+Les présentes mentions légales s'appliquent au site forthec.fr et à l'ensemble des applications éditées sous la marque FortHeC° (ci-après désignés collectivement &quot;les Services&quot;).
 
-function inline(text) {
-  text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
-  text = text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-  text = text.replace(/(^|[^*])\*([^*]+)\*($|[^*])/g, '$1<em>$2</em>$3');
-  return text;
-}
+## 1. Éditeur
 
-function renderMarkdown(md) {
-  const lines = md.replace(/\r\n/g, '\n').split('\n');
-  let html = '';
-  let i = 0;
-  let inList = false;
+Les Services sont édités par :
 
-  function closeList() {
-    if (inList) { html += '</ul>'; inList = false; }
-  }
+**Hugo Chambefort**, entrepreneur individuel exerçant sous le régime de la micro-entreprise, exploitant le nom commercial **FortHeC°**.
 
-  while (i < lines.length) {
-    const line = lines[i];
-    const trimmed = line.trim();
+- Adresse du siège social : 11 chemin de Fournaulis, 31170 Tournefeuille
+- SIRET : 108 072 661 00011
+- SIREN : 108 072 661
+- Code APE : 5829C - Édition de logiciels applicatifs
+- Numéro de TVA intracommunautaire : Non applicable (franchise en base de TVA, article 293 B du Code général des impôts)
+- Adresse électronique : contact@forthec.fr
+- Directeur de la publication : Hugo Chambefort
 
-    if (trimmed === '') { closeList(); i++; continue; }
-    if (trimmed === '---') { closeList(); html += '<hr>'; i++; continue; }
+## 2. Hébergement
 
-    if (line.startsWith('### ')) { closeList(); html += `<h3>${inline(line.slice(4))}</h3>`; i++; continue; }
-    if (line.startsWith('## '))  { closeList(); html += `<h2>${inline(line.slice(3))}</h2>`; i++; continue; }
-    if (line.startsWith('# '))   { closeList(); html += `<h1>${inline(line.slice(2))}</h1>`; i++; continue; }
+### 2.1 Site vitrine forthec.fr et applications FortHeC° Energy et FortHeC° Admin
 
-    if (trimmed.startsWith('- ')) {
-      if (!inList) { html += '<ul>'; inList = true; }
-      html += `<li>${inline(trimmed.slice(2))}</li>`;
-      i++; continue;
-    }
+Ces services sont hébergés sur infrastructure VPS opérée par :
 
-    if (trimmed.startsWith('|')) {
-      closeList();
-      const tableLines = [];
-      while (i < lines.length && lines[i].trim().startsWith('|')) {
-        tableLines.push(lines[i].trim());
-        i++;
-      }
-      const rows = tableLines.map(l => l.replace(/^\||\|$/g, '').split('|').map(c => c.trim()));
-      const dataRows = rows.filter(r => !r.every(c => /^:?-+:?$/.test(c)));
-      html += '<table class="legal-table">';
-      dataRows.forEach((r, idx) => {
-        const tag = idx === 0 ? 'th' : 'td';
-        html += '<tr>' + r.map(c => `<${tag}>${inline(c)}</${tag}>`).join('') + '</tr>';
-      });
-      html += '</table>';
-      continue;
-    }
+**Scaleway SAS**, 8 rue de la Ville l'Évêque, 75008 Paris, France, immatriculée au RCS de Paris sous le numéro 433 115 904.
 
-    closeList();
-    const para = [line];
-    i++;
-    while (
-      i < lines.length &&
-      lines[i].trim() !== '' &&
-      !lines[i].startsWith('#') &&
-      lines[i].trim() !== '---' &&
-      !lines[i].trim().startsWith('- ') &&
-      !lines[i].trim().startsWith('|')
-    ) {
-      para.push(lines[i]);
-      i++;
-    }
-    html += `<p>${inline(para.join(' '))}</p>`;
-  }
-  closeList();
-  return html;
-}
+Datacenter : Paris (France).
 
-async function loadDoc(key) {
-  const container = document.getElementById('legal-content');
-  container.innerHTML = '<p class="legal-loading">Chargement du document...</p>';
+### 2.2 Base de données et stockage fichiers
 
-  document.querySelectorAll('.legal-tab').forEach(t => {
-    t.classList.toggle('active', t.dataset.doc === key);
-  });
+Données hébergées via :
 
-  try {
-    if (!docCache[key]) {
-      const res = await fetch(DOC_FILES[key]);
-      if (!res.ok) throw new Error('fetch failed');
-      docCache[key] = await res.text();
-    }
-    container.innerHTML = renderMarkdown(docCache[key]);
-    document.title = `FortHeC° — ${DOC_LABELS[key]}`;
-  } catch (err) {
-    container.innerHTML = '<p>Document indisponible pour le moment. Contactez contact@forthec.fr.</p>';
-  }
-}
+**Supabase Inc.**, 970 Toa Payoh North #07-04, Singapore 318992, opérant l'infrastructure de traitement au sein de datacenters Amazon Web Services situés dans la région eu-west-3 (Paris, France).
 
-document.querySelectorAll('.legal-tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    loadDoc(tab.dataset.doc);
-    const url = new URL(window.location.href);
-    url.searchParams.set('doc', tab.dataset.doc);
-    history.replaceState(null, '', url);
-  });
-});
+### 2.3 Application mobile FortHeC° Inventory
 
-const initialDoc = new URLSearchParams(window.location.search).get('doc');
-loadDoc(DOC_FILES[initialDoc] ? initialDoc : 'mentions');
-</script>
-</body>
-</html>
+Distribuée sous forme d'APK signé via l'infrastructure Expo Application Services :
+
+**650 Industries, Inc.**, 44 Tehama Street, San Francisco, CA 94105, États-Unis.
+
+L'application ne stocke pas de données utilisateur sur cette infrastructure : elle est utilisée uniquement pour la compilation et la distribution du binaire. Les données saisies par l'auditeur sont exclusivement transmises à la base Supabase Paris décrite en 2.3.
+
+## 3. Propriété intellectuelle
+
+L'ensemble des éléments composant les Services (interfaces, textes, graphismes, logos, iconographies, code source des applications, base de données, marque FortHeC°, méthodologies de calcul des indicateurs de performance énergétique, bibliothèques de préconisations) est la propriété exclusive de Hugo Chambefort ou fait l'objet d'une autorisation d'utilisation.
+
+Toute reproduction, représentation, modification, publication, adaptation, exploitation commerciale de tout ou partie des Services, quel que soit le moyen ou le procédé utilisé, est interdite sans l'autorisation écrite préalable de l'éditeur.
+
+Toute exploitation non autorisée des Services est susceptible d'engager la responsabilité civile ou pénale de son auteur au titre notamment de la contrefaçon (articles L. 335-2 et suivants du Code de la propriété intellectuelle).
+
+Les rapports d'audit énergétique générés par les utilisateurs à l'aide de FortHeC° Energy demeurent la propriété pleine et entière de l'utilisateur ou de son organisation cliente. FortHeC° ne revendique aucun droit sur le contenu des audits produits.
+
+## 4. Marques
+
+FortHeC° est un nom commercial utilisé par Hugo Chambefort dans le cadre de son activité d'édition de logiciels.
+
+Les marques citées incidemment sur les Services (Scaleway, Supabase, Mistral AI, Google, hCaptcha, Expo, etc.) sont la propriété de leurs titulaires respectifs.
+
+## 5. Liens hypertextes
+
+Les Services peuvent contenir des liens vers des sites tiers. L'éditeur ne saurait être tenu responsable du contenu de ces sites, de leur politique de confidentialité, ni des dommages ou pertes avérés ou allégués faisant suite à leur consultation.
+
+La création de liens pointant vers forthec.fr est libre à condition que ces liens ne portent pas atteinte à l'image ou aux intérêts de l'éditeur. L'éditeur se réserve le droit de demander la suppression de tout lien qu'il estimerait contraire à ses intérêts.
+
+## 6. Contact
+
+Pour toute question relative aux Services, à leur fonctionnement, à leur contenu ou aux présentes mentions légales : **contact@forthec.fr**.
+
+## 7. Droit applicable et juridiction compétente
+
+Les présentes mentions légales sont soumises au droit français. En cas de litige, et à défaut de résolution amiable, les tribunaux français seront seuls compétents.
+
+## 8. Signalement de contenus illicites
+
+Conformément à la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique, tout contenu manifestement illicite peut être signalé à l'éditeur à l'adresse contact@forthec.fr.
+</template><template id="legal-source-cgv"># Conditions Générales d'Utilisation et de Vente
+
+**Version 1.0 30 juillet 2026**
+
+Les présentes conditions générales d'utilisation et de vente (ci-après &quot;CGU/CGV&quot; ou &quot;Conditions&quot;) régissent l'accès et l'utilisation des services logiciels édités sous la marque FortHeC° ainsi que la souscription aux offres d'abonnement associées.
+
+Elles sont conclues entre :
+
+**Hugo Chambefort**, entrepreneur individuel exerçant sous le régime de la micro-entreprise, exploitant le nom commercial **FortHeC°**,
+- Adresse : 11 chemin de Fournaulis, 31170 Tournefeuille
+- SIRET : 108 072 661 00011
+- SIREN : 108 072 661
+- Contact : contact@forthec.fr
+
+Ci-après désigné &quot;**FortHeC°**&quot; ou &quot;**l'Éditeur**&quot;,
+
+et toute personne physique majeure agissant à titre professionnel, ou personne morale, souscrivant un compte d'accès aux Services,
+
+Ci-après désigné &quot;**le Client**&quot; ou &quot;**l'Utilisateur**&quot;.
+
+FortHeC° et le Client étant ci-après désignés collectivement &quot;**les Parties**&quot;.
+
+---
+
+## Article 1. Définitions
+
+- **&quot;Services&quot;** : ensemble des services logiciels édités par FortHeC°, comprenant l'application web FortHeC° Energy, l'application mobile FortHeC° Inventory, et tout service complémentaire mis à disposition par l'Éditeur.
+- **&quot;Compte&quot;** : espace personnel du Client permettant d'accéder aux Services après authentification.
+- **&quot;Abonnement&quot;** : formule payante souscrite par le Client donnant accès à un ou plusieurs Services selon un plan choisi.
+- **&quot;Essai gratuit&quot;** : période de 30 jours pendant laquelle le Client peut évaluer les Services sans engagement de paiement.
+- **&quot;Design Partner&quot;** : statut accordé aux premiers Clients signataires par plan, ouvrant droit à une remise commerciale de 30% pendant 12 mois en contrepartie d'un feedback structuré.
+- **&quot;Organisation&quot;** : entité juridique (bureau d'études, société d'ingénierie, cabinet d'audit) au sein de laquelle un ou plusieurs Utilisateurs sont regroupés.
+- **&quot;Contenu Client&quot;** : ensemble des données, textes, images, mesures, rapports générés ou téléversés par le Client dans les Services.
+- **&quot;DPA&quot;** : Data Processing Agreement, accord de sous-traitance conclu séparément entre FortHeC° et le Client pour encadrer le traitement des données personnelles au sens du RGPD.
+
+## Article 2. Objet et champ d'application
+
+Les présentes Conditions ont pour objet de définir les modalités selon lesquelles FortHeC° met à disposition du Client les Services, et les conditions financières applicables aux Abonnements.
+
+Elles s'appliquent :
+- À toute utilisation des Services, qu'elle soit gratuite (Essai gratuit, compte de démonstration) ou payante (Abonnement souscrit)
+- À toute souscription d'un Abonnement à l'un des plans commercialisés par FortHeC°
+
+Les Services sont exclusivement destinés à un usage professionnel, dans le cadre d'activités d'audit énergétique industriel ou d'ingénierie associée. Ils ne sont pas destinés à un usage par des consommateurs au sens du Code de la consommation.
+
+## Article 3. Acceptation des Conditions
+
+L'acceptation des présentes Conditions est réalisée :
+- Lors de la création d'un Compte (case à cocher obligatoire, mention &quot;J'accepte les CGU/CGV&quot;)
+- Lors de la souscription d'un Abonnement payant (double acceptation : au moment de l'inscription, puis à la validation du paiement)
+
+Le Client reconnaît avoir pris connaissance des Conditions et les accepter sans réserve. En cas de désaccord avec tout ou partie des Conditions, le Client doit renoncer à l'utilisation des Services.
+
+Les Conditions applicables sont celles en vigueur à la date de création du Compte ou de renouvellement de l'Abonnement.
+
+## Article 4. Description des Services
+
+### 4.1 FortHeC° Energy
+
+Application web d'audit énergétique industriel, conforme aux normes NF EN 16247 et ISO 50006, comprenant notamment :
+- Import et structuration de données de consommation énergétique
+- Calcul d'Indicateurs de Performance Énergétique (IPE) par régression linéaire
+- Bibliothèque de préconisations d'actions d'économie d'énergie
+- Aide à la rédaction de plans d'actions et de rapports d'audit
+- Génération automatisée de rapports Word conformes NF EN 16247-3
+- Assistance à la valorisation des aides financières (CEE, ATEE, aides régionales)
+
+### 4.2 FortHeC° Inventory
+
+Application mobile de collecte terrain, comprenant notamment :
+- Inventaire d'équipements industriels avec reconnaissance optique de caractères sur plaques signalétiques
+- Saisie vocale de commentaires et transcription automatique
+- Cartographie 2D des bâtiments et zones auditées
+- Photos géolocalisées par zone
+- Synchronisation hors ligne des données terrain
+
+### 4.3 Mode Suite
+
+Combinaison intégrée Energy + Inventory, permettant un flux continu de la collecte terrain à la génération du rapport d'audit.
+
+### 4.4 Évolution des Services
+
+FortHeC° se réserve le droit de faire évoluer les Services, d'ajouter ou de retirer des fonctionnalités, dans le cadre d'un cycle de développement continu. Les évolutions majeures font l'objet d'une notification aux Utilisateurs actifs.
+
+## Article 5. Comptes et inscription
+
+### 5.1 Création de Compte
+
+La création d'un Compte est ouverte à toute personne physique majeure agissant à titre professionnel ou à toute personne morale, sous réserve de fournir des informations exactes et complètes.
+
+Les données requises à la création sont :
+- Nom, prénom, fonction
+- Email professionnel valide
+- Nom de l'Organisation d'appartenance
+- Acceptation des présentes Conditions et de la politique de confidentialité
+
+### 5.2 Types de Compte
+
+- **Compte de démonstration** : accès limité dans le temps (durée fixée par FortHeC°), destiné à l'évaluation des Services par un prospect. Accessible sur demande.
+- **Compte d'Essai gratuit** : accès complet aux fonctionnalités d'un plan choisi pendant 30 jours, sans carte bancaire requise à l'inscription.
+- **Compte payant (Abonnement actif)** : accès complet aux fonctionnalités du plan souscrit pendant toute la durée de l'Abonnement.
+- **Compte administrateur d'Organisation** : compte disposant de droits étendus pour gérer les autres Utilisateurs d'une même Organisation (plans Cabinet Suite et supérieurs).
+
+### 5.3 Sécurité du Compte
+
+Le Client est responsable de la confidentialité de ses identifiants et de tout usage effectué depuis son Compte. Il s'engage à :
+- Choisir un mot de passe fort (au moins 12 caractères, complexité recommandée)
+- Ne pas partager ses identifiants avec des tiers
+- Notifier FortHeC° sans délai en cas de suspicion d'accès non autorisé à contact@forthec.fr
+
+FortHeC° ne saurait être tenu responsable des conséquences d'un usage non autorisé du Compte résultant d'un défaut de vigilance du Client.
+
+### 5.4 Multi-utilisateurs (plans Cabinet Suite et supérieurs)
+
+Les plans Cabinet Suite (jusqu'à 5 Utilisateurs) et Cabinet+ (Utilisateurs illimités) permettent la création de plusieurs Comptes rattachés à une même Organisation. L'administrateur de l'Organisation est responsable de la gestion des invitations, des rôles et de la révocation des accès de ses collaborateurs.
+
+## Article 6. Accès aux Services
+
+### 6.1 Prérequis techniques
+
+L'accès aux Services requiert :
+- Un navigateur web moderne (Chrome, Firefox, Edge, Safari, dernière version stable) pour FortHeC° Energy
+- Un smartphone Android compatible (version minimale communiquée par FortHeC°) pour FortHeC° Inventory
+- Une connexion internet stable pour la synchronisation
+
+### 6.2 Disponibilité et engagement de moyens
+
+FortHeC° met en oeuvre des efforts raisonnables pour assurer une disponibilité continue des Services 24 heures sur 24 et 7 jours sur 7, sous réserve :
+- Des opérations de maintenance planifiées (annoncées avec un préavis raisonnable)
+- Des interventions de maintenance corrective en cas d'incident
+- Des cas de force majeure au sens de l'article 1218 du Code civil
+- Des défaillances des prestataires techniques tiers (hébergeur, opérateur télécom, prestataires d'authentification)
+
+L'engagement de FortHeC° au titre de la disponibilité constitue une obligation de moyens et non de résultat. Aucun taux de disponibilité chiffré (SLA) n'est garanti dans le cadre des présentes Conditions, sauf stipulation contractuelle particulière conclue avec le Client.
+
+### 6.3 Maintenance
+
+FortHeC° peut interrompre temporairement l'accès aux Services pour des opérations de maintenance. Ces interruptions sont annoncées lorsque possible, et planifiées de préférence en dehors des heures ouvrées.
+
+## Article 7. Utilisation des Services
+
+### 7.1 Usage acceptable
+
+Le Client s'engage à utiliser les Services conformément à leur destination professionnelle (réalisation d'audits énergétiques industriels, activités d'ingénierie associées) et dans le respect :
+- Des lois et règlements en vigueur
+- Des droits des tiers, notamment de la propriété intellectuelle et des données personnelles
+- Des présentes Conditions
+
+### 7.2 Interdictions
+
+Le Client s'interdit notamment :
+- De tenter d'accéder à des Comptes ou données d'autres Organisations
+- De contourner ou tenter de contourner les mesures de sécurité mises en place par FortHeC°
+- De pratiquer l'ingénierie inverse, la décompilation ou la désassemblage des Services
+- D'utiliser les Services pour héberger, transmettre ou stocker des contenus illicites, injurieux, diffamatoires ou portant atteinte aux droits des tiers
+- De revendre, sous-louer ou céder l'accès aux Services à des tiers sans autorisation écrite préalable de FortHeC°
+- De pratiquer un usage automatisé abusif (scraping massif, injection de charges anormales)
+
+### 7.3 Propriété du Contenu Client
+
+Le Client conserve la propriété pleine et entière du Contenu Client qu'il crée ou téléverse dans les Services (données d'audit, mesures, photos, rapports générés, préconisations personnalisées).
+
+FortHeC° ne revendique aucun droit de propriété intellectuelle sur les rapports d'audit produits par le Client via les Services.
+
+### 7.4 Licence d'usage à FortHeC°
+
+Le Client concède à FortHeC° une licence non exclusive, gratuite et limitée à la durée de son Abonnement, portant sur le Contenu Client, aux seules fins :
+- D'héberger, sauvegarder et restituer ce Contenu au Client
+- D'exécuter les Services souscrits (traitement, calcul, génération de rapports)
+- De faire fonctionner les fonctions d'intelligence artificielle intégrées (rédaction assistée, OCR, transcription vocale)
+
+FortHeC° s'interdit tout usage du Contenu Client à des fins autres que l'exécution des Services, notamment tout usage à des fins publicitaires, statistiques nominatives, ou d'entraînement de modèles d'intelligence artificielle sans le consentement exprès et écrit du Client.
+
+### 7.5 Statistiques d'usage anonymisées
+
+FortHeC° se réserve le droit d'établir des statistiques d'usage strictement anonymisées et agrégées, aux seules fins d'amélioration des Services et de communication commerciale non-nominative.
+
+## Article 8. Essai gratuit
+
+### 8.1 Modalités
+
+Tout nouveau Client peut bénéficier d'un Essai gratuit de 30 jours calendaires, sans carte bancaire requise à l'inscription, donnant accès complet aux fonctionnalités d'un plan choisi.
+
+### 8.2 Fin de l'Essai gratuit
+
+Un email de rappel est envoyé au Client 3 jours avant l'expiration de l'Essai gratuit.
+
+À l'issue des 30 jours, deux cas se présentent :
+- Si le Client a renseigné une carte bancaire dans son espace personnel : bascule automatique en Abonnement payant au plan choisi
+- Si aucune carte bancaire n'a été renseignée : suspension automatique du Compte. Les données du Client sont conservées 90 jours puis purgées définitivement, sauf réactivation par souscription d'un Abonnement payant dans ce délai
+
+### 8.3 Limitation
+
+L'Essai gratuit est réservé aux nouveaux Clients. Un même Client (identifié par email ou par Organisation) ne peut bénéficier de plusieurs Essais gratuits successifs.
+
+## Article 9. Abonnements et tarifs
+
+### 9.1 Plans
+
+FortHeC° commercialise plusieurs plans d'Abonnement adaptés à la taille et à l'activité du Client (plans Solo Energy, Solo Suite, Cabinet Suite, Cabinet+). Le détail des inclusions par plan et les tarifs applicables sont consultables sur la page tarifs du site officiel : **[https://forthec.fr/tarifs.html](https://forthec.fr/tarifs.html)**.
+
+Les tarifs affichés sur cette page prévalent sur toute autre indication tarifaire.
+
+### 9.2 Récurrence
+
+Les Abonnements peuvent être souscrits :
+- En récurrence **mensuelle** : facturation le jour anniversaire de souscription chaque mois
+- En récurrence **annuelle** avec remise commerciale, telle que fixée sur la page tarifs
+
+Le passage d'une récurrence mensuelle à annuelle (ou inversement) prend effet à la fin de la période en cours.
+
+### 9.3 Design Partner
+
+FortHeC° propose un statut Design Partner aux premiers Clients signataires par plan (nombre de places limité, communiqué sur la page tarifs).
+
+**Contreparties du statut Design Partner** :
+- Bénéfice d'une remise commerciale de 30% pendant 12 mois, appliquée au tarif mensuel
+- Engagement de participer à un feedback structuré (1 réunion de 30 minutes par mois ou formulaire écrit équivalent)
+- Autorisation d'utiliser le logo du Client comme référence commerciale, sous réserve de son accord préalable écrit
+- Fourniture d'un témoignage écrit ou vidéo au 6ème mois d'utilisation
+
+**Engagement** : le statut Design Partner engage le Client sur une durée de 12 mois. La résiliation anticipée entraîne la perte du statut Design Partner et la facturation rétroactive au tarif normal en vigueur au moment de la souscription, au prorata des mois consommés.
+
+À l'issue des 12 mois, le Client bascule automatiquement au tarif normal (mensuel), sauf choix explicite d'une récurrence annuelle avec remise standard.
+
+### 9.4 Franchise en base de TVA
+
+FortHeC° bénéficie du régime de franchise en base de TVA prévu à l'article 293 B du Code général des impôts. À ce titre, les factures sont émises sans TVA, avec la mention obligatoire &quot;TVA non applicable, article 293 B du CGI&quot;.
+
+En cas de dépassement des seuils légaux entraînant l'assujettissement à la TVA, les tarifs pourront être ajustés en conséquence, avec un préavis de 30 jours notifié au Client.
+
+### 9.5 Évolution des tarifs
+
+FortHeC° se réserve le droit de faire évoluer sa grille tarifaire. Les évolutions s'appliquent :
+- Aux nouveaux Abonnements souscrits après la date de mise à jour de la page tarifs
+- Aux Abonnements existants, à la date de renouvellement suivante, avec un préavis de 30 jours notifié au Client par email
+
+En cas d'augmentation tarifaire, le Client dispose du droit de résilier son Abonnement sans pénalité avant l'entrée en vigueur du nouveau tarif.
+
+## Article 10. Modalités de paiement
+
+### 10.1 Prestataire de paiement
+
+Les paiements sont traités par **Stripe Payments Europe Ltd.**, prestataire agréé au niveau européen. FortHeC° ne conserve ni ne traite directement les données de carte bancaire, qui sont sécurisées par Stripe conformément à la norme PCI-DSS.
+
+### 10.2 Prélèvement
+
+Le paiement est effectué automatiquement à la date anniversaire de souscription (récurrence mensuelle) ou annuelle, selon la formule retenue par le Client.
+
+### 10.3 Défaut de paiement
+
+En cas d'échec de prélèvement, FortHeC° notifie le Client par email et procède à une nouvelle tentative dans un délai raisonnable.
+
+En cas de défaut de paiement persistant à l'issue de 15 jours calendaires suivant la première tentative :
+- L'accès aux Services est suspendu, sans préjudice des sommes dues
+- Les données du Client sont conservées pendant 90 jours dans l'attente d'une régularisation
+- Passé ce délai sans régularisation, l'Abonnement est résilié de plein droit et les données peuvent être purgées
+
+Toute somme impayée à échéance porte intérêt de plein droit, sans mise en demeure préalable, au taux d'intérêt légal majoré, majoré d'une indemnité forfaitaire de recouvrement de 40 euros (article D.441-5 du Code de commerce).
+
+### 10.4 Aucun remboursement au prorata
+
+En cas de résiliation par le Client en cours de période payée, les sommes déjà versées demeurent acquises à FortHeC°, sans remboursement au prorata de la période non consommée.
+
+## Article 11. Durée, résiliation et suspension
+
+### 11.1 Durée
+
+L'Abonnement est conclu pour une durée mensuelle ou annuelle selon la récurrence choisie, reconductible tacitement à chaque échéance, sauf résiliation dans les conditions prévues ci-après.
+
+**Exception Design Partner** : les Clients bénéficiant du statut Design Partner sont engagés sur une durée ferme de 12 mois (voir article 9.3).
+
+### 11.2 Résiliation par le Client
+
+Hors cas Design Partner, le Client peut résilier son Abonnement à tout moment, sans motif à justifier, depuis son espace personnel ou par email à contact@forthec.fr.
+
+La résiliation prend effet à la fin de la période de facturation en cours. Aucun remboursement au prorata n'est effectué (article 10.4).
+
+### 11.3 Résiliation par FortHeC°
+
+FortHeC° peut résilier l'Abonnement du Client, avec un préavis raisonnable :
+- Pour non-respect des présentes Conditions
+- Pour non-paiement persistant (article 10.3)
+- Pour usage manifestement contraire à la destination des Services
+
+En cas de manquement grave (fraude, atteinte à la sécurité des Services, usage illicite), la résiliation peut intervenir sans préavis.
+
+### 11.4 Effets de la résiliation
+
+À l'issue de la résiliation, quelle qu'en soit la cause :
+- L'accès aux Services est immédiatement coupé
+- Le Client peut demander la restitution ou la destruction de ses données personnelles dans les conditions prévues au DPA (article 12 du DPA)
+- Le Contenu Client non-personnel (rapports générés, préconisations personnalisées) est conservé 3 ans à des fins de continuité d'usage en cas de réabonnement, puis purgé
+
+## Article 12. Propriété intellectuelle
+
+### 12.1 Propriété de FortHeC°
+
+L'ensemble des composants des Services (code source, interfaces, bases de données, marque FortHeC°, méthodologies de calcul des IPE, bibliothèques de préconisations, algorithmes, documentation) demeure la propriété exclusive de FortHeC° ou fait l'objet d'autorisations d'exploitation à son profit.
+
+La souscription à un Abonnement confère au Client un droit d'usage personnel, non exclusif, non cessible et limité à la durée de l'Abonnement, pour la seule utilisation des Services conformément à leur destination.
+
+Toute reproduction, représentation, adaptation, décompilation, ou exploitation non expressément autorisée par les présentes Conditions est strictement interdite et engage la responsabilité de son auteur au titre de la contrefaçon (articles L.335-2 et suivants du Code de la propriété intellectuelle).
+
+### 12.2 Propriété du Client
+
+Le Client conserve la pleine propriété du Contenu Client qu'il produit dans le cadre des Services (voir article 7.3).
+
+## Article 13. Confidentialité
+
+Chaque Partie s'engage à préserver la confidentialité des informations et données auxquelles elle pourrait avoir accès dans le cadre de l'exécution des présentes Conditions.
+
+Cette obligation de confidentialité perdure sans limitation de durée après la fin de l'Abonnement.
+
+Elle ne s'applique pas aux informations librement accessibles au public, ni à celles dont la communication est requise par une autorité judiciaire ou administrative compétente.
+
+## Article 14. Données personnelles
+
+Le traitement des données à caractère personnel dans le cadre des Services est régi :
+- Par la politique de confidentialité de FortHeC° : **[https://forthec.fr/legal.html?doc=confidentialite](https://forthec.fr/legal.html?doc=confidentialite)** pour les traitements dont FortHeC° est responsable de traitement (comptes utilisateurs, prospection commerciale, formulaire de contact, etc.)
+- Par le DPA conclu séparément entre FortHeC° et le Client, pour les traitements dont FortHeC° agit en qualité de sous-traitant (données saisies par les auditeurs du Client dans les Services concernant les sites industriels qu'il audite pour le compte de ses propres clients)
+
+La signature du DPA est obligatoire pour toute souscription d'Abonnement payant. Le DPA est mis à disposition du Client lors de la souscription.
+
+## Article 15. Responsabilité
+
+### 15.1 Nature des obligations de FortHeC°
+
+Les obligations de FortHeC° au titre des présentes Conditions constituent des obligations de moyens et non de résultat.
+
+FortHeC° s'engage à mettre en oeuvre les moyens raisonnables pour fournir les Services conformément à leur description, dans le respect de l'état de l'art applicable aux services logiciels d'audit énergétique.
+
+### 15.2 Exclusions de responsabilité
+
+FortHeC° ne saurait être tenu responsable :
+- Des interruptions de service liées à un cas de force majeure au sens de l'article 1218 du Code civil
+- Des interruptions liées à une défaillance des prestataires techniques tiers (hébergeur, opérateur télécom, fournisseur d'intelligence artificielle, etc.)
+- Des dommages résultant d'un usage non conforme des Services par le Client
+- Des dommages résultant d'un défaut de vigilance du Client dans la gestion de ses identifiants
+- De la qualité, de l'exactitude ou de la conformité réglementaire des rapports d'audit produits par le Client à l'aide des Services : la responsabilité de la réalisation des audits énergétiques et de la conformité de leurs livrables aux normes NF EN 16247, ISO 50006 ou tout autre référentiel applicable incombe exclusivement au Client, en sa qualité de professionnel qualifié
+
+### 15.3 Plafond de responsabilité
+
+Sauf faute lourde ou dolosive de FortHeC°, la responsabilité totale de FortHeC° au titre des présentes Conditions, tous chefs de préjudices confondus, est expressément limitée aux montants effectivement versés par le Client au titre de l'Abonnement pendant les 12 mois précédant le fait générateur du dommage.
+
+Les dommages indirects (perte de chiffre d'affaires, perte de clientèle, atteinte à la réputation, perte de données) sont expressément exclus de tout indemnisation.
+
+### 15.4 Force majeure
+
+Sont notamment considérés comme cas de force majeure : les défaillances graves des réseaux publics de télécommunications, les interruptions imposées par les fournisseurs d'énergie ou d'infrastructure cloud, les événements climatiques exceptionnels, les grèves d'ampleur nationale, les décisions administratives ou judiciaires imposant l'interruption du Service.
+
+En cas de force majeure de plus de 30 jours consécutifs, chaque Partie peut résilier de plein droit les présentes Conditions, sans indemnité de part et d'autre.
+
+## Article 16. Assurance
+
+FortHeC° souscrit et maintient en vigueur, pendant toute la durée des présentes Conditions, une assurance de responsabilité civile professionnelle couvrant les conséquences pécuniaires des dommages qu'il pourrait causer dans le cadre de l'exécution des Services.
+
+Une attestation d'assurance à jour est fournie au Client sur simple demande écrite.
+
+## Article 17. Modification des Conditions
+
+FortHeC° se réserve le droit de modifier les présentes Conditions à tout moment, notamment pour tenir compte d'évolutions légales, réglementaires, techniques ou commerciales.
+
+Les modifications sont notifiées aux Clients actifs par email, avec un préavis de 30 jours avant leur entrée en vigueur.
+
+En cas de désaccord avec les modifications substantielles affectant ses droits, le Client dispose du droit de résilier son Abonnement sans pénalité avant leur entrée en vigueur, par email à contact@forthec.fr.
+
+À défaut de résiliation dans ce délai, les modifications sont réputées acceptées.
+
+## Article 18. Références commerciales
+
+Sauf refus expressément notifié par le Client à contact@forthec.fr, FortHeC° est autorisé à citer le nom et le logo du Client à titre de référence commerciale, sur son site internet, ses supports de communication et lors de démarches commerciales, dans un cadre strictement factuel (mention d'utilisation des Services).
+
+Cette autorisation prend fin de plein droit à la résiliation de l'Abonnement.
+
+Les Clients bénéficiant du statut Design Partner autorisent expressément cette utilisation dans les conditions prévues à l'article 9.3.
+
+## Article 19. Non-sollicitation de personnel
+
+Pendant toute la durée de l'Abonnement et durant les 12 mois suivant sa cessation, chaque Partie s'interdit de solliciter directement ou indirectement, en vue d'un embauche ou d'une collaboration, tout collaborateur de l'autre Partie ayant participé à l'exécution des Services, sauf accord écrit préalable.
+
+## Article 20. Cession
+
+Les présentes Conditions ne peuvent être cédées par le Client à un tiers sans l'accord préalable écrit de FortHeC°.
+
+FortHeC° pourra librement céder tout ou partie de ses droits et obligations au titre des présentes Conditions, dans le cadre d'une opération de restructuration, cession d'activité ou constitution de société (notamment lors de la bascule prévue de la micro-entreprise vers une forme sociétaire), sous réserve d'en informer le Client par écrit.
+
+## Article 21. Dispositions générales
+
+### 21.1 Intégralité
+
+Les présentes Conditions, la politique de confidentialité, le DPA et la page tarifs constituent l'intégralité de l'accord entre les Parties.
+
+Elles annulent et remplacent tout accord antérieur, écrit ou verbal, ayant le même objet.
+
+### 21.2 Nullité partielle
+
+Si une ou plusieurs stipulations des présentes Conditions étaient tenues pour non valides ou déclarées telles en application d'une loi, d'un règlement ou d'une décision de justice définitive, les autres stipulations conserveraient toute leur force et leur portée.
+
+### 21.3 Tolérance
+
+Le fait pour l'une des Parties de ne pas exercer un droit prévu aux présentes Conditions ne pourra en aucun cas être interprété comme une renonciation à ce droit.
+
+### 21.4 Notifications
+
+Sauf stipulation contraire, toute notification entre les Parties se fait par email à l'adresse renseignée dans le Compte du Client (côté Client) et à contact@forthec.fr (côté FortHeC°).
+
+## Article 22. Loi applicable et juridiction compétente
+
+Les présentes Conditions sont régies par le droit français.
+
+Tout litige relatif à leur formation, leur interprétation, leur exécution ou leur résiliation qui ne pourrait être résolu à l'amiable dans un délai de 30 jours à compter de la première notification écrite d'une Partie à l'autre relève de la compétence exclusive des tribunaux du ressort de la Cour d'appel de Toulouse, nonobstant pluralité de défendeurs ou appel en garantie.
+
+---
+
+*Conditions Générales d'Utilisation et de Vente FortHeC° version 1.0.*
+*Acceptées à la création du Compte et à la souscription de tout Abonnement.*
+</template><template id="legal-source-confidentialite"># Politique de confidentialité
+
+**Dernière mise à jour : 30 juillet 2026**
+
+La présente politique décrit la manière dont FortHeC° collecte, utilise et protège les données à caractère personnel des personnes qui interagissent avec ses services : visiteurs du site forthec.fr, utilisateurs des applications FortHeC° Energy et FortHeC° Inventory, personnes contactées dans le cadre d'actions commerciales.
+
+Cette politique est rédigée en application du Règlement (UE) 2016/679 (RGPD) et de la loi n° 78-17 du 6 janvier 1978 modifiée (Informatique et Libertés).
+
+## 1. Responsable de traitement
+
+Le responsable de traitement des données visées par la présente politique est :
+
+**Hugo Chambefort**, entrepreneur individuel exerçant sous le régime de la micro-entreprise, exploitant le nom commercial **FortHeC°**.
+
+- Adresse : 11 chemin de Fournaulis, 31170 Tournefeuille
+- SIRET : 108 072 661 00011
+- Contact données personnelles : contact@forthec.fr
+
+Aucun Délégué à la Protection des Données (DPO) n'a été désigné, la désignation n'étant pas obligatoire au regard des critères de l'article 37 du RGPD (absence de traitement à grande échelle de données sensibles ou de personnes vulnérables, absence de suivi systématique à grande échelle).
+
+## 2. Double rôle RGPD de FortHeC°
+
+Selon la nature des données concernées, FortHeC° intervient à deux titres distincts :
+
+**Responsable de traitement** : pour les données personnelles collectées directement auprès des visiteurs du site, des utilisateurs des applications (comptes auditeurs, comptes démonstration), des personnes physiques démarchées commercialement, et des personnes contactant FortHeC° via le formulaire de contact.
+
+**Sous-traitant au sens de l'article 28 du RGPD** : pour les données personnelles saisies par les utilisateurs auditeurs dans les applications à propos des sites industriels qu'ils auditent pour le compte de leurs propres clients. Dans ce cas, le bureau d'études utilisateur demeure responsable de traitement vis-à-vis de ses clients industriels, et FortHeC° agit exclusivement sur ses instructions dans le cadre d'un accord de sous-traitance (DPA) distinct.
+
+La présente politique décrit uniquement les traitements pour lesquels FortHeC° est responsable de traitement. Les modalités du rôle de sous-traitant sont détaillées dans le DPA remis aux clients professionnels.
+
+## 3. Données collectées, finalités et bases légales
+
+### 3.1 Visiteurs du site forthec.fr
+
+**Données collectées** :
+- Formulaire de contact : nom, adresse email, message, adresse IP, horodatage
+- Données de navigation techniques : adresse IP, type de navigateur, pages consultées, dates et heures d'accès
+- Réponses au challenge hCaptcha (validation anti-bot)
+
+**Finalités** :
+- Répondre aux demandes formulées via le formulaire de contact
+- Assurer la sécurité et la disponibilité du site
+- Prévenir les soumissions abusives (spam, bots)
+
+**Base légale** : exécution de mesures précontractuelles à la demande de la personne concernée (article 6.1.b RGPD) pour le formulaire de contact ; intérêt légitime de FortHeC° à sécuriser son site (article 6.1.f RGPD) pour les données techniques et anti-bot.
+
+### 3.2 Utilisateurs des applications (comptes auditeurs)
+
+**Données collectées** :
+- Données d'identification : nom, prénom, adresse email professionnelle, numéro de téléphone professionnel, nom de l'organisation employeuse, fonction, qualifications professionnelles éventuelles (OPQIBI notamment)
+- Données d'authentification : mot de passe (stocké sous forme hachée uniquement), historique des connexions, adresses IP de connexion, jetons de session
+- Données d'utilisation : projets d'audit créés, préférences d'affichage, paramètres de compte
+- Données techniques : type d'appareil, système d'exploitation, version des applications
+- Données de facturation (lors de la souscription à un abonnement payant) : traitées par le prestataire de paiement (Stripe), FortHeC° ne conserve que les métadonnées nécessaires à la comptabilité (montant, date, plan souscrit, référence de transaction)
+
+**Finalités** :
+- Créer, gérer et sécuriser le compte utilisateur
+- Fournir l'accès aux fonctionnalités des applications
+- Assurer le support technique et fonctionnel
+- Facturer les abonnements
+- Adresser des communications relatives au service (mises à jour, incidents, maintenance)
+- Établir des statistiques d'usage anonymisées à des fins d'amélioration du produit
+
+**Base légale** : exécution du contrat conclu avec l'utilisateur ou son organisation (article 6.1.b RGPD) ; obligation légale pour la conservation comptable des factures (article 6.1.c RGPD) ; intérêt légitime pour les statistiques d'usage anonymisées (article 6.1.f RGPD).
+
+### 3.3 Comptes de démonstration
+
+**Données collectées** : adresse email, données saisies pendant la démonstration.
+
+**Finalités** : permettre l'évaluation gratuite des applications, prospection commerciale sur les comptes ayant demandé une démo.
+
+**Base légale** : exécution de mesures précontractuelles (article 6.1.b RGPD).
+
+### 3.4 Prospects démarchés commercialement
+
+FortHeC° met en oeuvre une prospection commerciale ciblée auprès de bureaux d'études qualifiés OPQIBI et de professionnels de l'audit énergétique industriel, exclusivement dans un contexte B2B.
+
+**Données collectées** :
+- Données publiquement accessibles : raison sociale, SIREN/SIRET, adresse professionnelle, téléphone professionnel, qualifications OPQIBI, informations issues d'annuaires professionnels et de bases publiques (Sirene, OPQIBI, Pappers, sites internet publics)
+- Emails professionnels génériques ou nominatifs collectés depuis des sources publiques
+- Historique des interactions : emails envoyés, ouvertures, clics, réponses, désinscriptions
+
+**Finalités** :
+- Prospection commerciale ciblée par email dans un cadre B2B strict
+- Suivi des interactions pour ajuster la fréquence et la pertinence des communications
+- Gestion des désinscriptions et exclusion des personnes ayant exprimé leur opposition
+
+**Base légale** : intérêt légitime de FortHeC° à développer son activité commerciale B2B (article 6.1.f RGPD), conformément à la position de la CNIL sur la prospection B2B (Guide CNIL sur la prospection commerciale, section professionnelle).
+
+Toute personne prospectée dispose d'un droit d'opposition simple et gratuit, exerçable :
+- via le lien de désinscription présent dans chaque email de prospection
+- par email à contact@forthec.fr
+
+L'opposition est prise en compte sans délai et entraîne l'inscription en liste d'exclusion permanente.
+
+### 3.5 Personnes contactant FortHeC° (support, commercial, partenariats)
+
+**Données collectées** : nom, adresse email, contenu des échanges, éventuelles pièces jointes.
+
+**Finalités** : traiter la demande, assurer la traçabilité des échanges, améliorer la qualité du support.
+
+**Base légale** : exécution de mesures précontractuelles ou contractuelles (article 6.1.b RGPD) ou intérêt légitime (article 6.1.f RGPD) selon le contexte.
+
+## 4. Durées de conservation
+
+| Catégorie de données | Durée de conservation |
+|---|---|
+| Compte utilisateur actif | Durée de la relation contractuelle |
+| Compte utilisateur après résiliation (données standards : compte, projets, données terrain) | 3 ans à compter de la fin de la relation contractuelle |
+| Rapports d'audit générés (fichiers .docx) | Non conservés côté serveur, générés à la demande et téléchargés directement par l'utilisateur |
+| Documents déposés volontairement par l'utilisateur dans le Vault (espace de stockage partagé de son organisation) | Conservés tant que le compte de l'organisation est actif, jusqu'à suppression manuelle par un membre de l'organisation ou à la résiliation (voir durée standard ci-dessus) |
+| Données de facturation et pièces comptables | 10 ans (article L.123-22 Code de commerce) |
+| Comptes de démonstration | Jusqu'à expiration du compte, puis 3 mois avant purge |
+| Formulaire de contact (soumissions) | 3 ans à compter du dernier contact |
+| Prospects (base commerciale) | 3 ans à compter du dernier contact utile (recommandation CNIL prospection B2B) |
+| Personnes désinscrites (liste d'exclusion) | Conservation permanente de l'email en liste d'exclusion, aux seules fins de garantir l'opposition |
+| Logs techniques et de connexion | 1 an |
+| Logs de sécurité (tentatives d'intrusion, incidents) | 3 ans |
+
+## 5. Destinataires et sous-traitants
+
+Les données personnelles sont destinées à FortHeC° et aux sous-traitants suivants, chacun intervenant dans le périmètre strict de sa mission :
+
+| Sous-traitant | Rôle | Localisation traitement | Cadre juridique |
+|---|---|---|---|
+| **Scaleway SAS** (France) | Hébergement VPS (site vitrine, applications Energy et Admin) et emailing transactionnel (Scaleway TEM) | Paris, France | Contrat de sous-traitance et DPA Scaleway |
+| **Supabase Inc.** (États-Unis) | Base de données PostgreSQL, service d'authentification, stockage fichiers, Edge Functions | Datacenter AWS eu-west-3 (Paris, France) pour la base de production ; datacenter AWS eu-west-2 (Londres, Royaume-Uni) pour la base de prospection commerciale, hébergée sur un projet Supabase distinct | DPA Supabase, Clauses Contractuelles Types de la Commission européenne (SCC 2021) |
+| **Mistral AI SAS** (France) | Traitement par intelligence artificielle des textes de préconisations et rédaction assistée | La Défense, France | DPA Mistral AI, souveraineté européenne |
+| **Google LLC** (États-Unis) | Reconnaissance optique de caractères sur photos de plaques signalétiques (Google Vision) et transcription vocale (Google Speech-to-Text) | Datacenters Google Cloud Europe | Google Cloud Data Processing Addendum, SCC 2021 |
+| **Intuition Machines, Inc. / hCaptcha** (États-Unis / Union européenne) | Service anti-bot sur le formulaire de contact | Union européenne (configuration EU) | Conditions hCaptcha, SCC 2021 |
+| **650 Industries, Inc. / Expo** (États-Unis) | Compilation et distribution du binaire APK de l'application mobile Inventory | États-Unis | Aucune donnée personnelle utilisateur transitée (usage limité à la distribution du binaire) |
+| **Stripe Payments Europe, Ltd.** (Irlande) | Traitement des paiements par abonnement (à compter du lancement de l'offre payante) | Union européenne | DPA Stripe, PCI DSS certifié |
+
+FortHeC° s'assure contractuellement que chaque sous-traitant présente des garanties suffisantes en matière de sécurité, de confidentialité et de conformité au RGPD.
+
+## 6. Transferts hors Union Européenne
+
+Les données personnelles sont hébergées et traitées, en principe, sur le territoire de l'Union européenne.
+
+Certains sous-traitants ont leur siège social hors UE (Supabase, Google, Intuition Machines, Expo, notamment aux États-Unis). Ces sous-traitants peuvent, dans le cadre limité de leur mission, être amenés à effectuer des transferts hors UE ou à faire intervenir des sous-traitants ultérieurs situés hors UE.
+
+Ces transferts sont encadrés par les Clauses Contractuelles Types adoptées par la Commission européenne le 4 juin 2021 (décision d'exécution 2021/914), et le cas échéant par le cadre Data Privacy Framework (DPF) lorsque le sous-traitant en bénéficie.
+
+FortHeC° a inscrit dans sa feuille de route une migration vers un stack technique 100% souverain européen, portant en priorité sur la reconnaissance optique de caractères et la transcription vocale, aujourd'hui assurées par Google Cloud.
+
+## 7. Sécurité
+
+FortHeC° met en oeuvre des mesures techniques et organisationnelles appropriées pour préserver la sécurité des données personnelles, notamment :
+
+- Chiffrement TLS des communications (HTTPS Let's Encrypt sur l'ensemble des sous-domaines forthec.fr)
+- Chiffrement des données au repos sur l'infrastructure Supabase et Scaleway
+- Authentification par mot de passe haché et jetons JWT signés
+- Isolation stricte des données par organisation (Row Level Security PostgreSQL activée)
+- Rôles utilisateurs cloisonnés (administrateur, auditeur, démonstration)
+- Rate limiting sur les points d'accès publics
+- Journalisation des accès et des événements de sécurité
+- Sauvegardes régulières de la base de données
+- Mots de passe et clés d'API stockés en gestionnaire sécurisé (Proton Pass, Streamlit secrets, Supabase secrets)
+
+En cas de violation de données à caractère personnel susceptible d'engendrer un risque pour les droits et libertés des personnes, FortHeC° notifiera la CNIL dans un délai de 72 heures conformément à l'article 33 du RGPD, et informera les personnes concernées lorsque cela est requis par l'article 34 du RGPD.
+
+## 8. Droits des personnes
+
+Conformément aux articles 15 à 22 du RGPD et à la loi Informatique et Libertés, toute personne concernée dispose des droits suivants sur ses données personnelles :
+
+- **Droit d'accès** : obtenir la confirmation que ses données sont traitées et en obtenir une copie
+- **Droit de rectification** : obtenir la correction de données inexactes ou incomplètes
+- **Droit à l'effacement** (&quot;droit à l'oubli&quot;) : obtenir l'effacement de ses données dans les cas prévus par le RGPD
+- **Droit à la limitation** du traitement : obtenir la suspension temporaire du traitement dans certains cas
+- **Droit à la portabilité** : recevoir ses données dans un format structuré et lisible par machine
+- **Droit d'opposition** : s'opposer à tout moment au traitement de ses données à des fins de prospection, ou pour tout traitement fondé sur l'intérêt légitime pour des raisons tenant à sa situation particulière
+- **Droit de retrait du consentement** à tout moment, lorsque le traitement est fondé sur le consentement
+- **Droit de définir des directives** relatives à la conservation, à l'effacement et à la communication de ses données après son décès
+
+Ces droits s'exercent :
+- Par email à : **contact@forthec.fr**
+- Par courrier à l'adresse du responsable de traitement indiquée en section 1
+
+FortHeC° s'engage à répondre à toute demande dans un délai maximum d'un mois à compter de la réception, prolongeable de deux mois en cas de complexité ou de nombre élevé de demandes. Une pièce d'identité pourra être demandée en cas de doute raisonnable sur l'identité du demandeur.
+
+En cas de réponse insatisfaisante, ou d'absence de réponse, la personne concernée dispose du droit d'introduire une réclamation auprès de la Commission Nationale de l'Informatique et des Libertés (CNIL) :
+
+- Site : www.cnil.fr
+- Adresse : 3 Place de Fontenoy, TSA 80715, 75334 Paris Cedex 07
+- Téléphone : 01 53 73 22 22
+
+## 9. Cookies et traceurs
+
+Les modalités d'utilisation des cookies et autres traceurs sur le site forthec.fr sont décrites dans une **politique cookies dédiée** [LIEN VERS POLITIQUE COOKIES], à publier après diagnostic technique complet des traceurs déployés.
+
+## 10. Modifications de la politique
+
+FortHeC° se réserve le droit de modifier la présente politique à tout moment, notamment pour tenir compte d'évolutions légales, réglementaires, jurisprudentielles ou techniques. La date de dernière mise à jour figure en tête du document. Les utilisateurs sont invités à consulter régulièrement la version en vigueur.
+
+En cas de modification substantielle affectant les droits des personnes concernées, FortHeC° notifiera individuellement les utilisateurs actifs par email.
+
+## 11. Contact
+
+Pour toute question relative à la présente politique ou à l'exercice de vos droits :
+
+**contact@forthec.fr**
+
+Hugo Chambefort / FortHeC°
+11 chemin de Fournaulis
+31170 Tournefeuille
+</template></main><footer class="site-footer"><div><a class="wordmark" href="index.html">FortHeC<span>°</span></a><p>L’audit énergétique en accéléré.</p><span>© 2026 FortHeC°. Données hébergées en France.</span></div><nav aria-label="Navigation de pied de page"><a href="index.html">Accueil</a><a href="energy.html">Energy</a><a href="inventory.html">Inventory</a><a href="suite.html">Suite</a><a href="tarifs.html">Tarifs</a><a href="blog/index.html">Blog</a><a href="console.html">Console</a><a href="contact.html">Contact</a><a href="legal.html">Mentions légales</a><a href="legal.html?doc=cgv">CGU / CGV</a><a href="legal.html?doc=confidentialite">Confidentialité</a><a href="https://www.linkedin.com/in/hugo-chambefort-41097715b/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></nav><div class="footer-bottom"><a href="mailto:contact@forthec.fr">contact@forthec.fr</a></div></footer></body></html>

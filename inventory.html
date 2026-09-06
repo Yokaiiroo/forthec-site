@@ -1,26 +1,17 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FortHeC° Inventory — Application mobile d'inventaire terrain</title>
-<meta name="description" content="FortHeC° Inventory : inventaire terrain complet depuis votre smartphone. Photo, OCR, saisie vocale, cartographie des zones et registre F-Gaz.">
-<link rel="icon" type="image/png" href="img/n2-app-icon.png">
-<link rel="canonical" href="https://forthec.fr/inventory.html">
-<meta property="og:type" content="website">
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#030d0d"><title>FortHeC° Inventory : Application mobile d'inventaire terrain</title><meta name="description" content="FortHeC° Inventory : inventaire terrain complet depuis votre smartphone. Photo, OCR, saisie vocale, cartographie des zones et registre F-Gaz.">
+<link rel="canonical" href="https://forthec.fr/inventory.html"><meta property="og:type" content="website">
 <meta property="og:site_name" content="FortHeC°">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:title" content="FortHeC° Inventory — Application mobile d'inventaire terrain">
+<meta property="og:title" content="FortHeC° Inventory : Application mobile d'inventaire terrain">
 <meta property="og:description" content="FortHeC° Inventory : inventaire terrain complet depuis votre smartphone. Photo, OCR, saisie vocale, cartographie des zones et registre F-Gaz.">
 <meta property="og:url" content="https://forthec.fr/inventory.html">
 <meta property="og:image" content="https://forthec.fr/img/og-cover.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="FortHeC° Inventory — Application mobile d'inventaire terrain">
+<meta name="twitter:title" content="FortHeC° Inventory : Application mobile d'inventaire terrain">
 <meta name="twitter:description" content="FortHeC° Inventory : inventaire terrain complet depuis votre smartphone. Photo, OCR, saisie vocale, cartographie des zones et registre F-Gaz.">
-<meta name="twitter:image" content="https://forthec.fr/img/og-cover.png">
-<script type="application/ld+json">
+<meta name="twitter:image" content="https://forthec.fr/img/og-cover.png"><script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -40,427 +31,13 @@
     "url": "https://forthec.fr/"
   }
 }
-</script>
-
-<style>
-/* ============ Fonts (real brand faces, self-hosted, local relative paths) ============ */
-@font-face{
-  font-family:'Plex Sans'; font-weight:700; font-style:normal; font-display:swap;
-  src:url('fonts/plexsans-700-normal.woff2') format('woff2');
-}
-@font-face{
-  font-family:'Plex Sans'; font-weight:500; font-style:normal; font-display:swap;
-  src:url('fonts/plexsans-500-normal.woff2') format('woff2');
-}
-@font-face{
-  font-family:'Plex Mono'; font-weight:400; font-style:normal; font-display:swap;
-  src:url('fonts/plexmono-400-normal.woff2') format('woff2');
-}
-
-/* ============ Tokens — deliberate single dark world (eco-cyber-reactor), not a light/dark pair ============ */
-:root{
-  --void:       #05080a;   /* base ground */
-  --void-2:     #0a1219;   /* panel surface, slightly blue-green lifted */
-  --void-3:     #0e1a20;   /* panel border/hover surface */
-  --volt:       #34e27a;   /* primary — data / electric / nature (real brand) */
-  --volt-lt:    #8cffb8;
-  --volt-deep:  #123322;
-  --amber:      #e0a23d;   /* secondary — money / payoff (real brand) */
-  --amber-lt:   #f0c578;
-  --cyan:       #2fd8ff;   /* tertiary — cyber / signal depth (new, for this lab only) */
-  --plasma:     #b46bff;   /* rare flare accent — used once, on purpose */
-  --ink:        #eaf6f0;   /* body text, cool-tinted near-white */
-  --muted:      #7e9490;
-  --font-display:'Plex Sans', system-ui, sans-serif;
-  --font-mono:  'Plex Mono', 'SF Mono', Consolas, monospace;
-}
-
-*{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{
-  margin:0;
-  background:var(--void);
-  color:var(--ink);
-  font-family:var(--font-display);
-  font-weight:500;
-  overflow-x:hidden;
-}
-::selection{background:var(--volt); color:#04120a;}
-
-a{color:inherit;}
-
-/* ============ HUD frame + noise/scanline atmosphere (global, behind everything meaningful) ============ */
-.hud-frame{position:fixed; inset:14px; z-index:50; pointer-events:none; border:1px solid rgba(52,226,122,0.14);}
-.hud-frame::before,.hud-frame::after,
-.hud-frame b::before,.hud-frame b::after{
-  content:''; position:absolute; width:22px; height:22px; border-color:var(--volt); opacity:.55;
-}
-.hud-frame::before{top:-1px;left:-1px;border-top:2px solid;border-left:2px solid;}
-.hud-frame::after{top:-1px;right:-1px;border-top:2px solid;border-right:2px solid;}
-.hud-frame b::before{bottom:-1px;left:-1px;border-bottom:2px solid;border-left:2px solid;position:absolute;}
-.hud-frame b::after{bottom:-1px;right:-1px;border-bottom:2px solid;border-right:2px solid;position:absolute;}
-.hud-frame .tag{position:absolute; top:8px; left:20px; font:11px/1 var(--font-mono); letter-spacing:.14em; color:var(--muted); opacity:.7;}
-.hud-frame .tag.r{left:auto; right:20px; color:var(--amber-lt);}
-/* overlaps the nav logo/badge at narrow widths (real bug, confirmed via screenshot) --
-   these labels are decorative, the nav already carries the essential info */
-@media (max-width:600px){ .hud-frame .tag{display:none;} }
-
-.scanlines{
-  position:fixed; inset:0; z-index:40; pointer-events:none; mix-blend-mode:overlay; opacity:.35;
-  background:repeating-linear-gradient(to bottom, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 3px);
-}
-.vignette{position:fixed; inset:0; z-index:39; pointer-events:none;
-  background:radial-gradient(ellipse at 50% 40%, transparent 45%, rgba(0,0,0,0.55) 100%);
-}
-
-/* ============ Boot sequence overlay (energy + web-dev fusion: it "compiles" before it powers on) ============ */
-.boot-overlay{
-  position:fixed; inset:0; z-index:200; background:var(--void);
-  display:flex; align-items:center; padding:0 10vw;
-  transition:opacity .6s ease;
-}
-.boot-overlay.hidden{opacity:0; pointer-events:none;}
-.boot-lines{font:14px/1.9 var(--font-mono); color:var(--volt-lt); max-width:640px;}
-.boot-line{white-space:pre-wrap; word-break:break-word; text-shadow:0 0 10px rgba(52,226,122,.35);}
-.boot-line .cursor{display:inline-block; width:8px; height:1em; background:var(--volt); margin-left:2px; vertical-align:-2px; animation:blink 1s steps(1) infinite;}
-@keyframes blink{50%{opacity:0;}}
-
-/* ============ NAV ============ */
-nav{
-  position:relative; z-index:60; display:flex; align-items:center; justify-content:space-between;
-  padding:22px 40px; font-family:var(--font-mono); font-size:13px; letter-spacing:.04em;
-}
-.nav-logo{display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--ink); font-weight:400;}
-.nav-logo .dot{width:9px; height:9px; border-radius:50%; background:var(--volt); box-shadow:0 0 12px var(--volt), 0 0 24px var(--volt);}
-.nav-logo em{color:var(--amber-lt); font-style:normal;}
-.nav-badge{border:1px solid rgba(240,197,120,0.4); color:var(--amber-lt); padding:4px 10px; border-radius:3px; font-size:11px; letter-spacing:.12em;}
-.nav-links{display:flex; align-items:center; gap:20px; list-style:none; margin:0; padding:0; flex-wrap:wrap;}
-.nav-links a{color:var(--muted); text-decoration:none; font:12px/1 var(--font-mono); letter-spacing:.02em; transition:color .2s;}
-.nav-links a:hover{color:var(--volt-lt);}
-.nav-links a.active{color:var(--volt-lt);}
-.nav-links a.cta{color:#04120a; background:linear-gradient(120deg, var(--amber-lt), var(--volt)); padding:7px 14px; border-radius:3px; font-weight:700; letter-spacing:0;}
-@media (max-width:760px){ .nav-badge{display:none;} }
-
-/* ---- Mobile hamburger nav (real site component, js/main.js — injected via reactor-lab.js initMobileNav()) ---- */
-.nav-toggle{display:none; flex-direction:column; justify-content:center; align-items:center; gap:5px; width:40px; height:40px; background:transparent; border:none; cursor:pointer; padding:0; flex-shrink:0;}
-.nav-toggle span{display:block; width:22px; height:2px; background:var(--ink); border-radius:2px; transition:transform .25s ease, opacity .2s ease;}
-.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-toggle.open span:nth-child(2){opacity:0;}
-.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-@media (max-width:768px){
-  nav{padding:18px 5%;}
-  .nav-toggle{display:flex;}
-  .nav-links{
-    position:fixed; top:64px; left:0; right:0; z-index:59;
-    flex-direction:column; flex-wrap:nowrap; align-items:stretch; gap:0;
-    background:rgba(8,14,17,.97); backdrop-filter:blur(14px);
-    border-bottom:1px solid rgba(52,226,122,.18);
-    max-height:0; overflow:hidden; opacity:0; pointer-events:none;
-    transition:max-height .25s ease, opacity .2s ease;
-  }
-  .nav-links.open{max-height:calc(100vh - 64px); overflow-y:auto; opacity:1; pointer-events:auto;}
-  .nav-links li{width:100%;}
-  .nav-links a{display:block; padding:1rem 5%; border-bottom:1px solid rgba(234,246,240,.06);}
-  .nav-links a.cta{border-radius:0;}
-  body.nav-open-lock{overflow:hidden;}
-}
-
-/* ---- App switcher (real site component, js/main.js) ---- */
-.app-switcher{position:fixed; top:50%; right:0; transform:translateY(-50%); z-index:150; display:flex; align-items:center;}
-.app-switcher-tab{writing-mode:vertical-rl; text-orientation:mixed; background:linear-gradient(160deg, var(--amber-lt), var(--volt)); color:#04120a; font:12px var(--font-mono); font-weight:700; letter-spacing:.03em; padding:16px 9px; border-radius:6px 0 0 6px; cursor:pointer; border:none;}
-.app-switcher-tab:hover{filter:brightness(1.08);}
-.app-switcher.open .app-switcher-tab{border-radius:0 0 0 6px;}
-.app-switcher-panel{position:absolute; right:100%; top:50%; translate:0 -50%; background:rgba(10,18,25,.9); backdrop-filter:blur(14px); border:1px solid rgba(52,226,122,.25); border-radius:8px 0 0 8px; box-shadow:-8px 0 30px rgba(0,0,0,.5); padding:18px; width:200px; max-width:calc(100vw - 3rem); transform:translateX(12px); opacity:0; pointer-events:none; transition:transform .2s ease, opacity .2s ease;}
-.app-switcher.open .app-switcher-panel{transform:translateX(0); opacity:1; pointer-events:auto;}
-.app-switcher-panel h4{font:10px var(--font-mono); text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin:0 0 12px;}
-.app-switcher-link{display:flex; align-items:center; padding:10px 12px; border-radius:4px; font:12px var(--font-mono); color:var(--ink); background:rgba(255,255,255,.03); border:1px solid rgba(234,246,240,.1); margin-bottom:8px; text-decoration:none;}
-.app-switcher-link:last-child{margin-bottom:0;}
-.app-switcher-link:hover{border-color:var(--volt); color:var(--volt-lt); background:rgba(52,226,122,.08);}
-
-/* ============ HERO ============ */
-.hero{position:relative; min-height:100svh; display:grid; place-items:center; overflow:hidden;}
-
-#reactor-canvas{position:fixed; inset:0; z-index:0; width:100%; height:100%; display:block;}
-
-.aurora{
-  position:fixed; inset:-10%; z-index:1; pointer-events:none; mix-blend-mode:screen; opacity:.5;
-  background:
-    radial-gradient(38% 42% at 22% 28%, rgba(52,226,122,0.22), transparent 60%),
-    radial-gradient(34% 38% at 82% 70%, rgba(47,216,255,0.16), transparent 60%),
-    radial-gradient(30% 34% at 65% 15%, rgba(224,162,61,0.12), transparent 60%);
-  animation:aurora-drift 22s ease-in-out infinite alternate;
-}
-@keyframes aurora-drift{
-  0%{transform:translate3d(0,0,0) scale(1);}
-  100%{transform:translate3d(-2%,3%,0) scale(1.06);}
-}
-
-.hero-grid{
-  position:relative; z-index:5; width:min(1360px,92vw); margin:0 auto;
-  display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:center;
-  padding-top:64px;
-}
-@media (max-width:920px){ .hero-grid{grid-template-columns:1fr; gap:40px;} }
-
-.eyebrow{
-  font:12px/1 var(--font-mono); letter-spacing:.2em; text-transform:uppercase; color:var(--volt-lt);
-  display:flex; align-items:center; gap:10px; margin:0 0 22px;
-}
-.eyebrow::before{content:''; width:26px; height:1px; background:var(--volt); box-shadow:0 0 8px var(--volt);}
-
-h1{
-  font-family:'Plex Mono', var(--font-mono); font-weight:400; margin:0 0 22px; letter-spacing:-0.01em;
-  font-size:clamp(1.5rem, 4.6vw, 3.7rem); line-height:1.15; color:var(--ink);
-}
-h1 .line{display:block; overflow:hidden;}
-h1 .line span{display:inline-block; white-space:normal;}
-@media (max-width:600px){ h1{font-size:1.4rem; line-height:1.25;} }
-h1 em{
-  font-style:normal;
-  background:linear-gradient(100deg, var(--amber-lt) 0%, var(--volt) 65%, var(--cyan) 100%);
-  -webkit-background-clip:text; background-clip:text; color:transparent;
-  text-shadow:0 0 40px rgba(52,226,122,0.25);
-}
-
-.hero-sub{max-width:52ch; color:var(--muted); font-size:1.02rem; line-height:1.65; margin:0 0 26px; text-shadow:0 2px 16px var(--void), 0 0 6px var(--void);}
-
-.cycle-line{
-  font:14px/1 var(--font-mono); color:var(--ink); margin:0 0 34px; display:flex; align-items:center; gap:10px;
-  perspective:400px;
-}
-.cycle-line .lbl{color:var(--muted);}
-.cycle-word{
-  position:relative; color:var(--volt-lt); min-width:190px; height:1.3em; display:inline-block;
-  transform-style:preserve-3d;
-}
-.cycle-word span{
-  position:absolute; inset:0; opacity:0; transform:rotateX(90deg); transform-origin:50% 100%;
-}
-.cycle-word span.active{opacity:1; transform:rotateX(0deg); transition:transform .5s cubic-bezier(.2,.8,.2,1), opacity .35s ease;}
-.cycle-word span.leaving{opacity:0; transform:rotateX(-90deg); transition:transform .5s cubic-bezier(.2,.8,.2,1), opacity .35s ease;}
-
-.hero-actions{display:flex; flex-wrap:wrap; gap:14px; margin-bottom:34px;}
-.btn-primary{
-  position:relative; padding:14px 26px; border-radius:3px; text-decoration:none; font-weight:700;
-  font-size:14px; letter-spacing:.02em; color:#04120a;
-  background:linear-gradient(120deg, var(--amber-lt), var(--volt));
-  box-shadow:0 0 0 1px rgba(52,226,122,.4), 0 8px 30px -8px rgba(52,226,122,.7);
-  transition:transform .25s ease, box-shadow .25s ease;
-}
-.btn-primary:hover{transform:translateY(-2px); box-shadow:0 0 0 1px rgba(52,226,122,.6), 0 14px 40px -8px rgba(52,226,122,.9);}
-.btn-ghost{
-  padding:14px 22px; border-radius:3px; text-decoration:none; font-size:14px; color:var(--ink);
-  border:1px solid rgba(234,246,240,0.18); background:rgba(255,255,255,0.02);
-  transition:border-color .25s ease, background .25s ease;
-}
-.btn-ghost:hover{border-color:var(--cyan); background:rgba(47,216,255,0.06);}
-
-.spec-row{display:flex; flex-wrap:wrap; gap:10px;}
-.spec-chip{
-  font:11px/1 var(--font-mono); letter-spacing:.08em; padding:7px 11px; border-radius:2px;
-  border:1px solid rgba(234,246,240,0.14); color:var(--muted);
-}
-.spec-chip.hot{border-color:rgba(240,197,120,0.45); color:var(--amber-lt);}
-
-/* ---- HUD telemetry panel ---- */
-.hud-panel{
-  position:relative; background:rgba(10,18,25,0.55); backdrop-filter:blur(14px) saturate(140%);
-  border:1px solid rgba(52,226,122,0.22); border-radius:6px; padding:26px 26px 22px;
-  box-shadow:0 0 0 1px rgba(0,0,0,.3), 0 30px 60px -20px rgba(0,0,0,.6), inset 0 0 40px rgba(52,226,122,0.03);
-}
-.hud-panel::before{
-  content:''; position:absolute; top:0; left:24px; right:24px; height:1px;
-  background:linear-gradient(90deg, transparent, var(--volt), transparent);
-  animation:sweep 4s linear infinite;
-}
-@keyframes sweep{0%{transform:translateX(-40%);}100%{transform:translateX(40%);}}
-.hud-panel-head{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:18px;}
-.hud-panel-head span:first-child{font:11px var(--font-mono); letter-spacing:.14em; color:var(--muted); text-transform:uppercase;}
-.hud-panel-head span:last-child{font:11px var(--font-mono); color:var(--volt-lt);}
-
-.money-readout{margin-bottom:20px;}
-.money-readout .num{
-  font-family:var(--font-mono); font-size:2.5rem; font-weight:400; color:var(--amber-lt);
-  text-shadow:0 0 22px rgba(224,162,61,.45); font-variant-numeric:tabular-nums; line-height:1;
-}
-.money-readout .cap{font:11px var(--font-mono); color:var(--muted); letter-spacing:.1em; margin-top:6px;}
-
-.bar-row{margin-bottom:12px;}
-.bar-row .bh{display:flex; justify-content:space-between; font:11px var(--font-mono); color:var(--muted); margin-bottom:5px;}
-.bar-row .bh b{color:var(--ink); font-weight:400;}
-.bar-track{height:6px; border-radius:3px; background:rgba(255,255,255,0.06); overflow:hidden; position:relative;}
-.bar-fill{
-  height:100%; width:0%; border-radius:3px;
-  background:linear-gradient(90deg, var(--amber-lt), var(--volt));
-  box-shadow:0 0 10px var(--volt), 0 0 2px var(--volt-lt);
-  transition:width 1.4s cubic-bezier(.16,.8,.2,1);
-}
-
-/* ---- Real nameplate photo → OCR fields, same component as the live site's
-   hero-plaque (css/style.css .hero-plaque-*), just reskinned to the reactor
-   palette — this is the actual proof, an abstracted KPI number isn't. ---- */
-.plaque-label{display:flex; justify-content:space-between; align-items:center; font:11px var(--font-mono); color:var(--muted); letter-spacing:.08em; text-transform:uppercase; margin-bottom:14px;}
-.plaque-label .tag{color:var(--volt-lt); border:1px solid rgba(52,226,122,.3); padding:2px 8px; border-radius:2px; font-size:10px;}
-.plaque-photo{position:relative; border-radius:6px; overflow:hidden; border:1px solid rgba(234,246,240,.12); line-height:0; max-width:260px; margin:0 auto 16px;}
-.plaque-photo img{display:block; width:100%; height:auto;}
-.plaque-scan{
-  position:absolute; left:0; right:0; top:0; height:40%;
-  background:linear-gradient(180deg, transparent 0%, rgba(52,226,122,.4) 50%, transparent 100%);
-  animation:plaque-scan 2.6s cubic-bezier(.4,0,.2,1) infinite;
-}
-@keyframes plaque-scan{
-  0%{transform:translateY(-100%); opacity:0;}
-  10%{opacity:1;} 55%{opacity:1;}
-  70%{transform:translateY(250%); opacity:0;}
-  100%{transform:translateY(250%); opacity:0;}
-}
-.plaque-fields{display:grid; grid-template-columns:1fr 1fr; gap:8px 14px; font-size:11px; margin:0 0 14px;}
-.plaque-fields > div{padding-bottom:6px; border-bottom:1px solid rgba(234,246,240,.08);}
-.plaque-fields dt{color:var(--muted); margin-bottom:2px; font:10px var(--font-mono); letter-spacing:.04em;}
-.plaque-fields dd{margin:0; color:var(--ink); font-weight:600; font-family:var(--font-mono);}
-.plaque-foot{font:11px var(--font-mono); color:var(--muted); text-align:center; padding-top:10px; border-top:1px solid rgba(234,246,240,.1);}
-.plaque-foot strong{color:var(--amber-lt);}
-@media (prefers-reduced-motion: reduce){ .plaque-scan{animation:none; opacity:0;} }
-
-/* ---- Suite telemetry: real KPIs from different FortHeC° products, not one product's bars ---- */
-.kpi-block{
-  padding:14px 0; border-top:1px solid rgba(234,246,240,0.1);
-  opacity:0; transform:translateY(8px); transition:opacity .5s ease, transform .5s ease;
-}
-.kpi-block.in{opacity:1; transform:none;}
-.kpi-row{display:flex; justify-content:space-between; align-items:baseline; gap:12px;}
-.kpi-lbl{font:11px var(--font-mono); color:var(--muted); letter-spacing:.04em;}
-.kpi-val{font:16px var(--font-mono); color:var(--cyan); text-shadow:0 0 12px rgba(47,216,255,.4); white-space:nowrap;}
-.kpi-sub{font:11px var(--font-mono); color:var(--muted); opacity:.75; margin-top:4px;}
-
-/* ============ Real page sections below the hero — reactor stays fixed
-   behind all of them, each section gets a near-opaque backdrop. ============ */
-.section{
-  position:relative; padding:90px 40px; max-width:1100px; margin:0 auto;
-  background:linear-gradient(180deg, transparent 0%, var(--void) 10%, var(--void) 100%);
-}
-.section-eyebrow{font:12px var(--font-mono); letter-spacing:.2em; color:var(--cyan); text-transform:uppercase;}
-.section h2{font-family:'Plex Mono'; font-weight:400; font-size:clamp(1.5rem,3vw,2.1rem); margin:12px 0 10px; color:var(--ink);}
-.section .lede{max-width:65ch; color:var(--muted); font-size:.98rem; line-height:1.6; margin-bottom:40px;}
-.reveal{opacity:0; transform:translateY(20px); transition:opacity .7s ease, transform .7s ease;}
-.reveal.in{opacity:1; transform:none;}
-
-.step-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
-@media (max-width:860px){ .step-grid{grid-template-columns:1fr 1fr;} }
-@media (max-width:560px){ .step-grid{grid-template-columns:1fr;} }
-.step-card{background:rgba(10,18,25,.55); backdrop-filter:blur(10px); border:1px solid rgba(52,226,122,.16); border-radius:6px; padding:20px;}
-.step-tag{display:inline-block; font:10px var(--font-mono); letter-spacing:.1em; color:var(--volt-lt); border:1px solid rgba(52,226,122,.3); padding:3px 8px; border-radius:2px; margin-bottom:12px;}
-.step-card h3{font-family:var(--font-display); font-size:.98rem; font-weight:700; margin:0 0 10px; color:var(--ink);}
-.step-card ul{margin:0; padding-left:16px; font-size:.82rem; color:var(--muted); line-height:1.6;}
-.step-card li{margin-bottom:4px;}
-
-.video-placeholder{width:100%; aspect-ratio:16/9; border-radius:6px; background:rgba(10,18,25,.5); border:2px dashed rgba(52,226,122,.3); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;}
-.video-placeholder .tag{font:11px var(--font-mono); color:var(--volt-lt); letter-spacing:.08em; text-transform:uppercase;}
-.video-placeholder .desc{font-size:.85rem; color:var(--muted); text-align:center; padding:0 20px; line-height:1.5;}
-.video-frame{border-radius:6px; overflow:hidden; border:1px solid rgba(234,246,240,.14); box-shadow:0 20px 50px -20px rgba(0,0,0,.7); line-height:0;}
-.video-frame video{display:block; width:100%;}
-.video-cap{font-size:.82rem; color:var(--muted); margin-top:10px; line-height:1.5;}
-
-.gains-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
-@media (max-width:860px){ .gains-grid{grid-template-columns:1fr 1fr;} }
-@media (max-width:560px){ .gains-grid{grid-template-columns:1fr;} }
-.gain-card{background:rgba(10,18,25,.55); border:1px solid rgba(52,226,122,.16); border-radius:6px; padding:22px; text-align:center;}
-.gain-card h3{font-family:var(--font-display); font-size:.92rem; color:var(--ink); margin:0 0 12px;}
-.gain-number{font:2.1rem var(--font-mono); color:var(--volt-lt); text-shadow:0 0 16px rgba(52,226,122,.4); line-height:1;}
-.gain-label{font-size:.76rem; color:var(--muted); line-height:1.5; margin-top:8px;}
-.roi-list{list-style:none; margin:0; padding:0; font-size:.85rem; color:var(--muted); text-align:left; line-height:1.9;}
-.roi-list .roi-highlight{color:var(--amber-lt); font-weight:700; font-family:var(--font-mono);}
-
-.conf-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:12px;}
-@media (max-width:560px){ .conf-grid{grid-template-columns:1fr;} }
-.conf-item{display:flex; justify-content:space-between; align-items:center; background:rgba(10,18,25,.5); border:1px solid rgba(234,246,240,.1); border-radius:4px; padding:14px 18px; font:13px var(--font-mono); color:var(--ink);}
-.conf-ok{color:var(--volt-lt); font-weight:700; font-size:11px; letter-spacing:.06em;}
-
-.sec-list{display:flex; flex-direction:column; gap:14px;}
-.sec-row{display:grid; grid-template-columns:220px 1fr; gap:18px; padding-bottom:14px; border-bottom:1px solid rgba(234,246,240,.08);}
-@media (max-width:640px){ .sec-row{grid-template-columns:1fr;} }
-.sec-row .lbl{display:flex; align-items:center; gap:8px; font:13px var(--font-display); font-weight:700; color:var(--ink);}
-.sec-row .desc{font-size:.85rem; color:var(--muted); line-height:1.55;}
-
-.cta-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
-@media (max-width:760px){ .cta-grid{grid-template-columns:1fr;} }
-.cta-box{background:rgba(10,18,25,.55); border:1px solid rgba(234,246,240,.12); border-radius:6px; padding:28px;}
-.cta-box.hot{border-color:rgba(240,197,120,.35);}
-.cta-box h3, .cta-box h4{font-family:var(--font-display); color:var(--ink); margin:0 0 10px; font-size:1.1rem;}
-.cta-box p{color:var(--muted); font-size:.9rem; line-height:1.6; margin:0 0 14px;}
-.cta-links a{display:flex; align-items:center; gap:8px; color:var(--ink); text-decoration:none; font:12px var(--font-mono); margin-top:8px;}
-.cta-links .spec-tag{font:10px var(--font-mono); color:var(--volt-lt); border:1px solid rgba(52,226,122,.3); padding:2px 6px; border-radius:2px;}
-
-.faq-list{display:flex; flex-direction:column; gap:10px;}
-.faq-item{background:rgba(10,18,25,.5); border:1px solid rgba(234,246,240,.1); border-radius:6px; padding:16px 20px;}
-.faq-item summary{cursor:pointer; font:14px var(--font-display); font-weight:700; color:var(--ink); list-style:none;}
-.faq-item summary::-webkit-details-marker{display:none;}
-.faq-item summary::before{content:'+ '; color:var(--volt-lt); font-family:var(--font-mono);}
-.faq-item[open] summary::before{content:'\2013' ' ';}
-.faq-item p{color:var(--muted); font-size:.85rem; line-height:1.6; margin:10px 0 0;}
-
-.plan-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
-@media (max-width:960px){ .plan-grid{grid-template-columns:1fr 1fr;} }
-@media (max-width:560px){ .plan-grid{grid-template-columns:1fr;} }
-.plan-card{background:rgba(10,18,25,.55); border:1px solid rgba(234,246,240,.12); border-radius:6px; padding:22px; display:flex; flex-direction:column;}
-.plan-card.reco{border-color:rgba(240,197,120,.4);}
-.plan-price{font:1.7rem var(--font-mono); color:var(--ink); margin:14px 0 2px;}
-.plan-price span{font-size:.68rem; color:var(--muted); font-family:var(--font-display);}
-.plan-annual{font-size:.72rem; color:var(--muted); margin-bottom:14px;}
-.plan-meta{display:flex; flex-direction:column; gap:4px; font-size:.78rem; color:var(--muted); margin-bottom:14px; padding-bottom:14px; border-bottom:1px solid rgba(234,246,240,.08);}
-.plan-meta strong{color:var(--ink);}
-.plan-card ul{margin:0 0 16px; padding-left:16px; font-size:.78rem; color:var(--muted); line-height:1.6; flex:1;}
-.plan-card li{margin-bottom:5px;}
-.plan-card > a{align-self:flex-start; color:var(--volt-lt); text-decoration:none; font:12px var(--font-mono); border-bottom:1px solid rgba(52,226,122,.3); padding-bottom:2px;}
-
-.gains-table-lab{width:100%; border-collapse:collapse; font:12px var(--font-mono); margin-bottom:24px;}
-.gains-table-lab th{text-align:left; font-weight:400; color:var(--muted); letter-spacing:.05em; text-transform:uppercase; font-size:10px; padding-bottom:10px; border-bottom:1px solid rgba(234,246,240,.16);}
-.gains-table-lab td{padding:10px 6px; border-bottom:1px solid rgba(234,246,240,.08); color:var(--ink);}
-.gains-table-lab td.gain{color:var(--volt-lt); font-weight:600; text-align:right;}
-
-.teaser-card{text-align:center; padding:28px; max-width:600px; margin:0 auto; background:rgba(10,18,25,.5); border:1px solid rgba(52,226,122,.2); border-radius:6px;}
-.teaser-card p{color:var(--muted); font-size:.9rem; line-height:1.6; margin:0 0 14px;}
-
-footer{position:relative; z-index:5; text-align:center; padding:50px 40px; font:11px var(--font-mono); color:var(--muted); letter-spacing:.08em; background:var(--void);}
-.footer-nav{display:flex; flex-wrap:wrap; justify-content:center; gap:18px; margin-top:16px;}
-.footer-nav a{color:var(--muted); text-decoration:none;}
-.footer-nav a:hover{color:var(--volt-lt);}
-
-@media (prefers-reduced-motion: reduce){
-  .aurora, .hud-panel::before{animation:none;}
-  .bar-fill{transition:none;}
-  .cycle-word span{transition:none;}
-}
-</style>
-</head>
-<body>
-
-<div class="boot-overlay" id="bootOverlay"><div class="boot-lines" id="bootLines"></div></div>
-
-<div class="scanlines"></div>
-<div class="vignette"></div>
-<div class="hud-frame"><b></b></div>
-
-<nav>
-  <a class="nav-logo" href="index.html"><img src="img/n2-icon-mark.png" alt="" height="30"><span class="dot"></span>FortHeC<em>°</em></a>
-  <ul class="nav-links">
-    <li><a href="index.html">Accueil</a></li>
-    <li><a href="energy.html">Energy</a></li>
-    <li><a href="inventory.html">Inventory</a></li>
-    <li><a href="suite.html">Suite</a></li>
-    <li><a href="tarifs.html">Tarifs</a></li>
-    <li><a href="blog/index.html">Blog</a></li>
-    <li><a href="console.html">Console</a></li>
-    <li><a href="contact.html" class="cta">Contact</a></li>
-  </ul></nav>
-
-<section class="hero">
-  <canvas id="reactor-canvas"></canvas>
-  <div class="aurora"></div>
+</script><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="software.css"><link rel="stylesheet" href="atmosphere.css"><link rel="stylesheet" href="energy-first.css"><link rel="stylesheet" href="cinema.css"><link rel="stylesheet" href="site-v3.css"><link rel="stylesheet" href="product-scenes.css"><link rel="stylesheet" href="sharp-surfaces.css"><script src="analytics.js" defer></script><script src="living-field.js" defer></script><script src="site-v3.js" defer></script><script src="product-scenes.js" defer></script><link rel="stylesheet" href="living-theme.css"><script src="video-autoplay.js" defer></script></head><body class="site-page page-inventory"><canvas id="energy-field" aria-hidden="true"></canvas><a class="skip" href="#contenu">Aller au contenu</a><header class="header"><a class="wordmark" href="index.html" aria-label="FortHeC, accueil">FortHeC<span>°</span></a><span class="header-note">ÉDITEUR FRANÇAIS<br>LOGICIELS D’AUDIT ÉNERGÉTIQUE</span><button class="menu-toggle" aria-controls="navigation" aria-expanded="false">Menu <span>＋</span></button><nav id="navigation" aria-label="Navigation principale"><a href="index.html">Accueil</a><a href="energy.html">Energy</a><a href="inventory.html" aria-current="page">Inventory</a><a href="suite.html">Suite</a><a href="tarifs.html">Tarifs</a><a href="blog/index.html">Blog</a><a href="console.html">Console</a><a class="nav-contact" href="contact.html">Contact <span>↗</span></a></nav></header><main id="contenu"><div class="page-path"><a href="index.html">FortHeC°</a><span>/</span><span>inventory</span><span class="page-edition">SUITE LOGICIELLE / NF EN 16247</span></div><section class="subpage-hero">
+  
+  
 
   <div class="hero-grid">
     <div>
-      <p class="eyebrow">FortHeC° Inventory — Application mobile iOS / Android</p>
+      <p class="eyebrow">FortHeC° Inventory : Application mobile iOS / Android</p>
       <h1>
         <div class="line"><span>L'inventaire terrain</span></div>
         <div class="line"><em>en une journée</em></div>
@@ -468,7 +45,7 @@ footer{position:relative; z-index:5; text-align:center; padding:50px 40px; font:
       <p class="hero-sub">Capturez l'intégralité du contexte technique d'un site industriel depuis votre smartphone. Equipements, bâtiments, enveloppe thermique, fluides frigorigènes. Les données s'injectent directement dans FortHeC° Energy.</p>
 
       <p class="cycle-line">
-        <span class="lbl">&gt;_ scan —</span>
+        <span class="lbl">&gt;_ scan :</span>
         <span class="cycle-word" id="cycleWord">
           <span class="active">Equipements.</span>
           <span>Bâtiments.</span>
@@ -491,7 +68,7 @@ footer{position:relative; z-index:5; text-align:center; padding:50px 40px; font:
     </div>
 
     <div class="hud-panel">
-      <div class="hud-panel-head"><span>ocr_extraction.json</span><span>● live</span></div>
+      <div class="hud-panel-head"><span>ocr_extraction.json</span><span>APERÇU PRODUIT</span></div>
       <div class="plaque-label"><span>Photo → champs structurés</span><span class="tag">OCR</span></div>
       <div class="plaque-photo">
         <img src="img/plaque-demo-moteur-techtop.webp" alt="Plaque signalétique moteur électrique TECHTOP T 802-4">
@@ -505,17 +82,17 @@ footer{position:relative; z-index:5; text-align:center; padding:50px 40px; font:
         <div><dt>Courant</dt><dd>1,80 A</dd></div>
         <div><dt>cos φ</dt><dd>0,73</dd></div>
         <div><dt>Vitesse</dt><dd>1430 tr/min</dd></div>
-        <div><dt>Rendement</dt><dd>IE3 — 82,5 %</dd></div>
+        <div><dt>Rendement</dt><dd>IE3 : 82,5 %</dd></div>
         <div><dt>Classe / IP</dt><dd>H / IP55</dd></div>
         <div><dt>Roulements</dt><dd>6204-6204</dd></div>
         <div><dt>N° série</dt><dd>012103-205</dd></div>
       </dl>
-      <div class="plaque-foot">11 champs extraits automatiquement · <strong>0 ressaisie</strong></div>
+      <div class="plaque-foot">11 champs préremplis · <strong>À vérifier et compléter si nécessaire</strong></div>
     </div>
   </div>
 </section>
 
-<!-- ── Fonctionnalités ──────────────────── -->
+
 <section class="section">
   <p class="section-eyebrow reveal">Fonctionnalités</p>
   <h2 class="reveal">Workflow terrain en 6 étapes</h2>
@@ -536,9 +113,9 @@ footer{position:relative; z-index:5; text-align:center; padding:50px 40px; font:
       <span class="step-tag">Etape 02</span>
       <h3>Inventaire équipements</h3>
       <ul>
-        <li>Photo de plaque signalétique, OCR Google Vision, extraction Mistral IA</li>
+        <li>Photo de plaque signalétique, OCR Mistral, extraction Mistral IA</li>
         <li>Champs auto-remplis : marque, modèle, puissance, année, classe IE</li>
-        <li>Saisie vocale Google Speech + Mistral pour complétion rapide</li>
+        <li>Saisie vocale Mistral + Mistral pour complétion rapide</li>
         <li>Bandeau orange si données incomplètes détectées</li>
       </ul>
     </div>
@@ -585,14 +162,14 @@ footer{position:relative; z-index:5; text-align:center; padding:50px 40px; font:
   </div>
 </section>
 
-<!-- ── En action ────────────────────────── -->
+
 <section class="section">
   <p class="section-eyebrow reveal">En action</p>
   <h2 class="reveal">FortHeC° Inventory en quelques secondes</h2>
   <p class="lede reveal">L'inventaire terrain depuis le smartphone, de la photo de plaque à la synchronisation Energy.</p>
 
-  <div class="reveal" style="max-width:600px">
-    <p class="video-card-label" style="margin-bottom:10px">Démo Inventory</p>
+  <div class="reveal">
+    <p class="video-card-label">Démo Inventory</p>
     <div class="video-placeholder">
       <span class="tag">À venir</span>
       <span class="desc">Vidéo Inventory<br>Photo plaque, OCR, cartographie des zones</span>
@@ -601,7 +178,7 @@ footer{position:relative; z-index:5; text-align:center; padding:50px 40px; font:
   </div>
 </section>
 
-<!-- ── Gains terrain ────────────────────── -->
+
 <section class="section">
   <p class="section-eyebrow reveal">Gain de temps</p>
   <h2 class="reveal">1 800 EUR libérés par site</h2>
@@ -627,13 +204,13 @@ footer{position:relative; z-index:5; text-align:center; padding:50px 40px; font:
   </div>
 </section>
 
-<!-- ── Conformité ───────────────────────── -->
+
 <section class="section">
   <p class="section-eyebrow reveal">Conformité</p>
   <h2 class="reveal">Conçu pour le terrain réglementaire</h2>
   <p class="lede reveal">Chaque module de collecte respecte les exigences normatives applicables aux audits NF EN 16247.</p>
 
-  <div class="conf-grid" style="margin-bottom:36px">
+  <div class="conf-grid">
     <div class="conf-item reveal"><span>NF EN 16247-1/3</span><span class="conf-ok">OK</span></div>
     <div class="conf-item reveal"><span>RT2012 / RE2020</span><span class="conf-ok">OK</span></div>
     <div class="conf-item reveal"><span>UE 517/2014 F-Gaz</span><span class="conf-ok">OK</span></div>
@@ -642,12 +219,12 @@ footer{position:relative; z-index:5; text-align:center; padding:50px 40px; font:
 
   <div class="sec-list">
     <div class="sec-row reveal"><div class="lbl"><span class="step-tag">LOCAL</span>Données terrain sur l'appareil</div><div class="desc">Photos et données ne quittent jamais votre appareil sauf pour synchronisation Supabase France.</div></div>
-    <div class="sec-row reveal"><div class="lbl"><span class="step-tag">FR</span>IA souveraine</div><div class="desc">OCR Google Vision et Mistral Large 2 Paris UE. Seuls des extraits structurés transitent vers l'IA.</div></div>
+    <div class="sec-row reveal"><div class="lbl"><span class="step-tag">FR</span>IA souveraine</div><div class="desc">OCR Mistral et Mistral Large 2 Paris UE. Seuls des extraits structurés transitent vers l'IA.</div></div>
     <div class="sec-row reveal"><div class="lbl"><span class="step-tag">OFFLINE</span>Mode hors-ligne</div><div class="desc">Saisie complète sans connexion. Synchronisation automatique au retour du réseau.</div></div>
   </div>
 </section>
 
-<!-- ── CTA ──────────────────────────────── -->
+
 <section class="section">
   <div class="cta-grid">
     <div class="cta-box reveal">
@@ -666,114 +243,4 @@ footer{position:relative; z-index:5; text-align:center; padding:50px 40px; font:
   </div>
 </section>
 
-<footer>
-  © 2026 FortHeC°. Données hébergées en France. contact@forthec.fr
-  <div class="footer-nav">
-    <a href="index.html">Accueil</a>
-    <a href="energy.html">Energy</a>
-    <a href="tarifs.html">Tarifs</a>
-    <a href="contact.html">Contact</a>
-    <a href="console.html">Console</a>
-    <a href="blog/index.html">Blog</a>
-    <a href="https://www.linkedin.com/in/hugo-chambefort-41097715b/" target="_blank" rel="noopener">LinkedIn</a>
-    <a href="legal.html">Mentions légales</a>
-  </div>
-</footer>
-
-<!-- ============ Libraries ============ -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script type="importmap">
-{
-  "imports": {
-    "three": "https://unpkg.com/three@0.165.0/build/three.module.js",
-    "three/addons/": "https://unpkg.com/three@0.165.0/examples/jsm/"
-  }
-}
-</script>
-
-<script type="module">
-import { initReactorLab, runBoot, reduceMotion, markActiveNav, shouldSkipBoot, markBooted, initAppSwitcher, initMobileNav, initAnalytics } from './js/reactor-lab.js';
-markActiveNav();
-initAppSwitcher();
-initMobileNav();
-initAnalytics();
-
-const { cableMat } = initReactorLab({
-  coreOffsetX: 2.0,
-  premiumCore: true,
-  // real data, but genuinely Energy's own gains table — kept honest by
-  // labelling it as what it is: what Inventory's captures feed downstream,
-  // not a fabricated Inventory-specific metric (Inventory has no equivalent
-  // 5-point series of its own to draw a staircase from).
-  echoValues: [85, 95, 90, 75, 33],
-  echoLabel: 'inventory → energy.forthec.fr · audit_gains'
-});
-
-/* ============ Boot sequence — it "compiles" before it powers on (energy + web-dev fusion) ============ */
-const bootOverlay = document.getElementById('bootOverlay');
-const bootLines = [
-  '> npm run build:inventory',
-  '> scanning plaque-signaletique.jpg ...',
-  '> ocr_extraction.json -- 11 champs',
-  '> sync -> energy.forthec.fr ...',
-  '> render complete'
-];
-
-/* ============ Entrance timeline (runs after boot) ============ */
-function startEntrance(){
-  const tl = gsap.timeline({ defaults:{ ease:'power3.out' } });
-  tl.from('.hud-frame', { opacity:0, duration:.6 })
-    .from('.eyebrow', { opacity:0, y:14, duration:.5 }, '-=.2')
-    .from('h1 .line span', { opacity:0, y:'100%', duration:.7, stagger:.12 }, '-=.2')
-    .from('.hero-sub', { opacity:0, y:14, duration:.5 }, '-=.3')
-    .from('.cycle-line', { opacity:0, y:10, duration:.5 }, '-=.3')
-    .from('.hero-actions a', { opacity:0, y:12, duration:.45, stagger:.08, clearProps:'transform' }, '-=.25')
-    .from('.spec-chip', { opacity:0, y:8, duration:.4, stagger:.05 }, '-=.2')
-    .from('.hud-panel', { opacity:0, x:30, duration:.7 }, '-=.9')
-    .from('.plaque-fields > div', { opacity:0, y:6, duration:.35, stagger:.04 }, '-=.3');
-
-  // decoupled from the GSAP chain on purpose — a plain timer is one less
-  // moving part to debug than a callback nested inside a timeline.
-  setTimeout(()=>{
-    if(cableMat) gsap.to(cableMat, { opacity:1, duration:.35, yoyo:true, repeat:1, ease:'power1.inOut' });
-  }, 1500);
-}
-
-if(reduceMotion || shouldSkipBoot()){
-  bootOverlay.classList.add('hidden');
-  startEntrance();
-  markBooted();
-} else {
-  runBoot(bootLines, ()=>{
-    bootOverlay.classList.add('hidden');
-    startEntrance();
-    markBooted();
-  });
-}
-
-/* ============ Word cycle (real pipeline steps, not decoration) ============ */
-if(!reduceMotion){
-  const wrap = document.getElementById('cycleWord');
-  const spans = [...wrap.children];
-  let idx = 0;
-  setInterval(()=>{
-    spans[idx].classList.remove('active');
-    spans[idx].classList.add('leaving');
-    const next = (idx+1) % spans.length;
-    spans[next].classList.remove('leaving');
-    // force reflow so the transition retriggers
-    void spans[next].offsetWidth;
-    spans[next].classList.add('active');
-    setTimeout(()=> spans[idx].classList.remove('leaving'), 550);
-    idx = next;
-  }, 2400);
-}
-
-/* ============ Section 2 reveal ============ */
-const io = new IntersectionObserver((entries)=>{
-  entries.forEach(en=>{ if(en.isIntersecting) en.target.classList.add('in'); });
-}, { threshold:0.2 });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-</script>
-</body>
-</html>
+</main><footer class="site-footer"><div><a class="wordmark" href="index.html">FortHeC<span>°</span></a><p>L’audit énergétique en accéléré.</p><span>© 2026 FortHeC°. Données hébergées en France.</span></div><nav aria-label="Navigation de pied de page"><a href="index.html">Accueil</a><a href="energy.html">Energy</a><a href="inventory.html">Inventory</a><a href="suite.html">Suite</a><a href="tarifs.html">Tarifs</a><a href="blog/index.html">Blog</a><a href="console.html">Console</a><a href="contact.html">Contact</a><a href="legal.html">Mentions légales</a><a href="legal.html?doc=cgv">CGU / CGV</a><a href="legal.html?doc=confidentialite">Confidentialité</a><a href="https://www.linkedin.com/in/hugo-chambefort-41097715b/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></nav><div class="footer-bottom"><a href="mailto:contact@forthec.fr">contact@forthec.fr</a></div></footer></body></html>

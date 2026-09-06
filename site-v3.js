@@ -1,0 +1,41 @@
+'use strict';
+(() => {
+ const storageKey='forthec-app-switcher-open';
+ const switcher=document.createElement('aside');switcher.className='app-switcher';switcher.setAttribute('aria-label','Accès aux applications FortHeC');
+ switcher.innerHTML='<div class="app-switcher-panel" id="applications-panel" hidden><p>Nos applications</p><a href="https://console-app.forthec.fr/" target="_blank" rel="noopener noreferrer">Console <span aria-hidden="true">↗</span></a><a href="https://app.forthec.fr/" target="_blank" rel="noopener noreferrer">Energy <span aria-hidden="true">↗</span></a><small>Ouvrir dans un nouvel onglet</small></div><button type="button" class="app-switcher-tab" aria-expanded="false" aria-controls="applications-panel">Applications <span aria-hidden="true">＋</span></button>';
+ document.body.append(switcher);
+ const button=switcher.querySelector('button'),panel=switcher.querySelector('.app-switcher-panel');
+ function setOpen(open){panel.hidden=!open;switcher.classList.toggle('is-open',open);button.setAttribute('aria-expanded',String(open));button.querySelector('span').textContent=open?'−':'＋';try{localStorage.setItem(storageKey,open?'1':'0')}catch{}}
+ try{if(localStorage.getItem(storageKey)==='1')setOpen(true)}catch{}
+ button.addEventListener('click',()=>setOpen(panel.hidden));
+ button.addEventListener('keydown',e=>{if(e.key==='ArrowDown'){e.preventDefault();setOpen(true);panel.querySelector('a').focus()}});
+ document.addEventListener('click',e=>{if(!panel.hidden&&!switcher.contains(e.target))setOpen(false)});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!panel.hidden){const restore=switcher.contains(document.activeElement);setOpen(false);if(restore)button.focus()}});
+})();
+(() => {
+ const home=document.body.classList.contains('home-page');
+ const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+ if(!home){
+  const menu=document.querySelector('.menu-toggle'),nav=document.getElementById('navigation');
+  menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',open);nav.classList.toggle('is-open',open)});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){nav.classList.remove('is-open');menu.setAttribute('aria-expanded','false')}});
+  const canvas=document.getElementById('energy-field'),ctx=canvas.getContext('2d');let paused=reduced.matches,t=0,last=0,frame=0;
+  const toggle=document.createElement('button');toggle.className='motion-toggle';toggle.type='button';document.querySelector('footer').append(toggle);
+  function label(){toggle.textContent=paused?'Effets visuels : en pause':'Effets visuels : actifs';toggle.setAttribute('aria-pressed',String(!paused));document.body.dataset.motion=paused?'paused':'active'}
+  function draw(){window.ForthecField.draw(ctx,innerWidth,innerHeight,t)}
+  function resize(){const d=Math.min(devicePixelRatio,1.5);canvas.width=innerWidth*d;canvas.height=innerHeight*d;ctx?.setTransform(d,0,0,d,0,0);draw()}
+  function tick(now){frame=0;if(paused||document.hidden)return;if(now-last>40){t+=Math.min((now-last)/1000,.1);last=now;draw()}frame=requestAnimationFrame(tick)}
+  function start(){if(!frame&&!paused&&!document.hidden){last=performance.now();frame=requestAnimationFrame(tick)}}
+  toggle.addEventListener('click',()=>{paused=!paused;label();start()});reduced.addEventListener('change',()=>{paused=reduced.matches;label();draw();start()});document.addEventListener('visibilitychange',start);addEventListener('resize',resize);resize();label();start();
+ }
+ const plate=document.querySelector('.page-inventory .plaque-photo');
+ if(plate){const fields=[...document.querySelectorAll('.plaque-fields dd')],button=document.createElement('button');button.className='scan-again';button.type='button';button.textContent='Rejouer le scan';plate.parentElement.append(button);const caption=document.createElement('p');caption.className='scan-caption';caption.textContent='Animation illustrative : photo réelle, champs à vérifier avant validation dans Inventory.';plate.parentElement.append(caption);let run=0;async function scan(){const token=++run;button.disabled=true;fields.forEach(f=>f.classList.toggle('pending',!reduced.matches));const line=plate.querySelector('.plaque-scan');line.style.animation='none';void line.offsetWidth;line.style.animation=reduced.matches?'none':'plate-scan 2s ease-in-out 2';await new Promise(r=>setTimeout(r,reduced.matches?0:2200));for(const field of fields){if(token!==run)return;field.classList.remove('pending');await new Promise(r=>setTimeout(r,reduced.matches?0:140))}button.disabled=false}button.addEventListener('click',scan);scan()}
+ const mock=document.querySelector('.page-console .app-mockup-lab');if(mock){const panel=document.createElement('div');panel.className='console-preview';const note=document.querySelector('.mockup-note');panel.append(mock,note);document.querySelector('.hero-grid').append(panel);mock.querySelector('.app-mockup-lab-bar').textContent='FORTHEC° CONSOLE / ORGANISATION';mock.querySelectorAll('.mock-nav').forEach((el,i)=>el.textContent=['Rapports','Équipe','Licences','Profil','Données'][i]);mock.querySelectorAll('.mock-line').forEach((el,i)=>{el.textContent=i?'Travaillez ensemble.':'VOTRE ORGANISATION';el.className='mock-title-'+i})}
+ document.querySelectorAll('.mock-card').forEach((el,i)=>{if(!el.textContent.trim())el.textContent=['Rapports partagés / Votre organisation','Équipe / Membres et accès','Energy + Inventory / Vos outils'][i%3]});
+ const legal=document.getElementById('legal-content');
+ if(legal){const escape=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');const inline=s=>escape(s).replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\[([^\]]+)\]\(((?:https?:\/\/|mailto:)[^)]+)\)/g,'<a href="$2">$1</a>');
+  function markdown(s){const lines=s.split(/\r?\n/);let out='',list=false,table=false;for(let i=0;i<lines.length;i++){const line=lines[i].trim();if(!/^[-*] /.test(line)&&list){out+='</ul>';list=false}if(!line.startsWith('|')&&table){out+='</tbody></table></div>';table=false}if(!line)continue;if(/^#{1,6} /.test(line)){const n=Math.min(6,line.match(/^#+/)[0].length+1);out+=`<h${n}>${inline(line.replace(/^#+ /,''))}</h${n}>`}else if(/^[-*] /.test(line)){if(!list){out+='<ul>';list=true}out+='<li>'+inline(line.slice(2))+'</li>'}else if(line.startsWith('|')){if(/^\|[\s:|-]+\|$/.test(line))continue;if(!table){out+='<div class="table-scroll" tabindex="0" role="region" aria-label="Tableau défilant"><table><tbody>';table=true}out+='<tr>'+line.replace(/^\||\|$/g,'').split('|').map(c=>'<td>'+inline(c.trim())+'</td>').join('')+'</tr>'}else if(/^[-_]{3,}$/.test(line)){out+='<hr>'}else out+='<p>'+inline(line)+'</p>'}return out+(list?'</ul>':'')+(table?'</tbody></table></div>':'')}
+  function show(key,update){const source=document.getElementById('legal-source-'+key);if(!source)return show('mentions',update);legal.innerHTML=markdown(source.content.textContent);document.querySelectorAll('.legal-tab').forEach(tab=>{const active=tab.dataset.doc===key;tab.classList.toggle('active',active);tab.setAttribute('aria-pressed',active)});if(update){try{history.replaceState(null,'','?doc='+key)}catch{}}}document.querySelectorAll('.legal-tab').forEach(tab=>tab.addEventListener('click',()=>show(tab.dataset.doc,true)));show(new URLSearchParams(location.search).get('doc')||'mentions',false);
+ }
+ const blog=document.querySelector('.page-blog-list .blog-list');if(blog){const label=document.createElement('label');label.className='blog-search-label';label.htmlFor='blog-search';label.textContent='EXPLORER LES ARTICLES';const input=document.createElement('input');input.type='search';input.id='blog-search';input.className='blog-search';input.placeholder='Rechercher un sujet, un outil, une norme…';const count=document.createElement('p');count.className='blog-count';count.setAttribute('role','status');blog.before(label,input,count);const items=[...blog.children],normalize=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();function filter(){const q=normalize(input.value);let total=0;items.forEach(item=>{item.hidden=!normalize(item.textContent).includes(q);if(!item.hidden)total++});count.textContent=total+' article'+(total>1?'s':'')}input.addEventListener('input',filter);filter()}
+})();
