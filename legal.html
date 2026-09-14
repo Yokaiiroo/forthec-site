@@ -523,7 +523,7 @@ Tout litige relatif à leur formation, leur interprétation, leur exécution ou 
 *Acceptées à la création du Compte et à la souscription de tout Abonnement.*
 </template><template id="legal-source-confidentialite"># Politique de confidentialité
 
-**Dernière mise à jour : 30 juillet 2026**
+**Dernière mise à jour : 14 septembre 2026**
 
 La présente politique décrit la manière dont FortHeC° collecte, utilise et protège les données à caractère personnel des personnes qui interagissent avec ses services : visiteurs du site forthec.fr, utilisateurs des applications FortHeC° Energy et FortHeC° Inventory, personnes contactées dans le cadre d'actions commerciales.
 
@@ -624,6 +624,27 @@ L'opposition est prise en compte sans délai et entraîne l'inscription en liste
 
 **Base légale** : exécution de mesures précontractuelles ou contractuelles (article 6.1.b RGPD) ou intérêt légitime (article 6.1.f RGPD) selon le contexte.
 
+### 3.6 Données de consommation électrique (Enedis Data Connect)
+
+Dans le cadre des audits énergétiques réalisés via FortHeC° Energy, un bureau d'études auditeur peut proposer à l'entreprise qu'il audite de partager ses données de consommation électrique directement depuis son espace personnel Enedis, via le service Data Connect d'Enedis.
+
+**Données collectées** :
+- Consommation électrique quotidienne (kWh/jour)
+- Courbe de charge au pas de 30 minutes (W)
+- Identifiant du point de livraison (PDL / usage_point_id)
+
+**Origine et modalités de collecte** : ces données ne sont jamais saisies directement dans FortHeC° Energy. Elles sont transmises par Enedis uniquement après que la personne titulaire du contrat d'électricité du site audité a donné son consentement libre, spécifique et éclairé, directement sur son espace personnel Enedis (mon-compte-particulier.enedis.fr), selon le protocole standard OAuth 2.0. FortHeC° n'a jamais accès aux identifiants de connexion Enedis de cette personne.
+
+**Finalité** : réaliser les calculs et analyses nécessaires à l'audit énergétique du site (NF EN 16247), pour le compte du bureau d'études mandaté par l'entreprise auditée.
+
+**Base légale** : consentement de la personne concernée, recueilli directement par Enedis (article 6.1.a RGPD). Ce consentement est valable pour une durée maximale de 3 ans et peut être révoqué à tout moment par la personne concernée depuis son espace personnel Enedis, sans avoir à contacter FortHeC°.
+
+**Rôle de FortHeC°** : conformément au contrat conclu entre FortHeC° et Enedis relatif au service Data Connect, Enedis demeure responsable de traitement pour la collecte et la mise à disposition de ces données. FortHeC° devient responsable de traitement pour l'utilisation de ces données dans le cadre du service qu'il fournit au bureau d'études auditeur.
+
+**Durée de conservation** : les données de consommation sont conservées pendant la durée du consentement actif (maximum 3 ans), et supprimées sans délai en cas de révocation du consentement par la personne concernée.
+
+**Destinataire** : Enedis (Tour Enedis, 34 place des Corolles, 92079 Paris La Défense Cedex) transmet ces données à FortHeC° dans le cadre du contrat Data Connect signé entre les deux parties.
+
 ## 4. Durées de conservation
 
 | Catégorie de données | Durée de conservation |
@@ -653,6 +674,8 @@ Les données personnelles sont destinées à FortHeC° et aux sous-traitants sui
 | **Intuition Machines, Inc. / hCaptcha** (États-Unis / Union européenne) | Service anti-bot sur le formulaire de contact | Union européenne (configuration EU) | Conditions hCaptcha, SCC 2021 |
 | **650 Industries, Inc. / Expo** (États-Unis) | Compilation et distribution du binaire APK de l'application mobile Inventory | États-Unis | Aucune donnée personnelle utilisateur transitée (usage limité à la distribution du binaire) |
 | **Stripe Payments Europe, Ltd.** (Irlande) | Traitement des paiements par abonnement (à compter du lancement de l'offre payante) | Union européenne | DPA Stripe, PCI DSS certifié |
+
+| **Enedis** (Société Anonyme, France) | Transmission des données de consommation électrique des sites audités, sur consentement direct de la personne concernée (service Data Connect) | France | Contrat Data Connect Enedis-FortHeC°, RGPD |
 
 FortHeC° s'assure contractuellement que chaque sous-traitant présente des garanties suffisantes en matière de sécurité, de confidentialité et de conformité au RGPD.
 
