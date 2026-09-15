@@ -33,7 +33,9 @@
       const sessionId = getOrCreate(sessionStorage, SESSION_KEY);
       const payload = Object.assign({
         event_type: eventType,
-        page_url: window.location.pathname + window.location.search,
+        // Les parametres d'URL peuvent contenir une adresse e-mail, un token
+        // ou une reference client. Les UTM utiles sont transmis separement.
+        page_url: window.location.pathname,
         page_title: document.title,
         session_id: sessionId,
         visitor_id: visitorId,
